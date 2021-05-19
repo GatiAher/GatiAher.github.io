@@ -1,0 +1,151 @@
+/* custom variable */
+
+:root {
+    /* fonts */
+    --normal-font: Helvetica, Arial, sans-serif;
+    --code-font: monospace, 'Courier New', Courier;
+    --motto-font: "Motto";
+    /* colors */
+    --white-color: #ffffff;
+    --blank-color: #1c1d22;
+    --metal-blue-color: #0000EE;
+    --light-blue-color: #58A6FF;
+    --gray-color: #8e8e8e;
+    --light-gray-color: #efefef;
+}
+
+/* ------- html ------- */
+
+html {
+    color: var(--blank-color);
+}
+
+body {
+    background-color: var(--white-color);
+}
+
+.container {
+    max-width: "1000px";
+    padding: 0.5em;
+}
+
+#main {
+    margin-top: 1em;
+    margin-bottom: 2em;
+}
+
+/* ------- spacing end ------- */
+
+/* ------- nav ------- */
+
+#nav a {
+    font-weight: bold;
+    text-decoration: none;
+    color: inherit;
+}
+
+#nav a:hover {
+    color: var(--light-blue-color);
+}
+
+#nav-border {
+    border-bottom: 2px solid var(--light-gray-color);
+}
+
+/* ------- nav end ------- */
+
+/* ------- foot ------- */
+
+.foot {
+    font-size: 15px;
+    margin-top: 3;
+    padding-top: 0.5em;
+    padding-bottom: 4em;
+    color: var(--gray-color);
+    text-align: center;
+    border-top: 2px solid var(--light-gray-color);
+}
+
+.foot a {
+    color: inherit;
+}
+
+.foot a:hover {
+    color: var(--light-blue-color);
+}
+
+/* ------- foot end ------- */
+
+/* ------- tag ------- */
+
+.tag {
+    background-color: var(--light-gray-color);
+    color: var(--gray-color);
+}
+
+/* ------- tag end ------- */
+
+/* ------- date ------- */
+
+.date {
+    color: var(--gray-color);
+}
+
+/* ------- date end ------- */
+
+/* ------- image ------- */
+
+.center-image {
+    width: 1em;
+    height: 1em;
+}
+
+img {
+    max-width: 100%;
+}
+
+figure {
+    text-align: center;
+    font-size: smaller;
+    text-indent: 0;
+    color: var(--gray-color);
+    margin: 0.5em;
+    padding: 0.5em;
+  }
+
+/* ------- image end ------- */
+
+/* ------- markdown formatting ------- */
+
+code.has-jax {
+    -webkit-font-smoothing: antialiased;
+    background: inherit !important;
+    border: none !important;
+    font-size: 100%;
+}
+
+/* ------- markdown formatting end ------- */
+
+/* ------- article ------- */
+
+article h1 {
+    font-size: 2em;
+}
+
+article h2 {
+    font-size: 1.6em;
+}
+
+article h3 {
+    font-size: 1.4em;
+}
+
+article h4 {
+    font-size: 1.2em;
+}
+
+article h5, h6 {
+    font-size: 1em;
+}
+
+/* ------- article end ------- */
