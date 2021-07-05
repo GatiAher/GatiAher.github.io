@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>image processing on Gati Aher</title>
+    <title>Image Processing on Gati Aher</title>
     <link>http://GatiAher.github.io/tags/image-processing/</link>
-    <description>Recent content in image processing on Gati Aher</description>
+    <description>Recent content in Image Processing on Gati Aher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 17 May 2021 14:22:03 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 04 Jul 2021 22:24:10 -0400</lastBuildDate>
     
 	<atom:link href="http://GatiAher.github.io/tags/image-processing/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Spectral Analysis of Bacteria S-Layer</title>
+      <link>http://GatiAher.github.io/projects/spectral-analysis-of-bacteria-s-layer/</link>
+      <pubDate>Sun, 04 Jul 2021 22:24:10 -0400</pubDate>
+      
+      <guid>http://GatiAher.github.io/projects/spectral-analysis-of-bacteria-s-layer/</guid>
+      <description>Background Info: Bacteria S-Layers Introducing Hot Peanuts Step 1. Remove Vertical and Horizontal Pattern Noise Step 2. Identify Key Periodic Frequencies Step 3. Calculate Size and Scale Identify Shape Extra Credit: Visualize the S-Layer Units Conclusion  Background Info: Bacteria S-Layers Most prokaryotic cells are encapsulated by a surface layer (S-layer) consisting of repeating units of S-layer proteins. These S-layers protect cells from the outside, provide mechanical stability, and play roles in spreading disease.</description>
+    </item>
     
     <item>
       <title>1D and 2D Fourier Transforms</title>
