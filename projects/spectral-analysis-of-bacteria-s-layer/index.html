@@ -92,6 +92,7 @@
     <ul>
 <li><a href="#background-info-bacteria-s-layers">Background Info: Bacteria S-Layers</a></li>
 <li><a href="#introducing-hot-peanuts">Introducing Hot Peanuts</a></li>
+<li><a href="#doing-fft-in-python--general-code-setup">Doing FFT In Python / General Code Setup</a></li>
 <li><a href="#step-1-remove-vertical-and-horizontal-pattern-noise">Step 1. Remove Vertical and Horizontal Pattern Noise</a></li>
 <li><a href="#step-2-identify-key-periodic-frequencies">Step 2. Identify Key Periodic Frequencies</a></li>
 <li><a href="#step-3-calculate-size-and-scale">Step 3. Calculate Size and Scale</a></li>
@@ -157,7 +158,23 @@
 
 <p>From their FFT magnitude plot, the 2015-2016 research group could tell that their S-layer was probably hexagonal, but they held back on publishing because their FFT plot looked unusually messy and they did not know how to read size information from the magnitude plot.</p>
 <p>Fortunately, I figured it out. See my post on <a href="/projects/1d-and-2d-fourier-transforms/">1D and 2D Fourier Transforms</a> to learn more about the basic concepts (magnitude, phase, shifting, log transforms). The rest of this blog post will use the bacteria S-layer as a case-study for performing image analysis with Fourier Transforms.</p>
-<h2 id="step-1-remove-vertical-and-horizontal-pattern-noise">Step 1. Remove Vertical and Horizontal Pattern Noise</h2>
+<h2 id="doing-fft-in-python--general-code-setup">Doing FFT In Python / General Code Setup</h2>
+<p>Packages used in analysis:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#f92672">as</span> plt
+<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+<span style="color:#f92672">from</span> scipy.fftpack <span style="color:#f92672">import</span> fft2, fftshift, ifft2, ifftshift
+<span style="color:#f92672">from</span> skimage <span style="color:#f92672">import</span> img_as_float
+<span style="color:#f92672">from</span> skimage.color <span style="color:#f92672">import</span> rgb2gray
+<span style="color:#f92672">from</span> skimage.filters <span style="color:#f92672">import</span> window
+</code></pre></div><p>How to get image, image&rsquo;s DFT magnitude plot, and log transformed magnitude plot:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># image</span>
+image <span style="color:#f92672">=</span> img_as_float(plt<span style="color:#f92672">.</span>imread(<span style="color:#e6db74">&#34;2A.tif&#34;</span>))
+<span style="color:#75715e"># take 2D DFT, center it, and get magnitude</span>
+image_f <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>abs(fftshift(fft2(image)))
+<span style="color:#75715e"># log transform to compress big values into smaller range</span>
+<span style="color:#75715e"># lets us see more information in the magnitude plot</span>
+image_f_log <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>log(<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> image_f)
+</code></pre></div><h2 id="step-1-remove-vertical-and-horizontal-pattern-noise">Step 1. Remove Vertical and Horizontal Pattern Noise</h2>
 <p>When the FFT algorithm looks at an image, it assumes that the image is just one period of an infinitely repeating spectrum:</p>
 <figure>
     <img src="/Spectral-Analysis-of-Bacteria-S-Layer/annotated_spectrum.png"
@@ -183,10 +200,13 @@
 
 <p>The edge mismatches at the seams of the images still produce sharp horizontal and vertical periodic patterns that can be seen in the FFT plot, but overall the noise has gone down and the hexagonal rings are more evident.</p>
 <p>To reduce the frequencies of the edge discontinuities, I can use a windowing function. Windowing smoothly reduces the amplitude of the signal as it reaches the edges, removing the effect of the artificial discontinuity that results from the FFT. I use the Hann windowing function in this analysis.</p>
-<figure>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># windowed image</span>
+wimage <span style="color:#f92672">=</span> image <span style="color:#f92672">*</span> window(<span style="color:#e6db74">&#39;hann&#39;</span>, image<span style="color:#f92672">.</span>shape)
+wimage_f <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>abs(fftshift(fft2(wimage)))
+</code></pre></div><figure>
     <img src="/Spectral-Analysis-of-Bacteria-S-Layer/windowed.png"
-         alt="Right: original colored image and its FFT (magma color scheme to accentuate pattern). Left: Hann windowed image and its FFT which has no edge discontinuities." height="600"/> <figcaption>
-            <p>Right: original colored image and its FFT (magma color scheme to accentuate pattern). Left: Hann windowed image and its FFT which has no edge discontinuities.</p>
+         alt="Right: original colored image and its FFT (magma color scheme to accentuate pattern). Left: Hann windowed image and its log magnitude FFT which has no edge discontinuities." height="600"/> <figcaption>
+            <p>Right: original colored image and its FFT (magma color scheme to accentuate pattern). Left: Hann windowed image and its log magnitude FFT which has no edge discontinuities.</p>
         </figcaption>
 </figure>
 
@@ -201,7 +221,9 @@
 
 <p>To identify the key frequencies I need to find the distance from the brightest points of the log magnitude plot to the center of the plot.</p>
 <p>First, I threshold by log of pixel intensity to create a mask of dominant frequency points. I kept points with a log pixel intensity greater than 4 (the brightest points).</p>
-<figure>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">thresh_min <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+binary_min <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>log(<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> wimage_f) <span style="color:#f92672">&gt;</span> thresh_min
+</code></pre></div><figure>
     <img src="/Spectral-Analysis-of-Bacteria-S-Layer/threshold.png"
          alt="Top: windowed image centered log magnitude FFT and histogram of pixel intensities. Bottom: Mask keeping only pixels with log pixel intensity &amp;gt; 4 and annotated histogram" height="600"/> <figcaption>
             <p>Top: windowed image centered log magnitude FFT and histogram of pixel intensities. Bottom: Mask keeping only pixels with log pixel intensity &gt; 4 and annotated histogram</p>
@@ -209,14 +231,23 @@
 </figure>
 
 <p>The mask contains some points from the inner and outer rings, as well as lower frequency points that are not important. I can use the mask to find how far the dominant frequency points are from the center of the plot.</p>
-<figure>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_distance_matrix</span>(N):
+    x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linspace(<span style="color:#f92672">-</span>N<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>, N<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>, N)
+    y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linspace(<span style="color:#f92672">-</span>N<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>, N<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>, N)
+    X, Y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>meshgrid(x, y)
+    distMat <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sqrt((X<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>) <span style="color:#f92672">+</span> (Y<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>))
+    <span style="color:#66d9ef">return</span> distMat
+
+distMat <span style="color:#f92672">=</span> get_distance_matrix(<span style="color:#ae81ff">400</span>)
+distances <span style="color:#f92672">=</span> binary_min <span style="color:#f92672">*</span> distMat
+</code></pre></div><figure>
     <img src="/Spectral-Analysis-of-Bacteria-S-Layer/find_distances.png"
          alt="Result of multiplying mask by distance 400x400 pixel distance matrix." height="200"/> <figcaption>
             <p>Result of multiplying mask by distance 400x400 pixel distance matrix.</p>
         </figcaption>
 </figure>
 
-<p>Then I can simply sort the result and I have the distances!</p>
+<p>Then I can simply sort the result and I have the distances for the points in the rings!</p>
 <p><strong>Inner Ring (Low Frequency Ring) (Red)</strong></p>
 <ul>
 <li>number of points in mask: 20</li>

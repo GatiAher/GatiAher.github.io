@@ -65,6 +65,10 @@ blockquote {
     font-weight: 400;
 }
 
+div.highlight pre {
+    padding: 1em;
+}
+
 /* ------- basic syling end ------- */
 
 /* ------- site ------- */
