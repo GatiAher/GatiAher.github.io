@@ -92,11 +92,11 @@
     <ul>
 <li><a href="#background-info-bacteria-s-layers">Background Info: Bacteria S-Layers</a></li>
 <li><a href="#introducing-hot-peanuts">Introducing Hot Peanuts</a></li>
-<li><a href="#doing-fft-in-python--general-code-setup">Doing FFT In Python / General Code Setup</a></li>
+<li><a href="#fft-in-python-code">FFT In Python Code</a></li>
 <li><a href="#step-1-remove-vertical-and-horizontal-pattern-noise">Step 1. Remove Vertical and Horizontal Pattern Noise</a></li>
 <li><a href="#step-2-identify-key-periodic-frequencies">Step 2. Identify Key Periodic Frequencies</a></li>
 <li><a href="#step-3-calculate-size-and-scale">Step 3. Calculate Size and Scale</a></li>
-<li><a href="#identify-shape">Identify Shape</a></li>
+<li><a href="#step-4-identify-shape">Step 4. Identify Shape</a></li>
 <li><a href="#extra-credit-visualize-the-s-layer-units">Extra Credit: Visualize the S-Layer Units</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
@@ -158,7 +158,7 @@
 
 <p>From their FFT magnitude plot, the 2015-2016 research group could tell that their S-layer was probably hexagonal, but they held back on publishing because their FFT plot looked unusually messy and they did not know how to read size information from the magnitude plot.</p>
 <p>Fortunately, I figured it out. See my post on <a href="/projects/1d-and-2d-fourier-transforms/">1D and 2D Fourier Transforms</a> to learn more about the basic concepts (magnitude, phase, shifting, log transforms). The rest of this blog post will use the bacteria S-layer as a case-study for performing image analysis with Fourier Transforms.</p>
-<h2 id="doing-fft-in-python--general-code-setup">Doing FFT In Python / General Code Setup</h2>
+<h2 id="fft-in-python-code">FFT In Python Code</h2>
 <p>Packages used in analysis:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#f92672">as</span> plt
 <span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
@@ -219,8 +219,7 @@ wimage_f <span style="color:#f92672">=</span> np<span style="color:#f92672">.</s
         </figcaption>
 </figure>
 
-<p>To identify the key frequencies I need to find the distance from the brightest points of the log magnitude plot to the center of the plot.</p>
-<p>First, I threshold by log of pixel intensity to create a mask of dominant frequency points. I kept points with a log pixel intensity greater than 4 (the brightest points).</p>
+<p>To identify the key frequencies I need to find the distance from the brightest points of the log magnitude plot to the center of the plot. I threshold by log of pixel intensity to create a mask of dominant frequency points (keep points with a log pixel intensity greater than 4).</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">thresh_min <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
 binary_min <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>log(<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> wimage_f) <span style="color:#f92672">&gt;</span> thresh_min
 </code></pre></div><figure>
@@ -247,39 +246,30 @@ distances <span style="color:#f92672">=</span> binary_min <span style="color:#f9
         </figcaption>
 </figure>
 
-<p>Then I can simply sort the result and I have the distances for the points in the rings!</p>
-<p><strong>Inner Ring (Low Frequency Ring) (Red)</strong></p>
-<ul>
-<li>number of points in mask: 20</li>
-<li>mean distance: 46.11 pixels</li>
-<li>standard deviation: 1.39 pixels</li>
-</ul>
-<p><strong>Outer Ring (High Frequency Ring) (Blue)</strong></p>
-<ul>
-<li>number of points in mask: 8</li>
-<li>mean distance: 79.27 pixels</li>
-<li>standard deviation: 0.90 pixels</li>
-</ul>
-<p>The Nyquist frequency is 0.5 cycles / pixel (the highest frequency pattern I can pick up on, i.e. if the pattern alternated each pixel). So the normalized range of possible frequency basis in the FFT goes from -0.5 to +0.5 cycles / pixel. Since our image shape is 400x400 pixels, each pixel in the frequency domain represents 1/400 cycles per pixel. Thus, I divide the frequencies by a constant 400 to normalize them to the unit scale.</p>
-<p><strong>Inner Ring (Low Frequency Ring) (Red)</strong></p>
-<ul>
-<li>normalized average frequency: 0.115 cycles / pixel</li>
-</ul>
-<p><strong>Outer Ring (High Frequency Ring) (Blue)</strong></p>
-<ul>
-<li>normalized average frequency: 0.198 cycles / pixel</li>
-</ul>
-<h2 id="step-3-calculate-size-and-scale">Step 3. Calculate Size and Scale</h2>
+<p>Then I can simply sort the result, select ranges of similar values, and I have the distances for the points in the rings!</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">Inner Ring (Low Frequency Ring) (Red)
+* number of points in mask: 20
+* mean distance: 46.11 pixels
+* standard deviation: 1.39 pixels
+
+Outer Ring (High Frequency Ring) (Blue)
+* number of points in mask: 8
+* mean distance: 79.27 pixels
+* standard deviation: 0.90 pixels
+</code></pre></div><p>The Nyquist frequency is 0.5 cycles / pixel (the highest frequency pattern I can pick up on, i.e. if the pattern alternated each pixel). So the normalized range of possible frequency basis in the FFT goes from -0.5 to +0.5 cycles / pixel. Since our image shape is 400x400 pixels, each pixel in the frequency domain represents 1/400 cycles per pixel. Thus, I divide the frequencies by a constant 400 to normalize them to the unit scale.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">Inner Ring (Low Frequency Ring) (Red)
+* normalized average frequency: 0.115 cycles / pixel
+
+Outer Ring (High Frequency Ring) (Blue)
+* normalized average frequency: 0.198 cycles / pixel
+</code></pre></div><h2 id="step-3-calculate-size-and-scale">Step 3. Calculate Size and Scale</h2>
 <p>From the normalized average frequency, I can find the period length of one cycle:</p>
-<p><strong>Inner Ring (Low Frequency Ring) (Red)</strong></p>
-<ul>
-<li>average cycle length: 8.67 pixels</li>
-</ul>
-<p><strong>Outer Ring (High Frequency Ring) (Blue)</strong></p>
-<ul>
-<li>average cycle length: 5.04 pixels</li>
-</ul>
-<p>The inner (red) ring has a longer period, compared to the outer (blue) ring. This is expected, as the inner ring is closer to the center and therefore has a lower frequency.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">Inner Ring (Low Frequency Ring) (Red)
+* average cycle length: 8.67 pixels
+
+Outer Ring (High Frequency Ring) (Blue)
+* average cycle length: 5.04 pixels
+</code></pre></div><p>The inner (red) ring has a longer period, compared to the outer (blue) ring. This is expected, as the inner ring is closer to the center and therefore has a lower frequency.</p>
 <p>Finally, I have to convert from pixels to nanometers using the scale on the original image.</p>
 <figure>
     <img src="/Spectral-Analysis-of-Bacteria-S-Layer/scale.png"
@@ -288,15 +278,12 @@ distances <span style="color:#f92672">=</span> binary_min <span style="color:#f9
         </figcaption>
 </figure>
 
-<p><strong>Inner Ring (Low Frequency Ring) (Red)</strong></p>
-<ul>
-<li>average cycle length: 14.7 nm</li>
-</ul>
-<p><strong>Outer Ring (High Frequency Ring) (Blue)</strong></p>
-<ul>
-<li>average cycle length: 8.5 nm</li>
-</ul>
-<p>These cycle lengths map to the dominant periodic frequencies in a hexagonal pattern!</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">Inner Ring (Low Frequency Ring) (Red)
+* average cycle length: 14.7 nm
+
+Outer Ring (High Frequency Ring) (Blue)
+* average cycle length: 8.5 nm
+</code></pre></div><p>These cycle lengths map to the dominant periodic frequencies in a hexagonal pattern!</p>
 <figure>
     <img src="/Spectral-Analysis-of-Bacteria-S-Layer/annotated_patterns.png"
          alt="The annotated dominant patterns with their periods." height="400"/> <figcaption>
@@ -306,15 +293,12 @@ distances <span style="color:#f92672">=</span> binary_min <span style="color:#f9
 
 <p>As a quick check, we verify that the 8.5 nm and 14.7 nm periods are consistent with the ratios expected in a hexagon pattern. We can see that the periods make up the legs of a 30-60-90 right triangle, so if the shorter leg is $a = 8.5$, we expect the longer leg to be $a\sqrt(3) ~= 14.72$. This looks good!</p>
 <p>We can get our center-to-center spacing by multiplying the period length by 2:</p>
-<p><strong>Inner Ring (Low Frequency Ring) (Red)</strong></p>
-<ul>
-<li>center-to-center spacing: 29.4 nm</li>
-</ul>
-<p><strong>Outer Ring (High Frequency Ring) (Blue)</strong></p>
-<ul>
-<li>center-to-center spacing: 17.0 nm</li>
-</ul>
-<h2 id="identify-shape">Identify Shape</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">Inner Ring (Low Frequency Ring) (Red)
+* center-to-center spacing: 29.4 nm
+
+Outer Ring (High Frequency Ring) (Blue)
+* center-to-center spacing: 17.0 nm
+</code></pre></div><h2 id="step-4-identify-shape">Step 4. Identify Shape</h2>
 <p>The Fourier magnitude plot pretty clearly shows two hexagonal rings. Lets compare the layout to the example S-layer images from earlier in the post:</p>
 <figure>
     <img src="/Spectral-Analysis-of-Bacteria-S-Layer/example_FFTs.png"
@@ -343,9 +327,7 @@ distances <span style="color:#f92672">=</span> binary_min <span style="color:#f9
         </figcaption>
 </figure>
 
-<p>The resulting filtered image has hexagonal features!</p>
-<p>If I manually measure the center-to-center subunit distance along both of the key hexagonal frequencies, I get 16.24 nm and 29.6 nm.</p>
-<p>Pretty close to the calculated center-to-center spacings! The error margin can be attributed to human error when trying to estimate the center of hexagons.</p>
+<p>The resulting filtered image has hexagonal features! If I manually measure the center-to-center subunit distance along both of the key hexagonal frequencies, I get 16.24 nm and 29.6 nm. That is pretty close to the calculated center-to-center spacings! The error margin can be attributed to human error when trying to estimate the center of hexagons.</p>
 <figure>
     <img src="/Spectral-Analysis-of-Bacteria-S-Layer/manual_high.jpg"
          alt="Close up of filtered reconstruction. Manually measured subunit center-to-center distance of 16.24 nm along periodic frequency of the blue ring (higher frequency)." height="300"/> <figcaption>

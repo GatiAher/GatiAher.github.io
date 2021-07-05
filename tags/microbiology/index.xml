@@ -17,7 +17,7 @@
       <pubDate>Sun, 04 Jul 2021 22:24:10 -0400</pubDate>
       
       <guid>http://GatiAher.github.io/projects/spectral-analysis-of-bacteria-s-layer/</guid>
-      <description>Background Info: Bacteria S-Layers Introducing Hot Peanuts Doing FFT In Python / General Code Setup Step 1. Remove Vertical and Horizontal Pattern Noise Step 2. Identify Key Periodic Frequencies Step 3. Calculate Size and Scale Identify Shape Extra Credit: Visualize the S-Layer Units Conclusion  Background Info: Bacteria S-Layers Most prokaryotic cells are encapsulated by a surface layer (S-layer) consisting of repeating units of S-layer proteins. These S-layers protect cells from the outside, provide mechanical stability, and play roles in spreading disease.</description>
+      <description>Background Info: Bacteria S-Layers Introducing Hot Peanuts FFT In Python Code Step 1. Remove Vertical and Horizontal Pattern Noise Step 2. Identify Key Periodic Frequencies Step 3. Calculate Size and Scale Step 4. Identify Shape Extra Credit: Visualize the S-Layer Units Conclusion  Background Info: Bacteria S-Layers Most prokaryotic cells are encapsulated by a surface layer (S-layer) consisting of repeating units of S-layer proteins. These S-layers protect cells from the outside, provide mechanical stability, and play roles in spreading disease.</description>
     </item>
     
   </channel>
