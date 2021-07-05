@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="generator" content="Hugo 0.68.3" />
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  <title>1D and 2D Fourier Transforms</title>
+  
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+    };
+
+    window.addEventListener('load', (event) => {
+        document.querySelectorAll("mjx-container").forEach(function (x) {
+            x.parentElement.classList += 'has-jax'
+        })
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <div class="site-header">
+    <nav id="nav" class="container navbar navbar-expand-s">
+        <a class="navbar-brand" href="/">
+            Gati Aher
+        </a>
+        <div class="mr-sm-2 d-flex flex-row">
+            
+            
+            
+            <a class="nav-link" href="/projects"><i data-feather="archive"></i> Projects</a>
+            
+            
+            
+            <a class="nav-link" href="/about"><i data-feather="at-sign"></i> Contact</a>
+            
+        </div>
+    </nav>
+</div>
+
+    <main id="main" class="container">
+        
+
+<article>
+    <div>
+        <h1>1D and 2D Fourier Transforms</h1>
+        <p class="post-meta">
+    
+
+<time class="date" datetime="2021-05-17">May 17, 2021</time>
+    by Gati Aher
+    
+
+
+<a class="post-tag" href="/tags/image-processing">image processing</a>
+
+
+</p>
+
+        <blockquote>
+            Concepts and math behind 1D and 2D discrete Fourier Transforms for signal and image analysis. Overview of mathmatical steps, post-processing, assumptions, and reading of phase and magnitude plots.
+        </blockquote>
+        <br>
+    </div>
+    <ul>
+<li><a href="#fourier-transforms-a-pattern-based-perspective">Fourier Transforms: A Pattern-Based Perspective</a></li>
+<li><a href="#1d-fourier-transforms">1D Fourier Transforms</a>
+<ul>
+<li><a href="#understanding-the-1d-math">Understanding the 1D Math</a>
+<ul>
+<li><a href="#the-dft-matrix-w">The DFT-matrix (W)</a></li>
+<li><a href="#post-projection-processing">Post Projection Processing</a></li>
+</ul>
+</li>
+<li><a href="#read-the-1d-frequency-plots">Read the 1D Frequency Plots</a></li>
+</ul>
+</li>
+<li><a href="#generalizing-to-2d-fourier-transform">Generalizing to 2D Fourier Transform</a>
+<ul>
+<li><a href="#understand-the-2d-math">Understand the 2D Math</a></li>
+<li><a href="#read-the-2d-plots">Read the 2D Plots</a></li>
+</ul>
+</li>
+<li><a href="#exercises">Exercises</a></li>
+<li><a href="#further-reading">Further Reading</a></li>
+</ul>
+<h2 id="fourier-transforms-a-pattern-based-perspective">Fourier Transforms: A Pattern-Based Perspective</h2>
+<p>In the 1800s, Joseph Fourier showed that periodic functions could be written as an infinite sum of sinusoids. His theory paved the way for Fourier Analysis, a useful tool for signal and data processing.</p>
+<figure>
+    <img src="/1D-and-2D-Fourier-Transforms/time_frequency_explanation.png"
+         alt="A 1D signal can be represented as a weighted sum of sinusoids. Image Source: An Interactive Guide To The Fourier Transform, a very good explanation by BetterExplained." height="300"/> <figcaption>
+            <p>A 1D signal can be represented as a weighted sum of sinusoids. Image Source: <a href="https://betterexplained.com/articles/an-interactive-guide-to-the-fourier-transform/">An Interactive Guide To The Fourier Transform</a>, a very good explanation by BetterExplained.</p>
+        </figcaption>
+</figure>
+
+<p>The Fourier Transform is a projection that transforms functions depending on space or time into functions that depend on spatial or temporal frequency. Representing functions in the frequency domain allows us to visualize and analyze patterns in the function. The Inverse Fourier Transform allows us to project the frequency function back into the space or time domain without any information loss.</p>
+<p>The 2D Fourier Transform has applications in image analysis, filtering, reconstruction, and compression.</p>
+<h2 id="1d-fourier-transforms">1D Fourier Transforms</h2>
+<p>To understand the two-dimensional Fourier Transform that we will use for image processing, first we have to understand its foundations: the one dimensional discrete Fourier Transform.</p>
+<h3 id="understanding-the-1d-math">Understanding the 1D Math</h3>
+<p>The Discrete Fourier Transform (DFT) turns a 1D array of $N$ discrete, evenly spaced time points, $x$ into a set of coefficients $X$ that describe the weight placed onto $N$ frequency components:</p>
+<p>$$X_k = \sum_{n=0}^{N-1} x_n * e^{-i2\pi kn/N}$$</p>
+<ul>
+<li>$n$ specifies the index of the current time point, goes from $0$ to $N-1$</li>
+<li>$k$ is a discrete set of $N$ frequencies, goes from $0$ Hertz up to $N-1$ Hertz</li>
+</ul>
+<p>The Inverse Fourier Transform allows us to project the frequency component weights $X$ back into the space or time domain as $x$ without any information loss. It uses a normalization factor of $\frac{1}{N}$ to make the matrix <a href="https://en.wikipedia.org/wiki/Unitary_matrix">unitary</a> so that it can use its conjugate transpose instead of calculating a matrix inversion (this is faster).</p>
+<p>$$x_k = \frac{1}{N} \sum_{n=0}^{N-1} X_k * e^{-i2\pi kn/N}$$</p>
+<p>The complex exponential can be decomposed into sines and cosines using Euler’s formula.</p>
+<p>$$e^{ix} = \cos(x) + i \sin(x)$$</p>
+<p>To understand these equations as a projection, we can rewrite the Fourier Transform and its inverse equation to be in the form of:</p>
+<p>$$X = Wx$$
+$$x = XW^{-1}$$</p>
+<h4 id="the-dft-matrix-w">The DFT-matrix (W)</h4>
+<p>The basis matrix $W$ depends on the values of $k$, number of frequency components and $n$, number of time points. Both $k$ and $n$ are vectors with length $N$ that increase from $0$ to $N-1$ by $1$. In the original equations, we sum over all combinations k and n in $e^{i2\pi kn/N}$, so the <a href="https://en.wikipedia.org/wiki/DFT_matrix">DFT matrix</a> W is a N-by-N square matrix of elements raised to all combinations of exponents k and n.</p>
+<p>Each element of $W$ is a primitive Nth root of unity. For any exponent $kn$, the Nth roots of unity repeat themselves with a period of $N$, as in $w^{kn} = w^{kn \mod N}$. This leads to several patterns of symmetry in W. For example, Eight-point DFT Matrix looks like this:</p>
+<figure>
+    <img src="/1D-and-2D-Fourier-Transforms/8_point_DFT_equation.png"
+         alt="The first image shows w raised to all combinations of k*n. The second image shows the Nth roots of unity repeating themselves with a period of N. The 8 possible values of w are each given a unique color." height="200"/> <figcaption>
+            <p>The first image shows w raised to all combinations of k*n. The second image shows the Nth roots of unity repeating themselves with a period of N. The 8 possible values of w are each given a unique color.</p>
+        </figcaption>
+</figure>
+
+<p>We can visualize the DFT Matrix W by graphing the repetition pattern of each row. This representation allows us to see that W is an evenly spaced set of sinusoidal frequencies. The DFT transform is just the result of projecting original signal x onto a set of sinusoidal frequencies.</p>
+<figure>
+    <img src="/1D-and-2D-Fourier-Transforms/8_point_DFT.png"
+         alt="DFT as a matrix multiplication. Real part (cosine) shown by a solid line, and the imaginary part (sine) by a dashed line. From DFT matrix – Wikipedia" height="200"/> <figcaption>
+            <p>DFT as a matrix multiplication. Real part (cosine) shown by a solid line, and the imaginary part (sine) by a dashed line. From <a href="https://en.wikipedia.org/wiki/DFT_matrix">DFT matrix – Wikipedia</a></p>
+        </figcaption>
+</figure>
+
+<h4 id="post-projection-processing">Post Projection Processing</h4>
+<p>Once we have the DFT coefficients $X$, we have to do some post-processing in order to get understandable information.</p>
+<p>First, to make the frequency plots easier to read, we shift the frequency components in $X$ so that the zero frequency is in the center and higher frequencies are at the edges.</p>
+<figure>
+    <img src="/1D-and-2D-Fourier-Transforms/8_point_DFT_shifted.png"
+         alt="To center a 1D DFT, swap the left and right halves of X." height="200"/> <figcaption>
+            <p>To center a 1D DFT, swap the left and right halves of X.</p>
+        </figcaption>
+</figure>
+
+<p>Next we convert the DFT coefficients $X$ from complex form (real and imaginary parts) into the polar form, so we can analyze the magnitude and phase for each frequency.</p>
+<p>$$a + ib = r\cos(\theta) + ir\sin(\theta)$$</p>
+<figure>
+    <img src="/1D-and-2D-Fourier-Transforms/polar_representation.png"
+         alt="Relationship between complex form and polar form" height="200"/> <figcaption>
+            <p>Relationship between complex form and polar form</p>
+        </figcaption>
+</figure>
+
+<p>The magnitude ($r$) tells the amplitude for each associated frequency component.</p>
+<p>$$r = \sqrt{a^2 + b^2}$$</p>
+<p>The phase ($\theta$) tells the offset of the frequency relative to the start of the time-domain signal.</p>
+<p>$$\theta = \arctan(b/a)$$</p>
+<p>Once we have the magnitude and phase, we can plot them to see how they change over the different frequency components. The x-axis has the frequency component, and the y-axis has the DFT-coefficient magnitude or phase, depending on the plot.</p>
+<figure>
+    <img src="/1D-and-2D-Fourier-Transforms/frequency_axis_units.png"
+         alt="Different but equivalent units for the frequency components on the x-axis" height="200"/> <figcaption>
+            <p>Different but equivalent units for the frequency components on the x-axis</p>
+        </figcaption>
+</figure>
+
+<p>Based on the needed interpretation, the frequency component labels on the x-axis can be in index (0 to N-1), frequencies (Hz), or angular frequencies (radians per second). Frequency can be converted to angular frequency by multiplying by a constant $2\pi$.</p>
+<h3 id="read-the-1d-frequency-plots">Read the 1D Frequency Plots</h3>
+<p>Let&rsquo;s compare the plots of some simple discrete signals! Here are the magnitude and phase of the DFT coefficients found from projecting a sine wave of 8 Hz, a sine wave of 16 Hz, and a cosine wave of 8 Hz onto a 128-point DFT matrix. Each wave was sampled 128 times over a timespan of 1 second.</p>
+<figure>
+    <img src="/1D-and-2D-Fourier-Transforms/sine_waves_fft.png"
+         alt="Centered phase and magnitude plots for a sine wave of 8 Hz, a sine wave of 16 Hz, and a sine wave of 8 Hz with a phase offset of π/2 (cosine wave)." height="600"/> <figcaption>
+            <p>Centered phase and magnitude plots for a sine wave of 8 Hz, a sine wave of 16 Hz, and a sine wave of 8 Hz with a phase offset of π/2 (cosine wave).</p>
+        </figcaption>
+</figure>
+
+<p>The dominant frequencies can be identified from the magnitude plots. In the above plots, the 8 Hz sine wave has magnitude peaks at -8 Hz and +8 Hz, and the 16 Hz sine wave has magnitude peaks at -16 Hz and +16 Hz. The 8 Hz cosine wave has the same magnitude peaks as the 8 Hz sine wave, but its phase plot looks different, indicating that the location of the signal components are different. Since half the magnitude plot is a mirror image, the same magnitude information is retained by cropping the x-axis from 0 to 63.</p>
+<p>Phase tends to be noisy due to its very small values range ($-\pi/2$ to $\pi/2$) compared to the errors that show up due to rounding calculations in the division operation in inverse tangent (error range of 3 to -3 in this example). In the above phase plots for simple sine and cosine waves, there should only be one dominant frequency, but noise obscures the details.</p>
+<p>If we isolate the true dominant frequency components in the phase plot, we get cleaner phase values. At the 8 Hz frequency component, the 8 Hz sine wave has a phase of $\pi/2 = 1.57$ and the cosine has a phase that is close to zero.</p>
+<figure>
+    <img src="/1D-and-2D-Fourier-Transforms/sine_waves_fft_clean.png"
+         alt="Isolated phase values for 8 Hz frequency component." height="400"/> <figcaption>
+            <p>Isolated phase values for 8 Hz frequency component.</p>
+        </figcaption>
+</figure>
+
+<h2 id="generalizing-to-2d-fourier-transform">Generalizing to 2D Fourier Transform</h2>
+<p>Images can be represented as 2D functions $f(x, y)$ varying in spatial coordinates $(x, y)$ in the image plane. Just like a 1D wave, every 2D image signal can be decomposed into a series of sine terms.</p>
+<p>To visualize the sinuous nature of image signals, we can plot the pixel intensities of the image in a surface plot and observe the top view of its contours. In this view, areas of sharp change, like edges, appear as narrow peaks, and swatches of uniform values, like the evenly colored sky, appear flat with no or low gradual peaks. These patterns have direct parallels with the sharp narrow peaks of high frequency waves and low gradual peaks of low frequency waves.</p>
+<figure>
+    <img src="/1D-and-2D-Fourier-Transforms/cameraman_surface_plot.png"
+         alt="The camera man, a famous image in image processing literature, and his corresponding image surface / Bed Sheet View. From matlab meshCanopy" height="200"/> <figcaption>
+            <p>The camera man, a famous image in image processing literature, and his corresponding image surface / Bed Sheet View. From <a href="https://www.mathworks.com/matlabcentral/fileexchange/29485-meshcanopy">matlab meshCanopy</a></p>
+        </figcaption>
+</figure>
+
+<p>To represent the 2D image as a sum of 2D sinusoids, we can think of the surface plot from a “Bed Sheet View” perspective (developed by Dr. Steven Brunton at the University of Washington, source: source: <a href="https://towardsdatascience.com/fourier-transforms-and-bed-sheet-view-of-images-58ba34e6808a">Fourier transforms and bed sheet view of images</a>).</p>
+<p>The name suggests that an image can be represented by a series of overlaid bedsheets. If we had an infinite number of bedsheets, held each one by its four corners, and oscillated it at one of the Fourier frequencies with the correct corresponding magnitude and phase, then the superposition of all the bedsheets would have creases that looked like the surface plot of an image!</p>
+<h3 id="understand-the-2d-math">Understand the 2D Math</h3>
+<p>The 2D discrete Fourier transform projects the <em>NxN</em> image signal $f$ onto a basis of 2D sine and cosine functions (think bedsheets) in order to get the <em>NxN</em> matrix of Fourier coefficients $F$.</p>
+<p>The 2D basis functions are matrices ordered by increasing frequency so that the first basis, corresponding to the top left corner of the coefficient matrix, $F(0, 0)$, represents the DC-offset of the image, or average brightness, and the last basis, corresponding to the bottom right corner of the coefficient matrix, $F(N-1, N-1)$ represents the highest frequency. For a square image of size NxN, the two dimensionsional discrete Fourier transform is given by:</p>
+<p>$$F(k, l) = \sum_{i=0}^{N-1} \sum_{j=0}^{N-1} f(i, j) * e^{-i2\pi (\frac{ki}{N} + \frac{lj}{N})}$$</p>
+<p>where</p>
+<ul>
+<li>$f(i, j)$ is the value of the pixel at row $i$ and column $j$</li>
+<li>$F(k, l)$ is the Fourier coefficient for each point $(k, l)$ in the Fourier space</li>
+<li>$N$ is the total number of pixels along the x and y direction</li>
+</ul>
+<p>The Fourier image can be re-transformed to the spatial domain using the inverse Fourier transform. It uses a normalization factor of $\frac{1}{N^{2}}$ to make the matrix unitary:</p>
+<p>$$f(i, j) = \frac{1}{N^{2}} \sum_{k=0}^{N-1} \sum_{l=0}^{N-1} F(k, l) * e^{i2\pi (\frac{ki}{N} + \frac{lj}{N})}$$</p>
+<p>In practice, the number of calculations in the 2D Fourier Transform formulas are reduced by rewriting it as a 1D FFT in the x-direction followed by a 1D FFT in the-y direction.</p>
+<ul>
+<li>Mike X Cohen” has a nice animated explanation: <a href="https://youtu.be/v743U7gvLq0">“How the 2D FFT works” YouTube</a></li>
+<li>see <a href="https://eeweb.engineering.nyu.edu/~yao/EL5123/lecture4_2DFT.pdf">NYU online lecture slides 48-49</a> for details of computational savings</li>
+</ul>
+<p>Using the <a href="https://en.wikipedia.org/wiki/Fast_Fourier_transform">Fast Fourier Transform</a> method computes the 1D DFTs in $\log{2N}$ time. To support this fast, recursive. Some forms of the FFT restrict the size of the input image, often to $N = 2n$ where $n$ is an integer.</p>
+<h3 id="read-the-2d-plots">Read the 2D Plots</h3>
+<p>The Fourier Transform math works by assuming that the given spatial image is just one period in an infinitely repeating spectrum. For example when it looks at the camera man image, it sees:</p>
+<figure>
+    <img src="/1D-and-2D-Fourier-Transforms/cameraman_infinite_spectrum.png"
+         alt="Repeating spectrum of the cameraman image" height="400"/> <figcaption>
+            <p>Repeating spectrum of the cameraman image</p>
+        </figcaption>
+</figure>
+
+<p>Like the 1D Fourier Transform, its 2D counterpart also produces a complex output. We can turn the complex output into polar form to observe its magnitude and phase and plot the results.</p>
+<p>Just like the 1D plots, the magnitude plot is symmetrical. For readability, we can shift the frequencies so that the lowest frequency components are in the center and highest frequency components are at the outer edges (swap first and third quadrants, swap second and fourth quadrants).</p>
+<p>As in the 1D plots, the phase plot is noisy. Dominant frequencies can be identified from the magnitude plots.</p>
+<p>When looking at the magnitude plots, we see a single bright dot (top left corner on magnitude plot, center on shifted magnitude plot). This point corresponds to the DC offset, or average value, of the image and it has a much greater magnitude than the other frequencies.</p>
+<p>In order to see more information in the plots, use a log transform to non-linearly scale the magnitude values so that the big values are compressed into a smaller range and more information is visible in the plot.</p>
+<figure>
+    <img src="/1D-and-2D-Fourier-Transforms/cameraman_explore_fft.png"
+         alt="Cameraman FFT magnitude and phase" height="400"/> <figcaption>
+            <p>Cameraman FFT magnitude and phase</p>
+        </figcaption>
+</figure>
+
+<p>In the log of magnitude plot, several frequencies are show up. These frequencies describe patterns of repetition like:</p>
+<figure>
+    <img src="/1D-and-2D-Fourier-Transforms/cameraman_spectrum_annotated.png"
+         alt="Annotated spectrum of the cameraman image" height="400"/> <figcaption>
+            <p>Annotated spectrum of the cameraman image</p>
+        </figcaption>
+</figure>
+
+<p>Bright values closer to the center of the shifted magnitude plot represent a strong pattern of infrequent repetition (no pattern of repetition in the image). Further from the center, bright values indicate strong patterns of more frequent repetition (a pattern of repetition within the image). The sharp diagonals extending outwards into the high frequency components indicate the patterns of diagonals within the image, most likely caused by the tripod legs and tilt of the camera man figure.</p>
+<p>For example, the sky and ground create horizontal stripes in the infinite spectrum. Horizontal stripes can be represented by a horizontal 2D sine wave. The horizontal stripes’ FFT magnitude plot has a pattern of vertical dots, indicating the periodic pattern across the y-direction.</p>
+<figure>
+    <img src="/1D-and-2D-Fourier-Transforms/example_fft2_sine_wave.png"
+         alt="Horizontal sine wave stripes FFT magnitude plot has a pattern of vertical dots indicating the presences of a periodic pattern across the y-direction." height="150"/> <figcaption>
+            <p>Horizontal sine wave stripes FFT magnitude plot has a pattern of vertical dots indicating the presences of a periodic pattern across the y-direction.</p>
+        </figcaption>
+</figure>
+
+<p>The horizontal stripes&rsquo; shifted magnitude plot has three dots, the DC-offset in the center, and two points along the vertical axis. The two points correspond to the dominant frequencies of the image. Just like when reading the 1D shifted magnitude plots, we can find the dominant frequencies by finding the distance from the brightest points to the center of the plot, then converting units from pixel location to basis component frequency indexes.</p>
+<p>The log transform compresses the range of the magnitudes and brings more information into the visible range. When analyzing the sine plot, the log of shifted magnitude plot shows all the lesser frequencies that are harmonic multiples of the original frequency.</p>
+<h2 id="exercises">Exercises</h2>
+<p>To get a feel for reading patterns from a 2D FFT centered magnitude plot, look at these examples. For each image, think about the repeating unit and directions of periodic repetition. Look back to the annotated cameraman and log magnitude plot image for an example. Remember that low frequency components are in the center of the plot, and high frequency components are on the outer edges.</p>
+<figure>
+    <img src="/1D-and-2D-Fourier-Transforms/example_fft2_brick.png"
+         alt="The brick wall image has a stripe pattern in its magnitude plot." height="150"/> <figcaption>
+            <p>The brick wall image has a stripe pattern in its magnitude plot.</p>
+        </figcaption>
+</figure>
+
+<figure>
+    <img src="/1D-and-2D-Fourier-Transforms/example_fft2_mustard_seeds.png"
+         alt="The mustard seed image has circular rings in its magnitude plot." height="150"/> <figcaption>
+            <p>The mustard seed image has circular rings in its magnitude plot.</p>
+        </figcaption>
+</figure>
+
+<figure>
+    <img src="/1D-and-2D-Fourier-Transforms/example_fft2_honeycomb.png"
+         alt="The honeycomb has a hexagonal pattern in its magnitude plot." height="150"/> <figcaption>
+            <p>The honeycomb has a hexagonal pattern in its magnitude plot.</p>
+        </figcaption>
+</figure>
+
+<figure>
+    <img src="/1D-and-2D-Fourier-Transforms/example_fft2_flower.png"
+         alt="The flower is a more complex image. It’s magnitude plot shows a clear circular pattern of repetition, probably from the patterns of symmetry in the flower, and also vertical and horizontal lines, caused by patterns in the background when the image is represented as an infinite spectrum." height="150"/> <figcaption>
+            <p>The flower is a more complex image. It’s magnitude plot shows a clear circular pattern of repetition, probably from the patterns of symmetry in the flower, and also vertical and horizontal lines, caused by patterns in the background when the image is represented as an infinite spectrum.</p>
+        </figcaption>
+</figure>
+
+<h2 id="further-reading">Further Reading</h2>
+<p><a href="https://www.sjsu.edu/people/burford.furman/docs/me120/FFT_tutorial_NI.pdf">The Fundamentals of FFT-Based Signal Analysis and Measurement</a> by National Instruments does a nice job explaining basic signal analysis computations, and goes into detail about windowing and the different properties of different windowing functions.</p>
+<p>These sites have nice examples and explanations for reading 2D magnitude plots, identifying and removing sources of artificial patterns, and filtering in the frequency domain:</p>
+<ul>
+<li><a href="https://homepages.inf.ed.ac.uk/rbf/HIPR2/fourier.htm">Image Transforms - Fourier Transform</a> by Hypermedia Image Processing Reference (HIPR2)</li>
+<li><a href="https://www.cs.unm.edu/~brayer/vision/fourier.html">Introduction to the Fourier Transform</a> by John M. Brayer, University of Mexico</li>
+<li><a href="https://www.cs.auckland.ac.nz/courses/compsci773s1c/lectures/ImageProcessing-html/topic1.htm">Spatial Frequency Domain</a> by the University of Auckland, New Zealand</li>
+</ul>
+<p>Using FFT in Python:</p>
+<ul>
+<li><a href="https://docs.scipy.org/doc/scipy/reference/tutorial/fft.html">Fourier Transforms (scipy.fft) — SciPy v1.6.3 Reference Guide</a> is Scipy’s overview for using its FFT library.</li>
+<li><a href="https://scikit-image.org/docs/stable/auto_examples/">General examples — skimage v0.18.0 docs</a> is a gallery of examples for Scikit-Image Python image processing library. It provides helpful tutorials for thresholding, windowing, filtering, etc.</li>
+</ul>
+
+</article>
+
+
+    </main>
+    <footer class="site-footer">
+        &copy 2021 by Gati Aher &#183;
+        Powered by <a href="https://gohugo.io/">Hugo</a> &#183;
+        View on <a href="https://github.com/GatiAher/gatiaher-hugo">GitHub</a>
+</footer>
+    
+<script src="/js/feather.min.js"></script>
+<script>
+    feather.replace();
+</script>
+</body>
+
+</html>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Image Processing on Gati Aher</title>
+    <title>image processing on Gati Aher</title>
     <link>http://GatiAher.github.io/tags/image-processing/</link>
-    <description>Recent content in Image Processing on Gati Aher</description>
+    <description>Recent content in image processing on Gati Aher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 17 May 2021 14:22:03 -0400</lastBuildDate>
@@ -12,12 +12,12 @@
     
     
     <item>
-      <title>Understanding 1D and 2D FFT</title>
-      <link>http://GatiAher.github.io/projects/understanding-1d-and-2d-fft/</link>
+      <title>1D and 2D Fourier Transforms</title>
+      <link>http://GatiAher.github.io/projects/1d-and-2d-fourier-transforms/</link>
       <pubDate>Mon, 17 May 2021 14:22:03 -0400</pubDate>
       
-      <guid>http://GatiAher.github.io/projects/understanding-1d-and-2d-fft/</guid>
-      <description>&lt;p&gt;Diagrams and explanations that helped me understand Fourier Transforms for signal and image analysis.&lt;/p&gt;</description>
+      <guid>http://GatiAher.github.io/projects/1d-and-2d-fourier-transforms/</guid>
+      <description>Fourier Transforms: A Pattern-Based Perspective 1D Fourier Transforms  Understanding the 1D Math  The DFT-matrix (W) Post Projection Processing   Read the 1D Frequency Plots   Generalizing to 2D Fourier Transform  Understand the 2D Math Read the 2D Plots   Exercises Further Reading  Fourier Transforms: A Pattern-Based Perspective In the 1800s, Joseph Fourier showed that periodic functions could be written as an infinite sum of sinusoids.</description>
     </item>
     
   </channel>
