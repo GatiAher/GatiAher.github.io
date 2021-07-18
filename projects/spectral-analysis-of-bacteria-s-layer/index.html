@@ -174,7 +174,7 @@ image_f <span style="color:#f92672">=</span> np<span style="color:#f92672">.</sp
 <span style="color:#75715e"># lets us see more information in the magnitude plot</span>
 image_f_log <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>log(<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> image_f)
 </code></pre></div><h2 id="step-1-remove-vertical-and-horizontal-pattern-noise">Step 1. Remove Vertical and Horizontal Pattern Noise</h2>
-<p>When the FFT algorithm looks at an image, it assumes that the image is just one period of an infinitely repeating spectrum:</p>
+<p>When the FFT algorithm looks at an image, it assumes the image is one period of an infinitely repeating spectrum:</p>
 <figure>
     <img src="/Spectral-Analysis-of-Bacteria-S-Layer/annotated_spectrum.png"
          alt="Bacteria S-layer TEM image with sources of horizontal and vertical periodic pattern identified." height="300"/> <figcaption>
@@ -197,8 +197,8 @@ image_f_log <span style="color:#f92672">=</span> np<span style="color:#f92672">.
         </figcaption>
 </figure>
 
-<p>The edge mismatches at the seams of the images still produce sharp horizontal and vertical periodic patterns that can be seen in the FFT plot, but overall the noise has gone down and the hexagonal rings are more evident.</p>
-<p>To reduce the frequencies of the edge discontinuities, I can use a windowing function. Windowing smoothly reduces the amplitude of the signal as it reaches the edges, removing the effect of the artificial discontinuity that results from the FFT. I use the Hann windowing function in this analysis.</p>
+<p>The edge mismatches at the seams of the images still produce sharp horizontal and vertical periodic patterns that the FFT picks up on, but overall the noise has gone down and the hexagonal rings are more evident.</p>
+<p>To reduce the frequencies of the edge discontinuities, I can use a windowing function. Windowing smoothly reduces the amplitude of the signal as it reaches the edges, removing the effect of the artificial discontinuity from the FFT. I use the Hann windowing function in this analysis.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># windowed image</span>
 wimage <span style="color:#f92672">=</span> image <span style="color:#f92672">*</span> window(<span style="color:#e6db74">&#39;hann&#39;</span>, image<span style="color:#f92672">.</span>shape)
 wimage_f <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>abs(fftshift(fft2(wimage)))
@@ -290,7 +290,7 @@ Outer Ring (High Frequency Ring) (Blue)
         </figcaption>
 </figure>
 
-<p>As a quick check, we verify that the 8.5 nm and 14.7 nm periods are consistent with the ratios expected in a hexagon pattern. We can see that the periods make up the legs of a 30-60-90 right triangle, so if the shorter leg is $a = 8.5$, we expect the longer leg to be $a\sqrt(3) ~= 14.72$. This looks good!</p>
+<p>As a quick check, we verify the 8.5 nm and 14.7 nm periods are consistent with the ratios expected in a hexagon pattern. We can see the periods make up the legs of a 30-60-90 right triangle, so if the shorter leg is $a = 8.5$, we expect the longer leg to be $a\sqrt(3) ~= 14.72$. This looks good!</p>
 <p>We can get our center-to-center spacing by multiplying the period length by 2:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">Inner Ring (Low Frequency Ring) (Red)
 * center-to-center spacing: 29.4 nm
@@ -310,7 +310,7 @@ Outer Ring (High Frequency Ring) (Blue)
 <p>The Hot Peanut magnitude plot has the same layout as the example hexagonal S-layer!</p>
 <h2 id="extra-credit-visualize-the-s-layer-units">Extra Credit: Visualize the S-Layer Units</h2>
 <p>I thought it might be cool to visualize the S-layer units.</p>
-<p>I use the threshold logic from earlier to get a pixel intensity cutoff that will isolate the key frequencies. This time, I am using a non-windowed image because when I inverse FFT, I want the result to have edges.</p>
+<p>I use the threshold logic from earlier to get a pixel intensity cutoff to isolate the key frequencies. This time, I am using a non-windowed image because when I inverse FFT, I want the result to have edges.</p>
 <figure>
     <img src="/Spectral-Analysis-of-Bacteria-S-Layer/threshold_for_iFFT.png"
          alt="Top: colored-over image centered log magnitude FFT and histogram of pixel intensities. Bottom: Mask keeping only pixels with log pixel intensity &amp;gt; 4 and annotated histogram" height="600"/> <figcaption>
