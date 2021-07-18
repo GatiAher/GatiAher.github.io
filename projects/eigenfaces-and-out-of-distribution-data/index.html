@@ -262,7 +262,7 @@
 </figure>
 
 <p>For the train image, beyond 50 eigenvectors, using more eigenvectors fills in finer details and doesn’t substantially change the image.</p>
-<p>For the smiling test image, using more eigenvectors doesn&rsquo;t allow for a better reconstruction. Data is lost because the axis space (neutral neutral eigenvectors) cannot fully capture it.</p>
+<p>For the smiling test image, using more eigenvectors doesn&rsquo;t allow for a better reconstruction. Data is lost because the axis space (neutral face eigenvectors) cannot fully capture it.</p>
 <h3 id="step-6-evaluation">Step 6. Evaluation</h3>
 <p>Running the distance nearest neighbor algorithm on images projected into only the top two principal component dimensions performs pretty bad. The accuracy of identifying the subject of a smiling test image by label of closest neutral train image is 29.2%. So better than random chance (1.12%) but still pretty bad.</p>
 <p>Visualizing the 2D projection lets us understand what is happening:</p>
