@@ -6,10 +6,19 @@
     <description>Recent content in Projects on Gati Aher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 04 Jul 2021 22:24:10 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 18 Jul 2021 13:12:04 -0400</lastBuildDate>
     
 	<atom:link href="http://GatiAher.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Eigenfaces and Out of Distribution Data</title>
+      <link>http://GatiAher.github.io/projects/eigenfaces-and-out-of-distribution-data/</link>
+      <pubDate>Sun, 18 Jul 2021 13:12:04 -0400</pubDate>
+      
+      <guid>http://GatiAher.github.io/projects/eigenfaces-and-out-of-distribution-data/</guid>
+      <description>Facial Recognition Dataset Facial Recognition Via Nearest Neighbor Distance Room for Improvement PCA Toy Example Delving into the Details of the Facial Recognition Pipeline  Step 1. Standardize Dataset Step 2. Compute Sample Covariance Matrix from Standardized Train Dataset Step 3. Compute Eigenvectors and Eigenvalues of the Covariance Matrix Step 4. Pick k Eigenvectors Step 5. Project and Reconstruct Dataset onto k Eigenvectors Step 6. Evaluation   Applications Further Reading:  Facial Recognition Through this project, I wanted to learn more about the technique of Principal Component Analysis (PCA), namely how to reason about the result of applying PCA on a dataset, and the effects of testing on out-of-distribution data.</description>
+    </item>
     
     <item>
       <title>Spectral Analysis of Bacteria S-Layer</title>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PCA on Gati Aher</title>
+    <link>http://GatiAher.github.io/tags/pca/</link>
+    <description>Recent content in PCA on Gati Aher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 18 Jul 2021 13:12:04 -0400</lastBuildDate>
+    
+	<atom:link href="http://GatiAher.github.io/tags/pca/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Eigenfaces and Out of Distribution Data</title>
+      <link>http://GatiAher.github.io/projects/eigenfaces-and-out-of-distribution-data/</link>
+      <pubDate>Sun, 18 Jul 2021 13:12:04 -0400</pubDate>
+      
+      <guid>http://GatiAher.github.io/projects/eigenfaces-and-out-of-distribution-data/</guid>
+      <description>Facial Recognition Dataset Facial Recognition Via Nearest Neighbor Distance Room for Improvement PCA Toy Example Delving into the Details of the Facial Recognition Pipeline  Step 1. Standardize Dataset Step 2. Compute Sample Covariance Matrix from Standardized Train Dataset Step 3. Compute Eigenvectors and Eigenvalues of the Covariance Matrix Step 4. Pick k Eigenvectors Step 5. Project and Reconstruct Dataset onto k Eigenvectors Step 6. Evaluation   Applications Further Reading:  Facial Recognition Through this project, I wanted to learn more about the technique of Principal Component Analysis (PCA), namely how to reason about the result of applying PCA on a dataset, and the effects of testing on out-of-distribution data.</description>
+    </item>
+    
+  </channel>
+</rss>
