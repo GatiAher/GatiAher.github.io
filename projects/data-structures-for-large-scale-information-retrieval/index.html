@@ -79,11 +79,13 @@
 </p>
 
         <blockquote>
-            Inverted indexes are widely used by most large data retrieval systems because it supports keyword search in constant time. Compression codes can be applied to inverted indexes to reduce memory storage. This article gives an overview of various compression codes, with more details given on the optimizations and advantages of using Elias-Fano and Partitioned Elias-Fano compression codes. Finally, this article touches on the optimizations and use-cases for BitFunnel, an unusual probabilistic data structure used by the Bing search engine as an alternative to inverted indexes. BitFunnel has a compact representation and provides fast querying performance while avoiding costly global document ingestion operations.
+            An whirlwind tour of optimizations and designs used in large-scale information systems. Explores various inverted index compression codes, with more details given on the optimizations and advantages of using Elias-Fano and Partitioned Elias-Fano compression codes. Touches on the optimizations and use-cases for BitFunnel, an unusual probabilistic data structure used by the Bing search engine as an alternative to inverted indexes. Final project for SP2021 Data Structures and Algorithms at Olin College.
         </blockquote>
         <br>
     </div>
-    <p>5-minute high-level video:
+    <p><strong>Highest Level Overview</strong></p>
+<p>Inverted indexes are widely used by most large data retrieval systems because it supports keyword search in constant time. Compression codes can be applied to inverted indexes to reduce memory storage. Using Elias-Fano and Partitioned Elias-Fano gives several advantages with low time trade-off. An alternative data-structure, BitFunnel, has a compact representation and provides fast querying performance while avoiding costly global document ingestion operations.</p>
+<p><strong>5-minute video</strong>:
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
   <iframe src="https://www.youtube.com/embed/UN6_yzZyczE" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
