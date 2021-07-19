@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport">
+  <meta name="generator" content="Hugo 0.68.3" />
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  <title>Data Structures for Large Scale Information Retrieval</title>
+  
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+    };
+
+    window.addEventListener('load', (event) => {
+        document.querySelectorAll("mjx-container").forEach(function (x) {
+            x.parentElement.classList += 'has-jax'
+        })
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <div class="site-header">
+    <nav id="nav" class="container navbar navbar-expand-s">
+        <a class="navbar-brand" href="/">
+            Gati Aher
+        </a>
+        <div class="mr-sm-2 d-flex flex-row">
+            
+            
+            
+            <a class="nav-link" href="/projects"><i data-feather="archive"></i> Projects</a>
+            
+            
+            
+            <a class="nav-link" href="/about"><i data-feather="at-sign"></i> Contact</a>
+            
+        </div>
+    </nav>
+</div>
+
+    <main id="main" class="container">
+        
+
+<article>
+    <div>
+        <h1>Data Structures for Large Scale Information Retrieval</h1>
+        <p class="post-meta">
+    
+
+<time class="date" datetime="2021-07-18">Jul 18, 2021</time>
+    by Gati Aher
+    
+
+
+<a class="post-tag" href="/tags/data-structures">Data Structures</a>
+
+
+</p>
+
+        <blockquote>
+            Inverted indexes are widely used by most large data retrieval systems because it supports keyword search in constant time. Compression codes can be applied to inverted indexes to reduce memory storage. This article gives an overview of various compression codes, with more details given on the optimizations and advantages of using Elias-Fano and Partitioned Elias-Fano compression codes. Finally, this article touches on the optimizations and use-cases for BitFunnel, an unusual probabilistic data structure used by the Bing search engine as an alternative to inverted indexes. BitFunnel has a compact representation and provides fast querying performance while avoiding costly global document ingestion operations.
+        </blockquote>
+        <br>
+    </div>
+    <p>5-minute high-level video:
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/UN6_yzZyczE" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+</p>
+<ul>
+<li><a href="#1-introduction">1 INTRODUCTION</a></li>
+<li><a href="#2-background-information">2 BACKGROUND INFORMATION</a>
+<ul>
+<li><a href="#21-inverted-indexes-for-fast-constant-time-lookup">2.1 Inverted Indexes For Fast (Constant Time) Lookup</a></li>
+<li><a href="#22-big-document-ids-use-a-lot-of-space">2.2 Big Document IDs Use a Lot of Space</a></li>
+<li><a href="#23-an-overview-of-compression-codes-balancing-space-savings-and-time-cost">2.3 An Overview of Compression Codes: Balancing Space Savings and Time Cost</a></li>
+</ul>
+</li>
+<li><a href="#3-elias-fano-compression">3 ELIAS-FANO COMPRESSION</a>
+<ul>
+<li><a href="#31-introducing-quasi-succinct-elias-fano-fast-small-and-better-than-sequential-decoding">3.1 Introducing Quasi-Succinct Elias-Fano: Fast, Small and Better than Sequential Decoding</a></li>
+<li><a href="#32-speed-up-elias-fano-with-quantum-skipping">3.2 Speed-Up Elias-Fano with Quantum Skipping</a></li>
+<li><a href="#33-review-of-elias-fano">3.3 Review of Elias-Fano</a></li>
+</ul>
+</li>
+<li><a href="#4-partitioned-elias-fano-compression">4 PARTITIONED ELIAS-FANO COMPRESSION</a>
+<ul>
+<li><a href="#41-for-better-compression-take-advantage-of-naturally-occuring-document-id-clusters">4.1 For Better Compression, Take Advantage of Naturally Occuring Document ID Clusters</a></li>
+<li><a href="#42-speed-up-pef-partitioning-with-dynamic-programming-on-a-sparsified-dag">4.2 Speed-Up PEF Partitioning with Dynamic Programming on a Sparsified DAG</a></li>
+<li><a href="#43-review-of-partitioned-elias-fano">4.3 Review of Partitioned Elias-Fano</a></li>
+</ul>
+</li>
+<li><a href="#5-bitfunnel-alternative-to-inverted-indexes">5 BITFUNNEL: ALTERNATIVE TO INVERTED INDEXES</a>
+<ul>
+<li><a href="#51-inverted-indexes-the-curse-of-global-updates-and-the-bitfunnel-alternative">5.1 Inverted Indexes, the Curse of Global Updates, and the BitFunnel Alternative</a></li>
+<li><a href="#52-bloom-filters-fast-compact-and-sometimes-wrong">5.2 Bloom Filters: Fast, Compact, and Sometimes Wrong</a></li>
+<li><a href="#53-being-wrong-less-often-managing-the-false-positive-rate">5.3 Being Wrong Less Often: Managing the False Positive Rate</a></li>
+<li><a href="#54-review-of-bitfunnel">5.4 Review of BitFunnel</a></li>
+</ul>
+</li>
+<li><a href="#conclusion">CONCLUSION</a></li>
+<li><a href="#references">REFERENCES</a></li>
+</ul>
+<h2 id="1-introduction">1 INTRODUCTION</h2>
+<p>Information retrieval is not a new problem: humans have been compiling, storing, and organizing books and scrolls and papyrus for more than 5,000 years. What has changed, however, is the scale of the task. For most of human history, methods of information retrieval was a subject of interest restricted to librarians, bookkeepers, and information experts. However, in the modern era, with the introduction of smartphones, cheaply available sensors, and more than 4 billion people using and contributing to the Internet every day, the rate of information generation and storage has escalated. Research into fast and compact ways of finding information becomes more relevant every day. Figure 1 shows various companies and products that rely on efficient information retrieval.</p>
+<figure>
+    <img src="/Data-Structures-for-Large-Scale-Information-Retrieval/use_cases.png"
+         alt="Figure 1: Information retrieval is a ubiquitous task."/> <figcaption>
+            <p>Figure 1: Information retrieval is a ubiquitous task.</p>
+        </figcaption>
+</figure>
+
+<h2 id="2-background-information">2 BACKGROUND INFORMATION</h2>
+<p>An information retrieval (IR) system attempts to solve The Matching Problem, where given a query, it wants to retrieve a set of documents that are relevant or useful to the user. Solving this problem requires a system to manage document indexing, retrieval, and ranking. The diagram in Figure 2 shows how documents and user queries get processed by an IR system.</p>
+<figure>
+    <img src="/Data-Structures-for-Large-Scale-Information-Retrieval/overview.png"
+         alt="Figure 2: High level software architecture of an IR system: Indexing, Retrieval, and Ranking [2]."/> <figcaption>
+            <p>Figure 2: High level software architecture of an IR system: Indexing, Retrieval, and Ranking [2].</p>
+        </figcaption>
+</figure>
+
+<p>An example of an IR system is a search engine, like Google or Bing. Search engines use a complex blend of technologies to process user queries, decipher intent, and rank documents by relevance. The inner workings of the ranking stage of IR systems are configured by machine learning [6].</p>
+<p>If there were unlimited resources, each query could be processed by asking the ranking oracle to look at every single document in the corpus and return the top ranked documents. However, this is not feasible in practice; to save time, space, and computation costs, the data retrieval stages of all large-scale IR systems rely on a data structure called an inverted index.</p>
+<h3 id="21-inverted-indexes-for-fast-constant-time-lookup">2.1 Inverted Indexes For Fast (Constant Time) Lookup</h3>
+<p>The theory behind an inverted index says, with some preprocessing upfront, finding which set of documents contains a single term can be done in constant time. An inverted index can be thought of as a hashmap, where the keys are terms and the values are a list of document IDs, or pointers, stored in monotonically increasing order (see Figure 3 for an example). The list of document IDs is also called a postings list. To process a query, the algorithm scans the posting list of each query term concurrently, keeping them aligned by document ID.</p>
+<figure>
+    <img src="/Data-Structures-for-Large-Scale-Information-Retrieval/inverted_index.png"
+         alt="Figure 3: It is an “inverted” index because instead of mapping what words are in a document, it is an inverted map of what documents are associated with each word [14]."/> <figcaption>
+            <p>Figure 3: It is an “inverted” index because instead of mapping what words are in a document, it is an inverted map of what documents are associated with each word [14].</p>
+        </figcaption>
+</figure>
+
+<h3 id="22-big-document-ids-use-a-lot-of-space">2.2 Big Document IDs Use a Lot of Space</h3>
+<p>Googling the word “the&rsquo;&rsquo; returns “About 25,270,000,000 results (0.73 seconds)”. Assuming that each result document ID is stored as a unique 4-byte unsigned int, the document IDs alone take up 101.08 Gigabytes of space. It gets worse. The number 25,270,000,000 is actually greater than the upper range of numbers that can be expressed by a 4-byte unsigned int ($2^{32}$) so to ensure that all the results have unique document IDs, these numbers need to be stored in a 8-byte representation, resulting in a mighty 202.16 GB minimum just to store the document IDs for part of the postings list for the word “the&rsquo;'. When dealing with a gigantic corpus, like the billions of documents on the Internet, document IDs can be very large, and storing big numbers consumes significant amounts of memory.</p>
+<p>Google, Bing, and other big data information retrieval systems care deeply about reducing memory consumption for storing large numbers. One solution to this dilemma is using inverted index compression codes. These are completely invertible transformations that map the large integers of the document IDs onto smaller integers that require less bits. As an added bonus, by using compression codings, storing and accessing the inverted index from RAM becomes feasible. This can lead to faster indexing and query response times compared to storing and retrieving from slower hard disk or SSD.</p>
+<h3 id="23-an-overview-of-compression-codes-balancing-space-savings-and-time-cost">2.3 An Overview of Compression Codes: Balancing Space Savings and Time Cost</h3>
+<p>While using a compression code saves memory, it also increases retrieval and indexing time, as there are time and computation costs for compression and decompression. The choice of compression code balances the tradeoff between saving memory and increasing query time.</p>
+<p>For example, the smallest compressed inverted index is Binary Interpolative Coding (BIC). It is ~3x smaller and ~4.5x slower than the fastest inverted index, Variable-Byte (VByte) [10]. A IR system wants codes that are small when compressed and fast to decode. Production IR systems tend to use PFOR or PEF because they have good memory compression to time cost ratios. The charts in Figure 4 show the time and space tradeoff of common compression algorithms.</p>
+<figure>
+    <img src="/Data-Structures-for-Large-Scale-Information-Retrieval/compression_code_performance.png"
+         alt="Figure 4: Compression Codes: the trade-off between spacing savings and decompression time costs [10]."/> <figcaption>
+            <p>Figure 4: Compression Codes: the trade-off between spacing savings and decompression time costs [10].</p>
+        </figcaption>
+</figure>
+
+<p><strong>BIC</strong> manages to reach its astounding compression ratio by recursively splitting monotone integer sequences in half so that each split’s range is reduced, thus reducing the number of bits to encode it. Several experiments show that BIC is the smallest way to encode highly clustered and sequential clusters of integers. However, decoding the recursive code is very slow.</p>
+<p><strong>VByte</strong> encoding uses byte-aligned representations, making it faster than bit-aligned representations. It splits each positive integer x into groups of 7 bits and makes the eighth bit a continuation bit, which is equal to 1 only for the last byte of the sequence.</p>
+<p>VByte is part of the <strong>delta coding / gap compression family</strong> of compression codes. This family includes: Elias Gamma code, Elias Delta code, Elias Omega code, Golomb / Rice code, and Elias-Fano code. They compress by calculating and storing the delta values (gaps) between consecutively ordered document ID. Since the deltas are always smaller than the document IDs themselves, encoding takes fewer bits and achieves compression. The search engine Lucene (backbone of elasticsearch and Solr) used to use VByte codes [13]. Lucene currently uses the Elias-Fano code.</p>
+<p><strong>Frame-of-reference (FOR)</strong> codes balance a good tradeoff between compression ratio and speed by simultaneously encoding blocks of integers. For each block, FOR encodes the range enclosing the values in the block. This technique is also called binary packing and is also used by the Simple family of codes. In order to keep the ranges small, a variant called PForDelta uses a technique called patching to encode outliers. The Google search engine uses GroupVarint [5], a variant of PForDelta.</p>
+<h2 id="3-elias-fano-compression">3 ELIAS-FANO COMPRESSION</h2>
+<p><em>This section discusses implementation details from the 2013 paper “Quasi-Succinct Indices” [13], by Sebastiano Vigna, researcher on MG4J. Please see paper for full proofs and details.</em></p>
+<h3 id="31-introducing-quasi-succinct-elias-fano-fast-small-and-better-than-sequential-decoding">3.1 Introducing Quasi-Succinct Elias-Fano: Fast, Small and Better than Sequential Decoding</h3>
+<p>Many classic compression codes only allow sequential decoding. To process a query, the lists involved need to be entirely decompressed, even if just one of the values was required. Inverted indexes compressed with the classic compression codes have fast sequential access, but slow performance on random access and next greater than or equal to (NEXTGTE) queries used by IR data retrieval tasks.</p>
+<p>In contrast, the Elias-Fano code delivers slightly slower sequential access, but achieves fast performance on random and NEXTGTE queries. In addition to the time efficiency, Elias-Fano is quasi-succinct, meaning it is less than half a bit away from the best theoretical compression scheme in terms of space.</p>
+<p>Succinct data structures use $n + o(n)$ bits of storage space (the original bit array and an o(n) auxiliary structure to support two basic operational building blocks [12]:</p>
+<ul>
+<li>$rank_{q}(x)$: return the number of elements equal to $q$ up to position $x$ in the array</li>
+<li>$select_{q}(x)$: returns the position of the $x$-th occurrence of $q$</li>
+</ul>
+<p>Elias-Fano is quasi-succinct because it uses at most $2 + ceil(log(u/n))$ bits per element, where n is the number of elements and u is an upper bound on the range. The lower $l = max(0, floor(log(u/n)))$ bits of each element are stored explicitly and contiguously, and the upper bits are stored as a sequence of unary coded gaps (see Figure 5 for an example).</p>
+<figure>
+    <img src="/Data-Structures-for-Large-Scale-Information-Retrieval/elias_fano_compression.png"
+         alt="Figure 5: Elias-Fano compression, represent each document ID in a gap-encoded compact representation."/> <figcaption>
+            <p>Figure 5: Elias-Fano compression, represent each document ID in a gap-encoded compact representation.</p>
+        </figcaption>
+</figure>
+
+<p>Since each unary code uses one stop bit and there are n elements, the higher bit array can at most contain n ones and 2n zeros. This representation makes searching (see Figure 6 for an example) and skipping fast and easy.</p>
+<figure>
+    <img src="/Data-Structures-for-Large-Scale-Information-Retrieval/elias_fano_decompression.png"
+         alt="Figure 6: Elias-Fano decompression, use rank and select to perform non-sequential decompression."/> <figcaption>
+            <p>Figure 6: Elias-Fano decompression, use rank and select to perform non-sequential decompression.</p>
+        </figcaption>
+</figure>
+
+<h3 id="32-speed-up-elias-fano-with-quantum-skipping">3.2 Speed-Up Elias-Fano with Quantum Skipping</h3>
+<p>For quick (average constant-time) reading of a sequence of unary codes, the $rank_{q}(x)$ and $select_{q}(x)$ operations can use a short-cuts: instead of counting all the ones and zeros to the left of an element, the upper bit array can incorporate fixed $q$-distance apart pointers that store the position of each $q$-th zero or $q$-th one in a table. Using random access, one can go to the $q$ position in constant time and search from there. This allows for extreme locality: only one memory access per skip!</p>
+<p>This has been a brief overview of the math behind Elias-Fano. In practice, Elias-Fano in performance critical information systems takes advantage of many interesting implementation details like caching and long-word addressing. There are extensions to Elias-Fano for recording term counts and term positions in documents that build upon the concepts mentioned above. Details are in the paper.</p>
+<h3 id="33-review-of-elias-fano">3.3 Review of Elias-Fano</h3>
+<p>Elias-Fano is widely adopted as a dominant compression scheme in IR systems. Today Elias-Fano is the compression scheme for Lucene [1] (the backbone of elasticsearch and Solr), MG4J [11] (search engine used as an IR research test-bed), and Facebook’s Graph Search [4].</p>
+<p>Compared to other compression codes, Elias-Fano has a fast decoding speed and fast locality of access, while still saving a decent amount of memory through compression. Elias-Fano performs very well on boolean-and queries that require heavy skipping to find phrases. It is also efficient when coupled with optimally lazy proximity algorithms [3], or when the values accessed are scattered in the list; this is common in conjunctive queries when the number of results is significantly smaller than the sequences being intersected.</p>
+<p>Elias-Fano performs badly on sequential, enumeration oriented tasks that do not rely heavily on skipping. It also does not have any optimizations for handling common phrases (e.g. “home page”)</p>
+<h2 id="4-partitioned-elias-fano-compression">4 PARTITIONED ELIAS-FANO COMPRESSION</h2>
+<p><em>This section discusses implementation details from the 2014 paper “Partitioned Elias-Fano Indexes” [9], by Giuseppe Ottaviano and Rossano Venturini. Please see paper for full proofs and details.</em></p>
+<h3 id="41-for-better-compression-take-advantage-of-naturally-occuring-document-id-clusters">4.1 For Better Compression, Take Advantage of Naturally Occuring Document ID Clusters</h3>
+<p>Elias-Fano assumes that document IDs in a postings list are randomly distributed, and its encoding uses the minimum quasi-succinct space needed to represent a sequence of random numbers. However, in real life, document IDs are not randomly distributed, and taking advantage of natural document ID clusters allows for even better compression.</p>
+<p>&ldquo;Crawler&rdquo; is a generic term for any program (such as a robot or spider) that is used to automatically discover and scan websites by following links from one webpage to another. Using a crawler to find new documents to index means that consecutively indexed pages are generally from the same site or on the same topic. These pages frequently have similar vocabularies, which creates clusters of consecutive document pointers in the postings list. These consecutive document IDs can be compressed more than randomly spaced numbers (see Figure 7).</p>
+<figure>
+    <img src="/Data-Structures-for-Large-Scale-Information-Retrieval/partitioned_elias_fano_improvements.png"
+         alt="Figure 7: Elias-Fano fails to exploit the clustering formed by crawlers consecutively encountering documents using the same vocabulary [6]. 7a.) natural cluster of document IDs 7b.) comparison of random sequence versus highly compressible consecutive sequence"/> <figcaption>
+            <p>Figure 7: Elias-Fano fails to exploit the clustering formed by crawlers consecutively encountering documents using the same vocabulary [6]. 7a.) natural cluster of document IDs 7b.) comparison of random sequence versus highly compressible consecutive sequence</p>
+        </figcaption>
+</figure>
+
+<p>Partitioned Elias-Fano (PEF) compression improves upon the Elias-Fano compression by building a two-layer data structure. It partitions the sequence into chunks that take advantage of clusters, replaces chunks with pointers that mark the beginning of each chunk (see Figure 8), and then compresses the sequence of pointers with Elias-Fano to support fast random access and search operations.</p>
+<figure>
+    <img src="/Data-Structures-for-Large-Scale-Information-Retrieval/partitioned_elias_fano.png"
+         alt="Figure 8: PEF chunks sequences and stores pointers [8]"/> <figcaption>
+            <p>Figure 8: PEF chunks sequences and stores pointers [8]</p>
+        </figcaption>
+</figure>
+
+<h3 id="42-speed-up-pef-partitioning-with-dynamic-programming-on-a-sparsified-dag">4.2 Speed-Up PEF Partitioning with Dynamic Programming on a Sparsified DAG</h3>
+<p>PEF needs to decide where to draw the partition lines in order to make the most compressible document ID chunks. Unfortunately, exhaustive search is exponential. Luckily, drawing partition lines is just a generalization of the weighted interval scheduling problem, so PEF can use dynamic programming to perform the search in quadratic time.</p>
+<p>The problem can be represented as a search for the minimal cost path on a directed acyclic graph (DAG), where each node is a document ID, and each edge weight is the cost of the chunk defined by the edge endpoints. Each edge cost can quickly be computed in O(1). However, evaluating all the edges is quadratic with the number of document IDs. More optimization is required for a scalable system. To further narrow the search space, PEF uses two general DAG sparsification techniques to reduce the number of evaluated edges from quadratic to linear (See Figure 9).</p>
+<p><strong>Technique 1</strong>: Since the partition does not have to be optimal, it just has to be workably “good enough”, instead of evaluating every combination of edges, PEF can select and evaluate on a handful of promising edges. PEF selects promising edges by binning edge costs into cost classes, and for each node and each cost class, greedily keeping one best edge.</p>
+<p><strong>Technique 2</strong>: Cost differences between arbitrarily split chunks are negligible if the chunks are big enough. Thus, the search space can be trimmed by removing edges via a loss thresholding function.</p>
+<figure>
+    <img src="/Data-Structures-for-Large-Scale-Information-Retrieval/sparsification.png"
+         alt="Figure 9: PEF turns quadratic edge search (grey) into a linear edge search (red) [8]"/> <figcaption>
+            <p>Figure 9: PEF turns quadratic edge search (grey) into a linear edge search (red) [8]</p>
+        </figcaption>
+</figure>
+
+<h3 id="43-review-of-partitioned-elias-fano">4.3 Review of Partitioned Elias-Fano</h3>
+<p>By using the two-level partitioned compression, PEF indexes offer up to double [8] the compression of plain Elias-Fano while preserving its query time efficiency. Compared to other state-of-the-art compressed codes (paper compared PEF to PForDelta variant OptPFD), PEF exhibits the best compression to query time trade off. PEF is very good for search engines that use crawlers to consecutively discover related pages as it can compress clusters of documents that are similar due to their shared vocabulary.</p>
+<h2 id="5-bitfunnel-alternative-to-inverted-indexes">5 BITFUNNEL: ALTERNATIVE TO INVERTED INDEXES</h2>
+<p><em>This section discusses details from the 2017 paper “BitFunnel: Revisiting Signatures for Search” [7], by Bob Goodwin, Micheal Hopcroft, Dan Luu, et. al. Please see paper for full proofs and details.</em></p>
+<h3 id="51-inverted-indexes-the-curse-of-global-updates-and-the-bitfunnel-alternative">5.1 Inverted Indexes, the Curse of Global Updates, and the BitFunnel Alternative</h3>
+<p>While inverted indexes are the backbone of all large-scale IR systems, they have an serious drawback: adding a new document requires a global update to all posting lists for all the terms contained in the new document. This is a costly operation, so generally, inverted indexes are either static (only indexed once), or updated in batches using MapReduce.</p>
+<p>However, search engines cannot always wait for batch updates in order to serve new documents. For example, when news happens and people search for the news, they want to see it right away. Researchers at Microsoft found a compact and fast solution that used a technology that was once considered unusable. The BitFunnel algorithm addresses fundamental limitations in bit-sliced block signatures and is used in the Bing search engine today.</p>
+<h3 id="52-bloom-filters-fast-compact-and-sometimes-wrong">5.2 Bloom Filters: Fast, Compact, and Sometimes Wrong</h3>
+<p>BitFunnel uses minimal space while enabling rapid querying of the fresh collection of documents that have not been batch updated into the main inverted index. It does this by representing each document in the corpus by a signature. This signature is a Bloom filter representing the set of terms in the document (see Figure 9). A Bloom filter is a probabilistic data structure, meaning that it does not store the terms directly, it just stores indicators (a.k.a. hashes, probes) of each term’s presence.</p>
+<figure>
+    <img src="/Data-Structures-for-Large-Scale-Information-Retrieval/bloom_filter.png"
+         alt="Figure 10: Bloom Filter can return false positives but cannot return false negatives"/> <figcaption>
+            <p>Figure 10: Bloom Filter can return false positives but cannot return false negatives</p>
+        </figcaption>
+</figure>
+
+<p>If all the signatures have the same length and share a common hashing scheme, each document can be represented by a bit-sliced signature. In this approach, document signatures are stored in a big table, like a nested array of machine words (32-bit integers). Each row corresponds to one hash key. In the row, each of the 32 bits in an element correspond to 32 documents, and the bit is on or off depending on whether the document has the hash key (see Figure 10). Since each document has its own column, adding a new document only requires a local update to the specified column.</p>
+<figure>
+    <img src="/Data-Structures-for-Large-Scale-Information-Retrieval/bitfunnel.png"
+         alt="Figure 11: BitFunnel Table Layout with bit-sliced signatures, in which each column is a document signature. Q is the signature of the query [Annotated By Gati Aher] [7]"/> <figcaption>
+            <p>Figure 11: BitFunnel Table Layout with bit-sliced signatures, in which each column is a document signature. Q is the signature of the query [Annotated By Gati Aher] [7]</p>
+        </figcaption>
+</figure>
+
+<p>Given a query, BitFunnel builds a query signature by hashing each term in the query with the same bag of hash functions, and then checks if any of the document signatures have all of the query hashes. If all of the query hashes are not present in the document signature, there is no possibility of the document containing all of the terms in the query. However, since sets of terms can have the same hashes, there is a possibility of falsely saying all the query terms are in the document.</p>
+<h3 id="53-being-wrong-less-often-managing-the-false-positive-rate">5.3 Being Wrong Less Often: Managing the False Positive Rate</h3>
+<p>BitFunnel is okay with a small possibility of false positives as long as its impact on the end-to-end system is low. BitFunnel is designed to filter out documents that would score low in the ranking system, while never rejecting documents that score high. In the later IR ranking phase, machine learning algorithms can reject obvious false positives. BitFunnel uses two optimizations to reduce memory consumption and false positive rates.</p>
+<p><strong>Optimization 1:</strong> If documents have many terms, increasing m, the length of the signature bit vector, can keep the bit vector from filling up. If a bit vector fills up, say all of its bits are set to 1, then it will say every query exists in the document set. Ideally, a bit vector should have about half of its bits set. BitFunnel saves space by sharding the corpus into bins by document length. This allows BitFunnel to use smaller m bit-sliced signatures to store shorter documents and larger m bit-sliced signatures to store larger documents. While normally sharding a document is not advisable because of overhead costs, when an index is many times larger than the memory of a single machine it must be sharded anyway. By sharding intelligently by document length instead of some arbitrary factor, BitFunnel saves memory.</p>
+<p><strong>Optimization 2:</strong> Identification of terms requires a good signal to noise ratio. Signal, s, is the probability that a term is actually a member of the document. Noise, , is the probability that a term’s k probes are set to 1 in the document signature, given that the term is not in the document. Assuming that the Bloom filter is configured to have an average bit density d, the density is the fraction of bits expected to be set. Therefore, one can use simple probability math to solve for the minimum value of k to ensure a certain signal-to-noise ratio  (see paper). The main takeaway is that rare terms have a lower signal value and thus require more k hashes to ensure a given signal-to-noise level. BitFunnel saves space and prevents the bit vector from filling up by using a Weighted Bloom Filter to adjust the number of hash functions on a term-by-term basis within the same Bloom Filters.</p>
+<h3 id="54-review-of-bitfunnel">5.4 Review of BitFunnel</h3>
+<p>BitFunnel is a fast and compact probabilistic data structure that allows a new document to be added in constant time with a single local update. At lower document numbers BitFunnel outperforms Elias-Fano inverted indexes in terms of memory usage, document add times, and data retrieval times. As the collection size grows the performance gap gets thinner, and at higher numbers, BitFunnel performs worse, as BitFunnel query execution is linear with the collection size, while inverted indexes have empirical performance closer to the number of returned results. Thus, BitFunnel performs its duty as a compact and fast probabilistic filter for querying a collection that has not entered the main inverted index, but it should not replace the inverted index in terms of being the main indexing structure.</p>
+<h2 id="conclusion">CONCLUSION</h2>
+<p>All large-scale information retrieval systems use inverted indexes for efficiently performing data retrieval based on keyword search. Over the years, as data storage needs grew, several inverted index compression codes were suggested for reducing the memory used to store large document pointer numbers in postings lists. A commonly used compression code with a good memory compression to query retrieval speed ratio is Elias-Fano, which uses a quasi-succinct mathematical data structure that allows for constant time querying on average and a memory usage close to the theoretical optimal bound. Partitioned Elias-Fano improves upon Elias-Fano by taking advantage of the high occurrence of sequential document pointers in a postings list. It uses a dynamic programming technique to determine the best partitioning scheme for compressing sequential document IDs and then forms a two-level compressed data structure.</p>
+<p>Adding a new document to an inverted index requires a costly global operation to update the posting list for each term in the document. To save time on this operation, invented indexes generally use batch updates. In order to support user queries on documents that are waiting on the batch update, e.g. people searching for real-time news, Bing uses a probabilistic data structure called BitFunnel that can ingest new documents with a quick local update while also supporting rapid keyword search.</p>
+<h2 id="references">REFERENCES</h2>
+<ol>
+<li>“Class EliasFanoEncoder.” Lucene Java Docs, 4.8.0 , <a href="https://lucene.apache.org/core/4_8_0/core/org/apache/lucene/util/packed/EliasFanoEncoder.html">lucene.apache.org/core/4_8_0/core/org/apache/lucene/util/packed/EliasFanoEncoder.html</a>.</li>
+<li>Baeza-Yates, Ricardo. <a href="http://grupoweb.upf.es/mir2ed/slides.php">“Chapter 1, Introduction.” Modern Information Retrieval</a>, edited by Berthier Ribeiro-Neto, 2nd ed., Addison Wesley Longman Publishing Co. Inc., 2011.</li>
+<li>Boldi, Paolo, and Sebastiano Vigna. “Efficient Optimally Lazy Algorithms for Minimal-Interval Semantics.” Theoretical Computer Science, vol. 648, 8 Oct. 2016, pp. 8–25., doi:10.1016/j.tcs.2016.07.036.</li>
+<li>Curtiss, Michael, et al. “Unicorn: A System for Searching the Social Graph.” Proceedings of the VLDB Endowment, vol. 6, no. 11, 2013, pp. 1150–1161., doi:10.14778/2536222.2536239.</li>
+<li>Dean, Jeffrey. “Challenges in Building Large-Scale Information Retrieval Systems.” Proceedings of the Second ACM International Conference on Web Search and Data Mining - WSDM &lsquo;09, 2009, doi:10.1145/1498759.1498761.</li>
+<li>Gog, Simon, and Rossano Venturini. “Succinct Data Structures in Information Retrieval.” Proceedings of the 39th International ACM SIGIR Conference on Research and Development in Information Retrieval, 2016, doi:10.1145/2911451.2914802.</li>
+<li>Goodwin, Bob, et al. “BitFunnel: Revisiting Signatures for Search.” Proceedings of the 40th International ACM SIGIR Conference on Research and Development in Information Retrieval, 2017, doi:10.1145/3077136.3080789.</li>
+<li>Ottaviano, Giuseppe, and Antics. BitFunnel: Revisiting Signatures for Search [Pdf] , 4 Sept. 2017. <a href="https://news.ycombinator.com/item?id=15169524">https://news.ycombinator.com/item?id=15169524</a></li>
+<li>Ottaviano, Giuseppe, and Rossano Venturini. “Partitioned Elias-Fano Indexes.” Proceedings of the 37th International ACM SIGIR Conference on Research &amp; Development in Information Retrieval, 2014, doi:10.1145/2600428.2609615.</li>
+<li>Pibiri, Giulio Ermanno. “Space- and Time-Efficient Data Structures for Massive Datasets.” University of Pisa, 2019, <a href="http://pages.di.unipi.it/pibiri/slides/final_PhD_presentation2.pdf">pages.di.unipi.it/pibiri/slides/final_PhD_presentation2.pdf</a>.</li>
+<li>Vigna, Sebastiano, and Paolo Boldi. “Class QuasiSuccinctIndexWriter.” MG4J: High-Performance Text Indexing for Java™, 5.4.4., <a href="https://mg4j.di.unimi.it/">mg4j.di.unimi.it/docs-big/it/unimi/di/big/mg4j/index/QuasiSuccinctIndexWriter.html</a>.</li>
+<li>Vigna, Sebastiano. “Broadword Implementation of Rank/Select Queries.” Experimental Algorithms, 29 Mar. 2020, pp. 154–168., doi:10.1007/978-3-540-68552-4_12.</li>
+<li>Vigna, Sebastiano. “Quasi-Succinct Indices.” Proceedings of the Sixth ACM International Conference on Web Search and Data Mining - WSDM &lsquo;13, 8 Feb. 2013, doi:10.1145/2433396.2433409.</li>
+<li>Zobel, Justin, and Alistair Moffat. “Inverted Files for Text Search Engines.” ACM Computing Surveys, vol. 38, no. 2, 2006, p. 6., doi:10.1145/1132956.1132959.</li>
+</ol>
+
+</article>
+
+
+    </main>
+    <footer class="site-footer">
+        &copy 2021 by Gati Aher &#183;
+        Powered by <a href="https://gohugo.io/">Hugo</a> &#183;
+        View on <a href="https://github.com/GatiAher/gatiaher-hugo">GitHub</a>
+</footer>
+    
+<script src="/js/feather.min.js"></script>
+<script>
+    feather.replace();
+</script>
+</body>
+
+</html>

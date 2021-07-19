@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Structures on Gati Aher</title>
+    <link>http://GatiAher.github.io/tags/data-structures/</link>
+    <description>Recent content in Data Structures on Gati Aher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 18 Jul 2021 21:21:42 -0400</lastBuildDate>
+    
+	<atom:link href="http://GatiAher.github.io/tags/data-structures/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Data Structures for Large Scale Information Retrieval</title>
+      <link>http://GatiAher.github.io/projects/data-structures-for-large-scale-information-retrieval/</link>
+      <pubDate>Sun, 18 Jul 2021 21:21:42 -0400</pubDate>
+      
+      <guid>http://GatiAher.github.io/projects/data-structures-for-large-scale-information-retrieval/</guid>
+      <description>5-minute high-level video:    1 INTRODUCTION 2 BACKGROUND INFORMATION  2.1 Inverted Indexes For Fast (Constant Time) Lookup 2.2 Big Document IDs Use a Lot of Space 2.3 An Overview of Compression Codes: Balancing Space Savings and Time Cost   3 ELIAS-FANO COMPRESSION  3.1 Introducing Quasi-Succinct Elias-Fano: Fast, Small and Better than Sequential Decoding 3.2 Speed-Up Elias-Fano with Quantum Skipping 3.3 Review of Elias-Fano   4 PARTITIONED ELIAS-FANO COMPRESSION  4.</description>
+    </item>
+    
+  </channel>
+</rss>
