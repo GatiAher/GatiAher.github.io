@@ -68,7 +68,7 @@
         <p class="post-meta">
     
 
-<time class="date" datetime="2021-07-18">Jul 18, 2021</time>
+<time class="date" datetime="2021-05-09">May 9, 2021</time>
     by Gati Aher
     
 
@@ -120,7 +120,11 @@
 <li><a href="#54-review-of-bitfunnel">5.4 Review of BitFunnel</a></li>
 </ul>
 </li>
-<li><a href="#conclusion">CONCLUSION</a></li>
+<li><a href="#conclusion">CONCLUSION</a>
+<ul>
+<li><a href="#bonus-partially-implementing-bitfunnel">BONUS: Partially Implementing BitFunnel!</a></li>
+</ul>
+</li>
 <li><a href="#references">REFERENCES</a></li>
 </ul>
 <h2 id="1-introduction">1 INTRODUCTION</h2>
@@ -276,6 +280,44 @@
 <h2 id="conclusion">CONCLUSION</h2>
 <p>All large-scale information retrieval systems use inverted indexes for efficiently performing data retrieval based on keyword search. Over the years, as data storage needs grew, several inverted index compression codes were suggested for reducing the memory used to store large document pointer numbers in postings lists. A commonly used compression code with a good memory compression to query retrieval speed ratio is Elias-Fano, which uses a quasi-succinct mathematical data structure that allows for constant time querying on average and a memory usage close to the theoretical optimal bound. Partitioned Elias-Fano improves upon Elias-Fano by taking advantage of the high occurrence of sequential document pointers in a postings list. It uses a dynamic programming technique to determine the best partitioning scheme for compressing sequential document IDs and then forms a two-level compressed data structure.</p>
 <p>Adding a new document to an inverted index requires a costly global operation to update the posting list for each term in the document. To save time on this operation, invented indexes generally use batch updates. In order to support user queries on documents that are waiting on the batch update, e.g. people searching for real-time news, Bing uses a probabilistic data structure called BitFunnel that can ingest new documents with a quick local update while also supporting rapid keyword search.</p>
+<h3 id="bonus-partially-implementing-bitfunnel">BONUS: Partially Implementing BitFunnel!</h3>
+<p>In order to understand the BitFunnel data structure better, I implemented a Bloom filter and a bit-sliced document signature in C. I also wrote tests to make sure my implementations worked as expected, and fun demos to show how these data structures can be used. More details and a writeup are available at <a href="https://github.com/GatiAher/BloomForSearchFromScratch">BloomForSearchFromScratch</a>.</p>
+<p>As a fun information retrieval demo, I decided to use my bit-sliced document signature to retrieve <a href="https://xkcd.com/2379/">xkcd comics</a> that match keywords. This is a fun tool to explore new xkcd comics for a topic.</p>
+<p>In this demo, I add 40 documents (allocating two blocks of 64 bits), use signatures of length 512, and 3 hashes on each term. Each document comprises of the title, alt-text, and transcript of a given xkcd comic. This information is scraped from <a href="https://www.explainxkcd.com/">https://www.explainxkcd.com/</a> using a Python script with beautifulsoup.</p>
+<p>As a demo query, I search for the term &ldquo;outside&rdquo;. This word actually appears in two documents: 30 and 14.</p>
+<p>Here is an excerpt of the final <a href="https://github.com/GatiAher/BloomForSearchFromScratch/blob/main/results/output_demo_bss_xkcd_query.txt">results</a>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">---------------------------------
+Bit-Sliced Block Signature
+
+m <span style="color:#f92672">=</span> 512, k <span style="color:#f92672">=</span> 3, num_blocks <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+39/64 docs added
+hash_seeds <span style="color:#f92672">=</span> <span style="color:#ae81ff">28</span> <span style="color:#ae81ff">10</span> <span style="color:#ae81ff">6</span> 
+array <span style="color:#f92672">=</span> 
+197188	0	
+16908928	8	
+1694507008	0	
+17306112	0	
+17104896	0	
+-946130846	49	
+1092625410	0	
+1611989056	0	
+-105968822	187	
+165224480	8	
+... <span style="color:#f92672">[</span>output truncated<span style="color:#f92672">]</span>
+colsums <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">103</span> <span style="color:#ae81ff">69</span> <span style="color:#ae81ff">23</span> <span style="color:#ae81ff">69</span> <span style="color:#ae81ff">162</span> <span style="color:#ae81ff">175</span> <span style="color:#ae81ff">82</span> <span style="color:#ae81ff">83</span> <span style="color:#ae81ff">160</span> <span style="color:#ae81ff">95</span> <span style="color:#ae81ff">68</span> <span style="color:#ae81ff">116</span> <span style="color:#ae81ff">206</span> <span style="color:#ae81ff">85</span> <span style="color:#ae81ff">89</span> <span style="color:#ae81ff">324</span> <span style="color:#ae81ff">167</span> <span style="color:#ae81ff">155</span> <span style="color:#ae81ff">219</span> <span style="color:#ae81ff">263</span> <span style="color:#ae81ff">122</span> <span style="color:#ae81ff">88</span> <span style="color:#ae81ff">212</span> <span style="color:#ae81ff">428</span> <span style="color:#ae81ff">56</span> <span style="color:#ae81ff">92</span> <span style="color:#ae81ff">98</span> <span style="color:#ae81ff">88</span> <span style="color:#ae81ff">207</span> <span style="color:#ae81ff">159</span> <span style="color:#ae81ff">97</span> <span style="color:#ae81ff">220</span> <span style="color:#ae81ff">71</span> <span style="color:#ae81ff">65</span> <span style="color:#ae81ff">114</span> <span style="color:#ae81ff">80</span> <span style="color:#ae81ff">122</span> <span style="color:#ae81ff">97</span> <span style="color:#ae81ff">89</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> 
+
+percent filled <span style="color:#f92672">=</span> 0<span style="color:#f92672">=</span>0.00% 1<span style="color:#f92672">=</span>0.20% 2<span style="color:#f92672">=</span>0.13% 3<span style="color:#f92672">=</span>0.04% 4<span style="color:#f92672">=</span>0.13% 5<span style="color:#f92672">=</span>0.32% 6<span style="color:#f92672">=</span>0.34% 7<span style="color:#f92672">=</span>0.16% 8<span style="color:#f92672">=</span>0.16% 9<span style="color:#f92672">=</span>0.31% 10<span style="color:#f92672">=</span>0.19% 11<span style="color:#f92672">=</span>0.13% 12<span style="color:#f92672">=</span>0.23% 13<span style="color:#f92672">=</span>0.40% 14<span style="color:#f92672">=</span>0.17% 15<span style="color:#f92672">=</span>0.17% 16<span style="color:#f92672">=</span>0.63% 17<span style="color:#f92672">=</span>0.33% 18<span style="color:#f92672">=</span>0.30% 19<span style="color:#f92672">=</span>0.43% 20<span style="color:#f92672">=</span>0.51% 21<span style="color:#f92672">=</span>0.24% 22<span style="color:#f92672">=</span>0.17% 23<span style="color:#f92672">=</span>0.41% 24<span style="color:#f92672">=</span>0.84% 25<span style="color:#f92672">=</span>0.11% 26<span style="color:#f92672">=</span>0.18% 27<span style="color:#f92672">=</span>0.19% 28<span style="color:#f92672">=</span>0.17% 29<span style="color:#f92672">=</span>0.40% 30<span style="color:#f92672">=</span>0.31% 31<span style="color:#f92672">=</span>0.19% 32<span style="color:#f92672">=</span>0.43% 33<span style="color:#f92672">=</span>0.14% 34<span style="color:#f92672">=</span>0.13% 35<span style="color:#f92672">=</span>0.22% 36<span style="color:#f92672">=</span>0.16% 37<span style="color:#f92672">=</span>0.24% 38<span style="color:#f92672">=</span>0.19% 39<span style="color:#f92672">=</span>0.17% 40<span style="color:#f92672">=</span>0.00% 41<span style="color:#f92672">=</span>0.00% 42<span style="color:#f92672">=</span>0.00% 43<span style="color:#f92672">=</span>0.00% 44<span style="color:#f92672">=</span>0.00% 45<span style="color:#f92672">=</span>0.00% 46<span style="color:#f92672">=</span>0.00% 47<span style="color:#f92672">=</span>0.00% 48<span style="color:#f92672">=</span>0.00% 49<span style="color:#f92672">=</span>0.00% 50<span style="color:#f92672">=</span>0.00% 51<span style="color:#f92672">=</span>0.00% 52<span style="color:#f92672">=</span>0.00% 53<span style="color:#f92672">=</span>0.00% 54<span style="color:#f92672">=</span>0.00% 55<span style="color:#f92672">=</span>0.00% 56<span style="color:#f92672">=</span>0.00% 57<span style="color:#f92672">=</span>0.00% 58<span style="color:#f92672">=</span>0.00% 59<span style="color:#f92672">=</span>0.00% 60<span style="color:#f92672">=</span>0.00% 61<span style="color:#f92672">=</span>0.00% 62<span style="color:#f92672">=</span>0.00% 63<span style="color:#f92672">=</span>0.00% 
+---------------------------------
+Sucessfully saved bit-sliced signature to bss_xkcd.dat!
+echo <span style="color:#e6db74">&#34;outside&#34;</span> | ./bss_play -f bss_xkcd.dat -s <span style="color:#e6db74">&#34;https://xkcd.com/%d&#34;</span>
+
+<span style="color:#ae81ff">4</span> Documents matching query: 
+https://xkcd.com/30
+https://xkcd.com/24
+https://xkcd.com/16
+https://xkcd.com/14
+</code></pre></div><p>My probabilistic data structure returns 4 matches: 30, 24, 16, 14. As expected there are the two true positives and no false negatives. However, documents 16 and 24 are false positives. Upon taking a closer look, the document signatures for documents 16 and 24 are 63% and 84% full respectively. That means, each bit has a higher than random chance possibility of being flipped, so the probability of the query hash being falsely present in the signature is pretty high.</p>
+<p>To reduce the rate of false positives, I can increase the length of the bit signature so that it is less full. If I was using bit-sliced signatures in a production system, there are some interesting optimizations that reduce query speed, memory usage, and false positive rate (e.g. intelligent corpus sharding, weighted Bloom filters).</p>
 <h2 id="references">REFERENCES</h2>
 <ol>
 <li>“Class EliasFanoEncoder.” Lucene Java Docs, 4.8.0 , <a href="https://lucene.apache.org/core/4_8_0/core/org/apache/lucene/util/packed/EliasFanoEncoder.html">lucene.apache.org/core/4_8_0/core/org/apache/lucene/util/packed/EliasFanoEncoder.html</a>.</li>

@@ -6,7 +6,7 @@
     <description>Recent content in Microbiology on Gati Aher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 04 Jul 2021 22:24:10 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 14 Mar 2021 22:24:10 -0400</lastBuildDate>
     
 	<atom:link href="http://GatiAher.github.io/tags/microbiology/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Spectral Analysis of Bacteria S-Layer</title>
       <link>http://GatiAher.github.io/projects/spectral-analysis-of-bacteria-s-layer/</link>
-      <pubDate>Sun, 04 Jul 2021 22:24:10 -0400</pubDate>
+      <pubDate>Sun, 14 Mar 2021 22:24:10 -0400</pubDate>
       
       <guid>http://GatiAher.github.io/projects/spectral-analysis-of-bacteria-s-layer/</guid>
       <description>Background Info: Bacteria S-Layers Introducing Hot Peanuts FFT In Python Code Step 1. Remove Vertical and Horizontal Pattern Noise Step 2. Identify Key Periodic Frequencies Step 3. Calculate Size and Scale Step 4. Identify Shape Extra Credit: Visualize the S-Layer Units Conclusion  Background Info: Bacteria S-Layers Most prokaryotic cells are encapsulated by a surface layer (S-layer) consisting of repeating units of S-layer proteins. These S-layers protect cells from the outside, provide mechanical stability, and play roles in spreading disease.</description>
