@@ -87,8 +87,8 @@
         <br>
     </div>
     <ul>
-<li><a href="#fourier-transforms-a-pattern-based-perspective">Fourier Transforms: A Pattern-Based Perspective</a></li>
-<li><a href="#1d-fourier-transforms">1D Fourier Transforms</a>
+<li><a href="#1-introduction">1 INTRODUCTION</a></li>
+<li><a href="#2-1d-fourier-transform">2 1D FOURIER TRANSFORM</a>
 <ul>
 <li><a href="#understanding-the-1d-math">Understanding the 1D Math</a>
 <ul>
@@ -99,16 +99,16 @@
 <li><a href="#read-the-1d-frequency-plots">Read the 1D Frequency Plots</a></li>
 </ul>
 </li>
-<li><a href="#generalizing-to-2d-fourier-transform">Generalizing to 2D Fourier Transform</a>
+<li><a href="#3-generalizing-to-2d-fourier-transform">3 GENERALIZING TO 2D FOURIER TRANSFORM</a>
 <ul>
 <li><a href="#understand-the-2d-math">Understand the 2D Math</a></li>
 <li><a href="#read-the-2d-plots">Read the 2D Plots</a></li>
+<li><a href="#exercises">Exercises</a></li>
 </ul>
 </li>
-<li><a href="#exercises">Exercises</a></li>
-<li><a href="#further-reading">Further Reading</a></li>
+<li><a href="#4-further-reading">4 FURTHER READING</a></li>
 </ul>
-<h2 id="fourier-transforms-a-pattern-based-perspective">Fourier Transforms: A Pattern-Based Perspective</h2>
+<h1 id="1-introduction">1 INTRODUCTION</h1>
 <p>In the 1800s, Joseph Fourier showed that periodic functions could be written as an infinite sum of sinusoids. His theory paved the way for Fourier Analysis, a useful tool for signal and data processing.</p>
 <figure>
     <img src="/1D-and-2D-Fourier-Transforms/time_frequency_explanation.png"
@@ -119,9 +119,9 @@
 
 <p>The Fourier Transform is a projection that transforms functions depending on space or time into functions depending on spatial or temporal frequency. Representing functions in the frequency domain allows us to visualize and analyze patterns in the function. The Inverse Fourier Transform allows us to project the frequency function back into the space or time domain without any information loss.</p>
 <p>The 2D Fourier Transform has applications in image analysis, filtering, reconstruction, and compression.</p>
-<h2 id="1d-fourier-transforms">1D Fourier Transforms</h2>
+<h1 id="2-1d-fourier-transform">2 1D FOURIER TRANSFORM</h1>
 <p>To understand the two-dimensional Fourier Transform we will use for image processing, first we have to understand its foundations: the one dimensional discrete Fourier Transform.</p>
-<h3 id="understanding-the-1d-math">Understanding the 1D Math</h3>
+<h2 id="understanding-the-1d-math">Understanding the 1D Math</h2>
 <p>The Discrete Fourier Transform (DFT) turns a 1D array of $N$ discrete, evenly spaced time points, $x$ into a set of coefficients $X$ that describe the weight placed onto $N$ frequency components:</p>
 <p>$$X_k = \sum_{n=0}^{N-1} x_n * e^{-i2\pi kn/N}$$</p>
 <ul>
@@ -135,7 +135,7 @@
 <p>To understand these equations as a projection, we can rewrite the Fourier Transform and its inverse equation to be in the form of:</p>
 <p>$$X = Wx$$
 $$x = XW^{-1}$$</p>
-<h4 id="the-dft-matrix-w">The DFT-matrix (W)</h4>
+<h3 id="the-dft-matrix-w">The DFT-matrix (W)</h3>
 <p>The basis matrix $W$ depends on the values of $k$, number of frequency components and $n$, number of time points. Both $k$ and $n$ are vectors with length $N$ that increase from $0$ to $N-1$ by $1$. In the original equations, we sum over all combinations k and n in $e^{i2\pi kn/N}$, so the <a href="https://en.wikipedia.org/wiki/DFT_matrix">DFT matrix</a> W is a N-by-N square matrix of elements raised to all combinations of exponents k and n.</p>
 <p>Each element of $W$ is a primitive Nth root of unity. For any exponent $kn$, the Nth roots of unity repeat themselves with a period of $N$, as in $w^{kn} = w^{kn \mod N}$. This leads to several patterns of symmetry in W. For example, Eight-point DFT Matrix looks like this:</p>
 <figure>
@@ -153,7 +153,7 @@ $$x = XW^{-1}$$</p>
         </figcaption>
 </figure>
 
-<h4 id="post-projection-processing">Post Projection Processing</h4>
+<h3 id="post-projection-processing">Post Projection Processing</h3>
 <p>Once we have the DFT coefficients $X$, we have to do some post-processing in order to get understandable information.</p>
 <p>First, to make the frequency plots easier to read, we shift the frequency components in $X$ so that the zero frequency is in the center and higher frequencies are at the edges.</p>
 <figure>
@@ -185,8 +185,8 @@ $$x = XW^{-1}$$</p>
 </figure>
 
 <p>Based on the needed interpretation, the frequency component labels on the x-axis can be in index (0 to N-1), frequencies (Hz), or angular frequencies (radians per second). Frequency can be converted to angular frequency by multiplying by a constant $2\pi$.</p>
-<h3 id="read-the-1d-frequency-plots">Read the 1D Frequency Plots</h3>
-<p>Let&rsquo;s compare the plots of some simple discrete signals! Here are the magnitude and phase of the DFT coefficients found from projecting a sine wave of 8 Hz, a sine wave of 16 Hz, and a cosine wave of 8 Hz onto a 128-point DFT matrix. Each wave was sampled 128 times over a time-span of 1 second.</p>
+<h2 id="read-the-1d-frequency-plots">Read the 1D Frequency Plots</h2>
+<p>Let us compare the plots of some simple discrete signals! Here are the magnitude and phase of the DFT coefficients found from projecting a sine wave of 8 Hz, a sine wave of 16 Hz, and a cosine wave of 8 Hz onto a 128-point DFT matrix. Each wave was sampled 128 times over a time-span of 1 second.</p>
 <figure>
     <img src="/1D-and-2D-Fourier-Transforms/sine_waves_fft.png"
          alt="Centered phase and magnitude plots for a sine wave of 8 Hz, a sine wave of 16 Hz, and a sine wave of 8 Hz with a phase offset of π/2 (cosine wave)." height="600"/> <figcaption>
@@ -204,7 +204,7 @@ $$x = XW^{-1}$$</p>
         </figcaption>
 </figure>
 
-<h2 id="generalizing-to-2d-fourier-transform">Generalizing to 2D Fourier Transform</h2>
+<h1 id="3-generalizing-to-2d-fourier-transform">3 GENERALIZING TO 2D FOURIER TRANSFORM</h1>
 <p>Images can be represented as 2D functions $f(x, y)$ varying in spatial coordinates $(x, y)$ in the image plane. Like a 1D wave, every 2D image signal can be decomposed into a series of sine terms.</p>
 <p>To visualize the sinuous nature of image signals, we can plot the pixel intensities of the image in a surface plot and observe the top view of its contours. In this view, areas of sharp change, like edges, appear as narrow peaks, and swatches of uniform values, like the evenly colored sky, appear flat with no or low gradual peaks. These patterns have direct parallels with the sharp narrow peaks of high frequency waves and low gradual peaks of low frequency waves.</p>
 <figure>
@@ -216,7 +216,7 @@ $$x = XW^{-1}$$</p>
 
 <p>To represent the 2D image as a sum of 2D sinusoids, we can think of the surface plot from a “Bed Sheet View” perspective (developed by Dr. Steven Brunton at the University of Washington, source: source: <a href="https://towardsdatascience.com/fourier-transforms-and-bed-sheet-view-of-images-58ba34e6808a">Fourier transforms and bed sheet view of images</a>).</p>
 <p>The name suggests that an image can be represented by a series of overlaid bedsheets. If we had an infinite number of bedsheets, held each one by its four corners, and oscillated it at one of the Fourier frequencies with the correct corresponding magnitude and phase, then the superposition of all the bedsheets would have creases that looked like the surface plot of an image!</p>
-<h3 id="understand-the-2d-math">Understand the 2D Math</h3>
+<h2 id="understand-the-2d-math">Understand the 2D Math</h2>
 <p>The 2D discrete Fourier transform projects the <em>NxN</em> image signal $f$ onto a basis of 2D sine and cosine functions (think bedsheets) in order to get the <em>NxN</em> matrix of Fourier coefficients $F$.</p>
 <p>The 2D basis functions are matrices ordered by increasing frequency so that the first basis, corresponding to the top left corner of the coefficient matrix, $F(0, 0)$, represents the DC-offset of the image, or average brightness, and the last basis, corresponding to the bottom right corner of the coefficient matrix, $F(N-1, N-1)$ represents the highest frequency. For a square image of size NxN, the two dimensional discrete Fourier transform is given by:</p>
 <p>$$F(k, l) = \sum_{i=0}^{N-1} \sum_{j=0}^{N-1} f(i, j) * e^{-i2\pi (\frac{ki}{N} + \frac{lj}{N})}$$</p>
@@ -234,7 +234,7 @@ $$x = XW^{-1}$$</p>
 <li>see <a href="https://eeweb.engineering.nyu.edu/~yao/EL5123/lecture4_2DFT.pdf">NYU online lecture slides 48-49</a> for details of computational savings</li>
 </ul>
 <p>Using the <a href="https://en.wikipedia.org/wiki/Fast_Fourier_transform">Fast Fourier Transform</a> method computes the 1D DFTs in $\log{2N}$ time. To support this fast, recursive. Some forms of the FFT restrict the size of the input image, often to $N = 2n$ where $n$ is an integer.</p>
-<h3 id="read-the-2d-plots">Read the 2D Plots</h3>
+<h2 id="read-the-2d-plots">Read the 2D Plots</h2>
 <p>The Fourier Transform math works by assuming the given spatial image is one period in an infinitely repeating spectrum. For example when it looks at the camera man image, it sees:</p>
 <figure>
     <img src="/1D-and-2D-Fourier-Transforms/cameraman_infinite_spectrum.png"
@@ -304,7 +304,7 @@ $$x = XW^{-1}$$</p>
         </figcaption>
 </figure>
 
-<h2 id="further-reading">Further Reading</h2>
+<h1 id="4-further-reading">4 FURTHER READING</h1>
 <p><a href="https://www.sjsu.edu/people/burford.furman/docs/me120/FFT_tutorial_NI.pdf">The Fundamentals of FFT-Based Signal Analysis and Measurement</a> by National Instruments does a nice job explaining basic signal analysis computations, and goes into detail about windowing and the different properties of different windowing functions.</p>
 <p>These sites have nice examples and explanations for reading 2D magnitude plots, identifying and removing sources of artificial patterns, and filtering in the frequency domain:</p>
 <ul>

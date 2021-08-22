@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://GatiAher.github.io/projects/handwriting-detection-with-finetuned-faster-r-cnn/</loc>
+    <lastmod>2021-08-22T10:43:34-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://GatiAher.github.io/projects/</loc>
+    <lastmod>2021-08-22T10:43:34-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://GatiAher.github.io/</loc>
     <lastmod>2021-05-19T10:18:48-04:00</lastmod>
     <priority>0</priority>
@@ -20,11 +30,6 @@
   
   <url>
     <loc>http://GatiAher.github.io/projects/data-structures-for-large-scale-information-retrieval/</loc>
-    <lastmod>2021-05-09T21:21:42-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://GatiAher.github.io/projects/</loc>
     <lastmod>2021-05-09T21:21:42-04:00</lastmod>
   </url>
   
