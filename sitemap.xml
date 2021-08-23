@@ -3,13 +3,38 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://GatiAher.github.io/projects/handwriting-detection-with-finetuned-faster-r-cnn/</loc>
-    <lastmod>2021-08-22T10:43:34-04:00</lastmod>
+    <loc>http://GatiAher.github.io/categories/</loc>
+    <lastmod>2021-08-20T10:43:34-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://GatiAher.github.io/tags/deep-learning/</loc>
+    <lastmod>2021-08-20T10:43:34-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://GatiAher.github.io/projects/experiments-in-handwriting-detection-with-faster-r-cnn/</loc>
+    <lastmod>2021-08-20T10:43:34-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://GatiAher.github.io/tags/image-processing/</loc>
+    <lastmod>2021-08-20T10:43:34-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://GatiAher.github.io/categories/internship-work/</loc>
+    <lastmod>2021-08-20T10:43:34-04:00</lastmod>
   </url>
   
   <url>
     <loc>http://GatiAher.github.io/projects/</loc>
-    <lastmod>2021-08-22T10:43:34-04:00</lastmod>
+    <lastmod>2021-08-20T10:43:34-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://GatiAher.github.io/tags/</loc>
+    <lastmod>2021-08-20T10:43:34-04:00</lastmod>
   </url>
   
   <url>
@@ -34,17 +59,7 @@
   </url>
   
   <url>
-    <loc>http://GatiAher.github.io/tags/</loc>
-    <lastmod>2021-05-09T21:21:42-04:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://GatiAher.github.io/projects/eigenfaces-and-out-of-distribution-data/</loc>
-    <lastmod>2021-04-14T13:12:04-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://GatiAher.github.io/tags/image-processing/</loc>
     <lastmod>2021-04-14T13:12:04-04:00</lastmod>
   </url>
   
@@ -71,10 +86,6 @@
   <url>
     <loc>http://GatiAher.github.io/projects/1d-and-2d-fourier-transforms/</loc>
     <lastmod>2021-03-03T14:22:03-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://GatiAher.github.io/categories/</loc>
   </url>
   
 </urlset>

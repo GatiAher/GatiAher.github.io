@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Projects on Gati Aher</title>
+    <title>Projects on Gati Aher&#39;s Blog</title>
     <link>http://GatiAher.github.io/projects/</link>
-    <description>Recent content in Projects on Gati Aher</description>
+    <description>Recent content in Projects on Gati Aher&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Aug 2021 10:43:34 -0400</lastBuildDate>
+    <lastBuildDate>Fri, 20 Aug 2021 10:43:34 -0400</lastBuildDate>
     
 	<atom:link href="http://GatiAher.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Handwriting Detection With Finetuned Faster R CNN</title>
-      <link>http://GatiAher.github.io/projects/handwriting-detection-with-finetuned-faster-r-cnn/</link>
-      <pubDate>Sun, 22 Aug 2021 10:43:34 -0400</pubDate>
+      <title>Experiments in Handwriting Detection With Faster R-CNN</title>
+      <link>http://GatiAher.github.io/projects/experiments-in-handwriting-detection-with-faster-r-cnn/</link>
+      <pubDate>Fri, 20 Aug 2021 10:43:34 -0400</pubDate>
       
-      <guid>http://GatiAher.github.io/projects/handwriting-detection-with-finetuned-faster-r-cnn/</guid>
-      <description></description>
+      <guid>http://GatiAher.github.io/projects/experiments-in-handwriting-detection-with-faster-r-cnn/</guid>
+      <description>1 INTRODUCTION  1.1 Datasets 1.2 Tough-to-Beat Baseline Model   2 BACKGROUND INFORMATION  2.1 Overview of Detectron-v2&amp;rsquo;s Faster R-CNN with FPN - DataMapper - Backbone Network - Details on Feature Pyramid Network - Region Proposal Network (RPN) - RPN Head - Map Ground Truths to Feature Maps With Cell Anchors (only during training) - Loss Function (only during training) - Box Proposal Selection - ROI Head - Re-Sampling and Matching (during training only) - Cropping - Box Head - Loss Calculation - Inference 2.</description>
     </item>
     
     <item>

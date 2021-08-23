@@ -8,10 +8,13 @@
     /* colors */
     --white-color: #ffffff;
     --black-color: #1c1d22;
-    --metal-blue-color: #0000EE;
-    --light-blue-color: #58A6FF;
     --gray-color: #777777;
     --light-gray-color: #f0f0f0;
+    /* highlight */
+    --metal-blue-color: #0000EE;
+    --light-blue-color: #58A6FF;
+    /* blocks */
+    --block-color: #f0f0f0;
 }
 
 /* ------- basic syling ------- */
@@ -36,33 +39,39 @@ body {
 
 h1 {
     font-size: 1.5em;
+    font-weight: bold;
 }
 
 h2 {
     font-size: 1.4em;
+    font-weight: bold;
 }
 
-h3 {
-    font-size: 1.2em;
+h3, h4, h5 {
+    font-size: 1.3em;
+    font-weight: bold;
 }
 
-h4 {
-    font-size: 1.1em;
-}
-
-h5, h6 {
+h6 {
     font-size: 1em;
+    color: var(--gray-color);
+    font-weight: bold;
+    font-style: oblique;
 }
 
 blockquote {
     color: var(--gray-color);
     border-left: 4px solid var(--gray-color);
-    background: var(--light-gray-color);
+    background: var(--block-color);
     padding: 10px;
     margin: 10px;
     padding-left: 25px;
     font-size: 15.675px;
     font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, ul, ol, dl, figure {
+    margin-bottom: 15px;
 }
 
 div.highlight pre {
@@ -109,6 +118,10 @@ div.highlight pre {
 
 /* ------- post-meta ------- */
 
+div.post-container {
+    padding-bottom: 2em;
+}
+
 .post-meta {
     font-family: 'Open Sans';
     font-size: 14.4375px;
@@ -118,6 +131,7 @@ div.highlight pre {
 .post-meta a.post-tag {
     border-radius: 5px;
     border: 1px solid var(--gray-color);
+    color: var(--gray-color);
     text-decoration: none;
     padding: 1px 5px;
     margin-left: 5px;
@@ -125,6 +139,7 @@ div.highlight pre {
 
 .post-meta a.post-tag:hover {
     border: 1px solid var(--light-blue-color);
+    color: var(--light-blue-color);
     text-decoration: none;
 }
 
