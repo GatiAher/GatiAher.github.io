@@ -38,7 +38,7 @@ body {
 }
 
 h1 {
-    font-size: 1.5em;
+    font-size: 1.7em;
     font-weight: bold;
 }
 
@@ -118,8 +118,12 @@ div.highlight pre {
 
 /* ------- post-meta ------- */
 
-div.post-container {
-    padding-bottom: 2em;
+div.featured-container {
+    margin-bottom: 6em;
+}
+
+div.archive-container {
+    margin-bottom: 2em;
 }
 
 .post-meta {
@@ -213,7 +217,8 @@ figure {
     border-top-right-radius: 0.3125em;
     border-bottom-left-radius: 0.3125em;
     border-bottom-right-radius: 0.3125em;
-    background-color: var(--white-color);;
+    background-color: var(--white-color);
+    ;
 }
 
 figure figcaption {

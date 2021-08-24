@@ -70,6 +70,7 @@
 
 <time class="date" datetime="2021-08-20">Aug 20, 2021</time>
     by Gati Aher
+    &#183 36 min read
     
 
 
@@ -80,10 +81,19 @@
 
 
 </p>
-
         <blockquote>
             Fine-tuning and modifying a pre-trained computer vision object-detection model to detect and classify handwritten marks on documents. I used the Faster R-CNN model from Detectron-v2 framework, and experimented with (1) different pre-training tasks, (2) multi-label formulation, (3) strategies to improve small object detection, and (4) different label sets and datasets. Summer 2021 internship project for Indico Data Solutions, machine learning intern on Research &amp; Development team.
         </blockquote>
+        <div class="cover-image">
+            
+
+
+
+<img src="http://GatiAher.github.io/projects/experiments-in-handwriting-detection-with-faster-r-cnn/cover_hu491f3a7f448df3047e7c085d7496a940_42636_1200x200_fill_box_smart1_2.png" />
+
+
+
+        </div>
         <br>
     </div>
     <ul>
@@ -895,7 +905,7 @@ Create <code>MultilabelFastRCNNOutputs</code> class (extends <code>nn.Module</co
 <p>The default single-label Faster R-CNN model is rather slow and consumes a lot of memory. It takes ~5 minutes to run inference on ~500 documents. Due to its memory requirements, training it on the dev cluster failed a couple of times.</p>
 <p>One potential solution to the memory issue is gradient check-pointing, which is a method used for reducing the memory footprint when training deep neural networks, at the cost of having a small increase in computation time.</p>
 <h2 id="104-find-out-why-all_docs-model-performed-poorly-on-checkbox-detection">10.4 Find Out Why All_Docs Model Performed Poorly on Checkbox Detection</h2>
-<p>The final all_docs model trained on all the documents struggled to detect Filled Checkboxes and Unfilled Checkboxes, even on documents from the Lease PNG dataset. Perhaps more examples of checkboxes are needed?</p>
+<p>The final all_docs model trained on all the documents struggled to detect Filled Checkboxes and Unfilled Checkboxes, even on documents from the Lease PNG dataset.</p>
 
 </article>
 
