@@ -224,9 +224,11 @@ figure {
 figure figcaption {
     margin: 0;
     padding: 0 0.625em;
+    color: var(--gray-color);
     text-align: center;
     font-size: smaller;
-    font-style: italic;
+    font-style: normal;
+    font-weight: bold;
 }
 
 figure img {
@@ -252,6 +254,7 @@ code.has-jax {
     background: inherit !important;
     border: none !important;
     font-size: 100%;
+    font-family: "Hack";
 }
 
 /* ------- markdown formatting end ------- */
