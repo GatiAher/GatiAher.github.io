@@ -82,7 +82,7 @@
 
 </p>
         <blockquote>
-            Fine-tuning and modifying a pre-trained computer vision object-detection model to detect and classify handwritten marks on documents. I used the Faster R-CNN model from Detectron-v2 framework, and experimented with (1) different pre-training tasks, (2) multi-label formulation, (3) strategies to improve small object detection, and (4) different label sets and datasets. Summer 2021 internship project for Indico Data Solutions, machine learning intern on Research &amp; Development team.
+            Fine-tuning and modifying a pre-trained computer vision object-detection model to detect and classify handwritten marks on documents. I used the Faster R-CNN model from Detectron-v2 framework, and experimented with (1) different pre-training tasks, (2) multi-label formulation, (3) strategies to improve small object detection, and (4) different label sets and datasets. Summer 2021 internship project for Indico Data Solutions, Research &amp; Development team.
         </blockquote>
         <div class="cover-image">
             
@@ -111,11 +111,11 @@
 - <a href="#details-on-feature-pyramid-network">Details on Feature Pyramid Network</a>
 - <a href="#region-proposal-network-rpn">Region Proposal Network (RPN)</a>
 - <a href="#rpn-head">RPN Head</a>
-- <a href="#map-ground-truths-to-feature-maps-with-cell-anchors-only-during-training">Map Ground Truths to Feature Maps With Cell Anchors (only during training)</a>
-- <a href="#loss-function-only-during-training">Loss Function (only during training)</a>
+- <a href="#map-ground-truths-to-feature-maps-with-cell-anchors-during-training">Map Ground Truths to Feature Maps With Cell Anchors (during training)</a>
+- <a href="#loss-function-during-training">Loss Function (during training)</a>
 - <a href="#box-proposal-selection">Box Proposal Selection</a>
 - <a href="#roi-head">ROI Head</a>
-- <a href="#re-sampling-and-matching-during-training-only">Re-Sampling and Matching (during training only)</a>
+- <a href="#re-sampling-and-matching-during-training">Re-Sampling and Matching (during training)</a>
 - <a href="#cropping">Cropping</a>
 - <a href="#box-head">Box Head</a>
 - <a href="#loss-calculation">Loss Calculation</a>
@@ -319,7 +319,7 @@
 </ol>
 <p>B stands for batch size, Hi and Wi are height and width of the feature map, and the 3 channels correspond to the three potential classes (“foreground”, “background”, and “ignore”).</p>
 <p>During training, a loss function is used to determine how close RPN Head objectness predictions are to the ground truth boxes. To compare the <code>pred_objectness_logits</code> map and <code>pred_anchor_deltas</code> map to the ground truth boxes, the ground truth boxes have to be mapped to the feature maps.</p>
-<h6 id="map-ground-truths-to-feature-maps-with-cell-anchors-only-during-training">Map Ground Truths to Feature Maps With Cell Anchors (only during training)</h6>
+<h6 id="map-ground-truths-to-feature-maps-with-cell-anchors-during-training">Map Ground Truths to Feature Maps With Cell Anchors (during training)</h6>
 <p>The cell anchor generation step creates <code>objectness_logits</code> (ground truth objectness map) and <code>anchor_deltas</code> (ground truth anchor deltas map) with values at each grid point of the feature map.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># MODEL.ANCHOR_GENERATOR.SIZES = [[32], [64], [128], [256], [512]]</span>
 <span style="color:#75715e"># detectron-v2 applied all the cell anchors to all the feature maps </span>
@@ -331,7 +331,7 @@ MODEL.ANCHOR_GENERATOR.ASPECT_RATIOS = [[<span style="color:#ae81ff">0.5</span>,
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">MODEL.RPN.IOU_THRESHOLDS = [<span style="color:#ae81ff">0.3</span>, <span style="color:#ae81ff">0.7</span>]
 MODEL.RPN.IOU_LABELS = [<span style="color:#ae81ff">0</span>, -<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>]
 </code></pre></div><p>Then <code>anchor_deltas</code> are calculated as the regression parameters (Δx, Δy, Δw, and Δh) between each foreground box and its closest ground truth box.</p>
-<h6 id="loss-function-only-during-training">Loss Function (only during training)</h6>
+<h6 id="loss-function-during-training">Loss Function (during training)</h6>
 <p>Since the majority of generated anchors are going to be of the “background” class, the labels are re-sampled to fix the imbalance and make it easier to learn foreground classes. Then two loss function are applied:</p>
 <ol>
 <li>Objectness Loss: Binary cross entropy loss comparing <code>pred_objectness_logits</code> to foreground <code>objectness_logits</code></li>
@@ -341,7 +341,7 @@ MODEL.RPN.IOU_LABELS = [<span style="color:#ae81ff">0</span>, -<span style="colo
 <p>The RPN applies the <code>pred_anchor_deltas</code>, sorts the predicted boxes by <code>pred_objectness_logits</code>, chooses the top 2,000 boxes from each feature level, applies non-maximum suppression at each level independently, and keeps the surviving 1,000 top-scored region proposal boxes.</p>
 <h5 id="roi-head">ROI Head</h5>
 <p>The ROI Head is a multi-class classifier that receives the backbone network’s feature maps (p2, p3, p4, and p5 &ndash; p6 is not used), the RPN’s box proposals (1,000 top scoring proposal boxes, their objectness_logits are not used), and the ground truth boxes.</p>
-<h6 id="re-sampling-and-matching-during-training-only">Re-Sampling and Matching (during training only)</h6>
+<h6 id="re-sampling-and-matching-during-training">Re-Sampling and Matching (during training)</h6>
 <p>Ground truth boxes are added to the 1,000 RPN boxes. Then the IoU matrix is calculated between the box proposals and the ground truth (with proposals labeled as foreground if they have greater than 0.5 IoU and background otherwise; the added ground truths match themselves perfectly). Finally, the group is re-sampled to balance the proportion of foreground and background proposal boxes.</p>
 <h6 id="cropping">Cropping</h6>
 <p>The ROI pooling process uses the coordinates of the proposal boxes to crop the corresponding rectangular regions of the feature maps. It uses a <a href="https://github.com/facebookresearch/detectron2/blob/4fa6db0f98268b8d47b5e2746d34b59cf8e033d7/detectron2/modeling/poolers.py#L40-L43">level assignment rule</a> to determine which feature map the region of interest (ROI) should be cropped from (ex: the small boxes should crop from p2, big boxes from p5).</p>

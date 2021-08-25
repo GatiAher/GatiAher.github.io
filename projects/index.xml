@@ -17,7 +17,7 @@
       <pubDate>Fri, 20 Aug 2021 10:43:34 -0400</pubDate>
       
       <guid>http://GatiAher.github.io/projects/experiments-in-handwriting-detection-with-faster-r-cnn/</guid>
-      <description>1 INTRODUCTION  1.1 Datasets 1.2 Tough-to-Beat Baseline Model   2 BACKGROUND INFORMATION  2.1 Overview of Detectron-v2&amp;rsquo;s Faster R-CNN with FPN - DataMapper - Backbone Network - Details on Feature Pyramid Network - Region Proposal Network (RPN) - RPN Head - Map Ground Truths to Feature Maps With Cell Anchors (only during training) - Loss Function (only during training) - Box Proposal Selection - ROI Head - Re-Sampling and Matching (during training only) - Cropping - Box Head - Loss Calculation - Inference 2.</description>
+      <description>1 INTRODUCTION  1.1 Datasets 1.2 Tough-to-Beat Baseline Model   2 BACKGROUND INFORMATION  2.1 Overview of Detectron-v2&amp;rsquo;s Faster R-CNN with FPN - DataMapper - Backbone Network - Details on Feature Pyramid Network - Region Proposal Network (RPN) - RPN Head - Map Ground Truths to Feature Maps With Cell Anchors (during training) - Loss Function (during training) - Box Proposal Selection - ROI Head - Re-Sampling and Matching (during training) - Cropping - Box Head - Loss Calculation - Inference 2.</description>
     </item>
     
     <item>
@@ -27,6 +27,15 @@
       
       <guid>http://GatiAher.github.io/projects/data-structures-for-large-scale-information-retrieval/</guid>
       <description>5-minute video overview:    1 INTRODUCTION 2 BACKGROUND INFORMATION  2.1 Inverted Indexes For Fast (Constant Time) Lookup 2.2 Big Document IDs Use a Lot of Space 2.3 An Overview of Compression Codes: Balancing Space Savings and Time Cost   3 ELIAS-FANO COMPRESSION  3.1 Introducing Quasi-Succinct Elias-Fano: Fast, Small and Better than Sequential Decoding 3.2 Speed-Up Elias-Fano with Quantum Skipping 3.3 Review of Elias-Fano   4 PARTITIONED ELIAS-FANO COMPRESSION  4.</description>
+    </item>
+    
+    <item>
+      <title>Bloom for Search From Scratch</title>
+      <link>http://GatiAher.github.io/projects/bloom-for-search-from-scratch/</link>
+      <pubDate>Sat, 08 May 2021 09:35:51 -0400</pubDate>
+      
+      <guid>http://GatiAher.github.io/projects/bloom-for-search-from-scratch/</guid>
+      <description>1 PROJECT GOALS AND RESULTS 2 BLOOM FILTERS  2.1 Demo 1: Bloom filter to spellcheck a query 2.2 Demo 2: Bloom filter to spellcheck a file   3 BIT-SLICED DOCUMENT SIGNATURES  3.1 Demo 3: Information retrieval on xkcd comics transcripts   4 APPENDIX  4.1 Note on Code Design  4.1.1 Bit-wise functions that take advantage of powers of 2 4.1.2 Function pointers for cleaner, reusable code 4.</description>
     </item>
     
     <item>
