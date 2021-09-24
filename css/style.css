@@ -148,7 +148,7 @@ div.highlight pre {
 }
 
 .description {
-    padding: 1rem 0;
+    padding: 1rem 0 0 0;
     font-size: 1rem;
     color: var(--dark-color);
 }

@@ -122,6 +122,8 @@
 
 </div>
 
+<br/>
+
 <article>
 
     <p>Indico provides services to extract information from scanned pdfs. Since their existing OCR + NLP pipeline did not extract handwriting, one of my projects involved creating a solution to detect and classify handwriting using a deep learning computer vision model. I started by fine-tuning upon the Faster R-CNN model from the Detectron-v2 framework. Then I tried to improve upon the baseline performance with (i) different pre-training tasks, (ii) multi-label formulation, (iii) strategies to improve small object detection, and (iv) different label sets and datasets. This report documents my methods and finishes with a class confusion analysis and retrospective.</p>
@@ -134,21 +136,7 @@
 </li>
 <li><a href="#2-background-information">2 BACKGROUND INFORMATION</a>
 <ul>
-<li><a href="#21-overview-of-detectron-v2s-faster-r-cnn-with-fpn">2.1 Overview of Detectron-v2&rsquo;s Faster R-CNN with FPN</a>
-- <a href="#datamapper">DataMapper</a>
-- <a href="#backbone-network">Backbone Network</a>
-- <a href="#details-on-feature-pyramid-network">Details on Feature Pyramid Network</a>
-- <a href="#region-proposal-network-rpn">Region Proposal Network (RPN)</a>
-- <a href="#rpn-head">RPN Head</a>
-- <a href="#map-ground-truths-to-feature-maps-with-cell-anchors-during-training">Map Ground Truths to Feature Maps With Cell Anchors (during training)</a>
-- <a href="#loss-function-during-training">Loss Function (during training)</a>
-- <a href="#box-proposal-selection">Box Proposal Selection</a>
-- <a href="#roi-head">ROI Head</a>
-- <a href="#re-sampling-and-matching-during-training">Re-Sampling and Matching (during training)</a>
-- <a href="#cropping">Cropping</a>
-- <a href="#box-head">Box Head</a>
-- <a href="#loss-calculation">Loss Calculation</a>
-- <a href="#inference">Inference</a></li>
+<li><a href="#21-overview-of-detectron-v2s-faster-r-cnn-with-fpn">2.1 Overview of Detectron-v2&rsquo;s Faster R-CNN with FPN</a></li>
 <li><a href="#22-overview-of-fine-tuning">2.2 Overview of Fine-Tuning</a></li>
 </ul>
 </li>
@@ -204,6 +192,39 @@
 <li><a href="#102-reduce-false-positives-with-explicit-labeling">10.2 Reduce False Positives with Explicit Labeling</a></li>
 <li><a href="#103-reduce-inference-time-and-memory-usage">10.3 Reduce Inference Time and Memory Usage</a></li>
 <li><a href="#104-find-out-why-all_docs-model-performed-poorly-on-checkbox-detection">10.4 Find Out Why All_Docs Model Performed Poorly on Checkbox Detection</a></li>
+</ul>
+</li>
+<li><a href="#11-appendix-faster-rcnn-implementation-details">11 APPENDIX: FASTER-RCNN IMPLEMENTATION DETAILS</a>
+<ul>
+<li><a href="#datamapper">DataMapper</a></li>
+<li><a href="#backbone-network">Backbone Network</a>
+<ul>
+<li><a href="#details-on-feature-pyramid-network">Details on Feature Pyramid Network</a></li>
+</ul>
+</li>
+<li><a href="#region-proposal-network-rpn">Region Proposal Network (RPN)</a>
+<ul>
+<li><a href="#rpn-head">RPN Head</a>
+<ul>
+<li><a href="#map-ground-truths-to-feature-maps-with-cell-anchors-during-training">Map Ground Truths to Feature Maps With Cell Anchors (during training)</a></li>
+<li><a href="#loss-function-during-training">Loss Function (during training)</a></li>
+<li><a href="#box-proposal-selection">Box Proposal Selection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#roi-head">ROI Head</a>
+<ul>
+<li><a href="#re-sampling-and-matching-during-training">Re-Sampling and Matching (during training)</a></li>
+<li><a href="#cropping">Cropping</a></li>
+<li><a href="#box-head">Box Head</a>
+<ul>
+<li><a href="#loss-calculation">Loss Calculation</a></li>
+<li><a href="#inference">Inference</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -298,7 +319,7 @@
 <p>The baseline model performs quite well. The following analysis investigate error modes and attempts to beat the baseline model.</p>
 <h1 id="2-background-information">2 BACKGROUND INFORMATION</h1>
 <h2 id="21-overview-of-detectron-v2s-faster-r-cnn-with-fpn">2.1 Overview of Detectron-v2&rsquo;s Faster R-CNN with FPN</h2>
-<p>Detectron2 is Facebook AI Research’s library for object detection and segmentation algorithms. In this project, I used the Faster R-CNN with Feature Pyramid Network (FPN) architecture, which is the basic multi-scale bounding box detector with high accuracy in detecting tiny to large objects. It has three main parts: Backbone Network, Region Proposal Network, and ROI Head (Box Head). Becoming familiar with the Detectron-v2 framework and the Faster R-CNN with FPN architecture was a major part of my learning experience this summer.</p>
+<p>Detectron2 is Facebook AI Research’s library for object detection and segmentation algorithms. In this project, I used the Faster R-CNN with Feature Pyramid Network (FPN) architecture, which is the basic multi-scale bounding box detector with high accuracy in detecting tiny to large objects. It has three main parts: Backbone Network, Region Proposal Network, and ROI Head (Box Head). Becoming familiar with the Detectron-v2 framework and the Faster R-CNN with FPN architecture was a major part of my learning experience this summer. See the <a href="#11-appendix-faster-rcnn-implementation-details">Appendix</a> for my notes and observations.</p>
 <p><strong>Useful Resources</strong></p>
 <ul>
 <li><a href="https://github.com/facebookresearch/detectron2">Detectron-v2 GitHub Repo</a>
@@ -323,73 +344,6 @@
         </figcaption>
 </figure>
 
-<h5 id="datamapper">DataMapper</h5>
-<p>The DataMapper applies transformations to input images. By default, it rescales the images so they are smaller (so shortest edge is a random choice of (640, 672, 704, 736, 768, 800)), and flips images horizontally.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">[ResizeShortestEdge(short_edge_length=(<span style="color:#ae81ff">640</span>, <span style="color:#ae81ff">672</span>, <span style="color:#ae81ff">704</span>, <span style="color:#ae81ff">736</span>, <span style="color:#ae81ff">768</span>, <span style="color:#ae81ff">800</span>), max_size=<span style="color:#ae81ff">1333</span>, sample_style=<span style="color:#e6db74">&#39;choice&#39;</span>), RandomFlip()]
-</code></pre></div><h5 id="backbone-network">Backbone Network</h5>
-<p>The backbone network receives a transformed input image from the Data Mapper and creates feature maps at various scales by using a Feature Pyramid Network (FPN) and a ResNet. By default, it creates feature maps using 5 strides (S = 4, 8, 16, 32, and 64) called p2, p3, p4, p5, and p6. Each feature map has 256 channels.</p>
-<h6 id="details-on-feature-pyramid-network">Details on Feature Pyramid Network</h6>
-<p>The Feature Pyramid Network is an accurate and fast feature extractor that replaces the default feature extractor of Faster R-CNN. It is composed of a bottom-up pathway (ResNet convolution network for feature extraction) and a top-down pathway (lateral connections for merging high-level semantic features information into lower feature maps to create higher resolution layers)</p>
-<figure>
-    <img src="img/FPN.png"
-         alt="Feature Pyramid Network top-down and bottom-up pathway. (Source: Understanding Feature Pyramid Networks for object detection (FPN))"/> <figcaption>
-            <p>Feature Pyramid Network top-down and bottom-up pathway. (Source: <a href="https://jonathan-hui.medium.com/understanding-feature-pyramid-networks-for-object-detection-fpn-45b227b9106c">Understanding Feature Pyramid Networks for object detection (FPN)</a>)</p>
-        </figcaption>
-</figure>
-
-<h5 id="region-proposal-network-rpn">Region Proposal Network (RPN)</h5>
-<p>The RPN associates the backbone network’s feature maps to ground-truth box locations, uses a binary classifier to determine “objectness score” over the feature maps, and outputs box proposals of regions that probably contain an object. This is where anchors, ground truth locations, and the “objectness” loss functions come into play.</p>
-<h6 id="rpn-head">RPN Head</h6>
-<p>The RPN uses a convolutional neural network (RPN Head) that takes feature maps and ground truth box locations as its inputs. Then it outputs <code>pred_objectness_logits</code> and <code>pred_anchor_deltas</code>.</p>
-<p>For each level of feature map (p2, p3, p4, p5, p6) the RPN Head calculates:</p>
-<ol>
-<li><code>pred_objectness_logits</code> (B, 3 ch, Hi, Wi): probability map of object existence</li>
-<li><code>pred_anchor_deltas</code> (B, 3×4 ch, Hi, Wi): box shape relative to anchors</li>
-</ol>
-<p>B stands for batch size, Hi and Wi are height and width of the feature map, and the 3 channels correspond to the three potential classes (“foreground”, “background”, and “ignore”).</p>
-<p>During training, a loss function is used to determine how close RPN Head objectness predictions are to the ground truth boxes. To compare the <code>pred_objectness_logits</code> map and <code>pred_anchor_deltas</code> map to the ground truth boxes, the ground truth boxes have to be mapped to the feature maps.</p>
-<h6 id="map-ground-truths-to-feature-maps-with-cell-anchors-during-training">Map Ground Truths to Feature Maps With Cell Anchors (during training)</h6>
-<p>The cell anchor generation step creates <code>objectness_logits</code> (ground truth objectness map) and <code>anchor_deltas</code> (ground truth anchor deltas map) with values at each grid point of the feature map.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># MODEL.ANCHOR_GENERATOR.SIZES = [[32], [64], [128], [256], [512]]</span>
-<span style="color:#75715e"># detectron-v2 applied all the cell anchors to all the feature maps </span>
-MODEL.ANCHOR_GENERATOR.SIZES = [[<span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">256</span>, <span style="color:#ae81ff">512</span>]]
-MODEL.ANCHOR_GENERATOR.ASPECT_RATIOS = [[<span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">2.0</span>]]
-</code></pre></div><p>The five elements of the <code>ANCHOR_GENERATOR.SIZES</code> list correspond to five levels of feature maps (P2 to P6). If <code>len(ANCHOR_GENERATOR.SIZES) == 1</code>, then the size <code>ANCHOR_GENERATOR.SIZES[0]</code> cell anchors are applied to each feature map.</p>
-<p>Each cell anchor is applied at each grid point of the feature map at each aspect ratio. For example P2 (stride=4) has one cell anchor whose size is 32, so its anchors cover 4x16 cells, 8x8 cells, and 16x4 cells of the p2 feature map, which translates to regions of 22.6x45.2 pixels, 32x32 pixels, and 45.2x22.6 pixels on the transformed input image).</p>
-<p>Once the anchors are generated, <code>objectness_logits</code> can be calculated. First, the intersections between all the generated anchors and all the ground truth boxes are calculated in a Intersection-over-Union (IoU) Matrix. Generated anchors with intersection greater than 0.7 are labeled foreground (“1”), less than 0.3 are labeled background (“0”), and in between (0.3 &lt; x &lt; 0.7) are labeled ignored (“-1”).</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">MODEL.RPN.IOU_THRESHOLDS = [<span style="color:#ae81ff">0.3</span>, <span style="color:#ae81ff">0.7</span>]
-MODEL.RPN.IOU_LABELS = [<span style="color:#ae81ff">0</span>, -<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>]
-</code></pre></div><p>Then <code>anchor_deltas</code> are calculated as the regression parameters (Δx, Δy, Δw, and Δh) between each foreground box and its closest ground truth box.</p>
-<h6 id="loss-function-during-training">Loss Function (during training)</h6>
-<p>Since the majority of generated anchors are going to be of the “background” class, the labels are re-sampled to fix the imbalance and make it easier to learn foreground classes. Then two loss function are applied:</p>
-<ol>
-<li>Objectness Loss: Binary cross entropy loss comparing <code>pred_objectness_logits</code> to foreground <code>objectness_logits</code></li>
-<li>Localization Loss: L1 loss comparing <code>pred_anchor_deltas</code> to foreground and background <code>anchor_deltas</code></li>
-</ol>
-<h6 id="box-proposal-selection">Box Proposal Selection</h6>
-<p>The RPN applies the <code>pred_anchor_deltas</code>, sorts the predicted boxes by <code>pred_objectness_logits</code>, chooses the top 2,000 boxes from each feature level, applies non-maximum suppression at each level independently, and keeps the surviving 1,000 top-scored region proposal boxes.</p>
-<h5 id="roi-head">ROI Head</h5>
-<p>The ROI Head is a multi-class classifier that receives the backbone network’s feature maps (p2, p3, p4, and p5 &ndash; p6 is not used), the RPN’s box proposals (1,000 top scoring proposal boxes, their objectness_logits are not used), and the ground truth boxes.</p>
-<h6 id="re-sampling-and-matching-during-training">Re-Sampling and Matching (during training)</h6>
-<p>Ground truth boxes are added to the 1,000 RPN boxes. Then the IoU matrix is calculated between the box proposals and the ground truth (with proposals labeled as foreground if they have greater than 0.5 IoU and background otherwise; the added ground truths match themselves perfectly). Finally, the group is re-sampled to balance the proportion of foreground and background proposal boxes.</p>
-<h6 id="cropping">Cropping</h6>
-<p>The ROI pooling process uses the coordinates of the proposal boxes to crop the corresponding rectangular regions of the feature maps. It uses a <a href="https://github.com/facebookresearch/detectron2/blob/4fa6db0f98268b8d47b5e2746d34b59cf8e033d7/detectron2/modeling/poolers.py#L40-L43">level assignment rule</a> to determine which feature map the region of interest (ROI) should be cropped from (ex: the small boxes should crop from p2, big boxes from p5).</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Eqn.(1) in FPN paper</span>
-    level_assignments <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>floor(
-        canonical_level <span style="color:#f92672">+</span> torch<span style="color:#f92672">.</span>log2(box_sizes <span style="color:#f92672">/</span> canonical_box_size <span style="color:#f92672">+</span> eps)
-    )
-</code></pre></div><p>Here eps=4, canonical_box_size=224. So if the proposal box was 224x224, it would be assigned to p4.</p>
-<p>In order to accurately crop the ROI by the proposal boxes which have floating-point coordinates, a method called ROIAlign has been proposed in the Mask R-CNN paper. In Detectron 2, the default pooling method is called ROIAlignV2, which is the slightly modified version of ROIAlign.</p>
-<h6 id="box-head">Box Head</h6>
-<p>The Box Head (FastRCNNConvFCHead) classifies the object within the region of interest and adjusts the box&rsquo;s position and shape. It consists of linear fully-connected (FC) layers and two final box_predictor layers that project the output into a scores tensor (B, 80+1) and a prediction deltas tensor (B, 80x4). In the original ImageNet dataset, there were 80 classes. The “+1” final position indicates the background class.</p>
-<h6 id="loss-calculation">Loss Calculation</h6>
-<p>Two loss functions are applied:</p>
-<ol>
-<li>Classification Loss: Softmax cross entropy loss comparing prediction scores to ground truth class indexes.</li>
-<li>Localization Loss: L1 loss comparing <code>pred_proposal_deltas</code> to foreground <code>gt_proposal_deltas</code></li>
-</ol>
-<h6 id="inference">Inference</h6>
-<p>Just like in the RPN, to get the final output, the ROIHead applies the prediction deltas to get the final box coordinates, filters out low-scoring boxes, uses non-maximum suppression, and returns the top-k results.</p>
 <h2 id="22-overview-of-fine-tuning">2.2 Overview of Fine-Tuning</h2>
 <p>Fine-tuning is a technique that lets you take the weights of a trained neural network (source model) and use it as initialization for a new model (target model) that you want to train on data from the same domain. This technique lets you achieve good performance with a faster training time and small dataset size.</p>
 <p><strong>Useful Resources</strong> - <a href="https://d2l.ai/chapter_computer-vision/fine-tuning.html">Good conceptual understanding of fine-tuning</a></p>
@@ -935,6 +889,75 @@ Create <code>MultilabelFastRCNNOutputs</code> class (extends <code>nn.Module</co
 <p>One potential solution to the memory issue is gradient check-pointing, which is a method used for reducing the memory footprint when training deep neural networks, at the cost of having a small increase in computation time.</p>
 <h2 id="104-find-out-why-all_docs-model-performed-poorly-on-checkbox-detection">10.4 Find Out Why All_Docs Model Performed Poorly on Checkbox Detection</h2>
 <p>The final all_docs model trained on all the documents struggled to detect Filled Checkboxes and Unfilled Checkboxes, even on documents from the Lease PNG dataset.</p>
+<h1 id="11-appendix-faster-rcnn-implementation-details">11 APPENDIX: FASTER-RCNN IMPLEMENTATION DETAILS</h1>
+<p>A large portion of my internship involved understanding how Faster-RCNN worked. In hopes of helping future me (and others) with this task in the future, I have placed my clean and organized notes here.</p>
+<h2 id="datamapper">DataMapper</h2>
+<p>The DataMapper applies transformations to input images. By default, it rescales the images so they are smaller (so shortest edge is a random choice of (640, 672, 704, 736, 768, 800)), and flips images horizontally.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">[ResizeShortestEdge(short_edge_length=(<span style="color:#ae81ff">640</span>, <span style="color:#ae81ff">672</span>, <span style="color:#ae81ff">704</span>, <span style="color:#ae81ff">736</span>, <span style="color:#ae81ff">768</span>, <span style="color:#ae81ff">800</span>), max_size=<span style="color:#ae81ff">1333</span>, sample_style=<span style="color:#e6db74">&#39;choice&#39;</span>), RandomFlip()]
+</code></pre></div><h2 id="backbone-network">Backbone Network</h2>
+<p>The backbone network receives a transformed input image from the Data Mapper and creates feature maps at various scales by using a Feature Pyramid Network (FPN) and a ResNet. By default, it creates feature maps using 5 strides (S = 4, 8, 16, 32, and 64) called p2, p3, p4, p5, and p6. Each feature map has 256 channels.</p>
+<h3 id="details-on-feature-pyramid-network">Details on Feature Pyramid Network</h3>
+<p>The Feature Pyramid Network is an accurate and fast feature extractor that replaces the default feature extractor of Faster R-CNN. It is composed of a bottom-up pathway (ResNet convolution network for feature extraction) and a top-down pathway (lateral connections for merging high-level semantic features information into lower feature maps to create higher resolution layers)</p>
+<figure>
+    <img src="img/FPN.png"
+         alt="Feature Pyramid Network top-down and bottom-up pathway. (Source: Understanding Feature Pyramid Networks for object detection (FPN))"/> <figcaption>
+            <p>Feature Pyramid Network top-down and bottom-up pathway. (Source: <a href="https://jonathan-hui.medium.com/understanding-feature-pyramid-networks-for-object-detection-fpn-45b227b9106c">Understanding Feature Pyramid Networks for object detection (FPN)</a>)</p>
+        </figcaption>
+</figure>
+
+<h2 id="region-proposal-network-rpn">Region Proposal Network (RPN)</h2>
+<p>The RPN associates the backbone network’s feature maps to ground-truth box locations, uses a binary classifier to determine “objectness score” over the feature maps, and outputs box proposals of regions that probably contain an object. This is where anchors, ground truth locations, and the “objectness” loss functions come into play.</p>
+<h3 id="rpn-head">RPN Head</h3>
+<p>The RPN uses a convolutional neural network (RPN Head) that takes feature maps and ground truth box locations as its inputs. Then it outputs <code>pred_objectness_logits</code> and <code>pred_anchor_deltas</code>.</p>
+<p>For each level of feature map (p2, p3, p4, p5, p6) the RPN Head calculates:</p>
+<ol>
+<li><code>pred_objectness_logits</code> (B, 3 ch, Hi, Wi): probability map of object existence</li>
+<li><code>pred_anchor_deltas</code> (B, 3×4 ch, Hi, Wi): box shape relative to anchors</li>
+</ol>
+<p>B stands for batch size, Hi and Wi are height and width of the feature map, and the 3 channels correspond to the three potential classes (“foreground”, “background”, and “ignore”).</p>
+<p>During training, a loss function is used to determine how close RPN Head objectness predictions are to the ground truth boxes. To compare the <code>pred_objectness_logits</code> map and <code>pred_anchor_deltas</code> map to the ground truth boxes, the ground truth boxes have to be mapped to the feature maps.</p>
+<h4 id="map-ground-truths-to-feature-maps-with-cell-anchors-during-training">Map Ground Truths to Feature Maps With Cell Anchors (during training)</h4>
+<p>The cell anchor generation step creates <code>objectness_logits</code> (ground truth objectness map) and <code>anchor_deltas</code> (ground truth anchor deltas map) with values at each grid point of the feature map.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># MODEL.ANCHOR_GENERATOR.SIZES = [[32], [64], [128], [256], [512]]</span>
+<span style="color:#75715e"># detectron-v2 applied all the cell anchors to all the feature maps </span>
+MODEL.ANCHOR_GENERATOR.SIZES = [[<span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">256</span>, <span style="color:#ae81ff">512</span>]]
+MODEL.ANCHOR_GENERATOR.ASPECT_RATIOS = [[<span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">2.0</span>]]
+</code></pre></div><p>The five elements of the <code>ANCHOR_GENERATOR.SIZES</code> list correspond to five levels of feature maps (P2 to P6). If <code>len(ANCHOR_GENERATOR.SIZES) == 1</code>, then the size <code>ANCHOR_GENERATOR.SIZES[0]</code> cell anchors are applied to each feature map.</p>
+<p>Each cell anchor is applied at each grid point of the feature map at each aspect ratio. For example P2 (stride=4) has one cell anchor whose size is 32, so its anchors cover 4x16 cells, 8x8 cells, and 16x4 cells of the p2 feature map, which translates to regions of 22.6x45.2 pixels, 32x32 pixels, and 45.2x22.6 pixels on the transformed input image).</p>
+<p>Once the anchors are generated, <code>objectness_logits</code> can be calculated. First, the intersections between all the generated anchors and all the ground truth boxes are calculated in a Intersection-over-Union (IoU) Matrix. Generated anchors with intersection greater than 0.7 are labeled foreground (“1”), less than 0.3 are labeled background (“0”), and in between (0.3 &lt; x &lt; 0.7) are labeled ignored (“-1”).</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">MODEL.RPN.IOU_THRESHOLDS = [<span style="color:#ae81ff">0.3</span>, <span style="color:#ae81ff">0.7</span>]
+MODEL.RPN.IOU_LABELS = [<span style="color:#ae81ff">0</span>, -<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>]
+</code></pre></div><p>Then <code>anchor_deltas</code> are calculated as the regression parameters (Δx, Δy, Δw, and Δh) between each foreground box and its closest ground truth box.</p>
+<h4 id="loss-function-during-training">Loss Function (during training)</h4>
+<p>Since the majority of generated anchors are going to be of the “background” class, the labels are re-sampled to fix the imbalance and make it easier to learn foreground classes. Then two loss function are applied:</p>
+<ol>
+<li>Objectness Loss: Binary cross entropy loss comparing <code>pred_objectness_logits</code> to foreground <code>objectness_logits</code></li>
+<li>Localization Loss: L1 loss comparing <code>pred_anchor_deltas</code> to foreground and background <code>anchor_deltas</code></li>
+</ol>
+<h4 id="box-proposal-selection">Box Proposal Selection</h4>
+<p>The RPN applies the <code>pred_anchor_deltas</code>, sorts the predicted boxes by <code>pred_objectness_logits</code>, chooses the top 2,000 boxes from each feature level, applies non-maximum suppression at each level independently, and keeps the surviving 1,000 top-scored region proposal boxes.</p>
+<h2 id="roi-head">ROI Head</h2>
+<p>The ROI Head is a multi-class classifier that receives the backbone network’s feature maps (p2, p3, p4, and p5 &ndash; p6 is not used), the RPN’s box proposals (1,000 top scoring proposal boxes, their objectness_logits are not used), and the ground truth boxes.</p>
+<h3 id="re-sampling-and-matching-during-training">Re-Sampling and Matching (during training)</h3>
+<p>Ground truth boxes are added to the 1,000 RPN boxes. Then the IoU matrix is calculated between the box proposals and the ground truth (with proposals labeled as foreground if they have greater than 0.5 IoU and background otherwise; the added ground truths match themselves perfectly). Finally, the group is re-sampled to balance the proportion of foreground and background proposal boxes.</p>
+<h3 id="cropping">Cropping</h3>
+<p>The ROI pooling process uses the coordinates of the proposal boxes to crop the corresponding rectangular regions of the feature maps. It uses a <a href="https://github.com/facebookresearch/detectron2/blob/4fa6db0f98268b8d47b5e2746d34b59cf8e033d7/detectron2/modeling/poolers.py#L40-L43">level assignment rule</a> to determine which feature map the region of interest (ROI) should be cropped from (ex: the small boxes should crop from p2, big boxes from p5).</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Eqn.(1) in FPN paper</span>
+    level_assignments <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>floor(
+        canonical_level <span style="color:#f92672">+</span> torch<span style="color:#f92672">.</span>log2(box_sizes <span style="color:#f92672">/</span> canonical_box_size <span style="color:#f92672">+</span> eps)
+    )
+</code></pre></div><p>Here eps=4, canonical_box_size=224. So if the proposal box was 224x224, it would be assigned to p4.</p>
+<p>In order to accurately crop the ROI by the proposal boxes which have floating-point coordinates, a method called ROIAlign has been proposed in the Mask R-CNN paper. In Detectron 2, the default pooling method is called ROIAlignV2, which is the slightly modified version of ROIAlign.</p>
+<h3 id="box-head">Box Head</h3>
+<p>The Box Head (FastRCNNConvFCHead) classifies the object within the region of interest and adjusts the box&rsquo;s position and shape. It consists of linear fully-connected (FC) layers and two final box_predictor layers that project the output into a scores tensor (B, 80+1) and a prediction deltas tensor (B, 80x4). In the original ImageNet dataset, there were 80 classes. The “+1” final position indicates the background class.</p>
+<h4 id="loss-calculation">Loss Calculation</h4>
+<p>Two loss functions are applied:</p>
+<ol>
+<li>Classification Loss: Softmax cross entropy loss comparing prediction scores to ground truth class indexes.</li>
+<li>Localization Loss: L1 loss comparing <code>pred_proposal_deltas</code> to foreground <code>gt_proposal_deltas</code></li>
+</ol>
+<h4 id="inference">Inference</h4>
+<p>Just like in the RPN, to get the final output, the ROIHead applies the prediction deltas to get the final box coordinates, filters out low-scoring boxes, uses non-maximum suppression, and returns the top-k results.</p>
 
 </article>
 

@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="/css/style.css">
   
   
-  <title>Bloom for Search From Scratch</title>
+  <title>Implementing Fast and Space-Efficient Look-up and Search</title>
   
 
 <script>
@@ -95,7 +95,7 @@
     
 </div>
         <div class="cover-image-text-block">
-            <h1>Bloom for Search From Scratch</h1>
+            <h1>Implementing Fast and Space-Efficient Look-up and Search</h1>
         </div>
     </div>
 
@@ -122,9 +122,13 @@
 
 </div>
 
+<br/>
+
 <article>
 
-    <p>The Bloom filter is a data structure that tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when a start-up I was working for used Bloom filters to speed up their database search. Then, I heard about Microsoft using a stack of bloom filters (a bit-sliced document signature data structure) to speed up the Bing search engine&rsquo;s keyword search. In this project, I explored these interesting data structures by implementing a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and highlights notable code design decisions.</p>
+    <p>The Bloom filter data structure tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when a start-up I was working for used Bloom filters to speed up their database search. Then, I heard about Microsoft using a stack of bloom filters (a bit-sliced document signature data structure) to speed up the Bing search engine&rsquo;s keyword search. In this project, I explored these interesting data structures by implementing a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and highlights notable code design decisions.</p>
+<p><strong>Trello Board:</strong> <a href="https://trello.com/b/xzVRxTDJ/bloomforsearchfromscratch">https://trello.com/b/xzVRxTDJ/bloomforsearchfromscratch</a><br>
+<strong>Code:</strong> <a href="https://github.com/GatiAher/BloomForSearchFromScratch">https://github.com/GatiAher/BloomForSearchFromScratch</a></p>
 <ul>
 <li><a href="#1-project-goals-and-results">1 PROJECT GOALS AND RESULTS</a></li>
 <li><a href="#2-bloom-filters">2 BLOOM FILTERS</a>
@@ -161,8 +165,6 @@
 <p>Thus, in terms of experience goals, I wanted to gain experience designing and using bit-wise operations, structs, function pointers, file pointers, enums, linked lists, Makefiles, writing modular code, and other programming concepts I learned about in class. (See section: <a href="#41-note-on-code-design">4.1 Note on Code Design</a> for more information about my specific coding design decisions).</p>
 <p>My highest bound was implementing some of the optimizations used by Bing search engine&rsquo;s BitFunnel algorithm. However, the BitFunnel algorithm reached its best performance improvements by simply sharding its gigantic corpus intelligently (i.e. binning documents by number of unique terms) so that they could store shorter document signatures in less space but still have precision for larger documents. This design decision makes sense for a production information retrieval system that was already sharding its corpus, but makes less sense for me. Therefore, for this project I pivoted to an actionable upper bound: a set of demos that demonstrate various aspects of Bloom filters and bit-sliced signatures and provide me with an intuition of how to use them.</p>
 <p>Overall, I met the higher bound for this project. I successfully implemented a Bloom filter and bit-sliced signatures, and made some really pretty and fun demos.</p>
-<p>Throughout the project, I updated my progress on this <a href="https://trello.com/b/xzVRxTDJ/bloomforsearchfromscratch">Trello Board</a>.</p>
-<p><strong>Code:</strong> <a href="https://github.com/GatiAher/BloomForSearchFromScratch">https://github.com/GatiAher/BloomForSearchFromScratch</a></p>
 <p><strong>Demo 1:</strong> Bloom filter spellcheck, demonstrate actions of create, add, save, query from stdin, and ability to load and add to previously saved Bloom filter</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make demo_bf_spellcheck
 make demo_bf_spellcheck_w_Gati

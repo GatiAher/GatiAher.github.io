@@ -74,16 +74,17 @@
   <div>
     
     <h1 id="hi-im-gati-welcome-to-my-website">Hi, I&rsquo;m Gati. Welcome to my Website!</h1>
-<p>I am currently studying computer science at <a href="https://www.olin.edu/">Olin College of Engineering</a>, class of 2023.</p>
+<p>I am currently studying computer science at <a href="https://www.olin.edu/">Olin College of Engineering</a>, class of 2023.<br>
+I use this blog to document my software projects, share my data analysis adventures, and reflect upon design processes.</p>
 <h2 id="about-me">About Me</h2>
-<p>I am passionate about constructing impactful data analysis stories, understanding math concepts, and developing software applications. At Olin College, I am working as a student researcher for the Olin Microbiology and Bioinformatics (OMB) Lab and the Olin Satellite + Spectrum Technology &amp; Policy (OSSTP) Group. In my role as lead data analyst, I focus on applications of computational math, effective data visualizations, and statistics.</p>
+<p>I am passionate about constructing impactful data analysis stories and developing software. At Olin College, I am working as a student researcher for the Olin Microbiology and Bioinformatics (OMB) Lab and the Olin Satellite + Spectrum Technology &amp; Policy (OSSTP) Group. In my role as lead data analyst, I focus on applications of computational math, effective data visualizations, and statistics.</p>
 <p>Throughout my career, I have worked in many different areas of software including full-stack application development, cybersecurity, and machine learning. If you are interested in my professional experience, see my <a href="/Gati_Aher_Resume.pdf">CV</a> or my <a href="www.linkedin.com/in/gatiaher">LinkedIn</a>.</p>
 
   </div>
 
   <div>
-    <h2>Featured Work</h2>
     
+    <h2>Featured Work (5) </h2>
     
     <div class="thumbnail-container">
     <div class="category">
@@ -97,7 +98,7 @@
     
 </div>
     <div class="title">
-    <a class="post-link" href="/projects/handwriting-detection-with-faster-r-cnn-plus-experiments/">
+    <a href="/projects/handwriting-detection-with-faster-r-cnn-plus-experiments/">
         Handwriting Detection With Faster R-CNN &#43; Experiments
     </a>
 </div>
@@ -110,7 +111,7 @@
 
 
     <div class="description">
-    <p>Indico provides services to extract information from scanned pdfs. Since their existing OCR + NLP pipeline did not extract handwriting, one of my projects involved creating a solution to detect and classify handwriting using a deep learning computer vision model. I started by fine-tuning upon the Faster R-CNN model from the Detectron-v2 framework. Then I tried to improve upon the baseline performance with (i) different pre-training tasks, (ii) multi-label formulation, (iii) strategies to improve small object detection, and (iv) different label sets and datasets. This report documents my methods and finishes with a class confusion analysis and retrospective.</p>
+    <p>Indico provides services to extract information from scanned pdfs. Since their existing OCR + NLP pipeline did not extract handwriting, one of my projects involved creating a solution to detect and classify handwriting using a deep learning computer vision model. I started by fine-tuning upon the Faster R-CNN model from the Detectron-v2 framework. Then I tried to improve upon the baseline performance with (i) different pre-training tasks, (ii) multi-label formulation, (iii) strategies to improve small object detection, and (iv) different label sets and datasets. This report documents my methods and finishes with a class confusion analysis and retrospective.</p> 
 </div>
     <div class="tags">
     
@@ -142,7 +143,7 @@
     
 </div>
     <div class="title">
-    <a class="post-link" href="/projects/data-structures-for-large-scale-information-retrieval/">
+    <a href="/projects/data-structures-for-large-scale-information-retrieval/">
         Survey of Data Structures and Algorithms for Large Scale Information Retrieval
     </a>
 </div>
@@ -155,7 +156,7 @@
 
 
     <div class="description">
-    <p>A survey of data structures used in large-scale information systems. Covers (i) how the inverted index data structure allows for constant time querying (ii) the need, problems, and clever design details of methods to compress big numbers (focusing on Elias-Fano and Partitioned Elias-Fano), and (iii) BitFunnel, an unusual probabilistic data structure used by the Bing search engine to bypass the curse of inverted index global updates.</p>
+    <p>A survey of data structures used in large-scale information systems. Covers (i) how the inverted index data structure allows for constant time querying (ii) the need, problems, and clever design details of methods to compress big numbers (focusing on Elias-Fano and Partitioned Elias-Fano), and (iii) BitFunnel, an unusual probabilistic data structure used by the Bing search engine to bypass the curse of inverted index global updates.</p> 
 </div>
     <div class="tags">
     
@@ -187,8 +188,8 @@
     
 </div>
     <div class="title">
-    <a class="post-link" href="/projects/bloom-for-search-from-scratch/">
-        Bloom for Search From Scratch
+    <a href="/projects/bloom-for-search-from-scratch/">
+        Implementing Fast and Space-Efficient Look-up and Search
     </a>
 </div>
     
@@ -200,7 +201,9 @@
 
 
     <div class="description">
-    <p>The Bloom filter is a data structure that tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when a start-up I was working for used Bloom filters to speed up their database search. Then, I heard about Microsoft using a stack of bloom filters (a bit-sliced document signature data structure) to speed up the Bing search engine&rsquo;s keyword search. In this project, I explored these interesting data structures by implementing a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and highlights notable code design decisions.</p>
+    <p>The Bloom filter data structure tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when a start-up I was working for used Bloom filters to speed up their database search. Then, I heard about Microsoft using a stack of bloom filters (a bit-sliced document signature data structure) to speed up the Bing search engine&rsquo;s keyword search. In this project, I explored these interesting data structures by implementing a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and highlights notable code design decisions.</p>
+<p><strong>Trello Board:</strong> <a href="https://trello.com/b/xzVRxTDJ/bloomforsearchfromscratch">https://trello.com/b/xzVRxTDJ/bloomforsearchfromscratch</a><br>
+<strong>Code:</strong> <a href="https://github.com/GatiAher/BloomForSearchFromScratch">https://github.com/GatiAher/BloomForSearchFromScratch</a></p> 
 </div>
     <div class="tags">
     
@@ -232,7 +235,7 @@
     
 </div>
     <div class="title">
-    <a class="post-link" href="/projects/eigenfaces-and-out-of-distribution-data/">
+    <a href="/projects/eigenfaces-and-out-of-distribution-data/">
         Eigenfaces and Out of Distribution Data
     </a>
 </div>
@@ -246,7 +249,7 @@
 
     <div class="description">
     <p>I have used multiple variations of Principal Component Analysis (PCA) in my research on microbial community analysis. To explain the core theory and assumptions of PCA to my lab group, I fleshed out an analysis of a toy example (eigenfaces) that I had originally seen in class. This analysis reasons about the assumptions of PCA and the effects of applying it to out-of-distribution data by using PCA to perform facial recognition on a dataset of my classmates&rsquo; faces.</p>
-<p>Fun fact: My research professor recommended my presentation to her connection at Łódź University, Poland, who in turn invited me to be a virtual presenter at Łódź University&rsquo;s SP2021 MathUp conference</p>
+<p>Fun fact: My research professor recommended my presentation to her connection at Łódź University, Poland, who in turn invited me to be a virtual presenter at Łódź University&rsquo;s SP2021 MathUp conference. The conference was an incredibly fun opportunity to meet fellow researchers and data scientists.</p> 
 </div>
     <div class="tags">
     
@@ -290,7 +293,7 @@
     
 </div>
     <div class="title">
-    <a class="post-link" href="/projects/spectral-analysis-of-bacteria-s-layer/">
+    <a href="/projects/spectral-analysis-of-bacteria-s-layer/">
         Spectral Analysis of Bacteria S-Layer
     </a>
 </div>
@@ -303,7 +306,7 @@
 
 
     <div class="description">
-    <p>A Fourier Transform Detective Story! A previous group of research students had tried to use a 2D discrete Fourier Transform to characterize the pattern of repeating protein units on a bacteria surface layer image. Since their spectral graph looked unusually messy and their pattern estimates seemed very wrong, my research professor asked me to take a crack at interpreting and cleaning it. My successful analysis helped the research group complete their paper and publish their findings. This project was a pretty neat application of understanding the mathematical assumptions of a technique to properly isolate and interpret the results.</p>
+    <p>A Fourier Transform Detective Story! A previous group of research students had tried to use a 2D discrete Fourier Transform to characterize the pattern of repeating protein units on a bacteria surface layer image. Since their spectral graph looked unusually messy and their pattern estimates seemed very wrong, my research professor asked me to take a crack at interpreting and cleaning it. My successful analysis helped the research group complete their paper and publish their findings. This project was a pretty neat application of understanding the mathematical assumptions of a technique to properly isolate and interpret the results.</p> 
 </div>
     <div class="tags">
     
@@ -320,51 +323,6 @@
 
 <time class="date" datetime="2021-03-14">Mar 14, 2021</time> &#183
     10 min read
-</div>
-</div>
-    
-    <div class="thumbnail-container">
-    <div class="category">
-    
-    
-    
-    
-    <a class="categories" href="/categories/conceptual-notes">Conceptual Notes</a>
-    
-    
-    
-</div>
-    <div class="title">
-    <a class="post-link" href="/projects/1d-and-2d-fourier-transforms/">
-        1D and 2D Fourier Transforms
-    </a>
-</div>
-    
-
-
-
-<img src="http://GatiAher.github.io/projects/1d-and-2d-fourier-transforms/cover_hu7d720f6dffec37f1db665bf488cf9703_498282_600x0_resize_box_2.png" />
-
-
-
-    <div class="description">
-    <p>Concepts and math behind 1D and 2D discrete Fourier Transforms for signal and image analysis. Overview of mathematical steps, post-processing, assumptions, and reading of phase and magnitude plots.</p>
-</div>
-    <div class="tags">
-    
-    
-    
-    
-    <a class="tags" href="/tags/olin-college-quantitative-engineering-analysis">Olin College: Quantitative Engineering Analysis</a>
-    
-    
-    
-</div>
-    <div class="meta">
-    
-
-<time class="date" datetime="2021-03-03">Mar 3, 2021</time> &#183
-    13 min read
 </div>
 </div>
     
