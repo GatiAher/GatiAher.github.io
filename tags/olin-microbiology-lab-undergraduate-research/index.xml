@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Olin Microbiology Lab (Undergraduate Research) on Gati Aher&#39;s Blog</title>
+    <link>http://GatiAher.github.io/tags/olin-microbiology-lab-undergraduate-research/</link>
+    <description>Recent content in Olin Microbiology Lab (Undergraduate Research) on Gati Aher&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 14 Apr 2021 13:12:04 -0400</lastBuildDate>
+    
+	<atom:link href="http://GatiAher.github.io/tags/olin-microbiology-lab-undergraduate-research/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Eigenfaces and Out of Distribution Data</title>
+      <link>http://GatiAher.github.io/projects/eigenfaces-and-out-of-distribution-data/</link>
+      <pubDate>Wed, 14 Apr 2021 13:12:04 -0400</pubDate>
+      
+      <guid>http://GatiAher.github.io/projects/eigenfaces-and-out-of-distribution-data/</guid>
+      <description>&lt;p&gt;I have used multiple variations of Principal Component Analysis (PCA) in my research on microbial community analysis. To explain the core theory and assumptions of PCA to my lab group, I fleshed out an analysis of a toy example (eigenfaces) that I had originally seen in class. This analysis reasons about the assumptions of PCA and the effects of applying it to out-of-distribution data by using PCA to perform facial recognition on a dataset of my classmates&amp;rsquo; faces.&lt;/p&gt;
+&lt;p&gt;Fun fact: My research professor recommended my presentation to her connection at Łódź University, Poland, who in turn invited me to be a virtual presenter at Łódź University&amp;rsquo;s SP2021 MathUp conference&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Spectral Analysis of Bacteria S-Layer</title>
+      <link>http://GatiAher.github.io/projects/spectral-analysis-of-bacteria-s-layer/</link>
+      <pubDate>Sun, 14 Mar 2021 22:24:10 -0400</pubDate>
+      
+      <guid>http://GatiAher.github.io/projects/spectral-analysis-of-bacteria-s-layer/</guid>
+      <description>&lt;p&gt;A Fourier Transform Detective Story! A previous group of research students had tried to use a 2D discrete Fourier Transform to characterize the pattern of repeating protein units on a bacteria surface layer image. Since their spectral graph looked unusually messy and their pattern estimates seemed very wrong, my research professor asked me to take a crack at interpreting and cleaning it. My successful analysis helped the research group complete their paper and publish their findings. This project was a pretty neat application of understanding the mathematical assumptions of a technique to properly isolate and interpret the results.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -71,10 +71,6 @@
         
 
 
-
-
-
-
 <div class="thumbnail-container">
     <div class="category">
     
@@ -98,13 +94,13 @@
 
 
     <div class="description">
-    Project using computer vision deep learning to detect and classify handwritten information in scanned pdfs. I started by fine-tuning upon the Faster R-CNN model from the Detectron-v2 framework. Then I tried to improve performance with (1) different pre-training tasks, (2) multi-label formulation, (3) strategies to improve small object detection, and (4) different label sets and datasets. Finished with class confusion analysis and a retrospective.
+    <p>Indico provides services to extract information from scanned pdfs. Since their existing OCR + NLP pipeline did not extract handwriting, one of my projects involved creating a solution to detect and classify handwriting using a deep learning computer vision model. I started by fine-tuning upon the Faster R-CNN model from the Detectron-v2 framework. Then I tried to improve upon the baseline performance with (i) different pre-training tasks, (ii) multi-label formulation, (iii) strategies to improve small object detection, and (iv) different label sets and datasets. This report documents my methods and finishes with a class confusion analysis and retrospective.</p>
 </div>
     <div class="tags">
     
     
     
-    <a class="tags" href="/tags/indico-data-solutions-internship">Indico Data Solutions (internship)</a>
+    <a class="tags" href="/tags/indico-data-solutions-intern-rd-&#43;-ml-engineering">Indico Data Solutions (intern: R&amp;D &#43; ML Engineering)</a>
     
     
 </div>
@@ -112,17 +108,22 @@
     
 
 <time class="date" datetime="2021-08-20">Aug 20, 2021</time> &#183
-    36 min read
+    37 min read
 </div>
 </div>
 
 <div class="thumbnail-container">
     <div class="category">
     
+    
+    
+    <a class="category" href="/categories/systems-analysis">Systems Analysis</a>
+    
+    
 </div>
     <div class="title">
     <a class="post-link" href="/projects/data-structures-for-large-scale-information-retrieval/">
-        Data Structures for Large Scale Information Retrieval
+        Survey of Data Structures and Algorithms for Large Scale Information Retrieval
     </a>
 </div>
     
@@ -134,13 +135,13 @@
 
 
     <div class="description">
-    A tour of data structures used in large-scale information systems. Covers (i) inverted index data structure that allows constant time querying, (ii) interesting design details of inverted index compression codes (focusing on Elias-Fano and Partitioned Elias-Fano), and (iii) the use-case of BitFunnel, an unusual probabilistic data structure used by the Bing search engine as an alternative to inverted indexes. Final project for Spring 2021 Data Structures and Algorithms at Olin College.
+    <p>A survey of data structures used in large-scale information systems. Covers (i) how the inverted index data structure allows for constant time querying (ii) the need, problems, and clever design details of methods to compress big numbers (focusing on Elias-Fano and Partitioned Elias-Fano), and (iii) BitFunnel, an unusual probabilistic data structure used by the Bing search engine to bypass the curse of inverted index global updates.</p>
 </div>
     <div class="tags">
     
     
     
-    <a class="tags" href="/tags/data-structures">Data Structures</a>
+    <a class="tags" href="/tags/olin-college-final-project-for-sp2021-data-science-and-algorithms">Olin College: Final Project for SP2021 Data Science and Algorithms</a>
     
     
 </div>
@@ -154,6 +155,14 @@
 
 <div class="thumbnail-container">
     <div class="category">
+    
+    
+    
+    <a class="category" href="/categories/systems-analysis">Systems Analysis</a>
+    
+    
+    <a class="category" href="/categories/software-development">Software Development</a>
+    
     
 </div>
     <div class="title">
@@ -170,13 +179,13 @@
 
 
     <div class="description">
-    In this project I learned about and implemented a Bloom filter and a bit-sliced document signature in C. I also wrote tests to make sure my implementations worked as expected, and fun demos to show how these data structures can be used. Final project for Spring 2021 Software Systems at Olin College of Engineering.
+    <p>The Bloom filter is a data structure that tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when a start-up I was working for used Bloom filters to speed up their database search. Then, I heard about Microsoft using a stack of bloom filters (a bit-sliced document signature data structure) to speed up the Bing search engine&rsquo;s keyword search. In this project, I explored these interesting data structures by implementing a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and highlights notable code design decisions.</p>
 </div>
     <div class="tags">
     
     
     
-    <a class="tags" href="/tags/data-structures">Data Structures</a>
+    <a class="tags" href="/tags/olin-college-final-project-for-sp2021-software-systems-in-c">Olin College: Final Project for SP2021 Software Systems in C</a>
     
     
 </div>
@@ -190,6 +199,11 @@
 
 <div class="thumbnail-container">
     <div class="category">
+    
+    
+    
+    <a class="category" href="/categories/data-analysis">Data Analysis</a>
+    
     
 </div>
     <div class="title">
@@ -206,16 +220,20 @@
 
 
     <div class="description">
-    Facial Recognition on a dataset of my classmates&#39; faces using Principal Component Analysis (PCA). Reasons about the assumptions of PCA and the effects of applying it to out-of-distribution data. Project adapted from  Olin College’s Quantitative Engineering Analysis, presented at Łódź University MathUp 2021 virtual conference.
+    <p>I have used multiple variations of Principal Component Analysis (PCA) in my research on microbial community analysis. To explain the core theory and assumptions of PCA to my lab group, I fleshed out an analysis of a toy example (eigenfaces) that I had originally seen in class. This analysis reasons about the assumptions of PCA and the effects of applying it to out-of-distribution data by using PCA to perform facial recognition on a dataset of my classmates&rsquo; faces.</p>
+<p>Fun fact: My research professor recommended my presentation to her connection at Łódź University, Poland, who in turn invited me to be a virtual presenter at Łódź University&rsquo;s SP2021 MathUp conference</p>
 </div>
     <div class="tags">
     
     
     
-    <a class="tags" href="/tags/pca">PCA</a>
+    <a class="tags" href="/tags/olin-microbiology-lab-undergraduate-research">Olin Microbiology Lab (Undergraduate Research)</a>
     
     
-    <a class="tags" href="/tags/image-processing">Image Processing</a>
+    <a class="tags" href="/tags/olin-college-quantitative-engineering-analysis">Olin College: Quantitative Engineering Analysis</a>
+    
+    
+    <a class="tags" href="/tags/%C5%82%C3%B3d%C5%BA-university-mathup-conference-sp2021">Łódź University MathUp Conference SP2021</a>
     
     
 </div>
@@ -223,12 +241,17 @@
     
 
 <time class="date" datetime="2021-04-14">Apr 14, 2021</time> &#183
-    10 min read
+    11 min read
 </div>
 </div>
 
 <div class="thumbnail-container">
     <div class="category">
+    
+    
+    
+    <a class="category" href="/categories/data-analysis">Data Analysis</a>
+    
     
 </div>
     <div class="title">
@@ -245,19 +268,13 @@
 
 
     <div class="description">
-    Using the 2D Discrete Fourier Transform to identify size and shape of the repeating protein units in a bacteria S-layer. Mini-project for Olin College Spring 2021 microbiology research with Professor Jean Huang.
+    <p>A Fourier Transform Detective Story! A previous group of research students had tried to use a 2D discrete Fourier Transform to characterize the pattern of repeating protein units on a bacteria surface layer image. Since their spectral graph looked unusually messy and their pattern estimates seemed very wrong, my research professor asked me to take a crack at interpreting and cleaning it. My successful analysis helped the research group complete their paper and publish their findings. This project was a pretty neat application of understanding the mathematical assumptions of a technique to properly isolate and interpret the results.</p>
 </div>
     <div class="tags">
     
     
     
-    <a class="tags" href="/tags/image-processing">Image Processing</a>
-    
-    
-    <a class="tags" href="/tags/fourier-transforms">Fourier Transforms</a>
-    
-    
-    <a class="tags" href="/tags/microbiology">Microbiology</a>
+    <a class="tags" href="/tags/olin-microbiology-lab-undergraduate-research">Olin Microbiology Lab (Undergraduate Research)</a>
     
     
 </div>
@@ -265,12 +282,17 @@
     
 
 <time class="date" datetime="2021-03-14">Mar 14, 2021</time> &#183
-    9 min read
+    10 min read
 </div>
 </div>
 
 <div class="thumbnail-container">
     <div class="category">
+    
+    
+    
+    <a class="category" href="/categories/conceptual-notes">Conceptual Notes</a>
+    
     
 </div>
     <div class="title">
@@ -287,16 +309,13 @@
 
 
     <div class="description">
-    Concepts and math behind 1D and 2D discrete Fourier Transforms for signal and image analysis. Overview of mathematical steps, post-processing, assumptions, and reading of phase and magnitude plots.
+    <p>Concepts and math behind 1D and 2D discrete Fourier Transforms for signal and image analysis. Overview of mathematical steps, post-processing, assumptions, and reading of phase and magnitude plots.</p>
 </div>
     <div class="tags">
     
     
     
-    <a class="tags" href="/tags/image-processing">Image Processing</a>
-    
-    
-    <a class="tags" href="/tags/fourier-transforms">Fourier Transforms</a>
+    <a class="tags" href="/tags/olin-college-quantitative-engineering-analysis">Olin College: Quantitative Engineering Analysis</a>
     
     
 </div>
@@ -304,7 +323,7 @@
     
 
 <time class="date" datetime="2021-03-03">Mar 3, 2021</time> &#183
-    12 min read
+    13 min read
 </div>
 </div>
 

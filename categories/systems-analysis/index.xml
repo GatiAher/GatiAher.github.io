@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Systems Analysis on Gati Aher&#39;s Blog</title>
+    <link>http://GatiAher.github.io/categories/systems-analysis/</link>
+    <description>Recent content in Systems Analysis on Gati Aher&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 09 May 2021 21:21:42 -0400</lastBuildDate>
+    
+	<atom:link href="http://GatiAher.github.io/categories/systems-analysis/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Survey of Data Structures and Algorithms for Large Scale Information Retrieval</title>
+      <link>http://GatiAher.github.io/projects/data-structures-for-large-scale-information-retrieval/</link>
+      <pubDate>Sun, 09 May 2021 21:21:42 -0400</pubDate>
+      
+      <guid>http://GatiAher.github.io/projects/data-structures-for-large-scale-information-retrieval/</guid>
+      <description>&lt;p&gt;A survey of data structures used in large-scale information systems. Covers (i) how the inverted index data structure allows for constant time querying (ii) the need, problems, and clever design details of methods to compress big numbers (focusing on Elias-Fano and Partitioned Elias-Fano), and (iii) BitFunnel, an unusual probabilistic data structure used by the Bing search engine to bypass the curse of inverted index global updates.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Bloom for Search From Scratch</title>
+      <link>http://GatiAher.github.io/projects/bloom-for-search-from-scratch/</link>
+      <pubDate>Sat, 08 May 2021 09:35:51 -0400</pubDate>
+      
+      <guid>http://GatiAher.github.io/projects/bloom-for-search-from-scratch/</guid>
+      <description>&lt;p&gt;The Bloom filter is a data structure that tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when a start-up I was working for used Bloom filters to speed up their database search. Then, I heard about Microsoft using a stack of bloom filters (a bit-sliced document signature data structure) to speed up the Bing search engine&amp;rsquo;s keyword search. In this project, I explored these interesting data structures by implementing a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and highlights notable code design decisions.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

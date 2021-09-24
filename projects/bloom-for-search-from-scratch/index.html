@@ -71,7 +71,17 @@
         
 
 <div>
+    
+
     <div class="category">
+    
+    
+    
+    <a class="category" href="/categories/systems-analysis">Systems Analysis</a>
+    
+    
+    <a class="category" href="/categories/software-development">Software Development</a>
+    
     
 </div>
     <div class="cover-image-container">
@@ -90,11 +100,12 @@
         </div>
     </div>
 
+
     <div class="tags">
     
     
     
-    <a class="tags" href="/tags/data-structures">Data Structures</a>
+    <a class="tags" href="/tags/olin-college-final-project-for-sp2021-software-systems-in-c">Olin College: Final Project for SP2021 Software Systems in C</a>
     
     
 </div>
@@ -106,15 +117,14 @@
     21 min read
 </div>
 
+    
+
 </div>
 
 <article>
 
-    <div class="description">
-    In this project I learned about and implemented a Bloom filter and a bit-sliced document signature in C. I also wrote tests to make sure my implementations worked as expected, and fun demos to show how these data structures can be used. Final project for Spring 2021 Software Systems at Olin College of Engineering.
-</div>
-
-    <ul>
+    <p>The Bloom filter is a data structure that tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when a start-up I was working for used Bloom filters to speed up their database search. Then, I heard about Microsoft using a stack of bloom filters (a bit-sliced document signature data structure) to speed up the Bing search engine&rsquo;s keyword search. In this project, I explored these interesting data structures by implementing a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and highlights notable code design decisions.</p>
+<ul>
 <li><a href="#1-project-goals-and-results">1 PROJECT GOALS AND RESULTS</a></li>
 <li><a href="#2-bloom-filters">2 BLOOM FILTERS</a>
 <ul>
@@ -508,7 +518,6 @@ https://xkcd.com/14
 <li>using a stemmer (like <a href="https://tartarus.org/martin/PorterStemmer/">Snowball Stemmer</a>) to break terms down into their root word. In this senario, words with the same root, like &ldquo;running&rdquo;, &ldquo;runs&rdquo;, and &ldquo;ran&rdquo; would all be condensed to &ldquo;run&rdquo; before add and query.</li>
 </ul>
 <p>Frequently a fuzzy keyword search is not desirable because it introduces extra noise. Depending on the preprocessing, which can introduce extra time and resource costs. For this reason, Bing&rsquo;s BitFunnel algorithm does not use stemming.</p>
-
 
 </article>
 

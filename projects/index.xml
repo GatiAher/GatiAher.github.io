@@ -17,16 +17,16 @@
       <pubDate>Fri, 20 Aug 2021 10:43:34 -0400</pubDate>
       
       <guid>http://GatiAher.github.io/projects/handwriting-detection-with-faster-r-cnn-plus-experiments/</guid>
-      <description>1 INTRODUCTION  1.1 Datasets 1.2 Tough-to-Beat Baseline Model   2 BACKGROUND INFORMATION  2.1 Overview of Detectron-v2&amp;rsquo;s Faster R-CNN with FPN - DataMapper - Backbone Network - Details on Feature Pyramid Network - Region Proposal Network (RPN) - RPN Head - Map Ground Truths to Feature Maps With Cell Anchors (during training) - Loss Function (during training) - Box Proposal Selection - ROI Head - Re-Sampling and Matching (during training) - Cropping - Box Head - Loss Calculation - Inference 2.</description>
+      <description>&lt;p&gt;Indico provides services to extract information from scanned pdfs. Since their existing OCR + NLP pipeline did not extract handwriting, one of my projects involved creating a solution to detect and classify handwriting using a deep learning computer vision model. I started by fine-tuning upon the Faster R-CNN model from the Detectron-v2 framework. Then I tried to improve upon the baseline performance with (i) different pre-training tasks, (ii) multi-label formulation, (iii) strategies to improve small object detection, and (iv) different label sets and datasets. This report documents my methods and finishes with a class confusion analysis and retrospective.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Data Structures for Large Scale Information Retrieval</title>
+      <title>Survey of Data Structures and Algorithms for Large Scale Information Retrieval</title>
       <link>http://GatiAher.github.io/projects/data-structures-for-large-scale-information-retrieval/</link>
       <pubDate>Sun, 09 May 2021 21:21:42 -0400</pubDate>
       
       <guid>http://GatiAher.github.io/projects/data-structures-for-large-scale-information-retrieval/</guid>
-      <description>5-minute video overview:    1 INTRODUCTION 2 BACKGROUND INFORMATION  2.1 Inverted Indexes For Fast (Constant Time) Lookup 2.2 Big Document IDs Use a Lot of Space 2.3 An Overview of Compression Codes: Balancing Space Savings and Time Cost   3 ELIAS-FANO COMPRESSION  3.1 Introducing Quasi-Succinct Elias-Fano: Fast, Small and Better than Sequential Decoding 3.2 Speed-Up Elias-Fano with Quantum Skipping 3.3 Review of Elias-Fano   4 PARTITIONED ELIAS-FANO COMPRESSION  4.</description>
+      <description>&lt;p&gt;A survey of data structures used in large-scale information systems. Covers (i) how the inverted index data structure allows for constant time querying (ii) the need, problems, and clever design details of methods to compress big numbers (focusing on Elias-Fano and Partitioned Elias-Fano), and (iii) BitFunnel, an unusual probabilistic data structure used by the Bing search engine to bypass the curse of inverted index global updates.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Sat, 08 May 2021 09:35:51 -0400</pubDate>
       
       <guid>http://GatiAher.github.io/projects/bloom-for-search-from-scratch/</guid>
-      <description>1 PROJECT GOALS AND RESULTS 2 BLOOM FILTERS  2.1 Demo 1: Bloom filter to spellcheck a query 2.2 Demo 2: Bloom filter to spellcheck a file   3 BIT-SLICED DOCUMENT SIGNATURES  3.1 Demo 3: Information retrieval on xkcd comics transcripts   4 APPENDIX  4.1 Note on Code Design  4.1.1 Bit-wise functions that take advantage of powers of 2 4.1.2 Function pointers for cleaner, reusable code 4.</description>
+      <description>&lt;p&gt;The Bloom filter is a data structure that tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when a start-up I was working for used Bloom filters to speed up their database search. Then, I heard about Microsoft using a stack of bloom filters (a bit-sliced document signature data structure) to speed up the Bing search engine&amp;rsquo;s keyword search. In this project, I explored these interesting data structures by implementing a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and highlights notable code design decisions.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -44,7 +44,8 @@
       <pubDate>Wed, 14 Apr 2021 13:12:04 -0400</pubDate>
       
       <guid>http://GatiAher.github.io/projects/eigenfaces-and-out-of-distribution-data/</guid>
-      <description>1 INTRODUCTION  Dataset   2 FACIAL RECOGNITION WITH NEAREST NEIGHBOR DISTANCE  Room for Improvement  PCA Toy Example     3 FACIAL RECOGNITION WITH PCA NEAREST NEIGHBOR DISTANCE  Step 1. Standardize Dataset Step 2. Compute Sample Covariance Matrix from Standardized Train Dataset Step 3. Compute Eigenvectors and Eigenvalues of the Covariance Matrix Step 4. Pick k Eigenvectors Step 5. Project and Reconstruct Dataset onto k Eigenvectors Step 6.</description>
+      <description>&lt;p&gt;I have used multiple variations of Principal Component Analysis (PCA) in my research on microbial community analysis. To explain the core theory and assumptions of PCA to my lab group, I fleshed out an analysis of a toy example (eigenfaces) that I had originally seen in class. This analysis reasons about the assumptions of PCA and the effects of applying it to out-of-distribution data by using PCA to perform facial recognition on a dataset of my classmates&amp;rsquo; faces.&lt;/p&gt;
+&lt;p&gt;Fun fact: My research professor recommended my presentation to her connection at Łódź University, Poland, who in turn invited me to be a virtual presenter at Łódź University&amp;rsquo;s SP2021 MathUp conference&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -53,7 +54,7 @@
       <pubDate>Sun, 14 Mar 2021 22:24:10 -0400</pubDate>
       
       <guid>http://GatiAher.github.io/projects/spectral-analysis-of-bacteria-s-layer/</guid>
-      <description>1 INTRODUCTION 2 BACKGROUND INFORMATION  Bacteria S-Layers FFT In Python Code   3 APPLYING, CLEANING, AND INTERPRETING THE 2D FFT  Step 1. Remove Vertical and Horizontal Pattern Noise Step 2. Identify Key Periodic Frequencies Step 3. Calculate Size and Scale Step 4. Identify Shape Bonus: Visualize the S-Layer Units   4 CONCLUSION  1 INTRODUCTION In 2015-2016, Professor Jean Huang and her research group cultured a phototrophic bacteria from the Little Sippewissett Salt Marsh.</description>
+      <description>&lt;p&gt;A Fourier Transform Detective Story! A previous group of research students had tried to use a 2D discrete Fourier Transform to characterize the pattern of repeating protein units on a bacteria surface layer image. Since their spectral graph looked unusually messy and their pattern estimates seemed very wrong, my research professor asked me to take a crack at interpreting and cleaning it. My successful analysis helped the research group complete their paper and publish their findings. This project was a pretty neat application of understanding the mathematical assumptions of a technique to properly isolate and interpret the results.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -62,7 +63,7 @@
       <pubDate>Wed, 03 Mar 2021 14:22:03 -0400</pubDate>
       
       <guid>http://GatiAher.github.io/projects/1d-and-2d-fourier-transforms/</guid>
-      <description>1 INTRODUCTION 2 1D FOURIER TRANSFORM  Understanding the 1D Math  The DFT-matrix (W) Post Projection Processing   Read the 1D Frequency Plots   3 GENERALIZING TO 2D FOURIER TRANSFORM  Understand the 2D Math Read the 2D Plots Exercises   4 FURTHER READING  1 INTRODUCTION In the 1800s, Joseph Fourier showed that periodic functions could be written as an infinite sum of sinusoids. His theory paved the way for Fourier Analysis, a useful tool for signal and data processing.</description>
+      <description>&lt;p&gt;Concepts and math behind 1D and 2D discrete Fourier Transforms for signal and image analysis. Overview of mathematical steps, post-processing, assumptions, and reading of phase and magnitude plots.&lt;/p&gt;</description>
     </item>
     
   </channel>

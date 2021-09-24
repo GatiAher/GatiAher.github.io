@@ -227,18 +227,23 @@ figure {
     text-align: center;
     border-width: 0.0625em;
     border-style: solid;
-    border-color: var(--bgd-color);
     border-top-left-radius: 0.3125em;
     border-top-right-radius: 0.3125em;
     border-bottom-left-radius: 0.3125em;
     border-bottom-right-radius: 0.3125em;
-    background-color: var(--bgd-color);
+    border-color: var(--neutral-light-color);
+    background-color: var(--light-color);
     ;
+}
+
+
+.no-border {
+    border-width: 0px;
 }
 
 figure figcaption {
     margin: 0;
-    padding: 0 0.625em;
+    padding: 1rem;
     color: var(--gray-color);
     text-align: center;
     font-size: smaller;
@@ -249,6 +254,7 @@ figure figcaption {
 figure img {
     border-color: transparent;
     border-width: 0.0625em;
+    padding: 1rem;
     max-width: 100%;
 }
 

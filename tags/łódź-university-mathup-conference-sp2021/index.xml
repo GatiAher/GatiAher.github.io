@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Łódź University MathUp Conference SP2021 on Gati Aher&#39;s Blog</title>
+    <link>http://GatiAher.github.io/tags/%C5%82%C3%B3d%C5%BA-university-mathup-conference-sp2021/</link>
+    <description>Recent content in Łódź University MathUp Conference SP2021 on Gati Aher&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 14 Apr 2021 13:12:04 -0400</lastBuildDate>
+    
+	<atom:link href="http://GatiAher.github.io/tags/%C5%82%C3%B3d%C5%BA-university-mathup-conference-sp2021/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Eigenfaces and Out of Distribution Data</title>
+      <link>http://GatiAher.github.io/projects/eigenfaces-and-out-of-distribution-data/</link>
+      <pubDate>Wed, 14 Apr 2021 13:12:04 -0400</pubDate>
+      
+      <guid>http://GatiAher.github.io/projects/eigenfaces-and-out-of-distribution-data/</guid>
+      <description>&lt;p&gt;I have used multiple variations of Principal Component Analysis (PCA) in my research on microbial community analysis. To explain the core theory and assumptions of PCA to my lab group, I fleshed out an analysis of a toy example (eigenfaces) that I had originally seen in class. This analysis reasons about the assumptions of PCA and the effects of applying it to out-of-distribution data by using PCA to perform facial recognition on a dataset of my classmates&amp;rsquo; faces.&lt;/p&gt;
+&lt;p&gt;Fun fact: My research professor recommended my presentation to her connection at Łódź University, Poland, who in turn invited me to be a virtual presenter at Łódź University&amp;rsquo;s SP2021 MathUp conference&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

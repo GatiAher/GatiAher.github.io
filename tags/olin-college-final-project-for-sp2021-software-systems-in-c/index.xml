@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Olin College: Final Project for SP2021 Software Systems in C on Gati Aher&#39;s Blog</title>
+    <link>http://GatiAher.github.io/tags/olin-college-final-project-for-sp2021-software-systems-in-c/</link>
+    <description>Recent content in Olin College: Final Project for SP2021 Software Systems in C on Gati Aher&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 08 May 2021 09:35:51 -0400</lastBuildDate>
+    
+	<atom:link href="http://GatiAher.github.io/tags/olin-college-final-project-for-sp2021-software-systems-in-c/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Bloom for Search From Scratch</title>
+      <link>http://GatiAher.github.io/projects/bloom-for-search-from-scratch/</link>
+      <pubDate>Sat, 08 May 2021 09:35:51 -0400</pubDate>
+      
+      <guid>http://GatiAher.github.io/projects/bloom-for-search-from-scratch/</guid>
+      <description>&lt;p&gt;The Bloom filter is a data structure that tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when a start-up I was working for used Bloom filters to speed up their database search. Then, I heard about Microsoft using a stack of bloom filters (a bit-sliced document signature data structure) to speed up the Bing search engine&amp;rsquo;s keyword search. In this project, I explored these interesting data structures by implementing a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and highlights notable code design decisions.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

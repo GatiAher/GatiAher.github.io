@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Olin College: Final Project for SP2021 Data Science and Algorithms on Gati Aher&#39;s Blog</title>
+    <link>http://GatiAher.github.io/tags/olin-college-final-project-for-sp2021-data-science-and-algorithms/</link>
+    <description>Recent content in Olin College: Final Project for SP2021 Data Science and Algorithms on Gati Aher&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 09 May 2021 21:21:42 -0400</lastBuildDate>
+    
+	<atom:link href="http://GatiAher.github.io/tags/olin-college-final-project-for-sp2021-data-science-and-algorithms/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Survey of Data Structures and Algorithms for Large Scale Information Retrieval</title>
+      <link>http://GatiAher.github.io/projects/data-structures-for-large-scale-information-retrieval/</link>
+      <pubDate>Sun, 09 May 2021 21:21:42 -0400</pubDate>
+      
+      <guid>http://GatiAher.github.io/projects/data-structures-for-large-scale-information-retrieval/</guid>
+      <description>&lt;p&gt;A survey of data structures used in large-scale information systems. Covers (i) how the inverted index data structure allows for constant time querying (ii) the need, problems, and clever design details of methods to compress big numbers (focusing on Elias-Fano and Partitioned Elias-Fano), and (iii) BitFunnel, an unusual probabilistic data structure used by the Bing search engine to bypass the curse of inverted index global updates.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
