@@ -53,7 +53,11 @@
             
             
             
-            <a class="nav-link" href="/projects"><i data-feather="archive"></i> Projects</a>
+            <a class="nav-link" href="/projects"><i data-feather="archive"></i> All Projects</a>
+            
+            
+            
+            <a class="nav-link" href="/tags"><i data-feather="tag"></i> Tags</a>
             
             
             
@@ -66,37 +70,50 @@
     <main id="main" class="container">
         
 
-<article>
-    <div>
-        <h1>Bloom for Search From Scratch</h1>
-        <p class="post-meta">
+<div>
+    <div class="category">
     
-
-<time class="date" datetime="2021-05-08">May 8, 2021</time>
-    by Gati Aher
-    &#183 21 min read
+</div>
+    <div class="cover-image-container">
+        <div class="cover-image-container">
     
-
-
-<a class="post-tag" href="/tags/data-structures">Data Structures</a>
-
-
-</p>
-        <blockquote>
-            In this project I learned about and implemented a Bloom filter and a bit-sliced document signature in C. I also wrote tests to make sure my implementations worked as expected, and fun demos to show how these data structures can be used. Final project for Spring 2021 Software Systems at Olin College of Engineering.
-        </blockquote>
-        <div class="cover-image">
-            
-
-
-
-<img src="http://GatiAher.github.io/projects/bloom-for-search-from-scratch/cover_hu0f91228d5d0adbab46e67dc7786f6340_336417_1200x200_fill_box_smart1_2.png" />
-
-
-
+    
+    
+    
+    <img src="http://GatiAher.github.io/projects/bloom-for-search-from-scratch/cover_hu0f91228d5d0adbab46e67dc7786f6340_336417_882b1659f08ba06f2cdebc831f63c6ea.png" />
+    
+    
+    
+</div>
+        <div class="cover-image-text-block">
+            <h1>Bloom for Search From Scratch</h1>
         </div>
-        <br>
     </div>
+
+    <div class="tags">
+    
+    
+    
+    <a class="tags" href="/tags/data-structures">Data Structures</a>
+    
+    
+</div>
+    <div class="meta">
+    By Gati Aher &#183
+    
+
+<time class="date" datetime="2021-05-08">May 8, 2021</time> &#183
+    21 min read
+</div>
+
+</div>
+
+<article>
+
+    <div class="description">
+    In this project I learned about and implemented a Bloom filter and a bit-sliced document signature in C. I also wrote tests to make sure my implementations worked as expected, and fun demos to show how these data structures can be used. Final project for Spring 2021 Software Systems at Olin College of Engineering.
+</div>
+
     <ul>
 <li><a href="#1-project-goals-and-results">1 PROJECT GOALS AND RESULTS</a></li>
 <li><a href="#2-bloom-filters">2 BLOOM FILTERS</a>
@@ -491,6 +508,7 @@ https://xkcd.com/14
 <li>using a stemmer (like <a href="https://tartarus.org/martin/PorterStemmer/">Snowball Stemmer</a>) to break terms down into their root word. In this senario, words with the same root, like &ldquo;running&rdquo;, &ldquo;runs&rdquo;, and &ldquo;ran&rdquo; would all be condensed to &ldquo;run&rdquo; before add and query.</li>
 </ul>
 <p>Frequently a fuzzy keyword search is not desirable because it introduces extra noise. Depending on the preprocessing, which can introduce extra time and resource costs. For this reason, Bing&rsquo;s BitFunnel algorithm does not use stemming.</p>
+
 
 </article>
 

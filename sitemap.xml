@@ -8,22 +8,17 @@
   </url>
   
   <url>
-    <loc>http://GatiAher.github.io/tags/deep-learning/</loc>
+    <loc>http://GatiAher.github.io/categories/deep-learning/</loc>
     <lastmod>2021-08-20T10:43:34-04:00</lastmod>
   </url>
   
   <url>
-    <loc>http://GatiAher.github.io/projects/experiments-in-handwriting-detection-with-faster-r-cnn/</loc>
+    <loc>http://GatiAher.github.io/projects/handwriting-detection-with-faster-r-cnn-plus-experiments/</loc>
     <lastmod>2021-08-20T10:43:34-04:00</lastmod>
   </url>
   
   <url>
-    <loc>http://GatiAher.github.io/tags/image-processing/</loc>
-    <lastmod>2021-08-20T10:43:34-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://GatiAher.github.io/categories/internship-work/</loc>
+    <loc>http://GatiAher.github.io/tags/indico-data-solutions-internship/</loc>
     <lastmod>2021-08-20T10:43:34-04:00</lastmod>
   </url>
   
@@ -65,6 +60,11 @@
   
   <url>
     <loc>http://GatiAher.github.io/projects/eigenfaces-and-out-of-distribution-data/</loc>
+    <lastmod>2021-04-14T13:12:04-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://GatiAher.github.io/tags/image-processing/</loc>
     <lastmod>2021-04-14T13:12:04-04:00</lastmod>
   </url>
   
