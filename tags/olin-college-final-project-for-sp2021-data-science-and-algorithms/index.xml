@@ -12,12 +12,18 @@
     
     
     <item>
-      <title>Survey of Data Structures and Algorithms for Large Scale Information Retrieval</title>
-      <link>http://GatiAher.github.io/projects/data-structures-for-large-scale-information-retrieval/</link>
+      <title>Survey of Data Structures for Large Scale Information Retrieval</title>
+      <link>http://GatiAher.github.io/projects/survey-of-data-structures-for-large-scale-information-retrieval/</link>
       <pubDate>Sun, 09 May 2021 21:21:42 -0400</pubDate>
       
-      <guid>http://GatiAher.github.io/projects/data-structures-for-large-scale-information-retrieval/</guid>
-      <description>&lt;p&gt;A survey of data structures used in large-scale information systems. Covers (i) how the inverted index data structure allows for constant time querying (ii) the need, problems, and clever design details of methods to compress big numbers (focusing on Elias-Fano and Partitioned Elias-Fano), and (iii) BitFunnel, an unusual probabilistic data structure used by the Bing search engine to bypass the curse of inverted index global updates.&lt;/p&gt;</description>
+      <guid>http://GatiAher.github.io/projects/survey-of-data-structures-for-large-scale-information-retrieval/</guid>
+      <description>&lt;p&gt;A survey of data structures used in large-scale information systems. Covers (i) how the inverted index data structure allows for constant time querying (ii) the need, problems, and clever design details of methods to compress big numbers (focusing on Elias-Fano and Partitioned Elias-Fano), and (iii) BitFunnel, an unusual probabilistic data structure used by the Bing search engine to bypass the curse of inverted index global updates.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5-minute video summary&lt;/strong&gt;:
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/UN6_yzZyczE&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;/p&gt;</description>
     </item>
     
   </channel>
