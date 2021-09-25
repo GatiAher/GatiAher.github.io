@@ -9,16 +9,14 @@
     --light-color: #ffffff;
     --dark-color: #1c1d22;
     /* high contrast color */
-    --neutral-dark-color: #777777;
-    --neutral-light-color: #f0f0f0;
+    --neutral-dark-color: #585656;
+    --neutral-light-color: #afacac;
     /* highlight: cool */
-    --highlight-cool-color: #0466c8;
-    --highlight-cool-light-color: #98c1d9;
-    --highlight-cool-dark-color: #001845;
+    --highlight-cool-color: #1c7ff2;
     /* highlight: warm */
-    --highlight-warm-color: #e36414;
-    --highlight-warm-light-color: #eaac8b;
-    --highlight-warm-dark-color: #b56576;
+    --highlight-warm-color: #ff7d00;
+    /* highlight: code */
+    --highlight-code-color: #321F2A;
 }
 
 /* ------- basic styling ------- */
@@ -74,6 +72,29 @@ blockquote {
     font-weight: 400;
 }
 
+a {
+    color: var(--dark-color);
+    -webkit-text-decoration-color: var(--highlight-cool-color);
+    text-decoration: underline solid var(--highlight-cool-color);
+    text-decoration-thickness: 0.1rem;
+    text-underline-offset: 25%;
+}
+
+a:hover {
+    -webkit-text-decoration-color: var(--highlight-cool-color);
+    text-decoration: underline solid var(--highlight-cool-color);
+    text-decoration-thickness: 0.1rem;
+}
+
+.selective-underline {
+    text-decoration: none;
+}
+
+.selective-underline:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 0.1rem;
+}
+
 h1, h2, h3, h4, h5, h6, p, blockquote, pre, ul, ol, dl, figure {
     margin-bottom: 1rem;
 }
@@ -97,7 +118,7 @@ div.highlight pre {
 }
 
 .site-header a:hover {
-    color: var(--highlight-cool-light-color);
+    color: var(--highlight-cool-color);
 }
 
 .bar {
@@ -145,7 +166,7 @@ div.highlight pre {
 }
 
 .site-footer a:hover {
-    color: var(--highlight-cool-light-color);
+    color: var(--highlight-cool-color);
 }
 
 /* ------- site end ------- */
@@ -155,15 +176,15 @@ div.highlight pre {
 .thumbnail-container {
     border: 2px solid var(--neutral-light-color);
     border-radius: 15px;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     padding: 1em;
 }
 
 .category a {
-    font-size: 1rem;
-    font-weight: bold;
     color: var(--highlight-cool-color);
     text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
 .category_list_heading {
@@ -172,9 +193,9 @@ div.highlight pre {
 }
 
 .title a {
+    color: var(--dark-color);
     font-size: 1.3rem;
     font-weight: bold;
-    color: var(--dark-color);
 }
 
 .description {
@@ -184,10 +205,10 @@ div.highlight pre {
 }
 
 .tags a {
-    font-size: 0.9rem;
-    font-weight: bold;
     color: var(--highlight-warm-color);
     text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: bold;
 }
 
 .tag_list_heading {
