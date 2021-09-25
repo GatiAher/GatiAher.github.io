@@ -116,7 +116,7 @@ I use this blog to document my software projects, share my data analysis adventu
 
 
     <div class="description">
-    <p><a href="https://indico.io/">Indico Data Solutions</a> provides services to extract information from scanned pdfs. Since their existing OCR + NLP pipeline did not extract handwriting, one of my internship projects involved creating a robust solution to detect and classify handwriting using a deep learning computer vision model. I started by fine-tuning upon the Faster R-CNN model from the Detectron-v2 framework. Then I tried to improve upon the baseline performance with (i) different pre-training tasks, (ii) multi-label formulation, (iii) strategies to improve small object detection, and (iv) different label sets and datasets. This report documents my methods and finishes with a class confusion analysis and retrospective.</p> 
+    <p><a href="https://indico.io/">Indico Data Solutions</a> provides services to extract information from scanned pdfs. Since their existing OCR + NLP pipeline did not extract handwriting, one of my internship projects involved creating a robust solution to detect and classify handwriting using a deep learning computer vision model. I started by fine-tuning upon the <a href="https://arxiv.org/abs/1506.01497">Faster R-CNN model</a> from the <a href="https://github.com/facebookresearch/detectron2">Detectron-v2 framework</a>. Then I tried to improve upon the baseline performance with (i) different pre-training tasks, (ii) multi-label formulation, (iii) strategies to improve small object detection, and (iv) different label sets and datasets. This report documents my methods and finishes with a class confusion analysis and retrospective.</p> 
 </div>
     <div class="tags">
     
@@ -212,7 +212,7 @@ I use this blog to document my software projects, share my data analysis adventu
 
 
     <div class="description">
-    <p>The Bloom filter data structure tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when a start-up I was working for used Bloom filters to speed up their database search. Then, I heard about Microsoft using a stack of bloom filters (a bit-sliced document signature data structure) to speed up the Bing search engine&rsquo;s keyword search. In this project, I explored these interesting data structures by implementing a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and highlights notable code design decisions.</p>
+    <p>The Bloom filter data structure tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when a start-up I was working for used Bloom filters to speed up their database search. Then, I heard about Microsoft using a stack of Bloom filters (a bit-sliced document signature data structure) to <a href="https://dl.acm.org/doi/10.1145/3077136.3080789">speed up the Bing search engine&rsquo;s keyword search</a>. In this project, I explored these interesting data structures by implementing a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and highlights notable code design decisions.</p>
 <p>All code is available in my <a href="https://github.com/GatiAher/BloomForSearchFromScratch">GitHub Repo</a>. I documented my progress on this <a href="https://trello.com/b/xzVRxTDJ/bloomforsearchfromscratch">Trello Board</a></p> 
 </div>
     <div class="tags">
@@ -259,7 +259,7 @@ I use this blog to document my software projects, share my data analysis adventu
 
     <div class="description">
     <p>I have used multiple variations of Principal Component Analysis (PCA) in my research on microbial community analysis. To explain the core theory and assumptions of PCA to my lab group, I fleshed out an analysis of a toy example (eigenfaces) that I had originally seen in class. This analysis reasons about the assumptions of PCA and the effects of applying it to out-of-distribution data by using PCA to perform facial recognition on a dataset of my classmates&rsquo; faces.</p>
-<p>Fun fact: My research professor recommended my presentation to her connection at Łódź University, Poland, who in turn invited me to be a virtual presenter at Łódź University&rsquo;s SP2021 MathUp conference. The conference was an incredibly fun opportunity to meet fellow researchers and data scientists.</p> 
+<p>Fun fact: My research professor recommended my presentation to her connection at Łódź University, Poland, who in turn invited me to be a virtual presenter at <a href="https://ms-my.facebook.com/MathUpConference/photos/because-the-mathup-conference-is-conducted-in-both-polish-and-english-another-du/2805409529774282">Łódź University&rsquo;s SP2021 MathUp conference</a>. The conference was an incredibly fun opportunity to meet fellow researchers and data scientists.</p> 
 </div>
     <div class="tags">
     
