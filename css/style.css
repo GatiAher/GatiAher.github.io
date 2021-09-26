@@ -73,28 +73,26 @@ blockquote {
 }
 
 a, a:hover {
-    text-decoration-line: underline;
-    -webkit-text-decoration-line: underline;
-    text-decoration-color: var(--highlight-cool-color);
-    -webkit-text-decoration-color: var(--highlight-cool-color);
-    text-decoration: underline solid var(--highlight-cool-color);
-    text-decoration-style: solid;
-    -webkit-text-decoration-style: solid;
-    text-decoration-thickness: 0.2rem;
-    text-underline-offset: 20%;
+    border-bottom: 2px solid var(--highlight-cool-color);
+    text-decoration: none;
 }
 
 a {
     color: var(--dark-color);
 }
 
+a:hover {
+    color: var(--highlight-cool-color);
+}
+
 .selective-underline {
+    border-bottom: none;
     text-decoration: none;
 }
 
 .selective-underline:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 0.1rem;
+    border-bottom: 2px solid var(--highlight-cool-color);
+    text-decoration: none;
 }
 
 h1, h2, h3, h4, h5, h6, p, blockquote, pre, ul, ol, dl, figure {
@@ -115,6 +113,7 @@ div.highlight pre {
 }
 
 .site-header a {
+    border-bottom: none;
     text-decoration: none;
     color: inherit;
 }
@@ -182,8 +181,9 @@ div.highlight pre {
     padding: 1em;
 }
 
-.category a {
+.category a, .category a:hover {
     color: var(--highlight-cool-color);
+    border-color: var(--highlight-cool-color);
     text-transform: uppercase;
     font-size: 1rem;
     font-weight: bold;
@@ -194,8 +194,9 @@ div.highlight pre {
     text-transform: uppercase;
 }
 
-.title a {
+.title a, .title a:hover {
     color: var(--dark-color);
+    border-color: var(--dark-color);
     font-size: 1.3rem;
     font-weight: bold;
 }
@@ -206,8 +207,9 @@ div.highlight pre {
     color: var(--dark-color);
 }
 
-.tags a {
+.tags a, .tags a:hover {
     color: var(--highlight-warm-color);
+    border-color: var(--highlight-warm-color);
     text-transform: uppercase;
     font-size: 0.9rem;
     font-weight: bold;
