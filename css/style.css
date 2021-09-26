@@ -72,18 +72,20 @@ blockquote {
     font-weight: 400;
 }
 
-a {
-    color: var(--dark-color);
+a, a:hover {
+    text-decoration-line: underline;
+    -webkit-text-decoration-line: underline;
+    text-decoration-color: var(--highlight-cool-color);
     -webkit-text-decoration-color: var(--highlight-cool-color);
     text-decoration: underline solid var(--highlight-cool-color);
-    text-decoration-thickness: 0.1rem;
-    text-underline-offset: 25%;
+    text-decoration-style: solid;
+    -webkit-text-decoration-style: solid;
+    text-decoration-thickness: 0.2rem;
+    text-underline-offset: 20%;
 }
 
-a:hover {
-    -webkit-text-decoration-color: var(--highlight-cool-color);
-    text-decoration: underline solid var(--highlight-cool-color);
-    text-decoration-thickness: 0.1rem;
+a {
+    color: var(--dark-color);
 }
 
 .selective-underline {
