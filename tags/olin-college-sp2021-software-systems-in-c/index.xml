@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Software Development on Gati Aher&#39;s Blog</title>
-    <link>http://GatiAher.github.io/categories/software-development/</link>
-    <description>Recent content in Software Development on Gati Aher&#39;s Blog</description>
+    <title>Olin College: SP2021 Software Systems in C on Gati Aher&#39;s Blog</title>
+    <link>http://GatiAher.github.io/tags/olin-college-sp2021-software-systems-in-c/</link>
+    <description>Recent content in Olin College: SP2021 Software Systems in C on Gati Aher&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 28 Sep 2021 21:10:34 -0400</lastBuildDate>
+    <lastBuildDate>Sat, 08 May 2021 09:35:51 -0400</lastBuildDate>
     
-	<atom:link href="http://GatiAher.github.io/categories/software-development/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://GatiAher.github.io/tags/olin-college-sp2021-software-systems-in-c/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Making a Pan-Tilt Scanner</title>
-      <link>http://GatiAher.github.io/projects/making-a-pan-tilt-scanner/</link>
-      <pubDate>Tue, 28 Sep 2021 21:10:34 -0400</pubDate>
-      
-      <guid>http://GatiAher.github.io/projects/making-a-pan-tilt-scanner/</guid>
-      <description></description>
-    </item>
     
     <item>
       <title>Implementing Fast and Space-Efficient Look-up and Search</title>
