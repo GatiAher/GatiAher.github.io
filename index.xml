@@ -12,12 +12,12 @@
     
     
     <item>
-      <title>Making a Pan-Tilt Scanner</title>
-      <link>http://GatiAher.github.io/projects/making-a-pan-tilt-scanner/</link>
+      <title>Building a Pan-Tilt 3D Scanner</title>
+      <link>http://GatiAher.github.io/projects/building-a-pan-tilt-3d-scanner/</link>
       <pubDate>Tue, 28 Sep 2021 21:10:34 -0400</pubDate>
       
-      <guid>http://GatiAher.github.io/projects/making-a-pan-tilt-scanner/</guid>
-      <description></description>
+      <guid>http://GatiAher.github.io/projects/building-a-pan-tilt-3d-scanner/</guid>
+      <description>&lt;p&gt;My team built a servo-driven pan-tilt mount for an infrared proximity sensor. To demonstrate the functionality of our design, we created a 3D scan of a cardboard letter cut in a Z shape. This project involved (1) designing and 3D-printing a pan-tilt servo and IR sensor, (2) programming an arduino to collect scan data, (3) projecting data from spherical coordinates into cartesian coordinates. I was responsible for the CAD mechanical design and making the 3D data projection and visualization.&lt;/p&gt;</description>
     </item>
     
     <item>

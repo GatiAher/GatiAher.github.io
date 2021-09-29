@@ -95,7 +95,13 @@ a:hover {
     text-decoration: none;
 }
 
+.no-underline .no-underline:hover {
+    border-bottom: none;
+    text-decoration: none;
+}
+
 h1, h2, h3, h4, h5, h6, p, blockquote, pre, ul, ol, dl, figure {
+    margin-bottom: 2rem;
     margin-bottom: 1rem;
 }
 
@@ -174,6 +180,23 @@ div.highlight pre {
 
 /* ------- post ------- */
 
+.tag-buttons {
+    margin-bottom: 1rem;
+}
+
+.tag-buttons p {
+    margin: 0.25rem;
+}
+
+.tag-buttons a {
+    margin: 0.25rem;
+    border: 1px solid var(--dark-color);
+}
+
+/* .btn-tag .btn-tag:hover {
+    margin-top: 1rem;
+} */
+
 .thumbnail-container {
     border: 2px solid var(--neutral-light-color);
     border-radius: 15px;
@@ -189,7 +212,7 @@ div.highlight pre {
     font-weight: bold;
 }
 
-.category_list_heading {
+.category-list-heading {
     color: var(--highlight-cool-color);
     text-transform: uppercase;
 }
@@ -215,7 +238,7 @@ div.highlight pre {
     font-weight: bold;
 }
 
-.tag_list_heading {
+.tag-list-heading {
     color: var(--highlight-warm-color);
     text-transform: uppercase;
 }
