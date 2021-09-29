@@ -117,7 +117,7 @@
     
 
 <time class="date" datetime="2021-09-28">Sep 28, 2021</time> &#183
-    5 min read
+    6 min read
 </div>
 
     
@@ -245,7 +245,16 @@ df <span style="color:#f92672">=</span> df[:<span style="color:#f92672">-</span>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># convert sensor measurement (x) to distance (d)</span>
 <span style="color:#75715e"># y = Cx^-1 (Power Law)</span>
 df[<span style="color:#e6db74">&#34;distance&#34;</span>] <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> row: <span style="color:#ae81ff">10964</span> <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>row[<span style="color:#e6db74">&#34;ir_read&#34;</span>]), axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
-</code></pre></div><h2 id="3-accounting-for-servo-motor-offsets">3. Accounting for Servo Motor Offsets</h2>
+</code></pre></div><p>To test the validity of the curve, we took a series of test points and compared their real distance to the distances predicted by the fitted power-curve equation.</p>
+<figure>
+    <img src="img/error_curve.png"
+         alt="(left) plot of test comparing actual and predicted distances for test infrared sensor output voltage readings; (right) differences between pairs of actual and predicted distances."/> <figcaption>
+            <p>(left) plot of test comparing actual and predicted distances for test infrared sensor output voltage readings; (right) differences between pairs of actual and predicted distances.</p>
+        </figcaption>
+</figure>
+
+<p>The scanner has lowest noise error in the 30cm - 60cm range.</p>
+<h2 id="3-accounting-for-servo-motor-offsets">3. Accounting for Servo Motor Offsets</h2>
 <p>The 0-180 degree ranges of the servo motors were not perfectly aligned with the global axes. Therefore, an offset needs to be accounted for when converting pwm signals to degrees measurements.</p>
 <figure>
     <img src="img/servo_offsets.png"
