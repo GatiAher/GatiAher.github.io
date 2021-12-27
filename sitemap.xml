@@ -3,12 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://GatiAher.github.io/projects/building-a-pan-tilt-3d-scanner/</loc>
-    <lastmod>2021-09-28T21:10:34-04:00</lastmod>
+    <loc>http://GatiAher.github.io/categories/</loc>
+    <lastmod>2021-12-26T23:23:16-05:00</lastmod>
   </url>
   
   <url>
-    <loc>http://GatiAher.github.io/categories/</loc>
+    <loc>http://GatiAher.github.io/categories/conceptual-notes/</loc>
+    <lastmod>2021-12-26T23:23:16-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://GatiAher.github.io/tags/olin-college-discrete-mathematics/</loc>
+    <lastmod>2021-12-26T23:23:16-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://GatiAher.github.io/projects/procedural-graph-generation-for-more-realistic-simulations/</loc>
+    <lastmod>2021-12-26T23:23:16-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://GatiAher.github.io/projects/</loc>
+    <lastmod>2021-12-26T23:23:16-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://GatiAher.github.io/tags/</loc>
+    <lastmod>2021-12-26T23:23:16-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://GatiAher.github.io/projects/building-a-pan-tilt-3d-scanner/</loc>
     <lastmod>2021-09-28T21:10:34-04:00</lastmod>
   </url>
   
@@ -18,17 +43,7 @@
   </url>
   
   <url>
-    <loc>http://GatiAher.github.io/projects/</loc>
-    <lastmod>2021-09-28T21:10:34-04:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://GatiAher.github.io/categories/software-development/</loc>
-    <lastmod>2021-09-28T21:10:34-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://GatiAher.github.io/tags/</loc>
     <lastmod>2021-09-28T21:10:34-04:00</lastmod>
   </url>
   
@@ -115,11 +130,6 @@
   
   <url>
     <loc>http://GatiAher.github.io/projects/1d-and-2d-fourier-transforms/</loc>
-    <lastmod>2021-03-03T14:22:03-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://GatiAher.github.io/categories/conceptual-notes/</loc>
     <lastmod>2021-03-03T14:22:03-04:00</lastmod>
   </url>
   

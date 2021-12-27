@@ -6,10 +6,27 @@
     <description>Recent content in Projects on Gati Aher&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 28 Sep 2021 21:10:34 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 26 Dec 2021 23:23:16 -0500</lastBuildDate>
     
 	<atom:link href="http://GatiAher.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Procedural Graph Generation For More Realistic Simulations</title>
+      <link>http://GatiAher.github.io/projects/procedural-graph-generation-for-more-realistic-simulations/</link>
+      <pubDate>Sun, 26 Dec 2021 23:23:16 -0500</pubDate>
+      
+      <guid>http://GatiAher.github.io/projects/procedural-graph-generation-for-more-realistic-simulations/</guid>
+      <description>&lt;p&gt;Many real world systems can be modeled with graphs. Most stable and complex graphs have &lt;strong&gt;small-world&lt;/strong&gt; (local clustering) and &lt;strong&gt;scale-free&lt;/strong&gt; (hubs) properties. The commonly used Erdös-Rényi algorithm generates random graphs, but random graphs are not useful for complex network simulations because they do not have clusters or hubs. In this project, we (1) identified algorithms that generated small-world and scale-free graphs, (2) studied and implemented generation functions for each type of algorithm, (3) created custom animations of graph generation process, and (4) verified that our graphs exhibited the expected structural properties.&lt;/p&gt;
+&lt;div id=&#34;Container&#34;
+ style=&#34;padding-bottom:56.25%; position:relative; display:block; width: 100%&#34;&gt;
+ &lt;iframe id=&#34;googleSlideIframe&#34;
+  width=&#34;100%&#34; height=&#34;100%&#34;
+  src=&#34;https://docs.google.com/presentation/d/e/2PACX-1vRoVNJKtW84R-zlSBe9CBJO1PGcZwgc7_wVDoCUYklCmjqXsDLeqK1ipSAd0XweKgvaql3kSxRcF7YA/embed?start=false&amp;amp;loop=false&amp;amp;delayms=3000&#34;
+  frameborder=&#34;0&#34; allowfullscreen=&#34;&#34;
+  style=&#34;position:absolute; top:0; left: 0&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;</description>
+    </item>
     
     <item>
       <title>Building a Pan-Tilt 3D Scanner</title>

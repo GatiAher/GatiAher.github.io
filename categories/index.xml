@@ -6,10 +6,19 @@
     <description>Recent content in Categories on Gati Aher&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 28 Sep 2021 21:10:34 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 26 Dec 2021 23:23:16 -0500</lastBuildDate>
     
 	<atom:link href="http://GatiAher.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Conceptual Notes</title>
+      <link>http://GatiAher.github.io/categories/conceptual-notes/</link>
+      <pubDate>Sun, 26 Dec 2021 23:23:16 -0500</pubDate>
+      
+      <guid>http://GatiAher.github.io/categories/conceptual-notes/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Software Development</title>
@@ -44,15 +53,6 @@
       <pubDate>Wed, 14 Apr 2021 13:12:04 -0400</pubDate>
       
       <guid>http://GatiAher.github.io/categories/data-analysis/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Conceptual Notes</title>
-      <link>http://GatiAher.github.io/categories/conceptual-notes/</link>
-      <pubDate>Wed, 03 Mar 2021 14:22:03 -0400</pubDate>
-      
-      <guid>http://GatiAher.github.io/categories/conceptual-notes/</guid>
       <description></description>
     </item>
     
