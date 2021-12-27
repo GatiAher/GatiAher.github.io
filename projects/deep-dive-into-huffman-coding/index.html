@@ -5,18 +5,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="generator" content="Hugo 0.68.3" />
-  <meta property="og:title" content="Procedural Graph Generation For More Realistic Simulations" />
-<meta property="og:description" content="Many real world systems can be modeled with graphs. Most stable and complex graphs have small-world (local clustering) and scale-free (hubs) properties. The commonly used Erdös-Rényi algorithm generates random graphs, but random graphs are not useful for complex network simulations because they do not have clusters or hubs. In this project, we (1) identified algorithms that generated small-world and scale-free graphs, (2) studied and implemented generation functions for each type of algorithm, (3) created custom animations of graph generation process, and (4) verified that our graphs exhibited the expected structural properties.
-
-
+  <meta property="og:title" content="Deep Dive Into Huffman Coding" />
+<meta property="og:description" content="Huffman coding is a variation on prefix codes that optimize lossless data compression. In this deep dive, we (1) introduced how Huffman Codes work, (2) explored the theoretical limits of Huffman compression, (3) analyzed resilience to error, and (4) followed the evolution of research on using choice of Huffman tables to encode secret messages in MP3 files.
 
  
 " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://GatiAher.github.io/projects/procedural-graph-generation-for-more-realistic-simulations/" />
+<meta property="og:url" content="http://GatiAher.github.io/projects/deep-dive-into-huffman-coding/" />
 <meta property="og:image" content="http://GatiAher.github.io/img/cover_page.png"/>
-<meta property="article:published_time" content="2021-12-18T23:23:16-05:00" />
-<meta property="article:modified_time" content="2021-12-18T23:23:16-05:00" />
+<meta property="article:published_time" content="2021-10-25T00:46:56-05:00" />
+<meta property="article:modified_time" content="2021-10-25T00:46:56-05:00" />
 
     
   <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -24,7 +22,7 @@
   <link rel="stylesheet" href="/css/style.css">
   
   
-  <title>Procedural Graph Generation For More Realistic Simulations</title>
+  <title>Deep Dive Into Huffman Coding</title>
   
 
 <script>
@@ -98,15 +96,17 @@
     
     
 </div>
-    <h1>Procedural Graph Generation For More Realistic Simulations</h1>
+    <h1>Deep Dive Into Huffman Coding</h1>
     <div class="meta">
     By Gati Aher &#183
     
 
-<time class="date" datetime="2021-12-18">Dec 18, 2021</time> &#183
+<time class="date" datetime="2021-10-25">Oct 25, 2021</time> &#183
     2 min read
 </div>
     <div class="cover-image-container">
+    
+    
     
 </div>
     <div class="tags">
@@ -128,23 +128,26 @@
 
 <article>
 
-    <p>Many real world systems can be modeled with graphs. Most stable and complex graphs have <strong>small-world</strong> (local clustering) and <strong>scale-free</strong> (hubs) properties. The commonly used Erdös-Rényi algorithm generates random graphs, but random graphs are not useful for complex network simulations because they do not have clusters or hubs. In this project, we (1) identified algorithms that generated small-world and scale-free graphs, (2) studied and implemented generation functions for each type of algorithm, (3) created custom animations of graph generation process, and (4) verified that our graphs exhibited the expected structural properties.</p>
-
-
+    <p>Huffman coding is a variation on prefix codes that optimize lossless data compression. In this deep dive, we (1) introduced how Huffman Codes work, (2) explored the theoretical limits of Huffman compression, (3) analyzed resilience to error, and (4) followed the evolution of research on using choice of Huffman tables to encode secret messages in MP3 files.</p>
 <div id="Container"
  style="padding-bottom:56.25%; position:relative; display:block; width: 100%">
- <iframe id="googleSlideIframe"
+ <iframe id="googlePdfIframe"
   width="100%" height="100%"
-  src="https://docs.google.com/presentation/d/e/2PACX-1vRoVNJKtW84R-zlSBe9CBJO1PGcZwgc7_wVDoCUYklCmjqXsDLeqK1ipSAd0XweKgvaql3kSxRcF7YA/embed?start=false&amp;loop=false&amp;delayms=3000"
+  src="https://drive.google.com/file/d/1qZT_iiq8OeSeb5d5wkv4Jp9Ie-83-cm0/preview"
   frameborder="0" allowfullscreen=""
   style="position:absolute; top:0; left: 0"></iframe>
 </div>
-<p><strong>Topic:</strong> Procedural Graph Generation
-<strong>Teammates:</strong> Mira Flynn, Aydin O’Leary</p>
-<h1 id="my-reflection">My Reflection</h1>
-<p>I ran into this topic when I was first researching properties of stable microbial communities. Since microbial communities are real, stable, and complex, researchers expect that their dependency and interaction networks have hub and cluster characteristics. Hubs can indicate the presence of a keystone species and clusters can indicate that several microbes fall into a similar ecological and functional niche. In some papers, researchers simulated microbial community stability with randomly generated graphs, so I wanted to take a closer look at graph generation algorithms.</p>
+<h1 id="overview">Overview</h1>
+<p>My group consisted of Ducan, Alex, Robin, and myself. We approached the deep dive by each researching an aspect of Huffman codes usage. We did preliminary research and final proofreading together. We also explained findings to each other during our weekly group meeting.</p>
+<h1 id="teammate-contributions">Teammate Contributions</h1>
+<ul>
+<li><strong>Robin:</strong> Part 1 - Introduction to Huffman Coding</li>
+<li><strong>Duncan:</strong> Part 2 - How far can Huffman compression go?</li>
+<li><strong>Alex:</strong> Part 3 - Error Correction and Resilience:  What resilience do HuffmanCodes have to errors?</li>
+<li><strong>Gati:</strong> Part 4 - MP3 Stenography:  How are Huffman tables used to communicate secret messages?</li>
+</ul>
 <h1 id="my-contributions">My Contributions</h1>
-<p>I proposed the initial focus and scope of the project, found the main paper we used as a resource, and explained small-world and scale-free properties to my teammates. I was responsible for implementing the KE graph generation algorithm and explaining how it worked to my team. Next, I read about checking structural verifications, found the corresponding Networkx functions, and created a panel to display figures and properties to compare generated networks. Finally, I worked on the initial technical slide deck and made the final slide decks based on Professor Sarah and my teammates suggestions.</p>
+<p>I put in a total of 15 hours to research the usage of Huffman codes. Originally, I was also looking more broadly into patterns and qualities that could be inferred from the statistical distributions of the choice of MP3 Huffman table, but I decided to focus the writeup on stenography because that was the usage I was most interested in diving deeper into. I created the figures used in my section in order to fully explore the patterns and choices made by each proposed scheme. I also learned how the Huffman compression worked with the other compression techniques used to make MP3. Overall, this topic was fun to read about and discuss!</p>
 
 </article>
 
