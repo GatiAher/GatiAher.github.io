@@ -193,6 +193,10 @@ div.highlight pre {
     border: 1px solid var(--dark-color);
 }
 
+.readmore {
+    margin: 1rem;
+}
+
 .thumbnail-container {
     border: 2px solid var(--neutral-light-color);
     border-radius: 15px;
@@ -242,6 +246,14 @@ div.highlight pre {
 .meta {
     font-size: 14.4375px;
     color: var(--neutral-dark-color);
+}
+
+.post-heading {
+    text-align: center;
+}
+
+.post-heading h1 h2 h3 h4 h5 p {
+    text-align: center;
 }
 
 .cover-image-container {
