@@ -5,7 +5,7 @@
   
   
   
-  <title>Software Development</title>
+  <title>Xkcd Data Visualization</title>
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -46,12 +46,18 @@
   <link rel="manifest" href="/favicon_io/site.webmanifest">
   
   <meta name="generator" content="Hugo 0.68.3" />
-  <meta property="og:title" content="Software Development" />
-<meta property="og:description" content="I am currently studying computer science at Olin College of Engineering, class of 2023. I use this blog to document my software projects, share my data analysis adventures, and reflect upon design processes." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://GatiAher.github.io/categories/software-development/" />
-<meta property="og:image" content="http://GatiAher.github.io/img/cover_page.png"/>
-<meta property="og:updated_time" content="2021-12-14T21:21:42-04:00" />
+  <meta property="og:title" content="Xkcd Data Visualization" />
+<meta property="og:description" content="This single-page web application lets users interact with xkcd comics clustered by similarity.
+Over the course of building this project, I learned how to clean data, use different natural language analysis techniques, build an interactive and reactive data visualization, and host a web application.
+
+Details documented on GitHub
+Hosted at https://xkcd-data.herokuapp.com/
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://GatiAher.github.io/projects/xkcd-data-visualization-website/" />
+<meta property="og:image" content="http://GatiAher.github.io/projects/xkcd-data-visualization-website/cover.png"/>
+<meta property="article:published_time" content="2020-05-19T21:05:00-05:00" />
+<meta property="article:modified_time" content="2020-05-19T21:05:00-05:00" />
 
 
 </head>
@@ -76,111 +82,66 @@
 </header>
                             
                             
-
-<br>
-<header>
-    
-    <h1 class="category-list-heading">
-        Software Development (4)
-    </h1>
-
-    
-</header>
-<br>
-
-
-
-<header class="major">
-    <h2>2021</h2>
-</header>
-<div class="posts">
-    
-    <article>
-    <h3>Disco-Cats: Arduinos &#43; ML Music</h3>
-    <p>
-        <p>My team spent 6 weeks building an interactive music visualization system that uses Arduinos, motors, an LED matrix, and sound to express musical pieces generated with machine learning!</p>
-<p>I learned how to (1) design an intuitive UI (2) use <a href="https://magenta.tensorflow.org/multitrack">Google&rsquo;s Magenta multi-track VAE model</a> to generate music based on user input (3) transmit the MIDI bitstream over serial (3) extract pitch, instrument, and duration information from the midi bitstream in real time (4) efficiently control an LED matrix and motors.</p>
-<ul>
-<li>Details available on our <a href="https://olincollege.github.io/pie-2021-03/Disco-Cats/"><em>Website!</em></a></li>
-<li>Code is on <a href="https://github.com/GatiAher/disco_cats">GitHub</a></li>
-<li>Demo video is on <a href="https://youtu.be/nX_OTCaxyTM">YouTube</a>.</li>
-</ul>
-    </p>
+<main>
+    <section>
+        <div class="category">
     
     
-        
-        <a href="/projects/disco-cats-arduinos&#43;ml-music/cover_hu9cbd6a91fae936c8948f99f1ee00ecb0_162628_600x0_resize_box_2.png" class="image"><img src="http://GatiAher.github.io/projects/disco-cats-arduinos&#43;ml-music/cover_hu9cbd6a91fae936c8948f99f1ee00ecb0_162628_600x0_resize_box_2.png" alt="" /></a>
-        
-
-    <ul class="actions">
-        <li><a href="/projects/disco-cats-arduinos&#43;ml-music/" class="button">Read More...</a></li>
-    </ul>
-</article>
-    
-    <article>
-    <h3>Building a Pan-Tilt 3D Scanner</h3>
-    <p>
-        <p>My team built a servo-driven pan-tilt mount for an infrared proximity sensor. To demonstrate the functionality of our design, we created a 3D scan of a cardboard letter cut in a Z shape. This project involved (1) designing and 3D-printing a pan-tilt servo and IR sensor, (2) programming an arduino to collect scan data, (3) projecting data from spherical coordinates into Cartesian coordinates in order to isolate a cross-section scan of the letter. I was responsible for the CAD mechanical design and making the 3D data projection and visualization.</p>
-    </p>
     
     
-        
-        <a href="/projects/building-a-pan-tilt-3d-scanner/cover_hu6c94caf68760d7d4277288601b25af50_360631_600x0_resize_box_2.png" class="image"><img src="http://GatiAher.github.io/projects/building-a-pan-tilt-3d-scanner/cover_hu6c94caf68760d7d4277288601b25af50_360631_600x0_resize_box_2.png" alt="" /></a>
-        
-
-    <ul class="actions">
-        <li><a href="/projects/building-a-pan-tilt-3d-scanner/" class="button">Read More...</a></li>
-    </ul>
-</article>
-    
-    <article>
-    <h3>Implementing Fast and Space-Efficient Look-up and Search</h3>
-    <p>
-        <p>The Bloom filter data structure tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when a start-up I was working for used Bloom filters to speed up their database search. Then, I heard about Microsoft using a stack of Bloom filters (a bit-sliced document signature data structure) to <a href="https://dl.acm.org/doi/10.1145/3077136.3080789">speed up the Bing search engine&rsquo;s keyword search</a>.</p>
-<p>In this project, I explored these interesting data structures by implementing a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and highlights notable code design decisions.</p>
-<p>All code is available in my <a href="https://github.com/GatiAher/BloomForSearchFromScratch">GitHub Repo</a>. I documented my progress on this <a href="https://trello.com/b/xzVRxTDJ/bloomforsearchfromscratch">Trello Board</a></p>
-    </p>
+    <a class="categories selective-underline" href="/categories/software-development">Software Development</a>
     
     
-        
-        <a href="/projects/implementing-fast-and-space-efficient-look-up-and-search/cover_hu0f91228d5d0adbab46e67dc7786f6340_336417_600x0_resize_box_2.png" class="image"><img src="http://GatiAher.github.io/projects/implementing-fast-and-space-efficient-look-up-and-search/cover_hu0f91228d5d0adbab46e67dc7786f6340_336417_600x0_resize_box_2.png" alt="" /></a>
-        
-
-    <ul class="actions">
-        <li><a href="/projects/implementing-fast-and-space-efficient-look-up-and-search/" class="button">Read More...</a></li>
-    </ul>
-</article>
     
 </div>
-
-<header class="major">
-    <h2>2020</h2>
-</header>
-<div class="posts">
+        <header>
+            <h1>Xkcd Data Visualization</h1>
+        </header>
+        <div class="meta">
+    By Gati Aher &#183
     
-    <article>
-    <h3>Xkcd Data Visualization</h3>
-    <p>
-        <p>This single-page web application lets users interact with xkcd comics clustered by similarity.</p>
+
+<time class="date" datetime="2020-05-19">May 19, 2020</time> &#183
+    1 min read
+</div>
+        <br>
+        <div class="cover-image-container">
+    
+    
+    
+    
+    
+    <span class="image fit">
+        <img src="http://GatiAher.github.io/projects/xkcd-data-visualization-website/cover_hu523f7ea5ccd4d44c520c53fb0112d7c8_200405_0x600_resize_box_2.png" />
+    </span>
+    
+    
+    
+</div>
+        <br>
+        <div class="tags">
+    <i>Posted in:</i>
+    
+    
+    
+    
+    <a class="tags selective-underline" href="/tags/olin-college-sp2020-software-design">Olin College: SP2020 Software Design</a>
+    
+    
+    
+</div>
+        <hr>
+        <article>
+            <p>This single-page web application lets users interact with xkcd comics clustered by similarity.</p>
 <p>Over the course of building this project, I learned how to clean data, use different natural language analysis techniques, build an interactive and reactive data visualization, and host a web application.</p>
 <ul>
 <li>Details documented on <a href="https://github.com/GatiAher/Xkcd_Data_Visualization">GitHub</a></li>
 <li>Hosted at <a href="https://xkcd-data.herokuapp.com/">https://xkcd-data.herokuapp.com/</a></li>
 </ul>
-    </p>
-    
-    
-        
-        <a href="/projects/xkcd-data-visualization-website/cover_hu523f7ea5ccd4d44c520c53fb0112d7c8_200405_600x0_resize_box_2.png" class="image"><img src="http://GatiAher.github.io/projects/xkcd-data-visualization-website/cover_hu523f7ea5ccd4d44c520c53fb0112d7c8_200405_600x0_resize_box_2.png" alt="" /></a>
-        
+        </article>
 
-    <ul class="actions">
-        <li><a href="/projects/xkcd-data-visualization-website/" class="button">Read More...</a></li>
-    </ul>
-</article>
-    
-</div>
-
+    </section>
+</main>
 
 
                         

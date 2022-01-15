@@ -46,5 +46,19 @@
 &lt;p&gt;All code is available in my &lt;a href=&#34;https://github.com/GatiAher/BloomForSearchFromScratch&#34;&gt;GitHub Repo&lt;/a&gt;. I documented my progress on this &lt;a href=&#34;https://trello.com/b/xzVRxTDJ/bloomforsearchfromscratch&#34;&gt;Trello Board&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>Xkcd Data Visualization</title>
+      <link>http://GatiAher.github.io/projects/xkcd-data-visualization-website/</link>
+      <pubDate>Tue, 19 May 2020 21:05:00 -0500</pubDate>
+      
+      <guid>http://GatiAher.github.io/projects/xkcd-data-visualization-website/</guid>
+      <description>&lt;p&gt;This single-page web application lets users interact with xkcd comics clustered by similarity.&lt;/p&gt;
+&lt;p&gt;Over the course of building this project, I learned how to clean data, use different natural language analysis techniques, build an interactive and reactive data visualization, and host a web application.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Details documented on &lt;a href=&#34;https://github.com/GatiAher/Xkcd_Data_Visualization&#34;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Hosted at &lt;a href=&#34;https://xkcd-data.herokuapp.com/&#34;&gt;https://xkcd-data.herokuapp.com/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
   </channel>
 </rss>
