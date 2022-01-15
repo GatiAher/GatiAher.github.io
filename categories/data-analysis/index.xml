@@ -28,9 +28,9 @@
       
       <guid>http://GatiAher.github.io/projects/emg-gesture-recognition.md/</guid>
       <description>&lt;p&gt;This project followed the topological data analysis steps laid out in &lt;a href=&#34;http://doi.org/10.1098/rsif.2017.0734&#34;&gt;Phinyomark et al (2017) &amp;ldquo;Navigating features: a topologically informed chart of electromyographic features space&amp;rdquo;&lt;/a&gt; to analyze 43 features extracted from surface EMG signals of three gestures (rock, paper, scissors) performed by a single subject.&lt;/p&gt;
-&lt;p&gt;I used sklearn&amp;rsquo;s topological data analysis tools with the Kepler Mapper and Ward&amp;rsquo;s minimum variance method as the criterion for hierarchial clustering in order to analyze feature redundancy. Comparison of feature class separability was analyzed by calculating Davies-Bouldin index (DBI), Fisher&amp;rsquo;s linear discriminant index (FLDI), and measuring misclassification rates using 5-fold cross validation classification. Linear Discriminant Analysis and Support Vector Machine were employed as classifiers. Correlation plots and dendrogram plots were used to visualize the overlap between features.&lt;/p&gt;
+&lt;p&gt;I used sklearn&amp;rsquo;s topological data analysis tools with the Kepler Mapper and Ward&amp;rsquo;s minimum variance method as the criterion for hierarchial clustering in order to analyze feature redundancy. Comparison of feature class separability was analyzed by calculating Davies-Bouldin index (DBI) and Fisher&amp;rsquo;s linear discriminant index (FLDI), and measuring misclassification rates. 5-fold cross validation Linear Discriminant Analysis and Support Vector Machine were employed as classifiers.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Documentation on &lt;a href=&#34;https://github.com/GatiAher/EMG_Gesture_Recognition&#34;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Documentation report on &lt;a href=&#34;https://github.com/GatiAher/EMG_Gesture_Recognition&#34;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     
