@@ -6,10 +6,27 @@
     <description>Recent content in Concepts &amp; Theory on Gati Aher&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 18 Dec 2021 23:23:16 -0500</lastBuildDate>
+    <lastBuildDate>Thu, 23 Dec 2021 20:08:21 -0500</lastBuildDate>
     
 	<atom:link href="http://GatiAher.github.io/categories/concepts-theory/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Exploring FPGA Deep Learning Accelerators</title>
+      <link>http://GatiAher.github.io/projects/exploring-fpga-deep-learning-accelerators/</link>
+      <pubDate>Thu, 23 Dec 2021 20:08:21 -0500</pubDate>
+      
+      <guid>http://GatiAher.github.io/projects/exploring-fpga-deep-learning-accelerators/</guid>
+      <description>&lt;p&gt;I wanted to learn about the process of using FPGA hardware accelerators for more power-efficient deep learning inference. Through this project, I learned about the process of creating and building an image for the Zybo ZYNQ FPGA, PYNQ application development, and Vitis AI development tools. I also surveyed the functionality of FINN, an experimental framework from Xilinx Research Labs to explore quantized deep neural network inference on FPGAs.&lt;/p&gt;
+&lt;div id=&#34;Container&#34;
+  style=&#34;padding-bottom:56.25%; position:relative; display:block; width: 100%&#34;&gt;
+  &lt;iframe id=&#34;googlePdfIframe&#34;
+  width=&#34;100%&#34; height=&#34;100%&#34;
+  src=&#34;https://drive.google.com/file/d/1SVpb3sdzzIIEaEiwaT3kFwRgV2HywIRb/preview&#34;
+  frameborder=&#34;0&#34; allowfullscreen=&#34;&#34;
+  style=&#34;position:absolute; top:0; left: 0&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;</description>
+    </item>
     
     <item>
       <title>Procedural Graph Generation For More Realistic Simulations</title>
@@ -29,6 +46,21 @@
   frameborder=&#34;0&#34; allowfullscreen=&#34;&#34;
   style=&#34;position:absolute; top:0; left: 0&#34;&gt;&lt;/iframe&gt;
 &lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>Disco-Cats: Arduinos &#43; ML Music</title>
+      <link>http://GatiAher.github.io/projects/disco-cats-arduinos&#43;ml-music/</link>
+      <pubDate>Tue, 14 Dec 2021 21:21:42 -0400</pubDate>
+      
+      <guid>http://GatiAher.github.io/projects/disco-cats-arduinos&#43;ml-music/</guid>
+      <description>&lt;p&gt;My team spent 6 weeks building an interactive music visualization system that uses Arduinos, motors, an LED matrix, and sound to express musical pieces generated with machine learning!&lt;/p&gt;
+&lt;p&gt;I learned how to (1) design an intuitive UI (2) use &lt;a href=&#34;https://magenta.tensorflow.org/multitrack&#34;&gt;Google&amp;rsquo;s Magenta multi-track VAE model&lt;/a&gt; to generate music based on user input (3) transmit the MIDI bitstream over serial (3) extract pitch, instrument, and duration information from the midi bitstream in real time (4) efficiently control an LED matrix and motors.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Details are available on our &lt;a href=&#34;https://olincollege.github.io/pie-2021-03/Disco-Cats/&#34;&gt;&lt;em&gt;Showcase Website!&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Code is on &lt;a href=&#34;https://github.com/GatiAher/disco_cats&#34;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Demo video is on &lt;a href=&#34;https://youtu.be/nX_OTCaxyTM&#34;&gt;YouTube&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
     
     <item>

@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Gati Aher&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 18 Dec 2021 23:23:16 -0500</lastBuildDate>
+    <lastBuildDate>Thu, 23 Dec 2021 20:08:21 -0500</lastBuildDate>
     
 	<atom:link href="http://GatiAher.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Olin College: FA2021 Computer Architecture</title>
+      <link>http://GatiAher.github.io/tags/olin-college-fa2021-computer-architecture/</link>
+      <pubDate>Thu, 23 Dec 2021 20:08:21 -0500</pubDate>
+      
+      <guid>http://GatiAher.github.io/tags/olin-college-fa2021-computer-architecture/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Olin College: FA2021 Discrete Mathematics</title>
@@ -17,6 +26,15 @@
       <pubDate>Sat, 18 Dec 2021 23:23:16 -0500</pubDate>
       
       <guid>http://GatiAher.github.io/tags/olin-college-fa2021-discrete-mathematics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Olin College: SP2021 Data Structures and Algorithms</title>
+      <link>http://GatiAher.github.io/tags/olin-college-sp2021-data-structures-and-algorithms/</link>
+      <pubDate>Tue, 14 Dec 2021 21:21:42 -0400</pubDate>
+      
+      <guid>http://GatiAher.github.io/tags/olin-college-sp2021-data-structures-and-algorithms/</guid>
       <description></description>
     </item>
     
@@ -35,15 +53,6 @@
       <pubDate>Fri, 20 Aug 2021 10:43:34 -0400</pubDate>
       
       <guid>http://GatiAher.github.io/tags/indico-data-solutions-intern-rd-&#43;-ml-engineering/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Olin College: SP2021 Data Structures and Algorithms</title>
-      <link>http://GatiAher.github.io/tags/olin-college-sp2021-data-structures-and-algorithms/</link>
-      <pubDate>Sun, 09 May 2021 21:21:42 -0400</pubDate>
-      
-      <guid>http://GatiAher.github.io/tags/olin-college-sp2021-data-structures-and-algorithms/</guid>
       <description></description>
     </item>
     

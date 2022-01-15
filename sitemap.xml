@@ -4,12 +4,37 @@
   
   <url>
     <loc>http://GatiAher.github.io/categories/</loc>
-    <lastmod>2021-12-18T23:23:16-05:00</lastmod>
+    <lastmod>2021-12-23T20:08:21-05:00</lastmod>
   </url>
   
   <url>
     <loc>http://GatiAher.github.io/categories/concepts-theory/</loc>
-    <lastmod>2021-12-18T23:23:16-05:00</lastmod>
+    <lastmod>2021-12-23T20:08:21-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://GatiAher.github.io/projects/exploring-fpga-deep-learning-accelerators/</loc>
+    <lastmod>2021-12-23T20:08:21-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://GatiAher.github.io/</loc>
+    <lastmod>2021-12-23T20:08:21-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://GatiAher.github.io/tags/olin-college-fa2021-computer-architecture/</loc>
+    <lastmod>2021-12-23T20:08:21-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://GatiAher.github.io/projects/</loc>
+    <lastmod>2021-12-23T20:08:21-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://GatiAher.github.io/tags/</loc>
+    <lastmod>2021-12-23T20:08:21-05:00</lastmod>
   </url>
   
   <url>
@@ -23,13 +48,13 @@
   </url>
   
   <url>
-    <loc>http://GatiAher.github.io/projects/</loc>
-    <lastmod>2021-12-18T23:23:16-05:00</lastmod>
+    <loc>http://GatiAher.github.io/projects/disco-cats-arduinos&#43;ml-music/</loc>
+    <lastmod>2021-12-14T21:21:42-04:00</lastmod>
   </url>
   
   <url>
-    <loc>http://GatiAher.github.io/tags/</loc>
-    <lastmod>2021-12-18T23:23:16-05:00</lastmod>
+    <loc>http://GatiAher.github.io/tags/olin-college-sp2021-data-structures-and-algorithms/</loc>
+    <lastmod>2021-12-14T21:21:42-04:00</lastmod>
   </url>
   
   <url>
@@ -65,22 +90,6 @@
   <url>
     <loc>http://GatiAher.github.io/tags/indico-data-solutions-intern-rd-&#43;-ml-engineering/</loc>
     <lastmod>2021-08-20T10:43:34-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://GatiAher.github.io/</loc>
-    <lastmod>2021-05-19T10:18:48-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://GatiAher.github.io/about/</loc>
-    <lastmod>2021-05-19T10:18:48-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://GatiAher.github.io/tags/olin-college-sp2021-data-structures-and-algorithms/</loc>
-    <lastmod>2021-05-09T21:21:42-04:00</lastmod>
   </url>
   
   <url>
