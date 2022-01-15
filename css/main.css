@@ -3670,7 +3670,7 @@ button:disabled,
   /* border: 1px solid #ccc; */
   width: 70%;
   /* border-left: none; */
-  height: 550px;
+  height: 600px;
 }
 
 .tab-wrapper::after {
