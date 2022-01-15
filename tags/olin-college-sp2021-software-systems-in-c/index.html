@@ -1,24 +1,20 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="Hugo 0.68.3" />
-  <meta property="og:title" content="Olin College: SP2021 Software Systems in C" />
-<meta property="og:description" content="I am currently studying computer science at Olin College of Engineering, class of 2023. I use this blog to document my software projects, share my data analysis adventures, and reflect upon design processes." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://GatiAher.github.io/tags/olin-college-sp2021-software-systems-in-c/" />
-<meta property="og:image" content="http://GatiAher.github.io/img/cover_page.png"/>
-<meta property="og:updated_time" content="2021-05-08T09:35:51-04:00" />
-
-    
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <head>
   
-  <link rel="stylesheet" href="/css/style.css">
   
   
   <title>Olin College: SP2021 Software Systems in C</title>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+    
+  <link rel="stylesheet" href="/css/main.css">
+  
+    
+  
   
 
 <script>
@@ -48,100 +44,184 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
   <link rel="manifest" href="/favicon_io/site.webmanifest">
+  
+  <meta name="generator" content="Hugo 0.68.3" />
+  <meta property="og:title" content="Olin College: SP2021 Software Systems in C" />
+<meta property="og:description" content="I am currently studying computer science at Olin College of Engineering, class of 2023. I use this blog to document my software projects, share my data analysis adventures, and reflect upon design processes." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://GatiAher.github.io/tags/olin-college-sp2021-software-systems-in-c/" />
+<meta property="og:image" content="http://GatiAher.github.io/img/cover_page.png"/>
+<meta property="og:updated_time" content="2021-05-08T09:35:51-04:00" />
+
+
 </head>
 
-<body>
-    <div class="site-header">
-    <nav id="nav" class="container">
-        <div class=bar>
-            <a class="navbar-brand brand" href="/">
-                Gati Aher
-            </a>
-            <div class="links">
-                
-                
-                
-                <a class="nav-link" href="/projects"><i data-feather="archive"></i> All Projects</a>
-                
-                
-                
-                <a class="nav-link" href="/tags"><i data-feather="tag"></i> Tags</a>
-                
-                
-                
-                <a class="nav-link" href="/about"><i data-feather="at-sign"></i> Contact</a>
-                
-            </div>
-        </div>
-    </nav>
-</div>
-
-    <main id="main" class="container">
+    <body class="is-preload">
         
+        
+            <div id="wrapper">
 
+                
+                    <div id="main">
+                        <div class="inner">
 
-<h2 class="tag-list-heading">
-    Olin College: SP2021 Software Systems in C (1)
-</h2>
+                            
+                            <header id="header">
+    <a href="/" class="logo"><strong>Gati</strong> Aher</a>
+    <ul class="icons">
+        <li><a href="https://github.com/GatiAher" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+        <li><a href="https://www.linkedin.com/in/gatiaher" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+        <li><a href="mailto:gaher@olin.edu" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+    </ul>
+</header>
+                            
+                            
 
+<br>
+<header>
+    
+    <h2 class="tag-list-heading">
+        Olin College: SP2021 Software Systems in C (1)
+    </h2>
 
+    
+</header>
+<br>
 
-
-<div class="thumbnail-container">
-    <div class="category">
+<div class="posts">
     
-    
-    
-    
-    <a class="categories selective-underline" href="/categories/software-development">Software Development</a>
-    
-    
-    
-</div>
-    <div class="title">
-    <a class="selective-underline" href="/projects/implementing-fast-and-space-efficient-look-up-and-search/">
-        Implementing Fast and Space-Efficient Look-up and Search
-    </a>
-</div>
-    <div class="meta">
-    
-
-<time class="date" datetime="2021-05-08">May 8, 2021</time> &#183
-    21 min read
-</div>    
+    <article>
+    <h3>Implementing Fast and Space-Efficient Look-up and Search</h3>
+    <p>
+        <p>The Bloom filter data structure tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when a start-up I was working for used Bloom filters to speed up their database search. Then, I heard about Microsoft using a stack of Bloom filters (a bit-sliced document signature data structure) to <a href="https://dl.acm.org/doi/10.1145/3077136.3080789">speed up the Bing search engine&rsquo;s keyword search</a>.</p>
+<p>In this project, I explored these interesting data structures by implementing a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and highlights notable code design decisions.</p>
+<p>All code is available in my <a href="https://github.com/GatiAher/BloomForSearchFromScratch">GitHub Repo</a>. I documented my progress on this <a href="https://trello.com/b/xzVRxTDJ/bloomforsearchfromscratch">Trello Board</a></p>
+    </p>
     
     
         
-        <br>
-        <img src="http://GatiAher.github.io/projects/implementing-fast-and-space-efficient-look-up-and-search/cover_hu0f91228d5d0adbab46e67dc7786f6340_336417_600x0_resize_box_2.png" />
-        <br>
+        <a href="/projects/implementing-fast-and-space-efficient-look-up-and-search/cover_hu0f91228d5d0adbab46e67dc7786f6340_336417_600x0_resize_box_2.png" class="image"><img src="http://GatiAher.github.io/projects/implementing-fast-and-space-efficient-look-up-and-search/cover_hu0f91228d5d0adbab46e67dc7786f6340_336417_600x0_resize_box_2.png" alt="" /></a>
         
 
-    <div class="description">
-    <p>The Bloom filter data structure tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when a start-up I was working for used Bloom filters to speed up their database search. Then, I heard about Microsoft using a stack of Bloom filters (a bit-sliced document signature data structure) to <a href="https://dl.acm.org/doi/10.1145/3077136.3080789">speed up the Bing search engine&rsquo;s keyword search</a>. In this project, I explored these interesting data structures by implementing a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and highlights notable code design decisions.</p>
-<p>All code is available in my <a href="https://github.com/GatiAher/BloomForSearchFromScratch">GitHub Repo</a>. I documented my progress on this <a href="https://trello.com/b/xzVRxTDJ/bloomforsearchfromscratch">Trello Board</a></p> 
-</div>
-    <div class="readmore"> 
-    <a class="btn btn-outline-dark font-125" href="/projects/implementing-fast-and-space-efficient-look-up-and-search/">
-        Read full story..
-    </a>
-</div>
-</div>
-
-
-
-    </main>
-    <footer class="site-footer">
-        &copy 2021 by Gati Aher &#183;
-        Powered by <a class="selective-underline" href="https://gohugo.io/">Hugo</a> &#183;
-        View on <a class="selective-underline" href="https://github.com/GatiAher/gatiaher-hugo">GitHub</a>
-</footer>
+    <ul class="actions">
+        <li><a href="/projects/implementing-fast-and-space-efficient-look-up-and-search/" class="button">Read More...</a></li>
+    </ul>
+</article>
     
+</div>
 
-<script src="/js/feather.min.js"></script>
-<script>
-    feather.replace();
-</script>
-</body>
+
+                        
+                        </div>
+                    </div>
+
+                
+                <div id="sidebar">
+    <div class="inner">
+
+        
+        <nav id="menu">
+            <header class="major">
+                <h2>Menu</h2>
+            </header>
+            <ul>
+                <li><a href="/">Home</a></li>
+                
+                
+                    <li>
+                        <a href="http://GatiAher.github.io/categories/concepts-theory/">Concepts &amp; Theory (4)</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://GatiAher.github.io/categories/data-analysis/">Data Analysis (3)</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://GatiAher.github.io/categories/software-development/">Software Development (2)</a>
+                    </li>
+                
+                
+                <li>
+                    <span class="opener"><i>Tags</i></span>
+                    <ul>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/olin-college-fa2021-discrete-mathematics/">Olin College: FA2021 Discrete Mathematics (2)</a>
+                        </li>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/olin-college-quantitative-engineering-analysis/">Olin College: Quantitative Engineering Analysis (2)</a>
+                        </li>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/olin-microbiology-lab-undergraduate-research/">Olin Microbiology Lab (Undergraduate Research) (2)</a>
+                        </li>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/indico-data-solutions-intern-rd-&#43;-ml-engineering/">Indico Data Solutions (Intern: R&amp;D &#43; ML Engineering) (1)</a>
+                        </li>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/olin-college-fa2021-principals-of-integrated-engineering/">Olin College: FA2021 Principals of Integrated Engineering (1)</a>
+                        </li>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/olin-college-sp2021-data-structures-and-algorithms/">Olin College: SP2021 Data Structures and Algorithms (1)</a>
+                        </li>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/olin-college-sp2021-software-systems-in-c/">Olin College: SP2021 Software Systems in C (1)</a>
+                        </li>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/%C5%82%C3%B3d%C5%BA-university-2021-mathup-conference/">Łódź University 2021 MathUp Conference (1)</a>
+                        </li>
+                        
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        
+        <section>
+            <header class="major">
+                <h2>Get in touch</h2>
+            </header>
+            <p>Have questions or want to chat? Feel free to reach out via email or LinkedIn!</p>
+            <ul class="contact">
+                <li class="icon solid fa-envelope"><a href="mailto:gaher@olin.edu">gaher@olin.edu</a></li>
+                <li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/gatiaher">linkedin.com/in/gatiaher</a></li>
+                <li class="icon solid fa-home">Boston, MA</li>
+            </ul>
+        </section>
+
+        
+        <footer id="footer">
+            <p class="copyright">&copy; 2022 Gati Aher &#183; All rights reserved &#183; Powered by <a href="https://gohugo.io/">Hugo</a> &#183; </a> Design: <a href="https://html5up.net">HTML5 UP</a> &#183; Code on <a href="https://github.com/GatiAher/gatiaher-hugo">GitHub</a></p>
+        </footer>
+
+    </div>
+</div>
+
+            <div>
+
+        
+        
+
+<script src="/js/jquery.min.js"></script>
+
+<script src="/js/browser.min.js"></script>
+
+<script src="/js/breakpoints.min.js"></script>
+
+<script src="/js/util.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+<script src="/js/vertical-tabs.js"></script>
+
+        
+    </body>
 
 </html>

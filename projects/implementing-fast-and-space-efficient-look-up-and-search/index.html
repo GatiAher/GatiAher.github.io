@@ -1,26 +1,20 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="Hugo 0.68.3" />
-  <meta property="og:title" content="Implementing Fast and Space-Efficient Look-up and Search" />
-<meta property="og:description" content="The Bloom filter data structure tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when a start-up I was working for used Bloom filters to speed up their database search. Then, I heard about Microsoft using a stack of Bloom filters (a bit-sliced document signature data structure) to speed up the Bing search engine&rsquo;s keyword search. In this project, I explored these interesting data structures by implementing a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and highlights notable code design decisions.
-All code is available in my GitHub Repo. I documented my progress on this Trello Board" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://GatiAher.github.io/projects/implementing-fast-and-space-efficient-look-up-and-search/" />
-<meta property="og:image" content="http://GatiAher.github.io/projects/implementing-fast-and-space-efficient-look-up-and-search/cover.png"/>
-<meta property="article:published_time" content="2021-05-08T09:35:51-04:00" />
-<meta property="article:modified_time" content="2021-05-08T09:35:51-04:00" />
-
-    
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <head>
   
-  <link rel="stylesheet" href="/css/style.css">
   
   
   <title>Implementing Fast and Space-Efficient Look-up and Search</title>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+    
+  <link rel="stylesheet" href="/css/main.css">
+  
+    
+  
   
 
 <script>
@@ -50,42 +44,44 @@ All code is available in my GitHub Repo. I documented my progress on this Trello
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
   <link rel="manifest" href="/favicon_io/site.webmanifest">
+  
+  <meta name="generator" content="Hugo 0.68.3" />
+  <meta property="og:title" content="Implementing Fast and Space-Efficient Look-up and Search" />
+<meta property="og:description" content="The Bloom filter data structure tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when a start-up I was working for used Bloom filters to speed up their database search. Then, I heard about Microsoft using a stack of Bloom filters (a bit-sliced document signature data structure) to speed up the Bing search engine&rsquo;s keyword search.
+In this project, I explored these interesting data structures by implementing a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and highlights notable code design decisions.
+All code is available in my GitHub Repo. I documented my progress on this Trello Board" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://GatiAher.github.io/projects/implementing-fast-and-space-efficient-look-up-and-search/" />
+<meta property="og:image" content="http://GatiAher.github.io/projects/implementing-fast-and-space-efficient-look-up-and-search/cover.png"/>
+<meta property="article:published_time" content="2021-05-08T09:35:51-04:00" />
+<meta property="article:modified_time" content="2021-05-08T09:35:51-04:00" />
+
+
 </head>
 
-<body>
-    <div class="site-header">
-    <nav id="nav" class="container">
-        <div class=bar>
-            <a class="navbar-brand brand" href="/">
-                Gati Aher
-            </a>
-            <div class="links">
-                
-                
-                
-                <a class="nav-link" href="/projects"><i data-feather="archive"></i> All Projects</a>
-                
-                
-                
-                <a class="nav-link" href="/tags"><i data-feather="tag"></i> Tags</a>
-                
-                
-                
-                <a class="nav-link" href="/about"><i data-feather="at-sign"></i> Contact</a>
-                
-            </div>
-        </div>
-    </nav>
-</div>
-
-    <main id="main" class="container">
+    <body class="is-preload">
         
+        
+            <div id="wrapper">
 
-<div>
-    
+                
+                    <div id="main">
+                        <div class="inner">
 
-        <div class="post-heading">
-            <div class="category">
+                            
+                            <header id="header">
+    <a href="/" class="logo"><strong>Gati</strong> Aher</a>
+    <ul class="icons">
+        <li><a href="https://github.com/GatiAher" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+        <li><a href="https://www.linkedin.com/in/gatiaher" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+        <li><a href="mailto:gaher@olin.edu" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+    </ul>
+</header>
+                            
+                            
+<main>
+    <section>
+        <div class="category">
     
     
     
@@ -95,28 +91,32 @@ All code is available in my GitHub Repo. I documented my progress on this Trello
     
     
 </div>
-            <h1 >Implementing Fast and Space-Efficient Look-up and Search</h1>
-            <div class="meta">
+        <header>
+            <h1>Implementing Fast and Space-Efficient Look-up and Search</h1>
+        </header>
+        <div class="meta">
     By Gati Aher &#183
     
 
 <time class="date" datetime="2021-05-08">May 8, 2021</time> &#183
     21 min read
 </div>
-            <br>
-            <div class="cover-image-container">
+        <br>
+        <div class="cover-image-container">
     
     
     
     
     
-    <img src="http://GatiAher.github.io/projects/implementing-fast-and-space-efficient-look-up-and-search/cover_hu0f91228d5d0adbab46e67dc7786f6340_336417_0x600_resize_box_2.png" />
+    <span class="image fit">
+        <img src="http://GatiAher.github.io/projects/implementing-fast-and-space-efficient-look-up-and-search/cover_hu0f91228d5d0adbab46e67dc7786f6340_336417_0x600_resize_box_2.png" />
+    </span>
     
     
     
 </div>
-            <br>
-            <div class="tags">
+        <br>
+        <div class="tags">
     <i>Posted in:</i>
     
     
@@ -127,18 +127,10 @@ All code is available in my GitHub Repo. I documented my progress on this Trello
     
     
 </div>
-            <hr>
-        </div>
-
-    
-
-</div>
-
-<br/>
-
-<article>
-
-    <p>The Bloom filter data structure tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when a start-up I was working for used Bloom filters to speed up their database search. Then, I heard about Microsoft using a stack of Bloom filters (a bit-sliced document signature data structure) to <a href="https://dl.acm.org/doi/10.1145/3077136.3080789">speed up the Bing search engine&rsquo;s keyword search</a>. In this project, I explored these interesting data structures by implementing a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and highlights notable code design decisions.</p>
+        <hr>
+        <article>
+            <p>The Bloom filter data structure tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when a start-up I was working for used Bloom filters to speed up their database search. Then, I heard about Microsoft using a stack of Bloom filters (a bit-sliced document signature data structure) to <a href="https://dl.acm.org/doi/10.1145/3077136.3080789">speed up the Bing search engine&rsquo;s keyword search</a>.</p>
+<p>In this project, I explored these interesting data structures by implementing a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and highlights notable code design decisions.</p>
 <p>All code is available in my <a href="https://github.com/GatiAher/BloomForSearchFromScratch">GitHub Repo</a>. I documented my progress on this <a href="https://trello.com/b/xzVRxTDJ/bloomforsearchfromscratch">Trello Board</a></p>
 <ul>
 <li><a href="#1-project-goals-and-results">1 PROJECT GOALS AND RESULTS</a></li>
@@ -171,7 +163,7 @@ All code is available in my GitHub Repo. I documented my progress on this Trello
 </li>
 <li><a href="#5-future-directions">5 FUTURE DIRECTIONS</a></li>
 </ul>
-<h1 id="1-project-goals-and-results">1 PROJECT GOALS AND RESULTS</h1>
+<h2 id="1-project-goals-and-results">1 PROJECT GOALS AND RESULTS</h2>
 <p>I wanted to learn about Bloom filters because I have heard about their interesting real-world applications. I particularly wanted to implement a extension of Bloom filters called bit-sliced signatures that I heard of in the talk <a href="https://www.youtube.com/watch?v=1-Xoy5w5ydM">&ldquo;BitFunnel: Revisiting Signatures for Search&rdquo; talk by Micheal Hopcroft, creator of BitFunnel</a>. This was an interesting Software Systems project because many Bloom filter implementations are done in C/C++ in order to have full control and optimization of low-level bit-wise operations</p>
 <p>Thus, in terms of experience goals, I wanted to gain experience designing and using bit-wise operations, structs, function pointers, file pointers, enums, linked lists, Makefiles, writing modular code, and other programming concepts I learned about in class. (See section: <a href="#41-note-on-code-design">4.1 Note on Code Design</a> for more information about my specific coding design decisions).</p>
 <p>My highest bound was implementing some of the optimizations used by Bing search engine&rsquo;s BitFunnel algorithm. However, the BitFunnel algorithm reached its best performance improvements by simply sharding its gigantic corpus intelligently (i.e. binning documents by number of unique terms) so that they could store shorter document signatures in less space but still have precision for larger documents. This design decision makes sense for a production information retrieval system that was already sharding its corpus, but makes less sense for me. Therefore, for this project I pivoted to an actionable upper bound: a set of demos that demonstrate various aspects of Bloom filters and bit-sliced signatures and provide me with an intuition of how to use them.</p>
@@ -185,7 +177,7 @@ make demo_bf_spellcheck_w_Gati
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make demo_bss_xkcd_query
 </code></pre></div><p>See the full <code>MakeFile</code> for more demos and list of all the executable programs. All files and programs are properly documented in the header files, and for any executable, running <code>&lt;program_name&gt; -h</code> will reveal argument details for running the program.</p>
 <p><em>See test and demo output results in the <a href="https://github.com/GatiAher/BloomForSearchFromScratch/tree/main/results">results folder</a>.</em></p>
-<h1 id="2-bloom-filters">2 BLOOM FILTERS</h1>
+<h2 id="2-bloom-filters">2 BLOOM FILTERS</h2>
 <p>The Bloom filter is a probabilistic, space-efficient data structure that can tell you whether an object is in a collection with the possibility of a false positive. It does not store the terms directly, it just stores indicators (a.k.a. hashes, probes) of each term’s presence.</p>
 <figure>
     <img src="img/Bloom_filter_example.png"
@@ -213,7 +205,7 @@ make demo_bf_spellcheck_w_Gati
 <li><a href="https://users.umiacs.umd.edu/~jimmylin/publications/Asadi_Lin_TOIS2013.pdf">Fast candidate generation for real-time tweet search with bloom filter chains</a></li>
 </ul>
 <p><em>I implement two demos to show the functionality of Bloom filters.</em></p>
-<h2 id="21-demo-1-bloom-filter-to-spellcheck-a-query">2.1 Demo 1: Bloom filter to spellcheck a query</h2>
+<h3 id="21-demo-1-bloom-filter-to-spellcheck-a-query">2.1 Demo 1: Bloom filter to spellcheck a query</h3>
 <p>My first demo creates a Bloom filter to check for properly spelled words. It uses a list of words from <code>/usr/share/dict/words</code>. For preprocessing, it splits terms by <code> !\&quot;#$%%&amp;()*+,-./:;&lt;=&gt;?@[\\]^_{}|~</code>.</p>
 <p>It creates and saves the Bloom filter, and then loads and uses that Bloom filter to evaluate a query from <code>stdin</code>. In the first query it highlights my name (&ldquo;Gati&rdquo;) as spelled wrong, as it was not included in the original list.</p>
 <p>Since I want my spellchecker to recognize my name, I use my Bloom filter editor program to load, edit and save the Bloom filter so that it recognize my name (&ldquo;Gati&rdquo;) as a properly spelled word. Then I load and use the new Bloom filter to evaluate the query again. This time, it recognizes my name as a correctly spelled word.</p>
@@ -227,7 +219,7 @@ make demo_bf_spellcheck_w_Gati
 <p>An important property of Bloom filters is that items can be added to it, but items cannot be removed, as deleting the set bits of a query may impact the set bits of other items.</p>
 <p>The spellchecker demo adds 102401 terms, hashes each term with 13 hash functions, and stores everything in a bit signature of 2097152 bits (262KB). Using standard probability functions (explained on <a href="https://www.geeksforgeeks.org/bloom-filters-introduction-and-python-implementation/">GeeksForGeeks</a>, also this <a href="https://hur.st/bloomfilter/?n=102401&amp;p=&amp;m=2097152&amp;k=13">calculator</a>), the saved Bloom filter I use for spellchecking has a 0.000054525 probability (1 in 18340 chance) of a false positive.</p>
 <p>Furthermore, the resulting Bloom filter is ~262KB, which is 1/4th of the size of the original <code>/usr/share/dict/words</code> word list (972.4KB).</p>
-<h2 id="22-demo-2-bloom-filter-to-spellcheck-a-file">2.2 Demo 2: Bloom filter to spellcheck a file</h2>
+<h3 id="22-demo-2-bloom-filter-to-spellcheck-a-file">2.2 Demo 2: Bloom filter to spellcheck a file</h3>
 <p>My Bloom filter spellchecker can also be used to spellcheck files. I have a demo that uses my Bloom filter to spellcheck my README:</p>
 <figure>
     <img src="img/output_demo_spellcheck_README.png"
@@ -238,7 +230,7 @@ make demo_bf_spellcheck_w_Gati
 
 <p>In the screenshot you can see words flagged as incorrect highlighted in red. You can see that, in addition to flagging non-English words like &ldquo;https&rdquo; and &ldquo;murmurhash&rdquo;, it also flags words with atypical casing. For example, it believes that &ldquo;It&rdquo; is incorrect, as only &ldquo;it&rdquo; exists in its vocabulary.</p>
 <p>This a super helpful tool for spellchecking my <code>README.md</code> and <code>.txt</code> files that do not have a built-in spellchecker! I can quickly read through it on my terminal and change words that are obviously spelled wrong. Using a Bloom filter as the first pass spellchecker limits the words I have to check manually, which allows me to utilize my brain power more effectively.</p>
-<h1 id="3-bit-sliced-document-signatures">3 BIT-SLICED DOCUMENT SIGNATURES</h1>
+<h2 id="3-bit-sliced-document-signatures">3 BIT-SLICED DOCUMENT SIGNATURES</h2>
 <p>In addition to the Bloom filter, I also implemented a Bloom filter-based data structure called a bit-sliced signature. It that can be used to retrieve documents that contain all the words in a query.</p>
 <p>A document can be represented by its document signature, which is just a Bloom filter containing all the terms in a document. If all the signatures have the same length and share a common hashing scheme, each document can be represented by a bit-sliced signature. In this approach, document signatures are stored in a big table, like a nested array of machine words (32-bit integers). Each row corresponds to one hash value. In the row, each of the 32 bits in an element correspond to 32 documents, and the bit is on or off depending on whether the document has the hash value.</p>
 <figure>
@@ -258,7 +250,7 @@ make demo_bf_spellcheck_w_Gati
 <ul>
 <li><a href="https://bigsi.readme.io/">BItsliced Genomic Signature Index [BIGSI] Docs</a></li>
 </ul>
-<h3 id="31-demo-3-information-retrieval-on-xkcd-comics-transcripts">3.1 Demo 3: Information retrieval on xkcd comics transcripts</h3>
+<h4 id="31-demo-3-information-retrieval-on-xkcd-comics-transcripts">3.1 Demo 3: Information retrieval on xkcd comics transcripts</h4>
 <p>So as a fun information retrieval demo, I decided to use my bit-sliced document signature to retrieve <a href="https://xkcd.com/2379/">xkcd comics</a> that match keywords. This is a fun tool to explore new xkcd comics for a topic.</p>
 <p>In this demo, I add 40 documents (allocating two blocks of 64 bits), use signatures of length 512, and 3 hashes on each term. Each document comprises of the title, alt-text, and transcript of a given xkcd comic. This information is scraped from <a href="https://www.explainxkcd.com">https://www.explainxkcd.com/</a> using a Python script with beautifulsoup.</p>
 <p>As a demo query, I search for the term &ldquo;outside&rdquo;. This word actually appears in two documents: 30 and 14.</p>
@@ -281,9 +273,19 @@ array <span style="color:#f92672">=</span>
 -105968822	187	
 165224480	8	
 ... <span style="color:#f92672">[</span>output truncated<span style="color:#f92672">]</span>
-colsums <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">103</span> <span style="color:#ae81ff">69</span> <span style="color:#ae81ff">23</span> <span style="color:#ae81ff">69</span> <span style="color:#ae81ff">162</span> <span style="color:#ae81ff">175</span> <span style="color:#ae81ff">82</span> <span style="color:#ae81ff">83</span> <span style="color:#ae81ff">160</span> <span style="color:#ae81ff">95</span> <span style="color:#ae81ff">68</span> <span style="color:#ae81ff">116</span> <span style="color:#ae81ff">206</span> <span style="color:#ae81ff">85</span> <span style="color:#ae81ff">89</span> <span style="color:#ae81ff">324</span> <span style="color:#ae81ff">167</span> <span style="color:#ae81ff">155</span> <span style="color:#ae81ff">219</span> <span style="color:#ae81ff">263</span> <span style="color:#ae81ff">122</span> <span style="color:#ae81ff">88</span> <span style="color:#ae81ff">212</span> <span style="color:#ae81ff">428</span> <span style="color:#ae81ff">56</span> <span style="color:#ae81ff">92</span> <span style="color:#ae81ff">98</span> <span style="color:#ae81ff">88</span> <span style="color:#ae81ff">207</span> <span style="color:#ae81ff">159</span> <span style="color:#ae81ff">97</span> <span style="color:#ae81ff">220</span> <span style="color:#ae81ff">71</span> <span style="color:#ae81ff">65</span> <span style="color:#ae81ff">114</span> <span style="color:#ae81ff">80</span> <span style="color:#ae81ff">122</span> <span style="color:#ae81ff">97</span> <span style="color:#ae81ff">89</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> 
+colsums <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">103</span> <span style="color:#ae81ff">69</span> <span style="color:#ae81ff">23</span> <span style="color:#ae81ff">69</span> <span style="color:#ae81ff">162</span> <span style="color:#ae81ff">175</span> <span style="color:#ae81ff">82</span> <span style="color:#ae81ff">83</span> <span style="color:#ae81ff">160</span> <span style="color:#ae81ff">95</span> <span style="color:#ae81ff">68</span> <span style="color:#ae81ff">116</span> <span style="color:#ae81ff">206</span> <span style="color:#ae81ff">85</span> <span style="color:#ae81ff">89</span> 
+<span style="color:#ae81ff">324</span> <span style="color:#ae81ff">167</span> <span style="color:#ae81ff">155</span> <span style="color:#ae81ff">219</span> <span style="color:#ae81ff">263</span> <span style="color:#ae81ff">122</span> <span style="color:#ae81ff">88</span> <span style="color:#ae81ff">212</span> <span style="color:#ae81ff">428</span> <span style="color:#ae81ff">56</span> <span style="color:#ae81ff">92</span> <span style="color:#ae81ff">98</span> <span style="color:#ae81ff">88</span> <span style="color:#ae81ff">207</span> <span style="color:#ae81ff">159</span> <span style="color:#ae81ff">97</span> 
+<span style="color:#ae81ff">220</span> <span style="color:#ae81ff">71</span> <span style="color:#ae81ff">65</span> <span style="color:#ae81ff">114</span> <span style="color:#ae81ff">80</span> <span style="color:#ae81ff">122</span> <span style="color:#ae81ff">97</span> <span style="color:#ae81ff">89</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> 
+<span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> 
 
-percent filled <span style="color:#f92672">=</span> 0<span style="color:#f92672">=</span>0.00% 1<span style="color:#f92672">=</span>0.20% 2<span style="color:#f92672">=</span>0.13% 3<span style="color:#f92672">=</span>0.04% 4<span style="color:#f92672">=</span>0.13% 5<span style="color:#f92672">=</span>0.32% 6<span style="color:#f92672">=</span>0.34% 7<span style="color:#f92672">=</span>0.16% 8<span style="color:#f92672">=</span>0.16% 9<span style="color:#f92672">=</span>0.31% 10<span style="color:#f92672">=</span>0.19% 11<span style="color:#f92672">=</span>0.13% 12<span style="color:#f92672">=</span>0.23% 13<span style="color:#f92672">=</span>0.40% 14<span style="color:#f92672">=</span>0.17% 15<span style="color:#f92672">=</span>0.17% 16<span style="color:#f92672">=</span>0.63% 17<span style="color:#f92672">=</span>0.33% 18<span style="color:#f92672">=</span>0.30% 19<span style="color:#f92672">=</span>0.43% 20<span style="color:#f92672">=</span>0.51% 21<span style="color:#f92672">=</span>0.24% 22<span style="color:#f92672">=</span>0.17% 23<span style="color:#f92672">=</span>0.41% 24<span style="color:#f92672">=</span>0.84% 25<span style="color:#f92672">=</span>0.11% 26<span style="color:#f92672">=</span>0.18% 27<span style="color:#f92672">=</span>0.19% 28<span style="color:#f92672">=</span>0.17% 29<span style="color:#f92672">=</span>0.40% 30<span style="color:#f92672">=</span>0.31% 31<span style="color:#f92672">=</span>0.19% 32<span style="color:#f92672">=</span>0.43% 33<span style="color:#f92672">=</span>0.14% 34<span style="color:#f92672">=</span>0.13% 35<span style="color:#f92672">=</span>0.22% 36<span style="color:#f92672">=</span>0.16% 37<span style="color:#f92672">=</span>0.24% 38<span style="color:#f92672">=</span>0.19% 39<span style="color:#f92672">=</span>0.17% 40<span style="color:#f92672">=</span>0.00% 41<span style="color:#f92672">=</span>0.00% 42<span style="color:#f92672">=</span>0.00% 43<span style="color:#f92672">=</span>0.00% 44<span style="color:#f92672">=</span>0.00% 45<span style="color:#f92672">=</span>0.00% 46<span style="color:#f92672">=</span>0.00% 47<span style="color:#f92672">=</span>0.00% 48<span style="color:#f92672">=</span>0.00% 49<span style="color:#f92672">=</span>0.00% 50<span style="color:#f92672">=</span>0.00% 51<span style="color:#f92672">=</span>0.00% 52<span style="color:#f92672">=</span>0.00% 53<span style="color:#f92672">=</span>0.00% 54<span style="color:#f92672">=</span>0.00% 55<span style="color:#f92672">=</span>0.00% 56<span style="color:#f92672">=</span>0.00% 57<span style="color:#f92672">=</span>0.00% 58<span style="color:#f92672">=</span>0.00% 59<span style="color:#f92672">=</span>0.00% 60<span style="color:#f92672">=</span>0.00% 61<span style="color:#f92672">=</span>0.00% 62<span style="color:#f92672">=</span>0.00% 63<span style="color:#f92672">=</span>0.00% 
+percent filled <span style="color:#f92672">=</span> 0<span style="color:#f92672">=</span>0.00% 1<span style="color:#f92672">=</span>0.20% 2<span style="color:#f92672">=</span>0.13% 3<span style="color:#f92672">=</span>0.04% 4<span style="color:#f92672">=</span>0.13% 5<span style="color:#f92672">=</span>0.32% 6<span style="color:#f92672">=</span>0.34% 7<span style="color:#f92672">=</span>0.16% 
+8<span style="color:#f92672">=</span>0.16% 9<span style="color:#f92672">=</span>0.31% 10<span style="color:#f92672">=</span>0.19% 11<span style="color:#f92672">=</span>0.13% 12<span style="color:#f92672">=</span>0.23% 13<span style="color:#f92672">=</span>0.40% 14<span style="color:#f92672">=</span>0.17% 15<span style="color:#f92672">=</span>0.17% 
+16<span style="color:#f92672">=</span>0.63% 17<span style="color:#f92672">=</span>0.33% 18<span style="color:#f92672">=</span>0.30% 19<span style="color:#f92672">=</span>0.43% 20<span style="color:#f92672">=</span>0.51% 21<span style="color:#f92672">=</span>0.24% 22<span style="color:#f92672">=</span>0.17% 23<span style="color:#f92672">=</span>0.41% 
+24<span style="color:#f92672">=</span>0.84% 25<span style="color:#f92672">=</span>0.11% 26<span style="color:#f92672">=</span>0.18% 27<span style="color:#f92672">=</span>0.19% 28<span style="color:#f92672">=</span>0.17% 29<span style="color:#f92672">=</span>0.40% 30<span style="color:#f92672">=</span>0.31% 31<span style="color:#f92672">=</span>0.19% 
+32<span style="color:#f92672">=</span>0.43% 33<span style="color:#f92672">=</span>0.14% 34<span style="color:#f92672">=</span>0.13% 35<span style="color:#f92672">=</span>0.22% 36<span style="color:#f92672">=</span>0.16% 37<span style="color:#f92672">=</span>0.24% 38<span style="color:#f92672">=</span>0.19% 39<span style="color:#f92672">=</span>0.17% 
+40<span style="color:#f92672">=</span>0.00% 41<span style="color:#f92672">=</span>0.00% 42<span style="color:#f92672">=</span>0.00% 43<span style="color:#f92672">=</span>0.00% 44<span style="color:#f92672">=</span>0.00% 45<span style="color:#f92672">=</span>0.00% 46<span style="color:#f92672">=</span>0.00% 47<span style="color:#f92672">=</span>0.00% 
+48<span style="color:#f92672">=</span>0.00% 49<span style="color:#f92672">=</span>0.00% 50<span style="color:#f92672">=</span>0.00% 51<span style="color:#f92672">=</span>0.00% 52<span style="color:#f92672">=</span>0.00% 53<span style="color:#f92672">=</span>0.00% 54<span style="color:#f92672">=</span>0.00% 55<span style="color:#f92672">=</span>0.00% 
+56<span style="color:#f92672">=</span>0.00% 57<span style="color:#f92672">=</span>0.00% 58<span style="color:#f92672">=</span>0.00% 59<span style="color:#f92672">=</span>0.00% 60<span style="color:#f92672">=</span>0.00% 61<span style="color:#f92672">=</span>0.00% 62<span style="color:#f92672">=</span>0.00% 63<span style="color:#f92672">=</span>0.00% 
 ---------------------------------
 Sucessfully saved bit-sliced signature to bss_xkcd.dat!
 echo <span style="color:#e6db74">&#34;outside&#34;</span> | ./bss_play -f bss_xkcd.dat -s <span style="color:#e6db74">&#34;https://xkcd.com/%d&#34;</span>
@@ -375,10 +377,10 @@ u_int32_t docWord <span style="color:#f92672">=</span> <span style="color:#ae81f
         }
         ...
 </code></pre></div><hr>
-<h1 id="4-appendix">4 APPENDIX</h1>
-<h2 id="41-note-on-code-design">4.1 Note on Code Design</h2>
+<h2 id="4-appendix">4 APPENDIX</h2>
+<h3 id="41-note-on-code-design">4.1 Note on Code Design</h3>
 <p>Through completing this project, I wanted to gain experience designing and using bit-wise operations, structs, function pointers, file pointers, enums, linked lists, Makefiles, and other programming concepts I learned about in class. Here are some interesting design decisions that went into writing this code:</p>
-<h3 id="411--bit-wise-functions-that-take-advantage-of-powers-of-2">4.1.1  Bit-wise functions that take advantage of powers of 2</h3>
+<h4 id="411--bit-wise-functions-that-take-advantage-of-powers-of-2">4.1.1  Bit-wise functions that take advantage of powers of 2</h4>
 <p>Division is a very slow operation. I can avoid division in many cases by taking advantage of the fact that in base 2, dividing by 2 is equivalent to a right bit shifting.</p>
 <p>This piece of knowledge is behind these two more efficient lower-level helper functions I use in my program:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">/**
@@ -410,9 +412,13 @@ u_int32_t <span style="color:#a6e22e">get_next_pow_2</span>(u_int32_t n)
 </span><span style="color:#75715e"></span>    <span style="color:#75715e">// That&#39;s the next highest power of 2.
 </span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> n;
 }
-</code></pre></div><h3 id="412-function-pointers-for-cleaner-reusable-code">4.1.2 Function pointers for cleaner, reusable code</h3>
+</code></pre></div><h4 id="412-function-pointers-for-cleaner-reusable-code">4.1.2 Function pointers for cleaner, reusable code</h4>
 <p>I can use function wrappers with function pointers in order to reuse code and make cleaner files. In <a href="https://github.com/GatiAher/BloomForSearchFromScratch/blob/main/bloom/test/test_bloom.c">bloom/test/test_bloom.c</a> I define a wrapper function to parse string inputs into tokens in a consistent manner for insertion and querying.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">process_stream</span>(test_results_t <span style="color:#f92672">*</span>test_res, bloom_t <span style="color:#f92672">*</span>filter, <span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>operate)(test_results_t <span style="color:#f92672">*</span>, bloom_t <span style="color:#f92672">*</span>, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>), FILE <span style="color:#f92672">*</span>stream)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">process_stream</span>(test_results_t <span style="color:#f92672">*</span>test_res, 
+        bloom_t <span style="color:#f92672">*</span>filter, 
+        <span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>operate)(test_results_t <span style="color:#f92672">*</span>, bloom_t <span style="color:#f92672">*</span>, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>), 
+        FILE <span style="color:#f92672">*</span>stream
+    )
 {
     ...
 
@@ -437,17 +443,17 @@ process_stream(<span style="color:#f92672">&amp;</span>test_res, filter, operate
 <span style="color:#75715e">/* test lookup */</span> 
 process_stream(<span style="color:#f92672">&amp;</span>test_res, filter, operate_test_lookup_real_positives, options<span style="color:#f92672">-&gt;</span>fadd_to_bloom);
 process_stream(<span style="color:#f92672">&amp;</span>test_res, filter, operate_test_lookup_real_negatives, options<span style="color:#f92672">-&gt;</span>fcheck_in_bloom);
-</code></pre></div><h3 id="413-flexible-input-using-file-pointers">4.1.3 Flexible input using FILE pointers</h3>
+</code></pre></div><h4 id="413-flexible-input-using-file-pointers">4.1.3 Flexible input using FILE pointers</h4>
 <p>I want my play programs to either read input from stdin, or read from a file, like the <code>grep</code> program does. I accomplish this by allowing my bit-sliced signature files to take a FILE pointer.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">queryres_t <span style="color:#f92672">*</span><span style="color:#a6e22e">bitslicedsig_query</span>(bitslicedsig_t <span style="color:#f92672">*</span>bitslicedsig, FILE <span style="color:#f92672">*</span>fquery);
 </code></pre></div><p>This gives the play programs the flexibility of supplying either an opened file or stdin as according to the user defined flags.</p>
 <p>For example:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># valid interaction</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">## valid interaction</span>
 echo <span style="color:#e6db74">&#34;hi my name is Gati&#34;</span> | ./bf_play -f bf_spellcheck.dat -v
 
-<span style="color:#75715e"># also valid interaction</span>
+<span style="color:#75715e">## also valid interaction</span>
 ./bf_play -f bf_spellcheck.dat -i README.md
-</code></pre></div><h3 id="414-flexible-output-by-using-linked-lists-for-indeterminately-sized-result-arrays">4.1.4 Flexible output by Using Linked Lists for indeterminately sized result arrays</h3>
+</code></pre></div><h4 id="414-flexible-output-by-using-linked-lists-for-indeterminately-sized-result-arrays">4.1.4 Flexible output by Using Linked Lists for indeterminately sized result arrays</h4>
 <p>The bit-sliced document signature can output a variable number of matching documents. Storing these documents efficiently is an interesting problem. My first solution involved just printing the matching document IDs out directly from inside the bitslicedsig_query function. However, this is not a good practice because it limits the format options of the displayed output. A better method would be to store the matching outputs and return a pointer to the structure. For this, I had some different options:</p>
 <p>On one hand, I could store the output document IDs in an array that is the size of the maximum number of documents. However, I know that the majority of documents are not going to be matches and allotting memory for a huge array, especially if there are many documents, is not ideal.</p>
 <p>My alternative solution involved using a linked list. I implement the linked list in <a href="bitslicedsig/src/queryres.c">bitslicedsig/src/queryres.c</a>. A linked list is a good choice for situations where the number of items is unknown and items are more likely to be accessed sequentially than via random access.</p>
@@ -470,14 +476,18 @@ https://xkcd.com/24
 https://xkcd.com/16
 https://xkcd.com/14
 </code></pre></div><p>Where the document IDs are tied to a clickable url.</p>
-<h3 id="415-enums-and-binary-flags-for-display-modes">4.1.5 Enums and binary flags for display modes</h3>
+<h4 id="415-enums-and-binary-flags-for-display-modes">4.1.5 Enums and binary flags for display modes</h4>
 <p>For the bloom filter player <a href="https://github.com/GatiAher/BloomForSearchFromScratch/blob/main/bloom/demo/bf_play_main.c">bloom/demo/bf_play_main.c</a> I use enums to designate the various output modes.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./bf_play -h
 
-&gt;&gt; bf_play <span style="color:#f92672">[</span>-v<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-f file_load_bloom_from<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-i file_read_input_from<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-s mode_display_selected<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-x mode_select_in<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-h<span style="color:#f92672">]</span>
- 	Default: load Bloom filter from <span style="color:#e6db74">`</span>bf_saved.txt<span style="color:#e6db74">`</span>, read input from stdin, m <span style="color:#f92672">=</span> 60, k <span style="color:#f92672">=</span> 3, -s OFF <span style="color:#f92672">(</span>print all text<span style="color:#f92672">)</span>, -x OFF <span style="color:#f92672">(</span>color out-of-set terms red<span style="color:#f92672">)</span>
+&gt;&gt; bf_play <span style="color:#f92672">[</span>-v<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-f file_load_bloom_from<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-i file_read_input_from<span style="color:#f92672">]</span> 
+    <span style="color:#f92672">[</span>-s mode_display_selected<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-x mode_select_in<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-h<span style="color:#f92672">]</span>
+ 	Default: load Bloom filter from <span style="color:#e6db74">`</span>bf_saved.txt<span style="color:#e6db74">`</span>, 
+     read input from stdin, m <span style="color:#f92672">=</span> 60, k <span style="color:#f92672">=</span> 3, 
+     -s OFF <span style="color:#f92672">(</span>print all text<span style="color:#f92672">)</span>, 
+     -x OFF <span style="color:#f92672">(</span>color out-of-set terms red<span style="color:#f92672">)</span>
 </code></pre></div><p>I use an enum and binary flags to designate the options:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># pseudocode</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">## pseudocode</span>
 00 <span style="color:#f92672">=</span> ALL, OUT
 01 <span style="color:#f92672">=</span> ALL, IN
 10 <span style="color:#f92672">=</span> SELECTED, OUT
@@ -507,24 +517,24 @@ https://xkcd.com/14
         </figcaption>
 </figure>
 
-<h3 id="416-modular-design">4.1.6 Modular Design</h3>
+<h4 id="416-modular-design">4.1.6 Modular Design</h4>
 <p>I also wanted practice designing and writing clean, modular code. I accomplish this by making the decision to split the code for the actual data structure into a src folder (see <a href="bloom/src">bloom/src</a> and <a href="bitslicedsig/src">bitslicedsig/src</a>).</p>
 <p>By encapsulating the code for the data structures, I was able to define a concrete API for the data structure and test that all the exposed functions of the API worked properly (see <a href="bloom/src">bloom/test</a> and <a href="bitslicedsig/src">bitslicedsig/test</a>).</p>
 <p>After writing the test for the full end-to-end use-case, writing the demo programs was very easy; I just had to make sure the user interface was properly defined for each program and then call the appropriate data structure functions. Writing code in this way meant that my code base was reliable, predictable, and well organized. For example, my demos use an editor program and a player program. These each encapsulate a core functionality of interacting with the data structure (add and query, respectively).</p>
 <p>The editor program (see <a href="bloom/demo/bf_editor_main.h">bloom/demo/bf_editor_main.h</a> and <a href="bitslicedsig/demo/bss_editor_main.h">bitslicedsig/demo/bss_editor_main.h</a>) creates a new data structure, or loads and edits an already saved data structure, and then saves the final results. This file thus uses create / load, add, and save functions of the corresponding data structure.</p>
 <p>The play program (see <a href="bloom/demo/bf_play_main.h">bloom/demo/bf_play_main.h</a> and <a href="bitslicedsig/demo/bss_play_main.h">bitslicedsig/demo/bss_play_main.h</a>) loads the data structure from a file, and then processes queries from stdin or a file and displays the results in some pretty, user-customizable manner.</p>
 <hr>
-<h2 id="42-note-on-controlling-false-positives">4.2 Note on Controlling False Positives</h2>
+<h3 id="42-note-on-controlling-false-positives">4.2 Note on Controlling False Positives</h3>
 <p>You can control the number of false positives (reduce collision) by increasing number of signature bits (m) and increasing number of hash functions (k).</p>
 <p>The value of m configures how many bits will be allocated for the bit array. Ideally, when all the items are added, the bit array should be approximately half full. Worst case is if the bit array is completely full (all 1s), as it will say that every query may be in the filter (false positives). For performance reasons, the bit array rounds m to the nearest largest power of 2.</p>
 <p>The value of k configures how many hash functions will be used in the Bloom filter hashing scheme. A higher number of hash functions means that there is a higher signal to noise ratio, where signal is the probability that a term is a member of a set given that all the term&rsquo;s probes are present in the Bloom filter, and noise is the probability of a false positive. Rarer terms have a higher likelihood of being a false positive, so increasing k improves the signal to noise ratio and allows for better retrieval of rate terms. However, a larger k leads to more hash operations, and therefore slower insertion and lookup time. The seeds of the hash function are generated with a random number generator in order to be independent and uniformly distributed.</p>
-<h2 id="43-note-on-choice-of-hash-function">4.3 Note on Choice of Hash Function</h2>
+<h3 id="43-note-on-choice-of-hash-function">4.3 Note on Choice of Hash Function</h3>
 <p>The hash function used in a Bloom filter must be independent, uniformly distributed, and as fast as possible. MurmurHash is a non-cryptographic hash function suitable for general hash-based lookup. In this project, I use <a href="https://fuchsia.googlesource.com/third_party/murmurhash.c/">jwerle/murmurhash</a> which implements version 3 of MurmurHash and provides 32-bit hash signatures.</p>
 <p>You can try out murmurhash with</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make test_murmurhash <span style="color:#f92672">&amp;&amp;</span> ./test_murmurhash
 </code></pre></div><p>See expected output at <a href="results/output_test_murmurhash.txt">results/output_test_murmurhash.txt</a>.</p>
 <hr>
-<h1 id="5-future-directions">5 FUTURE DIRECTIONS</h1>
+<h2 id="5-future-directions">5 FUTURE DIRECTIONS</h2>
 <p>Currently, the Bloom filter and bit-sliced signatures perform exact keyword search. However, there are situations where a fuzzier keyword search is desirable (lower precision but higher recall). Ways to make a fuzzy keyword search include:</p>
 <ul>
 <li>lowercasing terms before adding and and querying</li>
@@ -532,22 +542,123 @@ https://xkcd.com/14
 <li>using a stemmer (like <a href="https://tartarus.org/martin/PorterStemmer/">Snowball Stemmer</a>) to break terms down into their root word. In this senario, words with the same root, like &ldquo;running&rdquo;, &ldquo;runs&rdquo;, and &ldquo;ran&rdquo; would all be condensed to &ldquo;run&rdquo; before add and query.</li>
 </ul>
 <p>Frequently a fuzzy keyword search is not desirable because it introduces extra noise. Depending on the preprocessing, which can introduce extra time and resource costs. For this reason, Bing&rsquo;s BitFunnel algorithm does not use stemming.</p>
+        </article>
 
-</article>
+    </section>
+</main>
 
 
-    </main>
-    <footer class="site-footer">
-        &copy 2021 by Gati Aher &#183;
-        Powered by <a class="selective-underline" href="https://gohugo.io/">Hugo</a> &#183;
-        View on <a class="selective-underline" href="https://github.com/GatiAher/gatiaher-hugo">GitHub</a>
-</footer>
-    
+                        
+                        </div>
+                    </div>
 
-<script src="/js/feather.min.js"></script>
-<script>
-    feather.replace();
-</script>
-</body>
+                
+                <div id="sidebar">
+    <div class="inner">
+
+        
+        <nav id="menu">
+            <header class="major">
+                <h2>Menu</h2>
+            </header>
+            <ul>
+                <li><a href="/">Home</a></li>
+                
+                
+                    <li>
+                        <a href="http://GatiAher.github.io/categories/concepts-theory/">Concepts &amp; Theory (4)</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://GatiAher.github.io/categories/data-analysis/">Data Analysis (3)</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://GatiAher.github.io/categories/software-development/">Software Development (2)</a>
+                    </li>
+                
+                
+                <li>
+                    <span class="opener"><i>Tags</i></span>
+                    <ul>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/olin-college-fa2021-discrete-mathematics/">Olin College: FA2021 Discrete Mathematics (2)</a>
+                        </li>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/olin-college-quantitative-engineering-analysis/">Olin College: Quantitative Engineering Analysis (2)</a>
+                        </li>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/olin-microbiology-lab-undergraduate-research/">Olin Microbiology Lab (Undergraduate Research) (2)</a>
+                        </li>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/indico-data-solutions-intern-rd-&#43;-ml-engineering/">Indico Data Solutions (Intern: R&amp;D &#43; ML Engineering) (1)</a>
+                        </li>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/olin-college-fa2021-principals-of-integrated-engineering/">Olin College: FA2021 Principals of Integrated Engineering (1)</a>
+                        </li>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/olin-college-sp2021-data-structures-and-algorithms/">Olin College: SP2021 Data Structures and Algorithms (1)</a>
+                        </li>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/olin-college-sp2021-software-systems-in-c/">Olin College: SP2021 Software Systems in C (1)</a>
+                        </li>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/%C5%82%C3%B3d%C5%BA-university-2021-mathup-conference/">Łódź University 2021 MathUp Conference (1)</a>
+                        </li>
+                        
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        
+        <section>
+            <header class="major">
+                <h2>Get in touch</h2>
+            </header>
+            <p>Have questions or want to chat? Feel free to reach out via email or LinkedIn!</p>
+            <ul class="contact">
+                <li class="icon solid fa-envelope"><a href="mailto:gaher@olin.edu">gaher@olin.edu</a></li>
+                <li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/gatiaher">linkedin.com/in/gatiaher</a></li>
+                <li class="icon solid fa-home">Boston, MA</li>
+            </ul>
+        </section>
+
+        
+        <footer id="footer">
+            <p class="copyright">&copy; 2022 Gati Aher &#183; All rights reserved &#183; Powered by <a href="https://gohugo.io/">Hugo</a> &#183; </a> Design: <a href="https://html5up.net">HTML5 UP</a> &#183; Code on <a href="https://github.com/GatiAher/gatiaher-hugo">GitHub</a></p>
+        </footer>
+
+    </div>
+</div>
+
+            <div>
+
+        
+        
+
+<script src="/js/jquery.min.js"></script>
+
+<script src="/js/browser.min.js"></script>
+
+<script src="/js/breakpoints.min.js"></script>
+
+<script src="/js/util.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+<script src="/js/vertical-tabs.js"></script>
+
+        
+    </body>
 
 </html>

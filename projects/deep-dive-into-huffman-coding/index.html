@@ -1,28 +1,20 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="Hugo 0.68.3" />
-  <meta property="og:title" content="Deep Dive Into Huffman Coding" />
-<meta property="og:description" content="Huffman coding is a variation on prefix codes that optimize lossless data compression. In this deep dive, we (1) introduced how Huffman Codes work, (2) explored the theoretical limits of Huffman compression, (3) analyzed resilience to error, and (4) followed the evolution of research on using choice of Huffman tables to encode secret messages in MP3 files.
-
- 
-" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://GatiAher.github.io/projects/deep-dive-into-huffman-coding/" />
-<meta property="og:image" content="http://GatiAher.github.io/img/cover_page.png"/>
-<meta property="article:published_time" content="2021-10-25T00:46:56-05:00" />
-<meta property="article:modified_time" content="2021-10-25T00:46:56-05:00" />
-
-    
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <head>
   
-  <link rel="stylesheet" href="/css/style.css">
   
   
   <title>Deep Dive Into Huffman Coding</title>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+    
+  <link rel="stylesheet" href="/css/main.css">
+  
+    
+  
   
 
 <script>
@@ -52,42 +44,45 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
   <link rel="manifest" href="/favicon_io/site.webmanifest">
+  
+  <meta name="generator" content="Hugo 0.68.3" />
+  <meta property="og:title" content="Deep Dive Into Huffman Coding" />
+<meta property="og:description" content="Huffman coding is a variation on prefix codes that optimize lossless data compression. In this deep dive, we (1) introduced how Huffman Codes work, (2) explored the theoretical limits of Huffman compression, (3) analyzed resilience to error, and (4) followed the evolution of research on using choice of Huffman tables to encode secret messages in MP3 files.
+
+  
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://GatiAher.github.io/projects/deep-dive-into-huffman-coding/" />
+<meta property="og:image" content="http://GatiAher.github.io/img/cover_page.png"/>
+<meta property="article:published_time" content="2021-10-25T00:46:56-05:00" />
+<meta property="article:modified_time" content="2021-10-25T00:46:56-05:00" />
+
+
 </head>
 
-<body>
-    <div class="site-header">
-    <nav id="nav" class="container">
-        <div class=bar>
-            <a class="navbar-brand brand" href="/">
-                Gati Aher
-            </a>
-            <div class="links">
-                
-                
-                
-                <a class="nav-link" href="/projects"><i data-feather="archive"></i> All Projects</a>
-                
-                
-                
-                <a class="nav-link" href="/tags"><i data-feather="tag"></i> Tags</a>
-                
-                
-                
-                <a class="nav-link" href="/about"><i data-feather="at-sign"></i> Contact</a>
-                
-            </div>
-        </div>
-    </nav>
-</div>
-
-    <main id="main" class="container">
+    <body class="is-preload">
         
+        
+            <div id="wrapper">
 
-<div>
-    
+                
+                    <div id="main">
+                        <div class="inner">
 
-        <div class="post-heading">
-            <div class="category">
+                            
+                            <header id="header">
+    <a href="/" class="logo"><strong>Gati</strong> Aher</a>
+    <ul class="icons">
+        <li><a href="https://github.com/GatiAher" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+        <li><a href="https://www.linkedin.com/in/gatiaher" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+        <li><a href="mailto:gaher@olin.edu" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+    </ul>
+</header>
+                            
+                            
+<main>
+    <section>
+        <div class="category">
     
     
     
@@ -97,22 +92,24 @@
     
     
 </div>
-            <h1 >Deep Dive Into Huffman Coding</h1>
-            <div class="meta">
+        <header>
+            <h1>Deep Dive Into Huffman Coding</h1>
+        </header>
+        <div class="meta">
     By Gati Aher &#183
     
 
 <time class="date" datetime="2021-10-25">Oct 25, 2021</time> &#183
     2 min read
 </div>
-            <br>
-            <div class="cover-image-container">
+        <br>
+        <div class="cover-image-container">
     
     
     
 </div>
-            <br>
-            <div class="tags">
+        <br>
+        <div class="tags">
     <i>Posted in:</i>
     
     
@@ -123,27 +120,18 @@
     
     
 </div>
-            <hr>
-        </div>
-
-    
-
-</div>
-
-<br/>
-
-<article>
-
-    <p>Huffman coding is a variation on prefix codes that optimize lossless data compression. In this deep dive, we (1) introduced how Huffman Codes work, (2) explored the theoretical limits of Huffman compression, (3) analyzed resilience to error, and (4) followed the evolution of research on using choice of Huffman tables to encode secret messages in MP3 files.</p>
+        <hr>
+        <article>
+            <p>Huffman coding is a variation on prefix codes that optimize lossless data compression. In this deep dive, we (1) introduced how Huffman Codes work, (2) explored the theoretical limits of Huffman compression, (3) analyzed resilience to error, and (4) followed the evolution of research on using choice of Huffman tables to encode secret messages in MP3 files.</p>
 <div id="Container"
- style="padding-bottom:56.25%; position:relative; display:block; width: 100%">
- <iframe id="googlePdfIframe"
+  style="padding-bottom:56.25%; position:relative; display:block; width: 100%">
+  <iframe id="googlePdfIframe"
   width="100%" height="100%"
   src="https://drive.google.com/file/d/1qZT_iiq8OeSeb5d5wkv4Jp9Ie-83-cm0/preview"
   frameborder="0" allowfullscreen=""
   style="position:absolute; top:0; left: 0"></iframe>
 </div>
-<h1 id="teammate-contributions">Teammate Contributions</h1>
+<h2 id="teammate-contributions">Teammate Contributions</h2>
 <p>My group consisted of Ducan, Alex, Robin, and myself. We approached the deep dive by each researching an aspect of Huffman codes usage. We did preliminary research and final proofreading together. We also explained findings to each other during our weekly group meeting.</p>
 <ul>
 <li><strong>Robin:</strong> Part 1 - Introduction to Huffman Coding</li>
@@ -151,24 +139,125 @@
 <li><strong>Alex:</strong> Part 3 - Error Correction and Resilience:  What resilience do HuffmanCodes have to errors?</li>
 <li><strong>Gati (me):</strong> Part 4 - MP3 Stenography:  How are Huffman tables used to communicate secret messages?</li>
 </ul>
-<h1 id="my-contributions">My Contributions</h1>
+<h2 id="my-contributions">My Contributions</h2>
 <p>I put in a total of 15 hours to research the usage of Huffman codes. Originally, I was also looking more broadly into patterns and qualities that could be inferred from the statistical distributions of the choice of MP3 Huffman table, but I decided to focus the writeup on stenography because that was the usage I was most interested in diving deeper into. I created the figures used in my section in order to fully explore the patterns and choices made by each proposed scheme. I also learned how the Huffman compression worked with the other compression techniques used to make MP3. Overall, this topic was fun to read about and discuss!</p>
+        </article>
 
-</article>
+    </section>
+</main>
 
 
-    </main>
-    <footer class="site-footer">
-        &copy 2021 by Gati Aher &#183;
-        Powered by <a class="selective-underline" href="https://gohugo.io/">Hugo</a> &#183;
-        View on <a class="selective-underline" href="https://github.com/GatiAher/gatiaher-hugo">GitHub</a>
-</footer>
-    
+                        
+                        </div>
+                    </div>
 
-<script src="/js/feather.min.js"></script>
-<script>
-    feather.replace();
-</script>
-</body>
+                
+                <div id="sidebar">
+    <div class="inner">
+
+        
+        <nav id="menu">
+            <header class="major">
+                <h2>Menu</h2>
+            </header>
+            <ul>
+                <li><a href="/">Home</a></li>
+                
+                
+                    <li>
+                        <a href="http://GatiAher.github.io/categories/concepts-theory/">Concepts &amp; Theory (4)</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://GatiAher.github.io/categories/data-analysis/">Data Analysis (3)</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://GatiAher.github.io/categories/software-development/">Software Development (2)</a>
+                    </li>
+                
+                
+                <li>
+                    <span class="opener"><i>Tags</i></span>
+                    <ul>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/olin-college-fa2021-discrete-mathematics/">Olin College: FA2021 Discrete Mathematics (2)</a>
+                        </li>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/olin-college-quantitative-engineering-analysis/">Olin College: Quantitative Engineering Analysis (2)</a>
+                        </li>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/olin-microbiology-lab-undergraduate-research/">Olin Microbiology Lab (Undergraduate Research) (2)</a>
+                        </li>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/indico-data-solutions-intern-rd-&#43;-ml-engineering/">Indico Data Solutions (Intern: R&amp;D &#43; ML Engineering) (1)</a>
+                        </li>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/olin-college-fa2021-principals-of-integrated-engineering/">Olin College: FA2021 Principals of Integrated Engineering (1)</a>
+                        </li>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/olin-college-sp2021-data-structures-and-algorithms/">Olin College: SP2021 Data Structures and Algorithms (1)</a>
+                        </li>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/olin-college-sp2021-software-systems-in-c/">Olin College: SP2021 Software Systems in C (1)</a>
+                        </li>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/%C5%82%C3%B3d%C5%BA-university-2021-mathup-conference/">Łódź University 2021 MathUp Conference (1)</a>
+                        </li>
+                        
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        
+        <section>
+            <header class="major">
+                <h2>Get in touch</h2>
+            </header>
+            <p>Have questions or want to chat? Feel free to reach out via email or LinkedIn!</p>
+            <ul class="contact">
+                <li class="icon solid fa-envelope"><a href="mailto:gaher@olin.edu">gaher@olin.edu</a></li>
+                <li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/gatiaher">linkedin.com/in/gatiaher</a></li>
+                <li class="icon solid fa-home">Boston, MA</li>
+            </ul>
+        </section>
+
+        
+        <footer id="footer">
+            <p class="copyright">&copy; 2022 Gati Aher &#183; All rights reserved &#183; Powered by <a href="https://gohugo.io/">Hugo</a> &#183; </a> Design: <a href="https://html5up.net">HTML5 UP</a> &#183; Code on <a href="https://github.com/GatiAher/gatiaher-hugo">GitHub</a></p>
+        </footer>
+
+    </div>
+</div>
+
+            <div>
+
+        
+        
+
+<script src="/js/jquery.min.js"></script>
+
+<script src="/js/browser.min.js"></script>
+
+<script src="/js/breakpoints.min.js"></script>
+
+<script src="/js/util.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+<script src="/js/vertical-tabs.js"></script>
+
+        
+    </body>
 
 </html>

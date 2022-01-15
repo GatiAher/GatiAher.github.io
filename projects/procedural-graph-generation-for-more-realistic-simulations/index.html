@@ -1,31 +1,20 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="Hugo 0.68.3" />
-  <meta property="og:title" content="Procedural Graph Generation For More Realistic Simulations" />
-<meta property="og:description" content="Many real world systems can be modeled with graphs. Most stable and complex graphs have small-world (local clustering) and scale-free (hubs) properties. The commonly used Erdös-Rényi algorithm generates random graphs, but random graphs are not useful for complex network simulations because they do not have clusters or hubs. In this project, we (1) identified algorithms that generated small-world and scale-free graphs, (2) studied and implemented generation functions for each type of algorithm, (3) created custom animations of graph generation process, and (4) verified that our graphs exhibited the expected structural properties.
-All generation, animation, and validation code is available in our GitHub Repo.
-
-
-
- 
-" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://GatiAher.github.io/projects/procedural-graph-generation-for-more-realistic-simulations/" />
-<meta property="og:image" content="http://GatiAher.github.io/img/cover_page.png"/>
-<meta property="article:published_time" content="2021-12-18T23:23:16-05:00" />
-<meta property="article:modified_time" content="2021-12-18T23:23:16-05:00" />
-
-    
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <head>
   
-  <link rel="stylesheet" href="/css/style.css">
   
   
   <title>Procedural Graph Generation For More Realistic Simulations</title>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+    
+  <link rel="stylesheet" href="/css/main.css">
+  
+    
+  
   
 
 <script>
@@ -55,42 +44,48 @@ All generation, animation, and validation code is available in our GitHub Repo.
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
   <link rel="manifest" href="/favicon_io/site.webmanifest">
+  
+  <meta name="generator" content="Hugo 0.68.3" />
+  <meta property="og:title" content="Procedural Graph Generation For More Realistic Simulations" />
+<meta property="og:description" content="Many real world systems can be modeled with graphs. Most stable and complex graphs have small-world (local clustering) and scale-free (hubs) properties. In this project, we (1) identified algorithms that generated small-world and scale-free graphs, (2) studied and implemented generation functions for each type of algorithm, (3) created custom animations of graph generation process, and (4) verified that our graphs exhibited the expected structural properties.
+All generation, animation, and validation code is available in our GitHub Repo.
+
+
+
+ 
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://GatiAher.github.io/projects/procedural-graph-generation-for-more-realistic-simulations/" />
+<meta property="og:image" content="http://GatiAher.github.io/img/cover_page.png"/>
+<meta property="article:published_time" content="2021-12-18T23:23:16-05:00" />
+<meta property="article:modified_time" content="2021-12-18T23:23:16-05:00" />
+
+
 </head>
 
-<body>
-    <div class="site-header">
-    <nav id="nav" class="container">
-        <div class=bar>
-            <a class="navbar-brand brand" href="/">
-                Gati Aher
-            </a>
-            <div class="links">
-                
-                
-                
-                <a class="nav-link" href="/projects"><i data-feather="archive"></i> All Projects</a>
-                
-                
-                
-                <a class="nav-link" href="/tags"><i data-feather="tag"></i> Tags</a>
-                
-                
-                
-                <a class="nav-link" href="/about"><i data-feather="at-sign"></i> Contact</a>
-                
-            </div>
-        </div>
-    </nav>
-</div>
-
-    <main id="main" class="container">
+    <body class="is-preload">
         
+        
+            <div id="wrapper">
 
-<div>
-    
+                
+                    <div id="main">
+                        <div class="inner">
 
-        <div class="post-heading">
-            <div class="category">
+                            
+                            <header id="header">
+    <a href="/" class="logo"><strong>Gati</strong> Aher</a>
+    <ul class="icons">
+        <li><a href="https://github.com/GatiAher" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+        <li><a href="https://www.linkedin.com/in/gatiaher" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+        <li><a href="mailto:gaher@olin.edu" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+    </ul>
+</header>
+                            
+                            
+<main>
+    <section>
+        <div class="category">
     
     
     
@@ -100,20 +95,22 @@ All generation, animation, and validation code is available in our GitHub Repo.
     
     
 </div>
-            <h1 >Procedural Graph Generation For More Realistic Simulations</h1>
-            <div class="meta">
+        <header>
+            <h1>Procedural Graph Generation For More Realistic Simulations</h1>
+        </header>
+        <div class="meta">
     By Gati Aher &#183
     
 
 <time class="date" datetime="2021-12-18">Dec 18, 2021</time> &#183
     2 min read
 </div>
-            <br>
-            <div class="cover-image-container">
+        <br>
+        <div class="cover-image-container">
     
 </div>
-            <br>
-            <div class="tags">
+        <br>
+        <div class="tags">
     <i>Posted in:</i>
     
     
@@ -124,18 +121,9 @@ All generation, animation, and validation code is available in our GitHub Repo.
     
     
 </div>
-            <hr>
-        </div>
-
-    
-
-</div>
-
-<br/>
-
-<article>
-
-    <p>Many real world systems can be modeled with graphs. Most stable and complex graphs have <strong>small-world</strong> (local clustering) and <strong>scale-free</strong> (hubs) properties. The commonly used Erdös-Rényi algorithm generates random graphs, but random graphs are not useful for complex network simulations because they do not have clusters or hubs. In this project, we (1) identified algorithms that generated small-world and scale-free graphs, (2) studied and implemented generation functions for each type of algorithm, (3) created custom animations of graph generation process, and (4) verified that our graphs exhibited the expected structural properties.</p>
+        <hr>
+        <article>
+            <p>Many real world systems can be modeled with graphs. Most stable and complex graphs have <strong>small-world</strong> (local clustering) and <strong>scale-free</strong> (hubs) properties. In this project, we (1) identified algorithms that generated small-world and scale-free graphs, (2) studied and implemented generation functions for each type of algorithm, (3) created custom animations of graph generation process, and (4) verified that our graphs exhibited the expected structural properties.</p>
 <p>All generation, animation, and validation code is available in our <a href="https://github.com/GatiAher/network-generation">GitHub Repo</a>.</p>
 
 
@@ -147,33 +135,134 @@ All generation, animation, and validation code is available in our GitHub Repo.
   frameborder="0" allowfullscreen=""
   style="position:absolute; top:0; left: 0"></iframe>
 </div>
-<h1 id="reflection">Reflection</h1>
+<h2 id="reflection">Reflection</h2>
 <p>I ran into this topic when I was first researching properties of stable microbial communities. Since microbial communities are real, stable, and complex, researchers expect that their dependency and interaction networks have hub and cluster characteristics. Hubs can indicate the presence of a keystone species and clusters can indicate that several microbes fall into a similar ecological and functional niche. In some papers, researchers simulated microbial community stability with randomly generated graphs, so I wanted to take a closer look at graph generation algorithms.</p>
-<h1 id="teammate-contributions">Teammate Contributions</h1>
+<h2 id="teammate-contributions">Teammate Contributions</h2>
 <p>My group consisted of Mira, Aydin, and myself. We approached the deep dive by each studying and implementing a graph generation algorithm. We then divided up the remaining coding tasks.</p>
 <ul>
 <li><strong>Mira:</strong> BA algorithm, animation GIFs</li>
 <li><strong>Aydin:</strong> WS algorithm, deep dive on ring lattice properties</li>
 <li><strong>Gati (me):</strong> KE algorithm, structural verifications, network comparison panels</li>
 </ul>
-<h1 id="my-contributions">My Contributions</h1>
+<h2 id="my-contributions">My Contributions</h2>
 <p>I proposed the initial focus and scope of the project, found the main paper we used as a resource, and explained small-world and scale-free properties to my teammates. I was responsible for implementing the KE graph generation algorithm and explaining how it worked to my team. Next, I read about checking structural verifications, found the corresponding Networkx functions, and created a panel to display figures and properties to compare generated networks. Finally, I worked on the initial technical slide deck and made the final slide decks based on Professor Sarah and my teammates suggestions.</p>
+        </article>
 
-</article>
+    </section>
+</main>
 
 
-    </main>
-    <footer class="site-footer">
-        &copy 2021 by Gati Aher &#183;
-        Powered by <a class="selective-underline" href="https://gohugo.io/">Hugo</a> &#183;
-        View on <a class="selective-underline" href="https://github.com/GatiAher/gatiaher-hugo">GitHub</a>
-</footer>
-    
+                        
+                        </div>
+                    </div>
 
-<script src="/js/feather.min.js"></script>
-<script>
-    feather.replace();
-</script>
-</body>
+                
+                <div id="sidebar">
+    <div class="inner">
+
+        
+        <nav id="menu">
+            <header class="major">
+                <h2>Menu</h2>
+            </header>
+            <ul>
+                <li><a href="/">Home</a></li>
+                
+                
+                    <li>
+                        <a href="http://GatiAher.github.io/categories/concepts-theory/">Concepts &amp; Theory (4)</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://GatiAher.github.io/categories/data-analysis/">Data Analysis (3)</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://GatiAher.github.io/categories/software-development/">Software Development (2)</a>
+                    </li>
+                
+                
+                <li>
+                    <span class="opener"><i>Tags</i></span>
+                    <ul>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/olin-college-fa2021-discrete-mathematics/">Olin College: FA2021 Discrete Mathematics (2)</a>
+                        </li>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/olin-college-quantitative-engineering-analysis/">Olin College: Quantitative Engineering Analysis (2)</a>
+                        </li>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/olin-microbiology-lab-undergraduate-research/">Olin Microbiology Lab (Undergraduate Research) (2)</a>
+                        </li>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/indico-data-solutions-intern-rd-&#43;-ml-engineering/">Indico Data Solutions (Intern: R&amp;D &#43; ML Engineering) (1)</a>
+                        </li>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/olin-college-fa2021-principals-of-integrated-engineering/">Olin College: FA2021 Principals of Integrated Engineering (1)</a>
+                        </li>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/olin-college-sp2021-data-structures-and-algorithms/">Olin College: SP2021 Data Structures and Algorithms (1)</a>
+                        </li>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/olin-college-sp2021-software-systems-in-c/">Olin College: SP2021 Software Systems in C (1)</a>
+                        </li>
+                        
+                        <li>
+                            <a href="http://GatiAher.github.io/tags/%C5%82%C3%B3d%C5%BA-university-2021-mathup-conference/">Łódź University 2021 MathUp Conference (1)</a>
+                        </li>
+                        
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        
+        <section>
+            <header class="major">
+                <h2>Get in touch</h2>
+            </header>
+            <p>Have questions or want to chat? Feel free to reach out via email or LinkedIn!</p>
+            <ul class="contact">
+                <li class="icon solid fa-envelope"><a href="mailto:gaher@olin.edu">gaher@olin.edu</a></li>
+                <li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/gatiaher">linkedin.com/in/gatiaher</a></li>
+                <li class="icon solid fa-home">Boston, MA</li>
+            </ul>
+        </section>
+
+        
+        <footer id="footer">
+            <p class="copyright">&copy; 2022 Gati Aher &#183; All rights reserved &#183; Powered by <a href="https://gohugo.io/">Hugo</a> &#183; </a> Design: <a href="https://html5up.net">HTML5 UP</a> &#183; Code on <a href="https://github.com/GatiAher/gatiaher-hugo">GitHub</a></p>
+        </footer>
+
+    </div>
+</div>
+
+            <div>
+
+        
+        
+
+<script src="/js/jquery.min.js"></script>
+
+<script src="/js/browser.min.js"></script>
+
+<script src="/js/breakpoints.min.js"></script>
+
+<script src="/js/util.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+<script src="/js/vertical-tabs.js"></script>
+
+        
+    </body>
 
 </html>

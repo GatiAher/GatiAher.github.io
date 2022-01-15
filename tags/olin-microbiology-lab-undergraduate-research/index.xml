@@ -18,7 +18,7 @@
       
       <guid>http://GatiAher.github.io/projects/facial-recognition-using-principal-component-analysis/</guid>
       <description>&lt;p&gt;I have used multiple variations of Principal Component Analysis (PCA) in my research on microbial community analysis. To explain the core theory and assumptions of PCA to my lab group, I fleshed out an analysis of a toy example (eigenfaces) that I had originally seen in class. This analysis reasons about the assumptions of PCA and the effects of applying it to out-of-distribution data by using PCA to perform facial recognition on a dataset of my classmates&amp;rsquo; faces.&lt;/p&gt;
-&lt;p&gt;Fun fact: My research professor recommended my presentation to her connection at Łódź University, Poland, who in turn invited me to be a virtual presenter at &lt;a href=&#34;https://ms-my.facebook.com/MathUpConference/photos/because-the-mathup-conference-is-conducted-in-both-polish-and-english-another-du/2805409529774282&#34;&gt;Łódź University&amp;rsquo;s SP2021 MathUp conference&lt;/a&gt;. The conference was an incredibly fun opportunity to meet fellow researchers and data scientists.&lt;/p&gt;</description>
+&lt;p&gt;&lt;em&gt;I was invited to present this project at &lt;a href=&#34;https://ms-my.facebook.com/MathUpConference/photos/because-the-mathup-conference-is-conducted-in-both-polish-and-english-another-du/2805409529774282&#34;&gt;Łódź University&amp;rsquo;s SP2021 [virtual] MathUp conference&lt;/a&gt; at Łódź University, Poland. The conference was an incredibly fun opportunity to meet fellow researchers and data scientists!&lt;/em&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -27,7 +27,7 @@
       <pubDate>Sun, 14 Mar 2021 22:24:10 -0400</pubDate>
       
       <guid>http://GatiAher.github.io/projects/a-fourier-transform-detective-story/</guid>
-      <description>&lt;p&gt;A group of research students had tried to use a 2D discrete Fourier Transform to characterize the pattern of repeating protein units on a bacteria surface layer image. Since their spectral graph looked unusually messy and their pattern estimates seemed very wrong, my research professor asked me to take a crack at interpreting and cleaning it. My successful analysis helped the research group complete their paper and publish their findings. This project was a pretty neat application of understanding the mathematical assumptions of a technique to properly isolate and interpret the results.&lt;/p&gt;</description>
+      <description>&lt;p&gt;A group of research students had tried to use a 2D discrete Fourier Transform to characterize the pattern of repeating protein units on a bacteria surface layer image. Since their spectral graph looked unusually messy and their pattern estimates seemed very wrong, my research professor asked me to take a crack at interpreting and cleaning it. This was a neat application of understanding the mathematical assumptions of a technique to properly isolate and interpret results.&lt;/p&gt;</description>
     </item>
     
   </channel>
