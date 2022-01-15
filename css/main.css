@@ -3670,8 +3670,12 @@ button:disabled,
   /* border: 1px solid #ccc; */
   width: 70%;
   /* border-left: none; */
-  height: 600px;
+  height: 550px;
 }
+
+@media screen and (orientation: portrait) and (max-width: 480px) {
+  .tabcontent {
+    height: 650px; } }
 
 .tab-wrapper::after {
   content: "";
