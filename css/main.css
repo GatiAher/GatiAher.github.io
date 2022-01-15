@@ -3620,7 +3620,9 @@ button:disabled,
 
 /* Vertical Tabs: https://www.w3schools.com/howto/howto_js_vertical_tabs.asp */
 
-* {box-sizing: border-box}
+* {
+  box-sizing: border-box
+}
 
 /* Style the tab */
 .tab {
@@ -3675,7 +3677,9 @@ button:disabled,
 
 @media screen and (orientation: portrait) and (max-width: 480px) {
   .tabcontent {
-    height: 650px; } }
+    height: 650px;
+  }
+}
 
 .tab-wrapper::after {
   content: "";
