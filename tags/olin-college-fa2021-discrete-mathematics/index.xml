@@ -18,7 +18,14 @@
       
       <guid>http://GatiAher.github.io/projects/procedural-graph-generation-for-more-realistic-simulations/</guid>
       <description>&lt;p&gt;Many real world systems can be modeled with graphs. Most stable and complex graphs have &lt;strong&gt;small-world&lt;/strong&gt; (local clustering) and &lt;strong&gt;scale-free&lt;/strong&gt; (hubs) properties. In this project, we (1) identified algorithms that generated small-world and scale-free graphs, (2) studied and implemented generation functions for each type of algorithm, (3) created custom animations of graph generation process, and (4) verified that our graphs exhibited the expected structural properties.&lt;/p&gt;
-&lt;p&gt;All generation, animation, and validation code is available in our &lt;a href=&#34;https://github.com/GatiAher/network-generation&#34;&gt;GitHub Repo&lt;/a&gt;.&lt;/p&gt;
+&lt;ul class=&#34;actions&#34;&gt;
+    
+    
+    
+        
+        &lt;li&gt;&lt;a href=&#34;https://github.com/GatiAher/network-generation&#34; class=&#34;button icon solid brands fa-github&#34;&gt;Visit GitHub&lt;/a&gt;&lt;/li&gt;
+    
+&lt;/ul&gt;
 
 
 &lt;div id=&#34;Container&#34;

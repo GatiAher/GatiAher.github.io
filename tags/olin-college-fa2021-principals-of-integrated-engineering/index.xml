@@ -19,11 +19,30 @@
       <guid>http://GatiAher.github.io/projects/disco-cats-arduinos&#43;ml-music/</guid>
       <description>&lt;p&gt;My team spent 6 weeks building an interactive music visualization system that uses Arduinos, motors, an LED matrix, and sound to express musical pieces generated with machine learning!&lt;/p&gt;
 &lt;p&gt;I learned how to (1) design an intuitive UI (2) use &lt;a href=&#34;https://magenta.tensorflow.org/multitrack&#34;&gt;Google&amp;rsquo;s Magenta multi-track VAE model&lt;/a&gt; to generate music based on user input (3) transmit the MIDI bitstream over serial (3) extract pitch, instrument, and duration information from the midi bitstream in real time (4) efficiently control an LED matrix and motors.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Details available on our &lt;a href=&#34;https://olincollege.github.io/pie-2021-03/Disco-Cats/&#34;&gt;&lt;em&gt;Website!&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Code is on &lt;a href=&#34;https://github.com/GatiAher/disco_cats&#34;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Demo video is on &lt;a href=&#34;https://youtu.be/nX_OTCaxyTM&#34;&gt;YouTube&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;</description>
+&lt;p&gt;&lt;ul class=&#34;actions&#34;&gt;
+    
+    
+    
+        
+        &lt;li&gt;&lt;a href=&#34;https://olincollege.github.io/pie-2021-03/Disco-Cats/&#34; class=&#34;button icon solid fa-gem&#34;&gt;View Website&lt;/a&gt;&lt;/li&gt;
+    
+&lt;/ul&gt;
+&lt;ul class=&#34;actions&#34;&gt;
+    
+    
+    
+        
+        &lt;li&gt;&lt;a href=&#34;https://github.com/GatiAher/disco_cats&#34; class=&#34;button icon solid brands fa-github&#34;&gt;Visit GitHub&lt;/a&gt;&lt;/li&gt;
+    
+&lt;/ul&gt;
+&lt;ul class=&#34;actions&#34;&gt;
+    
+    
+    
+        
+        &lt;li&gt;&lt;a href=&#34;https://youtu.be/nX_OTCaxyTM&#34; class=&#34;button icon solid fa-video&#34;&gt;Watch Demo&lt;/a&gt;&lt;/li&gt;
+    
+&lt;/ul&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

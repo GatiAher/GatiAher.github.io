@@ -6,10 +6,19 @@
     <description>Recent content on Gati Aher&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 Dec 2021 20:08:21 -0500</lastBuildDate>
+    <lastBuildDate>Sat, 15 Jan 2022 12:05:55 -0500</lastBuildDate>
     
 	<atom:link href="http://GatiAher.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>My Art</title>
+      <link>http://GatiAher.github.io/artwork/my-art/</link>
+      <pubDate>Sat, 15 Jan 2022 12:05:55 -0500</pubDate>
+      
+      <guid>http://GatiAher.github.io/artwork/my-art/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Exploring FPGA Deep Learning Accelerators</title>
@@ -35,7 +44,14 @@
       
       <guid>http://GatiAher.github.io/projects/procedural-graph-generation-for-more-realistic-simulations/</guid>
       <description>&lt;p&gt;Many real world systems can be modeled with graphs. Most stable and complex graphs have &lt;strong&gt;small-world&lt;/strong&gt; (local clustering) and &lt;strong&gt;scale-free&lt;/strong&gt; (hubs) properties. In this project, we (1) identified algorithms that generated small-world and scale-free graphs, (2) studied and implemented generation functions for each type of algorithm, (3) created custom animations of graph generation process, and (4) verified that our graphs exhibited the expected structural properties.&lt;/p&gt;
-&lt;p&gt;All generation, animation, and validation code is available in our &lt;a href=&#34;https://github.com/GatiAher/network-generation&#34;&gt;GitHub Repo&lt;/a&gt;.&lt;/p&gt;
+&lt;ul class=&#34;actions&#34;&gt;
+    
+    
+    
+        
+        &lt;li&gt;&lt;a href=&#34;https://github.com/GatiAher/network-generation&#34; class=&#34;button icon solid brands fa-github&#34;&gt;Visit GitHub&lt;/a&gt;&lt;/li&gt;
+    
+&lt;/ul&gt;
 
 
 &lt;div id=&#34;Container&#34;
@@ -56,11 +72,30 @@
       <guid>http://GatiAher.github.io/projects/disco-cats-arduinos&#43;ml-music/</guid>
       <description>&lt;p&gt;My team spent 6 weeks building an interactive music visualization system that uses Arduinos, motors, an LED matrix, and sound to express musical pieces generated with machine learning!&lt;/p&gt;
 &lt;p&gt;I learned how to (1) design an intuitive UI (2) use &lt;a href=&#34;https://magenta.tensorflow.org/multitrack&#34;&gt;Google&amp;rsquo;s Magenta multi-track VAE model&lt;/a&gt; to generate music based on user input (3) transmit the MIDI bitstream over serial (3) extract pitch, instrument, and duration information from the midi bitstream in real time (4) efficiently control an LED matrix and motors.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Details available on our &lt;a href=&#34;https://olincollege.github.io/pie-2021-03/Disco-Cats/&#34;&gt;&lt;em&gt;Website!&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Code is on &lt;a href=&#34;https://github.com/GatiAher/disco_cats&#34;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Demo video is on &lt;a href=&#34;https://youtu.be/nX_OTCaxyTM&#34;&gt;YouTube&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;</description>
+&lt;p&gt;&lt;ul class=&#34;actions&#34;&gt;
+    
+    
+    
+        
+        &lt;li&gt;&lt;a href=&#34;https://olincollege.github.io/pie-2021-03/Disco-Cats/&#34; class=&#34;button icon solid fa-gem&#34;&gt;View Website&lt;/a&gt;&lt;/li&gt;
+    
+&lt;/ul&gt;
+&lt;ul class=&#34;actions&#34;&gt;
+    
+    
+    
+        
+        &lt;li&gt;&lt;a href=&#34;https://github.com/GatiAher/disco_cats&#34; class=&#34;button icon solid brands fa-github&#34;&gt;Visit GitHub&lt;/a&gt;&lt;/li&gt;
+    
+&lt;/ul&gt;
+&lt;ul class=&#34;actions&#34;&gt;
+    
+    
+    
+        
+        &lt;li&gt;&lt;a href=&#34;https://youtu.be/nX_OTCaxyTM&#34; class=&#34;button icon solid fa-video&#34;&gt;Watch Demo&lt;/a&gt;&lt;/li&gt;
+    
+&lt;/ul&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -107,8 +142,13 @@
       <guid>http://GatiAher.github.io/projects/emg-gesture-recognition.md/</guid>
       <description>&lt;p&gt;This project followed the topological data analysis steps laid out in &lt;a href=&#34;http://doi.org/10.1098/rsif.2017.0734&#34;&gt;Phinyomark et al (2017) &amp;ldquo;Navigating features: a topologically informed chart of electromyographic features space&amp;rdquo;&lt;/a&gt; to analyze 43 features extracted from surface EMG signals of three gestures (rock, paper, scissors) performed by a single subject.&lt;/p&gt;
 &lt;p&gt;I used sklearn&amp;rsquo;s topological data analysis tools with the Kepler Mapper and Ward&amp;rsquo;s minimum variance method as the criterion for hierarchial clustering in order to analyze feature redundancy. Comparison of feature class separability was analyzed by calculating Davies-Bouldin index (DBI) and Fisher&amp;rsquo;s linear discriminant index (FLDI), and measuring misclassification rates. 5-fold cross validation Linear Discriminant Analysis and Support Vector Machine were employed as classifiers.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Documentation report on &lt;a href=&#34;https://github.com/GatiAher/EMG_Gesture_Recognition&#34;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;ul class=&#34;actions&#34;&gt;
+    
+    
+    
+        
+        &lt;li&gt;&lt;a href=&#34;https://github.com/GatiAher/EMG_Gesture_Recognition&#34; class=&#34;button icon solid brands fa-github&#34;&gt;Visit GitHub&lt;/a&gt;&lt;/li&gt;
+    
 &lt;/ul&gt;</description>
     </item>
     
@@ -135,7 +175,22 @@
       <guid>http://GatiAher.github.io/projects/implementing-fast-and-space-efficient-look-up-and-search/</guid>
       <description>&lt;p&gt;The Bloom filter data structure tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when a start-up I was working for used Bloom filters to speed up their database search. Then, I heard about Microsoft using a stack of Bloom filters (a bit-sliced document signature data structure) to &lt;a href=&#34;https://dl.acm.org/doi/10.1145/3077136.3080789&#34;&gt;speed up the Bing search engine&amp;rsquo;s keyword search&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;In this project, I explored these interesting data structures by implementing a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and highlights notable code design decisions.&lt;/p&gt;
-&lt;p&gt;All code is available in my &lt;a href=&#34;https://github.com/GatiAher/BloomForSearchFromScratch&#34;&gt;GitHub Repo&lt;/a&gt;. I documented my progress on this &lt;a href=&#34;https://trello.com/b/xzVRxTDJ/bloomforsearchfromscratch&#34;&gt;Trello Board&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;ul class=&#34;actions&#34;&gt;
+    
+    
+    
+        
+        &lt;li&gt;&lt;a href=&#34;https://github.com/GatiAher/BloomForSearchFromScratch&#34; class=&#34;button icon solid brands fa-github&#34;&gt;Visit GitHub&lt;/a&gt;&lt;/li&gt;
+    
+&lt;/ul&gt;
+&lt;ul class=&#34;actions&#34;&gt;
+    
+    
+    
+        
+        &lt;li&gt;&lt;a href=&#34;https://trello.com/b/xzVRxTDJ/bloomforsearchfromscratch&#34; class=&#34;button icon solid brands fa-trello&#34;&gt;Visit Trello&lt;/a&gt;&lt;/li&gt;
+    
+&lt;/ul&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -156,9 +211,22 @@
       <guid>http://GatiAher.github.io/projects/build-a-virtual-machine/</guid>
       <description>&lt;p&gt;Little Computer 3 (LC-3) is a reduced instruction set computer (RISC). This means that its architecture uses a limited set of optimized instructions to complete tasks. We implemented a virtual machine (VM) in C that can run compiled LC-3 assembly. Given program code in a compiled OBJ file, the VM can execute the instructions in the file.&lt;/p&gt;
 &lt;p&gt;In order to do this, it uses the memory structure defined in the LC-3 specification, including program memory, program registers, and condition flags. It reads and writes to these memory structures and manages I/O through the terminal. Our VM successfully plays game files!&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Report on &lt;a href=&#34;https://github.com/GatiAher/SoftSysGarbageEaters/blob/main/reports/report.md&#34;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description>
+&lt;p&gt;&lt;ul class=&#34;actions&#34;&gt;
+    
+    
+    
+        
+        &lt;li&gt;&lt;a href=&#34;https://github.com/GatiAher/SoftSysGarbageEaters/blob/main/reports/report.md&#34; class=&#34;button icon solid brands fa-github&#34;&gt;Visit GitHub&lt;/a&gt;&lt;/li&gt;
+    
+&lt;/ul&gt;
+&lt;ul class=&#34;actions&#34;&gt;
+    
+    
+    
+        
+        &lt;li&gt;&lt;a href=&#34;https://trello.com/b/s83l2eWJ/softsys-garbagecollectors&#34; class=&#34;button icon solid brands fa-trello&#34;&gt;Visit Trello&lt;/a&gt;&lt;/li&gt;
+    
+&lt;/ul&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -187,10 +255,22 @@
       <guid>http://GatiAher.github.io/projects/xkcd-data-visualization-website/</guid>
       <description>&lt;p&gt;This single-page web application lets users interact with xkcd comics clustered by similarity.&lt;/p&gt;
 &lt;p&gt;Over the course of building this project, I learned how to clean data, use different natural language analysis techniques (&lt;strong&gt;stemming, lemminizing, TF-IDF, SVD, t-SNE&lt;/strong&gt;), build an interactive and reactive data visualization (&lt;strong&gt;D3.js&lt;/strong&gt;), and host a web application (&lt;strong&gt;Flask, Bootstrap, Heroku&lt;/strong&gt;).&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Details documented on &lt;a href=&#34;https://github.com/GatiAher/Xkcd_Data_Visualization&#34;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Hosted at &lt;a href=&#34;https://xkcd-data.herokuapp.com/&#34;&gt;https://xkcd-data.herokuapp.com/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description>
+&lt;p&gt;&lt;ul class=&#34;actions&#34;&gt;
+    
+    
+    
+        
+        &lt;li&gt;&lt;a href=&#34;https://xkcd-data.herokuapp.com/&#34; class=&#34;button icon solid fa-gem&#34;&gt;View Website&lt;/a&gt;&lt;/li&gt;
+    
+&lt;/ul&gt;
+&lt;ul class=&#34;actions&#34;&gt;
+    
+    
+    
+        
+        &lt;li&gt;&lt;a href=&#34;https://github.com/GatiAher/Xkcd_Data_Visualization&#34; class=&#34;button icon solid brands fa-github&#34;&gt;Visit GitHub&lt;/a&gt;&lt;/li&gt;
+    
+&lt;/ul&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>
