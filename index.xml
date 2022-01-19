@@ -6,42 +6,10 @@
     <description>Recent content on Gati Aher&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 18 Jan 2022 00:01:01 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 09 Jan 2022 12:05:55 -0500</lastBuildDate>
     
 	<atom:link href="http://GatiAher.github.io/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Lagaan Football Pick-Em&#39; Application</title>
-      <link>http://GatiAher.github.io/projects/lagaan-football-pick-em-application/</link>
-      <pubDate>Tue, 18 Jan 2022 00:01:01 -0500</pubDate>
-      
-      <guid>http://GatiAher.github.io/projects/lagaan-football-pick-em-application/</guid>
-      <description>&lt;p&gt;This fullstack application includes a scoring engine to validate user pool picks and compute score and a React.js UI to handle team selections and leader-board displays. This is used by 40+ active users to submit pool selections weekly.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Technology:&lt;/strong&gt; React.js, Material-UI, Node.js, Express.js, SQLite, React-Admin package for structuring admin, REST API, Auth0, DigitalOcean Droplet, Nginx, and PM2.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;3-minute demo&lt;/strong&gt;:
-
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;https://www.youtube.com/embed/IYpS-rnKjFc&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;&lt;ul class=&#34;actions&#34;&gt;
-    
-    
-    
-        
-        &lt;li&gt;&lt;a href=&#34;https://github.com/GatiAher/lagaan-football-pool-app&#34; class=&#34;button icon solid brands fa-github&#34;&gt;Visit GitHub&lt;/a&gt;&lt;/li&gt;
-    
-&lt;/ul&gt;
-&lt;ul class=&#34;actions&#34;&gt;
-    
-    
-    
-        
-        &lt;li&gt;&lt;a href=&#34;https://www.lagaannfl.com&#34; class=&#34;button icon solid fa-gem&#34;&gt;View Website&lt;/a&gt;&lt;/li&gt;
-    
-&lt;/ul&gt;&lt;/p&gt;</description>
-    </item>
     
     <item>
       <title>Driveway in Hawaii</title>
@@ -342,6 +310,38 @@
     
         
         &lt;li&gt;&lt;a href=&#34;https://github.com/GatiAher/Xkcd_Data_Visualization&#34; class=&#34;button icon solid brands fa-github&#34;&gt;Visit GitHub&lt;/a&gt;&lt;/li&gt;
+    
+&lt;/ul&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Lagaan Football Pick-Em&#39; Application</title>
+      <link>http://GatiAher.github.io/projects/lagaan-football-pick-em-application/</link>
+      <pubDate>Sat, 18 Jan 2020 00:01:01 -0500</pubDate>
+      
+      <guid>http://GatiAher.github.io/projects/lagaan-football-pick-em-application/</guid>
+      <description>&lt;p&gt;This fullstack application includes a scoring engine to validate user pool picks and compute score and a React.js UI to handle team selections and leader-board displays. This is used by 40+ active users to submit pool selections weekly. I developed and maintained this application from Fall 2020 through Spring 2022.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Technology:&lt;/strong&gt; React.js, Material-UI, Node.js, Express.js, SQLite, React-Admin package for structuring admin, REST API, Auth0, DigitalOcean Droplet, Nginx, and PM2.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3-minute demo&lt;/strong&gt;:
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/IYpS-rnKjFc&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;ul class=&#34;actions&#34;&gt;
+    
+    
+    
+        
+        &lt;li&gt;&lt;a href=&#34;https://github.com/GatiAher/lagaan-football-pool-app&#34; class=&#34;button icon solid brands fa-github&#34;&gt;Visit GitHub&lt;/a&gt;&lt;/li&gt;
+    
+&lt;/ul&gt;
+&lt;ul class=&#34;actions&#34;&gt;
+    
+    
+    
+        
+        &lt;li&gt;&lt;a href=&#34;https://www.lagaannfl.com&#34; class=&#34;button icon solid fa-gem&#34;&gt;View Website&lt;/a&gt;&lt;/li&gt;
     
 &lt;/ul&gt;&lt;/p&gt;</description>
     </item>

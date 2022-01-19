@@ -3,41 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://GatiAher.github.io/tags/building-software-for-family-friends/</loc>
-    <lastmod>2022-01-18T00:01:01-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://GatiAher.github.io/categories/</loc>
-    <lastmod>2022-01-18T00:01:01-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://GatiAher.github.io/</loc>
-    <lastmod>2022-01-18T00:01:01-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://GatiAher.github.io/projects/lagaan-football-pick-em-application/</loc>
-    <lastmod>2022-01-18T00:01:01-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://GatiAher.github.io/projects/</loc>
-    <lastmod>2022-01-18T00:01:01-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://GatiAher.github.io/categories/software-development/</loc>
-    <lastmod>2022-01-18T00:01:01-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://GatiAher.github.io/tags/</loc>
-    <lastmod>2022-01-18T00:01:01-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://GatiAher.github.io/artwork/</loc>
     <lastmod>2022-01-09T12:05:55-05:00</lastmod>
   </url>
@@ -48,8 +13,18 @@
   </url>
   
   <url>
+    <loc>http://GatiAher.github.io/</loc>
+    <lastmod>2022-01-09T12:05:55-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://GatiAher.github.io/artwork/beach-in-hawaii/</loc>
     <lastmod>2022-01-05T16:21:10-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://GatiAher.github.io/categories/</loc>
+    <lastmod>2021-12-23T20:08:21-05:00</lastmod>
   </url>
   
   <url>
@@ -64,6 +39,16 @@
   
   <url>
     <loc>http://GatiAher.github.io/tags/olin-college-fa2021-computer-architecture/</loc>
+    <lastmod>2021-12-23T20:08:21-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://GatiAher.github.io/projects/</loc>
+    <lastmod>2021-12-23T20:08:21-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://GatiAher.github.io/tags/</loc>
     <lastmod>2021-12-23T20:08:21-05:00</lastmod>
   </url>
   
@@ -84,6 +69,11 @@
   
   <url>
     <loc>http://GatiAher.github.io/tags/olin-college-fa2021-principals-of-integrated-engineering/</loc>
+    <lastmod>2021-12-14T21:21:42-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://GatiAher.github.io/categories/software-development/</loc>
     <lastmod>2021-12-14T21:21:42-04:00</lastmod>
   </url>
   
@@ -200,6 +190,16 @@
   <url>
     <loc>http://GatiAher.github.io/projects/xkcd-data-visualization-website/</loc>
     <lastmod>2020-05-19T21:05:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://GatiAher.github.io/tags/building-software-for-family-friends/</loc>
+    <lastmod>2020-01-18T00:01:01-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://GatiAher.github.io/projects/lagaan-football-pick-em-application/</loc>
+    <lastmod>2020-01-18T00:01:01-05:00</lastmod>
   </url>
   
   <url>
