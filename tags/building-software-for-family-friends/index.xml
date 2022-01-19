@@ -6,7 +6,7 @@
     <description>Recent content in Building Software For Family &amp; Friends on Gati Aher&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 18 Jan 2020 00:01:01 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 18 Jan 2022 00:01:01 -0500</lastBuildDate>
     
 	<atom:link href="http://GatiAher.github.io/tags/building-software-for-family-friends/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Lagaan Football Pick-Em&#39; Application</title>
       <link>http://GatiAher.github.io/projects/lagaan-football-pick-em-application/</link>
-      <pubDate>Sat, 18 Jan 2020 00:01:01 -0500</pubDate>
+      <pubDate>Tue, 18 Jan 2022 00:01:01 -0500</pubDate>
       
       <guid>http://GatiAher.github.io/projects/lagaan-football-pick-em-application/</guid>
       <description>&lt;p&gt;This fullstack application includes a scoring engine to validate user pool picks and compute score and a React.js UI to handle team selections and leader-board displays. This is used by 40+ active users to submit pool selections weekly. I developed and maintained this application from Fall 2020 through Spring 2022.&lt;/p&gt;
