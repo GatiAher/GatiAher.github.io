@@ -97,7 +97,7 @@
     
 
 <time class="date" datetime="2021-03-03">Mar 3, 2021</time> &#183
-    13 min read
+    12 min read
 </div>
         <br>
         <div class="cover-image-container">
@@ -129,33 +129,35 @@
         <div class="single">
             <article>
                 <p>Concepts and math behind 1D and 2D discrete Fourier Transforms for signal and image analysis. Overview of mathematical steps, post-processing, assumptions, and reading of phase and magnitude plots.</p>
-<ul>
-<li><a href="#1-introduction">1 INTRODUCTION</a></li>
-<li><a href="#2-1d-fourier-transform">2 1D FOURIER TRANSFORM</a>
-<ul>
-<li><a href="#understanding-the-1d-math">Understanding the 1D Math</a>
-<ul>
-<li><a href="#the-dft-matrix-w">The DFT-matrix (W)</a></li>
-<li><a href="#post-projection-processing">Post Projection Processing</a></li>
-</ul>
-</li>
-<li><a href="#read-the-1d-frequency-plots">Read the 1D Frequency Plots</a></li>
-</ul>
-</li>
-<li><a href="#3-generalizing-to-2d-fourier-transform">3 GENERALIZING TO 2D FOURIER TRANSFORM</a>
-<ul>
-<li><a href="#understand-the-2d-math">Understand the 2D Math</a></li>
-<li><a href="#read-the-2d-plots">Read the 2D Plots</a></li>
-<li><a href="#exercises">Exercises</a></li>
-</ul>
-</li>
-<li><a href="#4-further-reading">4 FURTHER READING</a></li>
-</ul>
+<div class="toc">
+    <p>
+        <strong>Table of Contents</strong>
+    </p>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-introduction">1 INTRODUCTION</a></li>
+    <li><a href="#2-1d-fourier-transform">2 1D FOURIER TRANSFORM</a>
+      <ul>
+        <li><a href="#understanding-the-1d-math">Understanding the 1D Math</a></li>
+        <li><a href="#read-the-1d-frequency-plots">Read the 1D Frequency Plots</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-generalizing-to-2d-fourier-transform">3 GENERALIZING TO 2D FOURIER TRANSFORM</a>
+      <ul>
+        <li><a href="#understand-the-2d-math">Understand the 2D Math</a></li>
+        <li><a href="#read-the-2d-plots">Read the 2D Plots</a></li>
+        <li><a href="#exercises">Exercises</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-further-reading">4 FURTHER READING</a></li>
+  </ul>
+</nav>
+</div>
 <h2 id="1-introduction">1 INTRODUCTION</h2>
 <p>In the 1800s, Joseph Fourier showed that periodic functions could be written as an infinite sum of sinusoids. His theory paved the way for Fourier Analysis, a useful tool for signal and data processing.</p>
 <figure>
     <img src="img/time_frequency_explanation.png"
-         alt="A 1D signal can be represented as a weighted sum of sinusoids. Image Source: An Interactive Guide To The Fourier Transform, a good explanation by BetterExplained." height="300"/> <figcaption>
+         alt="A 1D signal can be represented as a weighted sum of sinusoids. Image Source: An Interactive Guide To The Fourier Transform, a good explanation by BetterExplained."/> <figcaption>
             <p>A 1D signal can be represented as a weighted sum of sinusoids. Image Source: <a href="https://betterexplained.com/articles/an-interactive-guide-to-the-fourier-transform/">An Interactive Guide To The Fourier Transform</a>, a good explanation by BetterExplained.</p>
         </figcaption>
 </figure>
@@ -183,7 +185,7 @@ $$x = XW^{-1}$$</p>
 <p>Each element of $W$ is a primitive Nth root of unity. For any exponent $kn$, the Nth roots of unity repeat themselves with a period of $N$, as in $w^{kn} = w^{kn \mod N}$. This leads to several patterns of symmetry in W. For example, Eight-point DFT Matrix looks like this:</p>
 <figure>
     <img src="img/8_point_DFT_equation.png"
-         alt="The first image shows w raised to all combinations of k*n. The second image shows the Nth roots of unity repeating themselves with a period of N. The 8 possible values of w are each given a unique color." height="250"/> <figcaption>
+         alt="The first image shows w raised to all combinations of k*n. The second image shows the Nth roots of unity repeating themselves with a period of N. The 8 possible values of w are each given a unique color."/> <figcaption>
             <p>The first image shows w raised to all combinations of k*n. The second image shows the Nth roots of unity repeating themselves with a period of N. The 8 possible values of w are each given a unique color.</p>
         </figcaption>
 </figure>
@@ -191,7 +193,7 @@ $$x = XW^{-1}$$</p>
 <p>We can visualize the DFT Matrix W by graphing the repetition pattern of each row. This representation allows us to see that W is an evenly spaced set of sinusoidal frequencies. The DFT transform is the result of projecting original signal x onto a set of sinusoidal frequencies.</p>
 <figure>
     <img src="img/8_point_DFT.png"
-         alt="DFT as a matrix multiplication. Real part (cosine) shown by a solid line, and the imaginary part (sine) by a dashed line. From DFT matrix – Wikipedia" height="300"/> <figcaption>
+         alt="DFT as a matrix multiplication. Real part (cosine) shown by a solid line, and the imaginary part (sine) by a dashed line. From DFT matrix – Wikipedia"/> <figcaption>
             <p>DFT as a matrix multiplication. Real part (cosine) shown by a solid line, and the imaginary part (sine) by a dashed line. From <a href="https://en.wikipedia.org/wiki/DFT_matrix">DFT matrix – Wikipedia</a></p>
         </figcaption>
 </figure>
@@ -201,7 +203,7 @@ $$x = XW^{-1}$$</p>
 <p>First, to make the frequency plots easier to read, we shift the frequency components in $X$ so that the zero frequency is in the center and higher frequencies are at the edges.</p>
 <figure>
     <img src="img/8_point_DFT_shifted.png"
-         alt="To center a 1D DFT, swap the left and right halves of X." height="300"/> <figcaption>
+         alt="To center a 1D DFT, swap the left and right halves of X."/> <figcaption>
             <p>To center a 1D DFT, swap the left and right halves of X.</p>
         </figcaption>
 </figure>
@@ -210,7 +212,7 @@ $$x = XW^{-1}$$</p>
 <p>$$a + ib = r\cos(\theta) + ir\sin(\theta)$$</p>
 <figure>
     <img src="img/polar_representation.png"
-         alt="Relationship between complex form and polar form" height="300"/> <figcaption>
+         alt="Relationship between complex form and polar form"/> <figcaption>
             <p>Relationship between complex form and polar form</p>
         </figcaption>
 </figure>
@@ -222,7 +224,7 @@ $$x = XW^{-1}$$</p>
 <p>Once we have the magnitude and phase, we can plot them to see how they change over the different frequency components. The x-axis has the frequency component, and the y-axis has the DFT-coefficient magnitude or phase, depending on the plot.</p>
 <figure>
     <img src="img/frequency_axis_units.png"
-         alt="Different but equivalent units for the frequency components on the x-axis" height="300"/> <figcaption>
+         alt="Different but equivalent units for the frequency components on the x-axis"/> <figcaption>
             <p>Different but equivalent units for the frequency components on the x-axis</p>
         </figcaption>
 </figure>
@@ -232,7 +234,7 @@ $$x = XW^{-1}$$</p>
 <p>Let us compare the plots of some simple discrete signals! Here are the magnitude and phase of the DFT coefficients found from projecting a sine wave of 8 Hz, a sine wave of 16 Hz, and a cosine wave of 8 Hz onto a 128-point DFT matrix. Each wave was sampled 128 times over a time-span of 1 second.</p>
 <figure>
     <img src="img/sine_waves_fft.png"
-         alt="Centered phase and magnitude plots for a sine wave of 8 Hz, a sine wave of 16 Hz, and a sine wave of 8 Hz with a phase offset of π/2 (cosine wave)." height="600"/> <figcaption>
+         alt="Centered phase and magnitude plots for a sine wave of 8 Hz, a sine wave of 16 Hz, and a sine wave of 8 Hz with a phase offset of π/2 (cosine wave)."/> <figcaption>
             <p>Centered phase and magnitude plots for a sine wave of 8 Hz, a sine wave of 16 Hz, and a sine wave of 8 Hz with a phase offset of π/2 (cosine wave).</p>
         </figcaption>
 </figure>
@@ -242,7 +244,7 @@ $$x = XW^{-1}$$</p>
 <p>If we isolate the true dominant frequency components in the phase plot, we get cleaner phase values. At the 8 Hz frequency component, the 8 Hz sine wave has a phase of $\pi/2 = 1.57$ and the cosine has a phase close to zero.</p>
 <figure>
     <img src="img/sine_waves_fft_clean.png"
-         alt="Isolated phase values for 8 Hz frequency component." height="400"/> <figcaption>
+         alt="Isolated phase values for 8 Hz frequency component."/> <figcaption>
             <p>Isolated phase values for 8 Hz frequency component.</p>
         </figcaption>
 </figure>
@@ -252,7 +254,7 @@ $$x = XW^{-1}$$</p>
 <p>To visualize the sinuous nature of image signals, we can plot the pixel intensities of the image in a surface plot and observe the top view of its contours. In this view, areas of sharp change, like edges, appear as narrow peaks, and swatches of uniform values, like the evenly colored sky, appear flat with no or low gradual peaks. These patterns have direct parallels with the sharp narrow peaks of high frequency waves and low gradual peaks of low frequency waves.</p>
 <figure>
     <img src="img/cameraman_surface_plot.png"
-         alt="The camera man, a famous image in image processing literature, and his corresponding image surface / Bed Sheet View. From matlab meshCanopy" height="300"/> <figcaption>
+         alt="The camera man, a famous image in image processing literature, and his corresponding image surface / Bed Sheet View. From matlab meshCanopy"/> <figcaption>
             <p>The camera man, a famous image in image processing literature, and his corresponding image surface / Bed Sheet View. From <a href="https://www.mathworks.com/matlabcentral/fileexchange/29485-meshcanopy">matlab meshCanopy</a></p>
         </figcaption>
 </figure>
@@ -281,7 +283,7 @@ $$x = XW^{-1}$$</p>
 <p>The Fourier Transform math works by assuming the given spatial image is one period in an infinitely repeating spectrum. For example when it looks at the camera man image, it sees:</p>
 <figure>
     <img src="img/cameraman_infinite_spectrum.png"
-         alt="Repeating spectrum of the cameraman image" height="400"/> <figcaption>
+         alt="Repeating spectrum of the cameraman image"/> <figcaption>
             <p>Repeating spectrum of the cameraman image</p>
         </figcaption>
 </figure>
@@ -293,7 +295,7 @@ $$x = XW^{-1}$$</p>
 <p>In order to see more information in the plots, use a log transform to non-linearly scale the magnitude values so the big values are compressed into a smaller range and more information is visible in the plot.</p>
 <figure>
     <img src="img/cameraman_explore_fft.png"
-         alt="Cameraman FFT magnitude and phase" height="400"/> <figcaption>
+         alt="Cameraman FFT magnitude and phase"/> <figcaption>
             <p>Cameraman FFT magnitude and phase</p>
         </figcaption>
 </figure>
@@ -301,7 +303,7 @@ $$x = XW^{-1}$$</p>
 <p>In the log of magnitude plot, several frequencies are show up. These frequencies describe patterns of repetition like:</p>
 <figure>
     <img src="img/cameraman_spectrum_annotated.png"
-         alt="Annotated spectrum of the cameraman image" height="400"/> <figcaption>
+         alt="Annotated spectrum of the cameraman image"/> <figcaption>
             <p>Annotated spectrum of the cameraman image</p>
         </figcaption>
 </figure>
@@ -310,7 +312,7 @@ $$x = XW^{-1}$$</p>
 <p>For example, the sky and ground create horizontal stripes in the infinite spectrum. Horizontal stripes can be represented by a horizontal 2D sine wave. The horizontal stripes’ FFT magnitude plot has a pattern of vertical dots, indicating the periodic pattern across the y-direction.</p>
 <figure>
     <img src="img/example_fft2_sine_wave.png"
-         alt="Horizontal sine wave stripes FFT magnitude plot has a pattern of vertical dots indicating the presences of a periodic pattern across the y-direction." height="150"/> <figcaption>
+         alt="Horizontal sine wave stripes FFT magnitude plot has a pattern of vertical dots indicating the presences of a periodic pattern across the y-direction."/> <figcaption>
             <p>Horizontal sine wave stripes FFT magnitude plot has a pattern of vertical dots indicating the presences of a periodic pattern across the y-direction.</p>
         </figcaption>
 </figure>
@@ -321,28 +323,28 @@ $$x = XW^{-1}$$</p>
 <p>To get a feel for reading patterns from a 2D FFT centered magnitude plot, look at these examples. For each image, think about the repeating unit and directions of periodic repetition. Look back to the annotated cameraman and log magnitude plot image for an example. Remember, low frequency components are in the center of the plot and high frequency components are on the outer edges.</p>
 <figure>
     <img src="img/example_fft2_brick.png"
-         alt="The brick wall image has a stripe pattern in its magnitude plot." height="150"/> <figcaption>
+         alt="The brick wall image has a stripe pattern in its magnitude plot."/> <figcaption>
             <p>The brick wall image has a stripe pattern in its magnitude plot.</p>
         </figcaption>
 </figure>
 
 <figure>
     <img src="img/example_fft2_mustard_seeds.png"
-         alt="The mustard seed image has circular rings in its magnitude plot." height="150"/> <figcaption>
+         alt="The mustard seed image has circular rings in its magnitude plot."/> <figcaption>
             <p>The mustard seed image has circular rings in its magnitude plot.</p>
         </figcaption>
 </figure>
 
 <figure>
     <img src="img/example_fft2_honeycomb.png"
-         alt="The honeycomb has a hexagonal pattern in its magnitude plot." height="150"/> <figcaption>
+         alt="The honeycomb has a hexagonal pattern in its magnitude plot."/> <figcaption>
             <p>The honeycomb has a hexagonal pattern in its magnitude plot.</p>
         </figcaption>
 </figure>
 
 <figure>
     <img src="img/example_fft2_flower.png"
-         alt="The flower is a more complex image. It’s magnitude plot shows a clear circular pattern of repetition, probably from the patterns of symmetry in the flower, and also vertical and horizontal lines, caused by patterns in the background when the image is represented as an infinite spectrum." height="150"/> <figcaption>
+         alt="The flower is a more complex image. It’s magnitude plot shows a clear circular pattern of repetition, probably from the patterns of symmetry in the flower, and also vertical and horizontal lines, caused by patterns in the background when the image is represented as an infinite spectrum."/> <figcaption>
             <p>The flower is a more complex image. It’s magnitude plot shows a clear circular pattern of repetition, probably from the patterns of symmetry in the flower, and also vertical and horizontal lines, caused by patterns in the background when the image is represented as an infinite spectrum.</p>
         </figcaption>
 </figure>
