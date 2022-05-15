@@ -143,34 +143,37 @@ I was invited to present this project at Łódź University&rsquo;s SP2021 [virt
             <article>
                 <p>I have used multiple variations of Principal Component Analysis (PCA) in my research on microbial community analysis. To explain the core theory and assumptions of PCA to my lab group, I fleshed out an analysis of a toy example (eigenfaces) that I had originally seen in class. This analysis reasons about the assumptions of PCA and the effects of applying it to out-of-distribution data by using PCA to perform facial recognition on a dataset of my classmates&rsquo; faces.</p>
 <p><em>I was invited to present this project at <a href="https://ms-my.facebook.com/MathUpConference/photos/because-the-mathup-conference-is-conducted-in-both-polish-and-english-another-du/2805409529774282">Łódź University&rsquo;s SP2021 [virtual] MathUp conference</a> at Łódź University, Poland. The conference was an incredibly fun opportunity to meet fellow researchers and data scientists!</em></p>
-<ul>
-<li><a href="#1-introduction">1 INTRODUCTION</a>
-<ul>
-<li><a href="#dataset">Dataset</a></li>
-</ul>
-</li>
-<li><a href="#2-facial-recognition-with-nearest-neighbor-distance">2 FACIAL RECOGNITION WITH NEAREST NEIGHBOR DISTANCE</a>
-<ul>
-<li><a href="#room-for-improvement">Room for Improvement</a>
-<ul>
-<li><a href="#pca-toy-example">PCA Toy Example</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#3-facial-recognition-with-pca-nearest-neighbor-distance">3 FACIAL RECOGNITION WITH PCA NEAREST NEIGHBOR DISTANCE</a>
-<ul>
-<li><a href="#step-1-standardize-dataset">Step 1. Standardize Dataset</a></li>
-<li><a href="#step-2-compute-sample-covariance-matrix-from-standardized-train-dataset">Step 2. Compute Sample Covariance Matrix from Standardized Train Dataset</a></li>
-<li><a href="#step-3-compute-eigenvectors-and-eigenvalues-of-the-covariance-matrix">Step 3. Compute Eigenvectors and Eigenvalues of the Covariance Matrix</a></li>
-<li><a href="#step-4-pick-k-eigenvectors">Step 4. Pick k Eigenvectors</a></li>
-<li><a href="#step-5-project-and-reconstruct-dataset-onto-k-eigenvectors">Step 5. Project and Reconstruct Dataset onto k Eigenvectors</a></li>
-<li><a href="#step-6-evaluation">Step 6. Evaluation</a></li>
-</ul>
-</li>
-<li><a href="#4-applications">4 APPLICATIONS</a></li>
-<li><a href="#5-further-reading">5 FURTHER READING</a></li>
-</ul>
+<div class="toc">
+    <p>
+        <strong>Table of Contents</strong>
+    </p>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-introduction">1 INTRODUCTION</a>
+      <ul>
+        <li><a href="#dataset">Dataset</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-facial-recognition-with-nearest-neighbor-distance">2 FACIAL RECOGNITION WITH NEAREST NEIGHBOR DISTANCE</a>
+      <ul>
+        <li><a href="#room-for-improvement">Room for Improvement</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-facial-recognition-with-pca-nearest-neighbor-distance">3 FACIAL RECOGNITION WITH PCA NEAREST NEIGHBOR DISTANCE</a>
+      <ul>
+        <li><a href="#step-1-standardize-dataset">Step 1. Standardize Dataset</a></li>
+        <li><a href="#step-2-compute-sample-covariance-matrix-from-standardized-train-dataset">Step 2. Compute Sample Covariance Matrix from Standardized Train Dataset</a></li>
+        <li><a href="#step-3-compute-eigenvectors-and-eigenvalues-of-the-covariance-matrix">Step 3. Compute Eigenvectors and Eigenvalues of the Covariance Matrix</a></li>
+        <li><a href="#step-4-pick-k-eigenvectors">Step 4. Pick k Eigenvectors</a></li>
+        <li><a href="#step-5-project-and-reconstruct-dataset-onto-k-eigenvectors">Step 5. Project and Reconstruct Dataset onto k Eigenvectors</a></li>
+        <li><a href="#step-6-evaluation">Step 6. Evaluation</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-applications">4 APPLICATIONS</a></li>
+    <li><a href="#5-further-reading">5 FURTHER READING</a></li>
+  </ul>
+</nav>
+</div>
 <h2 id="1-introduction">1 INTRODUCTION</h2>
 <p>Through this project, I wanted to learn more about the technique of Principal Component Analysis (PCA), namely how to reason about the result of applying PCA on a dataset, and the effects of testing on out-of-distribution data. I set the project up as a facial recognition problem: after teaching a computer what my classmates and I look like, I want the computer to correctly name a person in a picture it hasn’t seen before.</p>
 <h3 id="dataset">Dataset</h3>
@@ -353,14 +356,14 @@ I was invited to present this project at Łódź University&rsquo;s SP2021 [virt
 <p>I’ll end by noting PCA is a popular data science algorithm. I’ve seen it used in machine learning, as well as linguistics and microbiology. It is known by many slightly different names and formulas — Principal Coordinate Analysis (PCoA), Singular Value Decomposition (SVD), Latent Semantic Analysis (LSA) — but it’s essentially eigendecomposition.</p>
 <figure>
     <img src="img/LSA.png"
-         alt="Topic Modeling: merge redundant words instead of pixels (Image Source: Topic model - Wikipedia)" height="300,"/> <figcaption>
+         alt="Topic Modeling: merge redundant words instead of pixels (Image Source: Topic model - Wikipedia)"/> <figcaption>
             <p>Topic Modeling: merge redundant words instead of pixels (Image Source: <a href="https://en.wikipedia.org/wiki/Topic_model#cite_note-6">Topic model - Wikipedia</a>)</p>
         </figcaption>
 </figure>
 
 <figure>
     <img src="img/Biplot.png"
-         alt="Microbiome Biplot: make PCoA more interpretable by plotting directions in which factors vary. (Image Source: How to read PCA biplots and scree plots)" height="300,"/> <figcaption>
+         alt="Microbiome Biplot: make PCoA more interpretable by plotting directions in which factors vary. (Image Source: How to read PCA biplots and scree plots)"/> <figcaption>
             <p>Microbiome Biplot: make PCoA more interpretable by plotting directions in which factors vary. (Image Source: <a href="https://blog.bioturing.com/2018/06/18/how-to-read-pca-biplots-and-scree-plots/">How to read PCA biplots and scree plots</a>)</p>
         </figcaption>
 </figure>

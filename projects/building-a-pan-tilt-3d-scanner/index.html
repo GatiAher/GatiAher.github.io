@@ -129,25 +129,32 @@
         <div class="single">
             <article>
                 <p>My team built a servo-driven pan-tilt mount for an infrared proximity sensor. To demonstrate the functionality of our design, we created a 3D scan of a cardboard letter cut in a Z shape. This project involved (1) designing and 3D-printing a pan-tilt servo and IR sensor, (2) programming an arduino to collect scan data, (3) projecting data from spherical coordinates into Cartesian coordinates in order to isolate a cross-section scan of the letter. I was responsible for the CAD mechanical design and making the 3D data projection and visualization.</p>
-<ul>
-<li><a href="#bill-of-materials">Bill of Materials</a>
-<ul>
-<li><a href="#15-gp2y0a02yk0f-sharp-infrared-proximity-sensor">$15 GP2Y0A02YK0F Sharp Infrared Proximity Sensor</a></li>
-<li><a href="#two-4-hobby-servo-motors">Two $4 Hobby Servo Motors</a></li>
-<li><a href="#arduino-board--breadboard--assorted-circuitry">Arduino board + breadboard + assorted circuitry</a></li>
-</ul>
-</li>
-<li><a href="#cad-design-of-pan-tilt-mount">CAD Design of Pan-Tilt Mount</a></li>
-<li><a href="#scan-demo">Scan Demo</a>
-<ul>
-<li><a href="#1-set-up-and-collection">1. Set-Up and Collection</a></li>
-<li><a href="#2-sensor-output-to-distances-calibration">2. Sensor Output to Distances Calibration</a></li>
-<li><a href="#3-accounting-for-servo-motor-offsets">3. Accounting for Servo Motor Offsets</a></li>
-<li><a href="#4-projection-from-spherical-to-cartesian-coordinates">4. Projection from Spherical to Cartesian Coordinates</a></li>
-<li><a href="#5-3d-scan-visualization">5. 3D Scan Visualization</a></li>
-</ul>
-</li>
-</ul>
+<div class="toc">
+    <p>
+        <strong>Table of Contents</strong>
+    </p>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#bill-of-materials">Bill of Materials</a>
+      <ul>
+        <li><a href="#15-gp2y0a02yk0f-sharp-infrared-proximity-sensorhttpswwwsparkfuncomdatasheetssensorsinfraredgp2y0a02yk_epdf">$15 <a href="https://www.sparkfun.com/datasheets/Sensors/Infrared/gp2y0a02yk_e.pdf">GP2Y0A02YK0F Sharp Infrared Proximity Sensor</a></a></li>
+        <li><a href="#two-4-hobby-servo-motorshttpshobbykingcomen_ushobbykingtm-hk15138-standard-analog-servo-4-3kg-0-17sec-38ghtml">Two $4 <a href="https://hobbyking.com/en_us/hobbykingtm-hk15138-standard-analog-servo-4-3kg-0-17sec-38g.html">Hobby Servo Motors</a></a></li>
+        <li><a href="#arduino-board--breadboard--assorted-circuitry">Arduino board + breadboard + assorted circuitry</a></li>
+      </ul>
+    </li>
+    <li><a href="#cad-design-of-pan-tilt-mount">CAD Design of Pan-Tilt Mount</a></li>
+    <li><a href="#scan-demo">Scan Demo</a>
+      <ul>
+        <li><a href="#1-set-up-and-collection">1. Set-Up and Collection</a></li>
+        <li><a href="#2-sensor-output-to-distances-calibration">2. Sensor Output to Distances Calibration</a></li>
+        <li><a href="#3-accounting-for-servo-motor-offsets">3. Accounting for Servo Motor Offsets</a></li>
+        <li><a href="#4-projection-from-spherical-to-cartesian-coordinates">4. Projection from Spherical to Cartesian Coordinates</a></li>
+        <li><a href="#5-3d-scan-visualization">5. 3D Scan Visualization</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
 <h2 id="bill-of-materials">Bill of Materials</h2>
 <h3 id="15-gp2y0a02yk0f-sharp-infrared-proximity-sensorhttpswwwsparkfuncomdatasheetssensorsinfraredgp2y0a02yk_epdf">$15 <a href="https://www.sparkfun.com/datasheets/Sensors/Infrared/gp2y0a02yk_e.pdf">GP2Y0A02YK0F Sharp Infrared Proximity Sensor</a></h3>
 <p>An infrared proximity sensor is an infrared emitter (LED) paired with an infrared detector (photodiode). The detector measures the intensity of the IR light reflected off of an object in its field of view. The output of the sensor is an analog voltage.</p>
@@ -244,14 +251,14 @@ df[<span style="color:#e6db74">&#34;distance&#34;</span>] <span style="color:#f9
 <p>The 0-180 pwm input to the servo motors does not line up perfectly with the degrees on the global axes. The servo zero position is offset slightly, by 20 degrees in the tilt servo, and by -60 degrees in the pan servo. This offset needs to be removed before the tilt and pan angles are used in downstream processing.</p>
 <figure>
     <img src="img/tilt_servo.png"
-         alt="The tilt servo is offset by 20 degrees, so it is centered at 90 - 20 = 70 pwm." height="400"/> <figcaption>
+         alt="The tilt servo is offset by 20 degrees, so it is centered at 90 - 20 = 70 pwm."/> <figcaption>
             <p>The tilt servo is offset by 20 degrees, so it is centered at 90 - 20 = 70 pwm.</p>
         </figcaption>
 </figure>
 
 <figure>
     <img src="img/pan_servo.png"
-         alt="The pan servo is offset by -60 pwm, so it is centered at 90 &#43; 60 = 150 pwm" height="400"/> <figcaption>
+         alt="The pan servo is offset by -60 pwm, so it is centered at 90 &#43; 60 = 150 pwm"/> <figcaption>
             <p>The pan servo is offset by -60 pwm, so it is centered at 90 + 60 = 150 pwm</p>
         </figcaption>
 </figure>
@@ -264,7 +271,7 @@ df[<span style="color:#e6db74">&#34;pan_deg&#34;</span>] <span style="color:#f92
 </code></pre></div><h3 id="4-projection-from-spherical-to-cartesian-coordinates">4. Projection from Spherical to Cartesian Coordinates</h3>
 <figure>
     <img src="img/coordinate_plane.jpg"
-         alt="Conversion from Spherical Coordinate Plane to Cartesian Coordinate Plane (Source: LiDAR Basics: The Coordinate System)" height="400"/> <figcaption>
+         alt="Conversion from Spherical Coordinate Plane to Cartesian Coordinate Plane (Source: LiDAR Basics: The Coordinate System)"/> <figcaption>
             <p>Conversion from Spherical Coordinate Plane to Cartesian Coordinate Plane (Source: <a href="https://hackernoon.com/lidar-basics-the-coordinate-system-a26529615df9">LiDAR Basics: The Coordinate System</a>)</p>
         </figcaption>
 </figure>

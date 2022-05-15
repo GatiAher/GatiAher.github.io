@@ -163,37 +163,35 @@ In this project, I implemented a Bloom filter and a bit-sliced document signatur
         <li><a href="https://trello.com/b/xzVRxTDJ/bloomforsearchfromscratch" class="button icon solid brands fa-trello">Visit Trello</a></li>
     
 </ul></p>
-<ul>
-<li><a href="#1-project-goals-and-results">1 PROJECT GOALS AND RESULTS</a></li>
-<li><a href="#2-bloom-filters">2 BLOOM FILTERS</a>
-<ul>
-<li><a href="#21-demo-1-bloom-filter-to-spellcheck-a-query">2.1 Demo 1: Bloom filter to spellcheck a query</a></li>
-<li><a href="#22-demo-2-bloom-filter-to-spellcheck-a-file">2.2 Demo 2: Bloom filter to spellcheck a file</a></li>
-</ul>
-</li>
-<li><a href="#3-bit-sliced-document-signatures">3 BIT-SLICED DOCUMENT SIGNATURES</a>
-<ul>
-<li><a href="#31-demo-3-information-retrieval-on-xkcd-comics-transcripts">3.1 Demo 3: Information retrieval on xkcd comics transcripts</a></li>
-</ul>
-</li>
-<li><a href="#4-appendix">4 APPENDIX</a>
-<ul>
-<li><a href="#41-note-on-code-design">4.1 Note on Code Design</a>
-<ul>
-<li><a href="#411--bit-wise-functions-that-take-advantage-of-powers-of-2">4.1.1  Bit-wise functions that take advantage of powers of 2</a></li>
-<li><a href="#412-function-pointers-for-cleaner-reusable-code">4.1.2 Function pointers for cleaner, reusable code</a></li>
-<li><a href="#413-flexible-input-using-file-pointers">4.1.3 Flexible input using FILE pointers</a></li>
-<li><a href="#414-flexible-output-by-using-linked-lists-for-indeterminately-sized-result-arrays">4.1.4 Flexible output by Using Linked Lists for indeterminately sized result arrays</a></li>
-<li><a href="#415-enums-and-binary-flags-for-display-modes">4.1.5 Enums and binary flags for display modes</a></li>
-<li><a href="#416-modular-design">4.1.6 Modular Design</a></li>
-</ul>
-</li>
-<li><a href="#42-note-on-controlling-false-positives">4.2 Note on Controlling False Positives</a></li>
-<li><a href="#43-note-on-choice-of-hash-function">4.3 Note on Choice of Hash Function</a></li>
-</ul>
-</li>
-<li><a href="#5-future-directions">5 FUTURE DIRECTIONS</a></li>
-</ul>
+<div class="toc">
+    <p>
+        <strong>Table of Contents</strong>
+    </p>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-project-goals-and-results">1 PROJECT GOALS AND RESULTS</a></li>
+    <li><a href="#2-bloom-filters">2 BLOOM FILTERS</a>
+      <ul>
+        <li><a href="#21-demo-1-bloom-filter-to-spellcheck-a-query">2.1 Demo 1: Bloom filter to spellcheck a query</a></li>
+        <li><a href="#22-demo-2-bloom-filter-to-spellcheck-a-file">2.2 Demo 2: Bloom filter to spellcheck a file</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-bit-sliced-document-signatures">3 BIT-SLICED DOCUMENT SIGNATURES</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#4-appendix">4 APPENDIX</a>
+      <ul>
+        <li><a href="#41-note-on-code-design">4.1 Note on Code Design</a></li>
+        <li><a href="#42-note-on-controlling-false-positives">4.2 Note on Controlling False Positives</a></li>
+        <li><a href="#43-note-on-choice-of-hash-function">4.3 Note on Choice of Hash Function</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-future-directions">5 FUTURE DIRECTIONS</a></li>
+  </ul>
+</nav>
+</div>
 <h2 id="1-project-goals-and-results">1 PROJECT GOALS AND RESULTS</h2>
 <p>I wanted to learn about Bloom filters because I have heard about their interesting real-world applications. I particularly wanted to implement a extension of Bloom filters called bit-sliced signatures that I heard of in the talk <a href="https://www.youtube.com/watch?v=1-Xoy5w5ydM">&ldquo;BitFunnel: Revisiting Signatures for Search&rdquo; talk by Micheal Hopcroft, creator of BitFunnel</a>. This was an interesting Software Systems project because many Bloom filter implementations are done in C/C++ in order to have full control and optimization of low-level bit-wise operations</p>
 <p>Thus, in terms of experience goals, I wanted to gain experience designing and using bit-wise operations, structs, function pointers, file pointers, enums, linked lists, Makefiles, writing modular code, and other programming concepts I learned about in class. (See section: <a href="#41-note-on-code-design">4.1 Note on Code Design</a> for more information about my specific coding design decisions).</p>

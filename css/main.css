@@ -3684,9 +3684,22 @@ button:disabled,
   height: 600px;
 }
 
+.tabcontent h3 {
+  margin: 0 0 0 0;
+}
+
+.tabcontent ul {
+  margin: 0 0 0 0;
+}
+
+.tabcontent p, li {
+  margin: 0 0 0 0;
+  font-size: 0.8em;
+}
+
 @media screen and (orientation: portrait) and (max-width: 480px) {
   .tabcontent {
-    height: 650px;
+    height: 550px;
   }
 }
 

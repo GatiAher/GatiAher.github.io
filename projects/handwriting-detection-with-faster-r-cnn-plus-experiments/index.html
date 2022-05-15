@@ -131,107 +131,89 @@ I started by fine-tuning upon the Faster R-CNN model from the Detectron-v2 frame
             <article>
                 <p><a href="https://indico.io/">Indico Data Solutions</a> provides services to extract information from scanned pdfs. Since their existing OCR + NLP pipeline did not extract handwriting, one of my internship projects involved creating a robust solution to detect and classify handwriting using a deep learning computer vision model.</p>
 <p>I started by fine-tuning upon the <a href="https://arxiv.org/abs/1506.01497">Faster R-CNN model</a> from the <a href="https://github.com/facebookresearch/detectron2">Detectron-v2 framework</a>. Then I tried to improve upon the baseline performance with (i) different pre-training tasks, (ii) multi-label formulation, (iii) strategies to improve small object detection, and (iv) different label sets and datasets. This report documents my methods and finishes with a class confusion analysis and retrospective.</p>
-<ul>
-<li><a href="#1-introduction">1 INTRODUCTION</a>
-<ul>
-<li><a href="#11-datasets">1.1 Datasets</a></li>
-<li><a href="#12-tough-to-beat-baseline-model">1.2 Tough-to-Beat Baseline Model</a></li>
-</ul>
-</li>
-<li><a href="#2-background-information">2 BACKGROUND INFORMATION</a>
-<ul>
-<li><a href="#21-overview-of-detectron-v2s-faster-r-cnn-with-fpn">2.1 Overview of Detectron-v2&rsquo;s Faster R-CNN with FPN</a></li>
-<li><a href="#22-overview-of-fine-tuning">2.2 Overview of Fine-Tuning</a></li>
-</ul>
-</li>
-<li><a href="#3-fine-tune-on-models-pre-trained-on-documents">3 FINE-TUNE ON MODELS PRE-TRAINED ON DOCUMENTS</a>
-<ul>
-<li><a href="#31-check-for-porting-discrepancies">3.1 Check for Porting Discrepancies</a></li>
-<li><a href="#32-results">3.2 Results</a></li>
-</ul>
-</li>
-<li><a href="#4-expand-the-label-set">4 EXPAND THE LABEL SET</a>
-<ul>
-<li><a href="#41-results">4.1 Results</a></li>
-<li><a href="#42-analysis-of-class-confusion-via-visual-inspection">4.2 Analysis of Class Confusion Via Visual Inspection</a></li>
-<li><a href="#43-considerations-on-an-alternative-formulation">4.3 Considerations on an Alternative Formulation</a></li>
-</ul>
-</li>
-<li><a href="#5-multi-label-object-detection">5 MULTI-LABEL OBJECT DETECTION</a>
-<ul>
-<li><a href="#51-detectron-v2-modifications">5.1 Detectron-v2 Modifications</a></li>
-<li><a href="#52-new-label-sets">5.2 New Label Sets</a></li>
-<li><a href="#53-results">5.3 Results</a></li>
-</ul>
-</li>
-<li><a href="#6-better-small-object-detection">6 BETTER SMALL OBJECT DETECTION</a>
-<ul>
-<li><a href="#61-visualize-feature-map">6.1 Visualize Feature Map</a></li>
-<li><a href="#62-increase-image-resoluton">6.2 Increase Image Resoluton</a></li>
-<li><a href="#63-add-smaller-anchor-size">6.3 Add Smaller Anchor Size</a></li>
-<li><a href="#64-results">6.4 Results</a></li>
-</ul>
-</li>
-<li><a href="#7-test-on-out-of-distribution-data">7 TEST ON OUT-OF-DISTRIBUTION DATA</a>
-<ul>
-<li><a href="#71-results">7.1 Results</a></li>
-</ul>
-</li>
-<li><a href="#8-train-final-all_document-model">8 TRAIN FINAL ALL_DOCUMENT MODEL</a>
-<ul>
-<li><a href="#81-results">8.1 Results</a></li>
-<li><a href="#82-train-validation-loss-curve">8.2 Train-Validation Loss Curve</a></li>
-</ul>
-</li>
-<li><a href="#9-qualitative-and-quantitative-analysis-of-object-detection-class-confusion-false-positives-and-false-negatives">9 QUALITATIVE AND QUANTITATIVE ANALYSIS OF OBJECT DETECTION CLASS CONFUSION, FALSE POSITIVES, AND FALSE NEGATIVES</a>
-<ul>
-<li><a href="#91-performance-on-lease-png-label-set-v1">9.1 Performance on Lease-PNG label set v1</a></li>
-<li><a href="#92-performance-on-lease-png-label-set-v2">9.2 Performance on Lease-PNG label set v2</a></li>
-<li><a href="#93-performance-on-all_docs-label-set-v5-final-model">9.3 Performance on All_Docs label set v5 (Final Model)</a></li>
-</ul>
-</li>
-<li><a href="#10-future-work">10 FUTURE WORK</a>
-<ul>
-<li><a href="#101-analysis-of-prediction-bounding-box-overlap">10.1 Analysis of Prediction Bounding Box Overlap</a></li>
-<li><a href="#102-reduce-false-positives-with-explicit-labeling">10.2 Reduce False Positives with Explicit Labeling</a></li>
-<li><a href="#103-reduce-inference-time-and-memory-usage">10.3 Reduce Inference Time and Memory Usage</a></li>
-<li><a href="#104-find-out-why-all_docs-model-performed-poorly-on-checkbox-detection">10.4 Find Out Why All_Docs Model Performed Poorly on Checkbox Detection</a></li>
-</ul>
-</li>
-<li><a href="#11-appendix-faster-rcnn-implementation-details">11 APPENDIX: FASTER-RCNN IMPLEMENTATION DETAILS</a>
-<ul>
-<li><a href="#datamapper">DataMapper</a></li>
-<li><a href="#backbone-network">Backbone Network</a>
-<ul>
-<li><a href="#details-on-feature-pyramid-network">Details on Feature Pyramid Network</a></li>
-</ul>
-</li>
-<li><a href="#region-proposal-network-rpn">Region Proposal Network (RPN)</a>
-<ul>
-<li><a href="#rpn-head">RPN Head</a>
-<ul>
-<li><a href="#map-ground-truths-to-feature-maps-with-cell-anchors-during-training">Map Ground Truths to Feature Maps With Cell Anchors (during training)</a></li>
-<li><a href="#loss-function-during-training">Loss Function (during training)</a></li>
-<li><a href="#box-proposal-selection">Box Proposal Selection</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#roi-head">ROI Head</a>
-<ul>
-<li><a href="#re-sampling-and-matching-during-training">Re-Sampling and Matching (during training)</a></li>
-<li><a href="#cropping">Cropping</a></li>
-<li><a href="#box-head">Box Head</a>
-<ul>
-<li><a href="#loss-calculation">Loss Calculation</a></li>
-<li><a href="#inference">Inference</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<div class="toc">
+    <p>
+        <strong>Table of Contents</strong>
+    </p>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-introduction">1 INTRODUCTION</a>
+      <ul>
+        <li><a href="#11-datasets">1.1 Datasets</a></li>
+        <li><a href="#12-tough-to-beat-baseline-model">1.2 Tough-to-Beat Baseline Model</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-background-information">2 BACKGROUND INFORMATION</a>
+      <ul>
+        <li><a href="#21-overview-of-detectron-v2s-faster-r-cnn-with-fpn">2.1 Overview of Detectron-v2&rsquo;s Faster R-CNN with FPN</a></li>
+        <li><a href="#22-overview-of-fine-tuning">2.2 Overview of Fine-Tuning</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-fine-tune-on-models-pre-trained-on-documents">3 FINE-TUNE ON MODELS PRE-TRAINED ON DOCUMENTS</a>
+      <ul>
+        <li><a href="#31-check-for-porting-discrepancies">3.1 Check for Porting Discrepancies</a></li>
+        <li><a href="#32-results">3.2 Results</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-expand-the-label-set">4 EXPAND THE LABEL SET</a>
+      <ul>
+        <li><a href="#41-results">4.1 Results</a></li>
+        <li><a href="#42-analysis-of-class-confusion-via-visual-inspection">4.2 Analysis of Class Confusion Via Visual Inspection</a></li>
+        <li><a href="#43-considerations-on-an-alternative-formulation">4.3 Considerations on an Alternative Formulation</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-multi-label-object-detection">5 MULTI-LABEL OBJECT DETECTION</a>
+      <ul>
+        <li><a href="#51-detectron-v2-modifications">5.1 Detectron-v2 Modifications</a></li>
+        <li><a href="#52-new-label-sets">5.2 New Label Sets</a></li>
+        <li><a href="#53-results">5.3 Results</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-better-small-object-detection">6 BETTER SMALL OBJECT DETECTION</a>
+      <ul>
+        <li><a href="#61-visualize-feature-map">6.1 Visualize Feature Map</a></li>
+        <li><a href="#62-increase-image-resoluton">6.2 Increase Image Resoluton</a></li>
+        <li><a href="#63-add-smaller-anchor-size">6.3 Add Smaller Anchor Size</a></li>
+        <li><a href="#64-results">6.4 Results</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-test-on-out-of-distribution-data">7 TEST ON OUT-OF-DISTRIBUTION DATA</a>
+      <ul>
+        <li><a href="#71-results">7.1 Results</a></li>
+      </ul>
+    </li>
+    <li><a href="#8-train-final-all_document-model">8 TRAIN FINAL ALL_DOCUMENT MODEL</a>
+      <ul>
+        <li><a href="#81-results">8.1 Results</a></li>
+        <li><a href="#82-train-validation-loss-curve">8.2 Train-Validation Loss Curve</a></li>
+      </ul>
+    </li>
+    <li><a href="#9-qualitative-and-quantitative-analysis-of-class-confusion">9 QUALITATIVE AND QUANTITATIVE ANALYSIS OF CLASS CONFUSION</a>
+      <ul>
+        <li><a href="#91-performance-on-lease-png-label-set-v1">9.1 Performance on Lease-PNG label set v1</a></li>
+        <li><a href="#92-performance-on-lease-png-label-set-v2">9.2 Performance on Lease-PNG label set v2</a></li>
+        <li><a href="#93-performance-on-all_docs-label-set-v5-final-model">9.3 Performance on All_Docs label set v5 (Final Model)</a></li>
+      </ul>
+    </li>
+    <li><a href="#10-future-work">10 FUTURE WORK</a>
+      <ul>
+        <li><a href="#101-analysis-of-prediction-bounding-box-overlap">10.1 Analysis of Prediction Bounding Box Overlap</a></li>
+        <li><a href="#102-reduce-false-positives-with-explicit-labeling">10.2 Reduce False Positives with Explicit Labeling</a></li>
+        <li><a href="#103-reduce-inference-time-and-memory-usage">10.3 Reduce Inference Time and Memory Usage</a></li>
+        <li><a href="#104-find-out-why-all_docs-model-performed-poorly-on-checkbox-detection">10.4 Find Out Why All_Docs Model Performed Poorly on Checkbox Detection</a></li>
+      </ul>
+    </li>
+    <li><a href="#11-appendix-faster-rcnn-implementation-details">11 APPENDIX: FASTER-RCNN IMPLEMENTATION DETAILS</a>
+      <ul>
+        <li><a href="#datamapper">DataMapper</a></li>
+        <li><a href="#backbone-network">Backbone Network</a></li>
+        <li><a href="#region-proposal-network-rpn">Region Proposal Network (RPN)</a></li>
+        <li><a href="#roi-head">ROI Head</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
 <h2 id="1-introduction">1 INTRODUCTION</h2>
 <p>For my internship this summer I was lucky enough to spend my time at Indico Data Solutions as a Research &amp; Development machine learning intern. One of my projects focused on fine-tuning and modifying a pre-trained computer vision object-detection model to detect and classify handwritten marks on documents.</p>
 <p>One service Indico provides is extracting information from unstructured documents. This is done by first using OCR to grab printed text from pdfs, and then running a fine-tuned natural language processing model to perform Named Entity Recognition (NER). This existing process does not capture handwritten information that clients might find useful. Utilizing an object-detection model is one way of capturing the missed information.</p>
@@ -460,7 +442,7 @@ LAYOUT PARSER OUTPUT Layout(_blocks=[TextBlock(block=Rectangle(x_1=126.421852111
 <p>Overall, the model trained on v2 had a decent per class AP on the expanded v2 label set, with the exception of the ‘Strikethrough’ class.</p>
 <h3 id="42-analysis-of-class-confusion-via-visual-inspection">4.2 Analysis of Class Confusion Via Visual Inspection</h3>
 <p>Additionally, visual inspection of the predictions showed that the model sometimes struggled with distinguishing between ‘Filled Checkbox’ vs. ‘Unfilled Checkbox’ and ‘Stamp’ vs. ‘Date’.</p>
-<p>At first, to get a sense of the error modes of the model predictions, I glanced through the visualized model predictions and noted down interesting and common errors. <em>Following further analysis I came to realize that some of my conclusions were subject to confirmation bias (you see an error early on so you look for that error more than other errors). I have kept this analysis here because (1) it was an important realization to learn, and (2) this analysis led us to future decisions. For the more objective analysis I performed later, see the <a href="#9-qualitative-and-quantitative-analysis-of-object-detection-class-confusion-false-positives-and-false-negatives">qualitative and quantitative analysis</a> section below.</em></p>
+<p>At first, to get a sense of the error modes of the model predictions, I glanced through the visualized model predictions and noted down interesting and common errors. <em>Following further analysis I came to realize that some of my conclusions were subject to confirmation bias (you see an error early on so you look for that error more than other errors). I have kept this analysis here because (1) it was an important realization to learn, and (2) this analysis led us to future decisions. For the more objective analysis I performed later, see the <a href="#9-qualitative-and-quantitative-analysis-of-class-confusion">qualitative and quantitative analysis</a> section below.</em></p>
 <p><strong>Strikethrough</strong></p>
 <p>Instances of ‘Strikethrough’ had a fair bit of variation (scribble, line through word, line through paragraph). There were a small number of examples to learn from (there were less than 230 instances of ‘Strikethrough’ in the training set), and some examples were not labeled, so the model&rsquo;s poor performance was understandable.</p>
 <p><strong>Filled Checkbox vs. Unfilled Checkbox</strong></p>
@@ -747,7 +729,7 @@ Create <code>MultilabelFastRCNNOutputs</code> class (extends <code>nn.Module</co
 <li>How to use TensorBoard with PyTorch — PyTorch Tutorials 1.9.0+cu102 documentation</li>
 <li>Training on Detectron2 with a Validation set, and plot loss on it to avoid overfitting</li>
 </ul>
-<h2 id="9-qualitative-and-quantitative-analysis-of-object-detection-class-confusion-false-positives-and-false-negatives">9 QUALITATIVE AND QUANTITATIVE ANALYSIS OF OBJECT DETECTION CLASS CONFUSION, FALSE POSITIVES, AND FALSE NEGATIVES</h2>
+<h2 id="9-qualitative-and-quantitative-analysis-of-class-confusion">9 QUALITATIVE AND QUANTITATIVE ANALYSIS OF CLASS CONFUSION</h2>
 <p>It is very useful to analyze a model&rsquo;s error modes, especially class confusion, false positives, and false negatives. I wrote a script to create a object-detection confusion matrix to identify class confusion and unpaired predictions and ground truths, and visualizing high and low confidence predictions by prediction label and ground truth label.</p>
 <p>I’ll focus this analysis on the test split predictions from the single-label models trained on</p>
 <ul>
