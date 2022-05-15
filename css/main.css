@@ -3031,7 +3031,7 @@ button:disabled,
 }
 
 /* Single */
-.single {
+/* .single {
   display: -moz-flex;
   display: -webkit-flex;
   display: -ms-flex;
@@ -3040,8 +3040,8 @@ button:disabled,
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin: 0 0 2em 10%;
-  width: calc(100% + 6em);
+  margin: 0 0 0 10%;
+  width: calc(100%);
 }
 
 .single article {
@@ -3116,7 +3116,7 @@ button:disabled,
   }
 }
 
-@media screen and (max-width: 1680px) {
+@media screen and (min-width: 481px) and (max-width: 1680px) {
   .single article {
     width: calc(50% - 6em);
   }
@@ -3200,7 +3200,7 @@ button:disabled,
   .single article:last-child:after {
     display: none;
   }
-}
+} */
 
 /* Wrapper */
 #wrapper {
