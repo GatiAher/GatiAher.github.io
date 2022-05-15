@@ -6,10 +6,39 @@
     <description>Recent content in Projects on Gati Aher&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 11 May 2022 21:37:12 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 15 May 2022 14:53:05 -0400</lastBuildDate>
     
 	<atom:link href="http://GatiAher.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>IMU Gesture Recognition</title>
+      <link>http://GatiAher.github.io/projects/imu-gesture-recognition/</link>
+      <pubDate>Sun, 15 May 2022 14:53:05 -0400</pubDate>
+      
+      <guid>http://GatiAher.github.io/projects/imu-gesture-recognition/</guid>
+      <description>&lt;p&gt;This project analyzed and prepared a baseline machine learning model to perform gesture recognition on data collected with &lt;a href=&#34;https://mbientlab.com/store/metamotionrl/&#34;&gt;MbientLab MMRL IMU&lt;/a&gt; rubber-banded to a two_finger ring. The final baseline model was trained with data from sessions 4, 5, and 7 consisting of 1,212 total instances of 4 gestures collected across 27 people.&lt;/p&gt;
+&lt;p&gt;When trained with a train-test split of 80:20, the model had an accuracy of 75%. The final model trained with full data (no train-test split) had reasonably robust performance in the real-time system (successfully generalized its gestures predictions to other people when integrated with the software demo app).&lt;/p&gt;
+&lt;p&gt;This report provides details on deciding on a gesture set, building and refining the gesture data collection process, and steps to integrate the model with the software iOS demo app.&lt;/p&gt;
+&lt;ul class=&#34;actions&#34;&gt;
+    
+    
+    
+        
+        &lt;li&gt;&lt;a href=&#34;https://github.com/OlinSTEP/signal-processing-gesture-data-collection&#34; class=&#34;button icon solid brands fa-github&#34;&gt;Visit GitHub&lt;/a&gt;&lt;/li&gt;
+    
+&lt;/ul&gt;
+
+
+&lt;div id=&#34;Container&#34;
+ style=&#34;padding-bottom:56.25%; position:relative; display:block; width: 100%&#34;&gt;
+ &lt;iframe id=&#34;googleSlideIframe&#34;
+  width=&#34;100%&#34; height=&#34;100%&#34;
+  src=&#34;https://docs.google.com/presentation/d/e/2PACX-1vT1MJqD9l2cEu7DgdtxDkJb_aH5ysP1NklfoNUuvb3sVjp9z3MezS0HFBOv-fLhV7ESwZks_xU1Z-wQ/embed?start=false&amp;amp;loop=true&amp;amp;delayms=3000&#34;
+  frameborder=&#34;0&#34; allowfullscreen=&#34;&#34;
+  style=&#34;position:absolute; top:0; left: 0&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;</description>
+    </item>
     
     <item>
       <title>Reflecting on 400 Hours of Data Collection R&amp;D</title>
