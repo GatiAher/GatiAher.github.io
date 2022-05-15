@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Olin Social Technology Enterprise with Purpose (STEP) on Gati Aher&#39;s Blog</title>
+    <link>http://GatiAher.github.io/tags/olin-social-technology-enterprise-with-purpose-step/</link>
+    <description>Recent content in Olin Social Technology Enterprise with Purpose (STEP) on Gati Aher&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 11 May 2022 21:37:12 -0400</lastBuildDate>
+    
+	<atom:link href="http://GatiAher.github.io/tags/olin-social-technology-enterprise-with-purpose-step/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>400 Hours of Data Collection Process R&amp;D</title>
+      <link>http://GatiAher.github.io/projects/400-hours-of-data-collection-process-r-and-d/</link>
+      <pubDate>Wed, 11 May 2022 21:37:12 -0400</pubDate>
+      
+      <guid>http://GatiAher.github.io/projects/400-hours-of-data-collection-process-r-and-d/</guid>
+      <description>&lt;p&gt;STEP (Social Technology Enterprise with Purpose) was an 400+ work hour experimental Olin College engineering course that aimed to give students real-world experience within the freedoms afforded by an education-first structure.&lt;/p&gt;
+&lt;p&gt;The final work product was three integrated prototypes for screen-free interactions (i.e. remote controller, whispered speech, gesture ring) that could enable users to control their phone using discreet motions. I worked on the gesture ring, designing a gesture set and building the data collection process for training a machine-learning gesture classification model.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;30-second demo video&lt;/strong&gt;:
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/gtr_1zKshnQ&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;My conclusions and perspectives are embodied in this 20 page report. Since I believe that creativity should be offered alongside criticism (first 10 pages), I have also compiled a list of proposals for STEP v2 (next 10 pages). These conclusions are meant for faculty developing other iterations of STEP-like courses, engineering students grappling with the process of designing a process, and my future self before I set on my next AR/VR, accessibility, machine-learning, or large integrated software development project.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
