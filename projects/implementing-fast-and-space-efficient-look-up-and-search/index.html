@@ -143,8 +143,9 @@ In this project, I implemented a Bloom filter and a bit-sliced document signatur
     
 </div>
         <hr>
-        <article>
-            <p>The Bloom filter data structure tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when I saw them used in speeding up database search. Then, I heard about Microsoft using a stack of Bloom filters to <a href="https://dl.acm.org/doi/10.1145/3077136.3080789">speed up the Bing search engine&rsquo;s keyword search</a>.</p>
+        <div class="posts">
+            <article>
+                <p>The Bloom filter data structure tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when I saw them used in speeding up database search. Then, I heard about Microsoft using a stack of Bloom filters to <a href="https://dl.acm.org/doi/10.1145/3077136.3080789">speed up the Bing search engine&rsquo;s keyword search</a>.</p>
 <p>In this project, I implemented a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and notable code design decisions.</p>
 <p><ul class="actions">
     
@@ -572,7 +573,8 @@ https://xkcd.com/14
 <li>using a stemmer (like <a href="https://tartarus.org/martin/PorterStemmer/">Snowball Stemmer</a>) to break terms down into their root word. In this senario, words with the same root, like &ldquo;running&rdquo;, &ldquo;runs&rdquo;, and &ldquo;ran&rdquo; would all be condensed to &ldquo;run&rdquo; before add and query.</li>
 </ul>
 <p>Frequently a fuzzy keyword search is not desirable because it introduces extra noise. Depending on the preprocessing, which can introduce extra time and resource costs. For this reason, Bing&rsquo;s BitFunnel algorithm does not use stemming.</p>
-        </article>
+            </article>
+        </div>
 
     </section>
 </main>
