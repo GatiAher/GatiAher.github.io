@@ -97,7 +97,7 @@
     
 
 <time class="date" datetime="2022-05-20">May 20, 2022</time> &#183
-    20 min read
+    21 min read
 </div>
         <br>
         <div class="cover-image-container">
@@ -199,6 +199,14 @@
 <li>Given system of linear constraints</li>
 <li>Find maximal value of linear objective equation</li>
 </ul>
+<p><em>2-variable example ($x$, $y$)</em>
+$$\displaylines{
+&amp;\text{max } &amp;3x + 4y
+\\ &amp;\text{subject to } &amp;x + 2y&amp;\le 14
+\\ &amp;&amp;-3x + y &amp;\le 0
+\\ &amp;&amp;x - y &amp;\le 2
+\\ &amp;&amp;0 \le x, y
+}$$</p>
 <p><em>3-variable example ($x_1$, $x_2$, $x_3$)</em>
 $$\displaylines{
 &amp;\text{max } &amp;5x_1 + 4x_2 + 3x_3
@@ -232,11 +240,25 @@ $$\displaylines{
 <li>The optimal solution set is convex</li>
 <li>If the objective function is strictly convex, then problem has at most one optimal point</li>
 </ul>
+<figure>
+    <img src="img/graphical.png"
+         alt="Graphical approach to finding the maximum value of the objective function."/> <figcaption>
+            <p>Graphical approach to finding the maximum value of the objective function.</p>
+        </figcaption>
+</figure>
+
 <p>The objective function has a fixed slope and a variable intercept, so the optimal solution can be found by path-finding toward the local maximum within the solution space.</p>
 <h3 id="v1--v2-slackness-narrow-the-solution-space-to-a-finite-set-of-vertex-points">V1 → V2 (Slackness). Narrow the solution space to a finite set of vertex points</h3>
 <p>Note that if the optimal solution exists within the convex polytope solution space, then it must be on a extreme (vertex) point (i.e. pathfinding through the valid space will always go towards a vertex as a min or max value; <a href="https://www.youtube.com/watch?v=15AyPV7E64Q">visual proof</a>). A convex polytope has a finite number of extreme points. To coerce a system of linear constraints into a system of vertices, turn the constraints into equalities using slack variables.</p>
 <h3 id="v2--v3-simplex-search-for-optimal-point-without-traversing-the-entire-set-of-vertices">V2 → V3 (Simplex). Search for optimal point without traversing the entire set of vertices</h3>
 <p>If the starting vertex is not the maximum point, then it has at least one edge leading to another vertex such that the objective function is strictly increasing along that edge (<a href="https://dando18.github.io/posts/2021/12/visualizing-the-simplex-algorithm">visual proof</a>). To find the maximum, first pick a vertex, then continually jump to neighboring vertex points with higher objective values. This will eventually lead to a vertex with no neighbors having higher objective values. The Simplex Algorithm can use steps from Gaussian Elimination to turn the geometric intuition into a matrix system of equations.</p>
+<figure>
+    <img src="img/simplex.png"
+         alt="Simplex Algorithm approach to finding the maximum value of the objective function."/> <figcaption>
+            <p>Simplex Algorithm approach to finding the maximum value of the objective function.</p>
+        </figcaption>
+</figure>
+
 <p><em>The process of stringing together a sequence of simplex pivots in order to locate an optimal solution is called the <strong>Simplex Algorithm</strong>. It was discovered by George Dantzig (1914-2005). The Simplex Algorithm is considered one of the ten most important algorithmic discoveries of the 20th century. Even with after the discovery of the Interior Point Methods, for many specially structured linear programming problems, the Simplex remains the most efficient algorithm.</em></p>
 <h3 id="v3--v4-duality-view-a-process-from-two-perspectives-to-expose-additional-information">V3 → V4 (Duality). View a process from two perspectives to expose additional information</h3>
 <p>Any activity has two effects. For example, from an economics perspective, a transaction to buy equipment has to be recorded twice: (1) it increased asset because production increased, and (2) it decreased asset because resources decreased. The primal problem is the original maximization problem, the dual problem is the corresponding resource cost minimization problem.</p>
@@ -250,6 +272,13 @@ $$\displaylines{
 <p>The Simplex method starts out with maintaining complementary slackness and a basic feasible solution for the primal problem, and then tries to solve the dual problem in order to find the optimal basic feasible solution. Perfectly solving the dual solution takes a low computation cost per iteration and can take many iterations. At best case, the Simplex Algorithm takes a polynomial number of iterations (to number of constraints), and at worst case takes an exponential number of iterations (to number of variables).</p>
 <p>Interior Point methods achieve a better time complexity by starting out being both primal and dual feasible and working towards complementary slackness. The Interior Point methods require $O(\sqrt{n}\log(1/\epsilon))$ iterations (worst case polynomial time complexity) to get a primal-dual solution that is feasible and optimal up to some tolerance measured by $\epsilon$. Thus, the Interior Point methods takes fewer iterations to solve, but require larger computational cost per iteration.</p>
 <p>In essence, the Interior Point methods work by path-finding along a central path that starts from the analytical center of the convex solution space and heads towards the optimal solution, always staying within the interior of the convex solution space (<a href="https://www.youtube.com/watch?v=MsgpSl5JRbI">visual proof</a>). The larger computational cost per iteration results from playing a min-max game on the Lagrangian of the Dual. It can use an unconstrained convex approximation solver (i.e. Newton&rsquo;s Method) to power its approximation logic steps in a matrix-oriented way.</p>
+<figure>
+    <img src="img/interior_point.png"
+         alt="Interior Point Methods approach to finding the maximum value of the objective function."/> <figcaption>
+            <p>Interior Point Methods approach to finding the maximum value of the objective function.</p>
+        </figcaption>
+</figure>
+
 <p><em>The Interior Point Method was published by Narendra Karmarkar in 1984. This approach works for convex optimization problems, so it also works for problems beyond the realm of linear programming.</em></p>
 <h2 id="v1-encode-graphical-approach">V1. Encode Graphical Approach</h2>
 <ul>
