@@ -47,7 +47,13 @@
   &lt;ul class=&#34;actions&#34;&gt;
        
     &lt;li&gt;
-      &lt;a href=&#34;https://github.com/OlinSTEP/signal-processing-gesture-data-collection&#34; class=&#34;button icon outline brands fa-github&#34;&gt;Visit GitHub&lt;/a&gt;
+      &lt;button
+        class=&#34;button icon outline brands fa-github&#34;
+        onclick=&#34;location.href=&#39;https:\/\/github.com\/OlinSTEP\/signal-processing-gesture-data-collection&#39;&#34;
+        type=&#34;button&#34;
+      &gt;
+        Visit GitHub
+      &lt;/button&gt;
     &lt;/li&gt;
     
   &lt;/ul&gt;
@@ -99,7 +105,13 @@
   &lt;ul class=&#34;actions&#34;&gt;
        
     &lt;li&gt;
-      &lt;a href=&#34;https://github.com/GatiAher/lagaan-football-pool-app&#34; class=&#34;button icon outline brands fa-github&#34;&gt;Visit GitHub&lt;/a&gt;
+      &lt;button
+        class=&#34;button icon outline brands fa-github&#34;
+        onclick=&#34;location.href=&#39;https:\/\/github.com\/GatiAher\/lagaan-football-pool-app&#39;&#34;
+        type=&#34;button&#34;
+      &gt;
+        Visit GitHub
+      &lt;/button&gt;
     &lt;/li&gt;
     
   &lt;/ul&gt;
@@ -109,7 +121,13 @@
   &lt;ul class=&#34;actions&#34;&gt;
        
     &lt;li&gt;
-      &lt;a href=&#34;https://www.lagaannfl.com&#34; class=&#34;button icon outline fa-gem&#34;&gt;View Website&lt;/a&gt;
+      &lt;button
+        class=&#34;button icon outline fa-gem&#34;
+        onclick=&#34;location.href=&#39;https:\/\/www.lagaannfl.com&#39;&#34;
+        type=&#34;button&#34;
+      &gt;
+        View Website
+      &lt;/button&gt;
     &lt;/li&gt;
     
   &lt;/ul&gt;
@@ -145,7 +163,13 @@
   &lt;ul class=&#34;actions&#34;&gt;
        
     &lt;li&gt;
-      &lt;a href=&#34;https://github.com/GatiAher/network-generation&#34; class=&#34;button icon outline brands fa-github&#34;&gt;Visit GitHub&lt;/a&gt;
+      &lt;button
+        class=&#34;button icon outline brands fa-github&#34;
+        onclick=&#34;location.href=&#39;https:\/\/github.com\/GatiAher\/network-generation&#39;&#34;
+        type=&#34;button&#34;
+      &gt;
+        Visit GitHub
+      &lt;/button&gt;
     &lt;/li&gt;
     
   &lt;/ul&gt;
@@ -175,7 +199,13 @@
   &lt;ul class=&#34;actions&#34;&gt;
        
     &lt;li&gt;
-      &lt;a href=&#34;https://olincollege.github.io/pie-2021-03/Disco-Cats/&#34; class=&#34;button icon outline fa-gem&#34;&gt;View Website&lt;/a&gt;
+      &lt;button
+        class=&#34;button icon outline fa-gem&#34;
+        onclick=&#34;location.href=&#39;https:\/\/olincollege.github.io\/pie-2021-03\/Disco-Cats\/&#39;&#34;
+        type=&#34;button&#34;
+      &gt;
+        View Website
+      &lt;/button&gt;
     &lt;/li&gt;
     
   &lt;/ul&gt;
@@ -185,7 +215,13 @@
   &lt;ul class=&#34;actions&#34;&gt;
        
     &lt;li&gt;
-      &lt;a href=&#34;https://github.com/GatiAher/disco_cats&#34; class=&#34;button icon outline brands fa-github&#34;&gt;Visit GitHub&lt;/a&gt;
+      &lt;button
+        class=&#34;button icon outline brands fa-github&#34;
+        onclick=&#34;location.href=&#39;https:\/\/github.com\/GatiAher\/disco_cats&#39;&#34;
+        type=&#34;button&#34;
+      &gt;
+        Visit GitHub
+      &lt;/button&gt;
     &lt;/li&gt;
     
   &lt;/ul&gt;
@@ -195,7 +231,13 @@
   &lt;ul class=&#34;actions&#34;&gt;
        
     &lt;li&gt;
-      &lt;a href=&#34;https://youtu.be/nX_OTCaxyTM&#34; class=&#34;button icon outline fa-video&#34;&gt;Watch Demo&lt;/a&gt;
+      &lt;button
+        class=&#34;button icon outline fa-video&#34;
+        onclick=&#34;location.href=&#39;https:\/\/youtu.be\/nX_OTCaxyTM&#39;&#34;
+        type=&#34;button&#34;
+      &gt;
+        Watch Demo
+      &lt;/button&gt;
     &lt;/li&gt;
     
   &lt;/ul&gt;
@@ -251,7 +293,13 @@
   &lt;ul class=&#34;actions&#34;&gt;
        
     &lt;li&gt;
-      &lt;a href=&#34;https://github.com/GatiAher/EMG_Gesture_Recognition&#34; class=&#34;button icon outline brands fa-github&#34;&gt;Visit GitHub&lt;/a&gt;
+      &lt;button
+        class=&#34;button icon outline brands fa-github&#34;
+        onclick=&#34;location.href=&#39;https:\/\/github.com\/GatiAher\/EMG_Gesture_Recognition&#39;&#34;
+        type=&#34;button&#34;
+      &gt;
+        Visit GitHub
+      &lt;/button&gt;
     &lt;/li&gt;
     
   &lt;/ul&gt;
@@ -285,7 +333,13 @@
   &lt;ul class=&#34;actions&#34;&gt;
        
     &lt;li&gt;
-      &lt;a href=&#34;https://github.com/GatiAher/BloomForSearchFromScratch&#34; class=&#34;button icon outline brands fa-github&#34;&gt;Visit GitHub&lt;/a&gt;
+      &lt;button
+        class=&#34;button icon outline brands fa-github&#34;
+        onclick=&#34;location.href=&#39;https:\/\/github.com\/GatiAher\/BloomForSearchFromScratch&#39;&#34;
+        type=&#34;button&#34;
+      &gt;
+        Visit GitHub
+      &lt;/button&gt;
     &lt;/li&gt;
     
   &lt;/ul&gt;
@@ -295,7 +349,13 @@
   &lt;ul class=&#34;actions&#34;&gt;
        
     &lt;li&gt;
-      &lt;a href=&#34;https://trello.com/b/xzVRxTDJ/bloomforsearchfromscratch&#34; class=&#34;button icon outline brands fa-trello&#34;&gt;Visit Trello&lt;/a&gt;
+      &lt;button
+        class=&#34;button icon outline brands fa-trello&#34;
+        onclick=&#34;location.href=&#39;https:\/\/trello.com\/b\/xzVRxTDJ\/bloomforsearchfromscratch&#39;&#34;
+        type=&#34;button&#34;
+      &gt;
+        Visit Trello
+      &lt;/button&gt;
     &lt;/li&gt;
     
   &lt;/ul&gt;
@@ -325,7 +385,13 @@
   &lt;ul class=&#34;actions&#34;&gt;
        
     &lt;li&gt;
-      &lt;a href=&#34;https://github.com/GatiAher/SoftSysGarbageEaters/blob/main/reports/report.md&#34; class=&#34;button icon outline brands fa-github&#34;&gt;Visit GitHub&lt;/a&gt;
+      &lt;button
+        class=&#34;button icon outline brands fa-github&#34;
+        onclick=&#34;location.href=&#39;https:\/\/github.com\/GatiAher\/SoftSysGarbageEaters\/blob\/main\/reports\/report.md&#39;&#34;
+        type=&#34;button&#34;
+      &gt;
+        Visit GitHub
+      &lt;/button&gt;
     &lt;/li&gt;
     
   &lt;/ul&gt;
@@ -335,7 +401,13 @@
   &lt;ul class=&#34;actions&#34;&gt;
        
     &lt;li&gt;
-      &lt;a href=&#34;https://trello.com/b/s83l2eWJ/softsys-garbagecollectors&#34; class=&#34;button icon outline brands fa-trello&#34;&gt;Visit Trello&lt;/a&gt;
+      &lt;button
+        class=&#34;button icon outline brands fa-trello&#34;
+        onclick=&#34;location.href=&#39;https:\/\/trello.com\/b\/s83l2eWJ\/softsys-garbagecollectors&#39;&#34;
+        type=&#34;button&#34;
+      &gt;
+        Visit Trello
+      &lt;/button&gt;
     &lt;/li&gt;
     
   &lt;/ul&gt;
@@ -373,7 +445,13 @@
   &lt;ul class=&#34;actions&#34;&gt;
        
     &lt;li&gt;
-      &lt;a href=&#34;https://xkcd-data.herokuapp.com/&#34; class=&#34;button icon outline fa-gem&#34;&gt;View Website&lt;/a&gt;
+      &lt;button
+        class=&#34;button icon outline fa-gem&#34;
+        onclick=&#34;location.href=&#39;https:\/\/xkcd-data.herokuapp.com\/&#39;&#34;
+        type=&#34;button&#34;
+      &gt;
+        View Website
+      &lt;/button&gt;
     &lt;/li&gt;
     
   &lt;/ul&gt;
@@ -383,7 +461,13 @@
   &lt;ul class=&#34;actions&#34;&gt;
        
     &lt;li&gt;
-      &lt;a href=&#34;https://github.com/GatiAher/Xkcd_Data_Visualization&#34; class=&#34;button icon outline brands fa-github&#34;&gt;Visit GitHub&lt;/a&gt;
+      &lt;button
+        class=&#34;button icon outline brands fa-github&#34;
+        onclick=&#34;location.href=&#39;https:\/\/github.com\/GatiAher\/Xkcd_Data_Visualization&#39;&#34;
+        type=&#34;button&#34;
+      &gt;
+        Visit GitHub
+      &lt;/button&gt;
     &lt;/li&gt;
     
   &lt;/ul&gt;

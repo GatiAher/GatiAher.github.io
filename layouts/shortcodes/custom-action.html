@@ -3,10 +3,24 @@
     {{ $href := default "/" (.Get "href") }} {{ $text := default "Click Here"
     (.Get "text") }} {{ if (.Get "icon") }} {{ $icon := (.Get "icon") }}
     <li>
-      <a href="{{$href}}" class="button icon outline {{$icon}}">{{ $text }}</a>
+      <button
+        class="button icon outline {{$icon}}"
+        onclick="location.href='{{$href}}'"
+        type="button"
+      >
+        {{ $text }}
+      </button>
     </li>
     {{ else }}
-    <li><a href="{{$href}}" class="button outline">{{ $text }}</a></li>
+    <li>
+      <button
+        class="button outline"
+        onclick="location.href='{{$href}}'"
+        type="button"
+      >
+        {{ $text }}
+      </button>
+    </li>
     {{ end }}
   </ul>
 </div>

@@ -4537,6 +4537,13 @@ ul.triangle > li::before {
   color: #ffffff;
 }
 
+@media screen and (max-width: 736px) {
+  #single .inner .toc {
+    padding: 1em 1em 1em 1em;
+    margin: 2em 0 2em 0;
+  }
+}
+
 #single .inner .toc p {
   padding: 0 0 0.5rem 0;
   margin: 0;

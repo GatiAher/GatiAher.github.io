@@ -19,7 +19,13 @@
   &lt;ul class=&#34;actions&#34;&gt;
        
     &lt;li&gt;
-      &lt;a href=&#34;https://xkcd-data.herokuapp.com/&#34; class=&#34;button icon outline fa-gem&#34;&gt;View Website&lt;/a&gt;
+      &lt;button
+        class=&#34;button icon outline fa-gem&#34;
+        onclick=&#34;location.href=&#39;https:\/\/xkcd-data.herokuapp.com\/&#39;&#34;
+        type=&#34;button&#34;
+      &gt;
+        View Website
+      &lt;/button&gt;
     &lt;/li&gt;
     
   &lt;/ul&gt;
@@ -29,7 +35,13 @@
   &lt;ul class=&#34;actions&#34;&gt;
        
     &lt;li&gt;
-      &lt;a href=&#34;https://github.com/GatiAher/Xkcd_Data_Visualization&#34; class=&#34;button icon outline brands fa-github&#34;&gt;Visit GitHub&lt;/a&gt;
+      &lt;button
+        class=&#34;button icon outline brands fa-github&#34;
+        onclick=&#34;location.href=&#39;https:\/\/github.com\/GatiAher\/Xkcd_Data_Visualization&#39;&#34;
+        type=&#34;button&#34;
+      &gt;
+        Visit GitHub
+      &lt;/button&gt;
     &lt;/li&gt;
     
   &lt;/ul&gt;
