@@ -1934,7 +1934,7 @@ hr.major {
 }
 
 .features section {
-  padding: 3.5em 3em 1em 7em;
+  padding: 3.5em;
   width: 50%;
   border-top: solid 1px rgba(255, 255, 255, 0.15);
   position: relative;
@@ -3891,30 +3891,22 @@ ul.triangle > li::before {
 
 /* Intro */
 
-#index-section-intro .tag-text {
-  text-transform: uppercase;
-  font-size: 11px;
+#index-section-intro-background {
+  overflow: hidden;
+  position: relative;
+  background-color: rgb(255, 255, 255);
+}
+
+.object-fit-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  z-index: 1;
 }
 
 #index-section-intro {
-  background-attachment: fixed;
-  background-image: url("images/intro.png");
-  background-position: top right;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-}
-
-@media screen and (max-width: 360px) {
-  #index-section-intro {
-    background-attachment: scroll;
-  }
-}
-
-#index-section-intro img {
-  height: 170px;
-  object-fit: contain;
-  max-width: 100%;
-  box-sizing: border-box;
+  z-index: 2;
 }
 
 @media screen and (max-width: 360px) {
@@ -3922,6 +3914,17 @@ ul.triangle > li::before {
   #index-section-intro [class*="col-"] {
     width: 100%;
   }
+}
+
+#index-section-intro .tag-text {
+  text-transform: uppercase;
+}
+
+#index-section-intro img {
+  height: 170px;
+  object-fit: contain;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 #index-section-intro h1,
@@ -3972,7 +3975,6 @@ ul.triangle > li::before {
 }
 
 #index-section-interests .features section {
-  padding: 3.5em;
   border-top: solid 1px rgba(0, 0, 0, 0.15);
   position: relative;
 }
@@ -4199,6 +4201,21 @@ ul.triangle > li::before {
 
 /* Project */
 
+#index-section-projects .custom-small-button {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: #ffffff;
+  background-color: #457eac;
+  border: 0px none;
+}
+
+#index-section-projects .custom-small-button:hover {
+  color: #000000;
+  background-color: #ffffff;
+  border: 0px none;
+}
+
 /* carousel adapted from hyperplexed https://codepen.io/Hyperplexed/pen/oNqVyjo */
 
 .carousel-body {
@@ -4402,6 +4419,23 @@ ul.triangle > li::before {
 
 #index-section-teaching hr {
   border-bottom: solid 1px rgb(0, 0, 0);
+}
+
+/* Art */
+
+#index-section-art .custom-small-button {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: #ffffff;
+  background-color: #457eac;
+  border: 0px none;
+}
+
+#index-section-art .custom-small-button:hover {
+  color: #000000;
+  background-color: #ffffff;
+  border: 0px none;
 }
 
 /* Single */

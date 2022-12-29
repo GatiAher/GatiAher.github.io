@@ -5,11 +5,17 @@
     <hr />
     <div>
       <h2>Browse Projects By Category</h2>
-      <ul class="triangle actions stacked">
+      <ul class="actions stacked">
         <!-- Categories -->
         {{ range.Site.Taxonomies.categories.ByCount }}
         <li>
-          <a href="{{ .Page.Permalink }}">{{ .Page.Title }} ({{ .Count }})</a>
+          <button
+            class="button custom-small-button"
+            onclick="location.href='{{ .Page.Permalink }}'"
+            type="button"
+          >
+            {{ .Page.Title }} ({{ .Count }})
+          </button>
         </li>
         {{ end }}
       </ul>
