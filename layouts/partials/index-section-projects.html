@@ -1,0 +1,18 @@
+<section id="index-section-projects" class="wrapper style1">
+  <div class="inner">
+    <h2>Projects</h2>
+    {{ partial "content-carousel.html" . }}
+    <hr />
+    <div>
+      <h2>Browse Projects By Category</h2>
+      <ul class="triangle actions stacked">
+        <!-- Categories -->
+        {{ range.Site.Taxonomies.categories.ByCount }}
+        <li>
+          <a href="{{ .Page.Permalink }}">{{ .Page.Title }} ({{ .Count }})</a>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+  </div>
+</section>

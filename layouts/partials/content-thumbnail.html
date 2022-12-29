@@ -1,0 +1,19 @@
+<article>
+  <a href="{{ .RelPermalink }}">
+    <h1 class="major center">{{ .Title }}</h1>
+  </a>
+  <p>{{ .Summary }}</p>
+  {{ partial "content-thumbnail-image.html" . }}
+  <!-- Read More... -->
+  {{ if .Params.readmore }}
+  <ul class="actions">
+    <li>
+      <a
+        href="{{ .RelPermalink }}"
+        class="button icon outline solid fa-arrow-right"
+        >Read Report</a
+      >
+    </li>
+  </ul>
+  {{ end }}
+</article>

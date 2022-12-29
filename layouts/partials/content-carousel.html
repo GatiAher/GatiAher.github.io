@@ -1,0 +1,40 @@
+<div id="project-carousel" class="carousel-body">
+  <div class="carousel">
+    {{ $section := where $.Site.RegularPages "Params.featured" "==" true }} {{
+    range $index, $element := $section }} {{ $data_status := cond (eq $index 0 )
+    "active" "inactive" }}
+    <article
+      data-index="{{ $index }}"
+      data-status="{{ $data_status }}"
+      class="carousel-article"
+    >
+      {{ partial "content-carousel-cover.html" . }}
+      <div class="article-description-section article-section">
+        <!-- <p>{{ .Summary }}</p> -->
+        <h4>{{ .Params.shortsummary }}</h4>
+      </div>
+      <div class="article-title-section article-section">
+        <h2>{{ .Params.shorttitle }}</h2>
+        <a class="icon solid fa-plus" href="{{ .RelPermalink }}"
+          ><span class="label">Read More</span></a
+        >
+      </div>
+      <div class="article-nav-section article-section">
+        <button
+          class="article-nav-button icon solid fa-arrow-left"
+          onclick="handleLeftClick()"
+        >
+          <span class="label">Left Click</span>
+        </button>
+
+        <button
+          class="article-nav-button icon solid fa-arrow-right"
+          onclick="handleRightClick()"
+        >
+          <span class="label">Right Click</span>
+        </button>
+      </div>
+    </article>
+    {{ end }}
+  </div>
+</div>

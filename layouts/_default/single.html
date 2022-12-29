@@ -1,0 +1,31 @@
+{{ define "main" }}
+<div>
+  {{ partial "site-header.html" . }}
+
+  <div id="wrapper">
+    <!-- Main -->
+    <section id="single" class="wrapper">
+      <header>
+        <div class="single-header">
+          {{ partial "category.html" . }}
+          <h1>{{ .Title }}</h1>
+          <p>
+            <i>
+              written by Gati Aher on {{ partial "date.html" . }} | {{
+              .ReadingTime }} min read <br />
+              {{ partial "tag.html" . }}
+            </i>
+          </p>
+        </div>
+      </header>
+      <div class="inner">
+        <article>{{ .Content }}</article>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  {{ partial "site-footer.html" . }}
+</div>
+
+{{ end }}

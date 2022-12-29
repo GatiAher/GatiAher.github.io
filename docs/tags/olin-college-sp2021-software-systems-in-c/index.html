@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  
+   
+  <title>Olin College: SP2021 Software Systems in C</title>
+  
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, user-scalable=no"
+  />
+  
+  
+  <link rel="stylesheet" href="/css/main.css" />
+    
+  <noscript><link rel="stylesheet" href="/css/noscript.css" /></noscript>
+  
+  
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+    };
+
+    window.addEventListener('load', (event) => {
+        document.querySelectorAll("mjx-container").forEach(function (x) {
+            x.parentElement.classList += 'has-jax'
+        })
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/favicon_io/apple-touch-icon.png"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="/favicon_io/favicon-32x32.png"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="16x16"
+    href="/favicon_io/favicon-16x16.png"
+  />
+  <link rel="manifest" href="/favicon_io/site.webmanifest" />
+  
+  <meta name="generator" content="Hugo 0.108.0"> <meta property="og:title" content="Olin College: SP2021 Software Systems in C" />
+<meta property="og:description" content="Gati Aher&#39;s personal page. Read reflections, notes, and guides for computer science and machine learning." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://GatiAher.github.io/tags/olin-college-sp2021-software-systems-in-c/" /><meta property="og:image" content="http://GatiAher.github.io/img/cover_page.png"/>
+
+</head>
+
+
+  <body class="is-preload">
+    
+    
+<div>
+  <header id="header">
+  <a href="/" class="title">Gati Aher</a>
+  <nav>
+    <ul>
+      
+      
+      <li>
+        <a href="http://GatiAher.github.io/categories/software-development/">Software Development (8)</a>
+      </li>
+      
+      <li>
+        <a href="http://GatiAher.github.io/categories/concepts-theory/">Concepts &amp; Theory (6)</a>
+      </li>
+      
+      <li>
+        <a href="http://GatiAher.github.io/categories/data-analysis/">Data Analysis (5)</a>
+      </li>
+      
+      <li>
+        <a href="/artwork">Art</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+  <div id="wrapper">
+    
+    <section id="list" class="wrapper">
+      <header>
+        <div class="center">
+          <p><b>2 posts</b></p>
+          
+          
+          <h1 class="tag-list-heading">Olin College: SP2021 Software Systems in C</h1>
+          
+          
+        </div>
+      </header>
+      <div class="inner">
+        
+        
+        <div class="center">
+          <h2>2021</h2>
+        </div>
+        <div class="posts">
+           <article>
+  <a href="/projects/implementing-fast-and-space-efficient-look-up-and-search/">
+    <h1 class="major center">Implementing Fast and Space-Efficient Look-up and Search</h1>
+  </a>
+  <p><p>The Bloom filter data structure tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when I saw them used in speeding up database search. Then, I heard about Microsoft using a stack of Bloom filters to <a href="https://dl.acm.org/doi/10.1145/3077136.3080789">speed up the Bing search engine&rsquo;s keyword search</a>.</p>
+<p>In this project, I implemented a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and notable code design decisions.</p>
+<p><div class="center">
+  <ul class="actions">
+       
+    <li>
+      <a href="https://github.com/GatiAher/BloomForSearchFromScratch" class="button icon outline brands fa-github">Visit GitHub</a>
+    </li>
+    
+  </ul>
+</div>
+
+<div class="center">
+  <ul class="actions">
+       
+    <li>
+      <a href="https://trello.com/b/xzVRxTDJ/bloomforsearchfromscratch" class="button icon outline brands fa-trello">Visit Trello</a>
+    </li>
+    
+  </ul>
+</div>
+</p></p>
+  
+<span class="image fit">
+  <img src="http://GatiAher.github.io/projects/implementing-fast-and-space-efficient-look-up-and-search/cover.png" />
+</span>
+
+
+  
+  
+  <ul class="actions">
+    <li>
+      <a
+        href="/projects/implementing-fast-and-space-efficient-look-up-and-search/"
+        class="button icon outline solid fa-arrow-right"
+        >Read Report</a
+      >
+    </li>
+  </ul>
+  
+</article>
+
+          <hr />
+           <article>
+  <a href="/projects/build-a-virtual-machine/">
+    <h1 class="major center">GarbageEater: Simple Virtual Machine</h1>
+  </a>
+  <p><p>Little Computer 3 (LC-3) is a reduced instruction set computer (RISC). This means that its architecture uses a limited set of optimized instructions to complete tasks. We implemented a virtual machine (VM) in C that can run compiled LC-3 assembly. Given program code in a compiled OBJ file, the VM can execute the instructions in the file.</p>
+<p>In order to do this, it uses the memory structure defined in the LC-3 specification, including program memory, program registers, and condition flags. It reads and writes to these memory structures and manages I/O through the terminal. Our VM successfully plays game files!</p>
+<p><div class="center">
+  <ul class="actions">
+       
+    <li>
+      <a href="https://github.com/GatiAher/SoftSysGarbageEaters/blob/main/reports/report.md" class="button icon outline brands fa-github">Visit GitHub</a>
+    </li>
+    
+  </ul>
+</div>
+
+<div class="center">
+  <ul class="actions">
+       
+    <li>
+      <a href="https://trello.com/b/s83l2eWJ/softsys-garbagecollectors" class="button icon outline brands fa-trello">Visit Trello</a>
+    </li>
+    
+  </ul>
+</div>
+</p></p>
+  
+<span class="image fit">
+  <img src="http://GatiAher.github.io/projects/build-a-virtual-machine/cover.png" />
+</span>
+
+
+  
+  
+</article>
+
+          <hr />
+          
+        </div>
+        
+      </div>
+    </section>
+  </div>
+
+  
+  <footer id="footer" class="wrapper style1-alt">
+  <div class="inner">
+    <ul class="menu">
+      <li>&copy; 2022 <a href="/">Gati Aher</a></li>
+      <li>Powered by <a href="https://gohugo.io/">Hugo</a></li>
+      <li>
+        Adapted 
+        <a href="https://html5up.net/hyperspace"
+          > from HTML5 UP</a
+        >
+      </li>
+      <li>
+        Code on <a href="https://github.com/GatiAher/gatiaher-hugo">GitHub</a>
+      </li>
+    </ul>
+  </div>
+</footer>
+
+</div>
+
+
+
+    
+    
+
+<script src="/js/jquery.min.js"></script>
+
+<script src="/js/jquery.scrollex.min.js"></script>
+
+<script src="/js/jquery.scrolly.min.js"></script>
+
+<script src="/js/browser.min.js"></script>
+
+<script src="/js/breakpoints.min.js"></script>
+
+<script src="/js/util.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+<script src="/js/tab_control.js"></script>
+
+
+<script src="/js/carousel_control.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,42 @@
+{{ define "main" }}
+<div>
+  {{ partial "site-header.html" . }}
+  <div id="wrapper">
+    <!-- Main -->
+    <section id="list" class="wrapper">
+      <header>
+        <div class="center">
+          <p><b>{{ len .Pages.ByPublishDate.Reverse }} posts</b></p>
+          <!-- categories -->
+          {{ if eq .Data.Plural "categories" }}
+          <h1 class="category-list-heading">{{ .Title }}</h1>
+          <!-- tags -->
+          {{ else if eq .Data.Plural "tags" }}
+          <h1 class="tag-list-heading">{{ .Title }}</h1>
+          <!-- other title -->
+          {{ else }}
+          <h1>{{ .Title }}</h1>
+          {{ end }}
+        </div>
+      </header>
+      <div class="inner">
+        <!-- Groups content by year according to the "date" field in front matter -->
+        {{ range .Pages.GroupByDate "2006" }}
+        <div class="center">
+          <h2>{{ .Key }}</h2>
+        </div>
+        <div class="posts">
+          {{ range .Pages }} {{ partial "content-thumbnail" . }}
+          <hr />
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  {{ partial "site-footer.html" . }}
+</div>
+
+{{ end }}

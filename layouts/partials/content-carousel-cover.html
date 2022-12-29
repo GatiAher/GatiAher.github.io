@@ -1,0 +1,48 @@
+<!-- If covertype is image -->
+{{ if eq $.Params.covertype "image" }}
+<!--  -->
+{{ with .Resources.GetMatch "{cover.*,*.jpg,*.png,*.jpeg}" }}
+<div
+  class="article-image-section article-section"
+  style="
+    background-image: url('{{ .Permalink }}');
+  "
+></div>
+<!-- End if -->
+{{ end }}
+<!-- End with -->
+{{ end }}
+
+
+<!-- If covertype is gslides -->
+{{ if eq $.Params.covertype "gslides" }}
+<!--  -->
+<div class="article-section">
+  <iframe
+    src="{{ $.Params.cover }}"
+    width="100%"
+    frameborder="0"
+    allowfullscreen=""
+  >
+  </iframe>
+</div>
+<!-- End if -->
+{{ end }}
+
+<!-- If covertype is youtube -->
+{{ if eq $.Params.covertype "youtube" }}
+<!--  -->
+<div class="article-section">
+  <iframe
+    src="{{ $.Params.cover }}"
+    height="100%"
+    width="100%"
+    frameborder="0"
+    allowfullscreen=""
+  >
+  </iframe>
+</div>
+<!-- End if -->
+{{ end }}
+
+

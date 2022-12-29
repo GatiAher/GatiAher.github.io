@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Olin SP2022: Advanced Algorithms on Gati Aher</title>
+    <link>http://GatiAher.github.io/tags/olin-sp2022-advanced-algorithms/</link>
+    <description>Recent content in Olin SP2022: Advanced Algorithms on Gati Aher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 May 2022 12:21:08 -0400</lastBuildDate><atom:link href="http://GatiAher.github.io/tags/olin-sp2022-advanced-algorithms/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Intuition for Linear Programming</title>
+      <link>http://GatiAher.github.io/projects/intuition-for-linear-programming/</link>
+      <pubDate>Fri, 20 May 2022 12:21:08 -0400</pubDate>
+      
+      <guid>http://GatiAher.github.io/projects/intuition-for-linear-programming/</guid>
+      <description>&lt;p&gt;Understanding the geometric intuition and algorithms for solving linear programming problems. Covers (1) defining the solution space as the area within a convex polytope space, (2) understanding that the optimal solution occurs at a vertex point and translating that geometric intuition and more efficient search path into the Simplex matrix-based algorithm, (3) the idea of Duality and how it exposes additional information, and (4) how the Interior Point method works not just for linear programs, but also for more general convex optimization problems.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

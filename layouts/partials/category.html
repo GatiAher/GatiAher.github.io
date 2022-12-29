@@ -1,0 +1,4 @@
+{{ with .Params.categories }} {{ $tlen := len . }} {{ range $ei, $ev := . }} {{
+$href := print (relURL "categories/") (urlize $ev) }}
+<a class="category" href="{{ $href }}">{{ $ev }}</a>
+{{ if and (ne $tlen (add $ei 1)) (gt $tlen 1) }} , {{ end }} {{ end }} {{ end }}

@@ -1,0 +1,53 @@
+baseURL = "http://GatiAher.github.io"
+title = "Gati Aher"
+publishDir = "docs"
+
+
+languageCode = "en-us"
+copyright = ""
+
+[author]
+    name = "Gati Aher"
+
+[params]
+    dateFormat = "Jan 2, 2006"
+    description = "Gati Aher's personal page. Read reflections, notes, and guides for computer science and machine learning."
+    images = ["/img/cover_page.png"]
+
+# See https://feathericons.com/
+# The value of pre is the icon name
+[menux]
+  [[menu.main]]
+    name = "All Projects"
+    pre = "archive"
+    url = "/projects"
+    weight = 1
+  [[menu.main]]
+    name = "Tags"
+    pre = "tag"
+    url = "/tags"
+    weight = 1
+  [[menu.main]]
+    name = "Contact"
+    pre = "at-sign"
+    url = "/about"
+    weight = 2
+
+[footer]
+  [[footer.main]]
+    name = " "
+    pre = "github"
+    url = "https://github.com/GatiAher"
+    weight = 1
+  [[footer.main]]
+    name = ""
+    re = "linkedin"
+    url = "https://www.linkedin.com/in/gatiaher"
+    weight = 2
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[imaging]
+bgColor = "#777777"

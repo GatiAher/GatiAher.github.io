@@ -1,0 +1,5 @@
+{{ with .Resources.GetMatch "{cover.*,*.jpg,*.png,*.jpeg}" }}
+<span class="image fit">
+  <img src="{{ .Permalink }}" />
+</span>
+{{ end }}

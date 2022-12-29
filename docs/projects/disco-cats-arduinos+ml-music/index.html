@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  
+   
+  <title>Disco-Cats: Arduinos &#43; ML Music</title>
+  
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, user-scalable=no"
+  />
+  
+  
+  <link rel="stylesheet" href="/css/main.css" />
+    
+  <noscript><link rel="stylesheet" href="/css/noscript.css" /></noscript>
+  
+  
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+    };
+
+    window.addEventListener('load', (event) => {
+        document.querySelectorAll("mjx-container").forEach(function (x) {
+            x.parentElement.classList += 'has-jax'
+        })
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/favicon_io/apple-touch-icon.png"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="/favicon_io/favicon-32x32.png"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="16x16"
+    href="/favicon_io/favicon-16x16.png"
+  />
+  <link rel="manifest" href="/favicon_io/site.webmanifest" />
+  
+  <meta name="generator" content="Hugo 0.108.0"> <meta property="og:title" content="Disco-Cats: Arduinos &#43; ML Music" />
+<meta property="og:description" content="My team spent 6 weeks building an interactive music visualization system that uses Arduinos, motors, an LED matrix, and sound to express musical pieces generated with machine learning!
+I learned how to (1) design an intuitive UI (2) use Google&rsquo;s Magenta multi-track VAE model to generate music based on user input (3) transmit the MIDI bitstream over serial (3) extract pitch, instrument, and duration information from the midi bitstream in real time (4) efficiently control an LED matrix and motors.
+
+  
+       
+    
+      View Website
+    
+    
+  
+
+
+
+  
+       
+    
+      Visit GitHub
+    
+    
+  
+
+
+
+  
+       
+    
+      Watch Demo
+    
+    
+  
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://GatiAher.github.io/projects/disco-cats-arduinos&#43;ml-music/" /><meta property="og:image" content="http://GatiAher.github.io/projects/disco-cats-arduinos&#43;ml-music/cover.png"/><meta property="article:section" content="projects" />
+<meta property="article:published_time" content="2021-12-14T21:21:42-04:00" />
+<meta property="article:modified_time" content="2021-12-14T21:21:42-04:00" />
+
+</head>
+
+
+  <body class="is-preload">
+    
+    
+<div>
+  <header id="header">
+  <a href="/" class="title">Gati Aher</a>
+  <nav>
+    <ul>
+      
+      
+      <li>
+        <a href="http://GatiAher.github.io/categories/software-development/">Software Development (8)</a>
+      </li>
+      
+      <li>
+        <a href="http://GatiAher.github.io/categories/concepts-theory/">Concepts &amp; Theory (6)</a>
+      </li>
+      
+      <li>
+        <a href="http://GatiAher.github.io/categories/data-analysis/">Data Analysis (5)</a>
+      </li>
+      
+      <li>
+        <a href="/artwork">Art</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+
+  <div id="wrapper">
+    
+    <section id="single" class="wrapper">
+      <header>
+        <div class="single-header">
+             
+<a class="category" href="/categories/software-development">Software Development</a>
+  
+
+          <h1>Disco-Cats: Arduinos &#43; ML Music</h1>
+          <p>
+            <i>
+              written by Gati Aher on 
+
+<time class="date" datetime="2021-12-14">Dec 14, 2021</time> | 1 min read <br />
+                  tags:
+<a href="/tags/olin-college-fa2021-principals-of-integrated-engineering">Olin College: FA2021 Principals of Integrated Engineering</a>
+  
+
+            </i>
+          </p>
+        </div>
+      </header>
+      <div class="inner">
+        <article><p>My team spent 6 weeks building an interactive music visualization system that uses Arduinos, motors, an LED matrix, and sound to express musical pieces generated with machine learning!</p>
+<p>I learned how to (1) design an intuitive UI (2) use <a href="https://magenta.tensorflow.org/multitrack">Google&rsquo;s Magenta multi-track VAE model</a> to generate music based on user input (3) transmit the MIDI bitstream over serial (3) extract pitch, instrument, and duration information from the midi bitstream in real time (4) efficiently control an LED matrix and motors.</p>
+<p><div class="center">
+  <ul class="actions">
+       
+    <li>
+      <a href="https://olincollege.github.io/pie-2021-03/Disco-Cats/" class="button icon outline fa-gem">View Website</a>
+    </li>
+    
+  </ul>
+</div>
+
+<div class="center">
+  <ul class="actions">
+       
+    <li>
+      <a href="https://github.com/GatiAher/disco_cats" class="button icon outline brands fa-github">Visit GitHub</a>
+    </li>
+    
+  </ul>
+</div>
+
+<div class="center">
+  <ul class="actions">
+       
+    <li>
+      <a href="https://youtu.be/nX_OTCaxyTM" class="button icon outline fa-video">Watch Demo</a>
+    </li>
+    
+  </ul>
+</div>
+</p></article>
+      </div>
+    </section>
+  </div>
+
+  
+  <footer id="footer" class="wrapper style1-alt">
+  <div class="inner">
+    <ul class="menu">
+      <li>&copy; 2022 <a href="/">Gati Aher</a></li>
+      <li>Powered by <a href="https://gohugo.io/">Hugo</a></li>
+      <li>
+        Adapted 
+        <a href="https://html5up.net/hyperspace"
+          > from HTML5 UP</a
+        >
+      </li>
+      <li>
+        Code on <a href="https://github.com/GatiAher/gatiaher-hugo">GitHub</a>
+      </li>
+    </ul>
+  </div>
+</footer>
+
+</div>
+
+
+
+    
+    
+
+<script src="/js/jquery.min.js"></script>
+
+<script src="/js/jquery.scrollex.min.js"></script>
+
+<script src="/js/jquery.scrolly.min.js"></script>
+
+<script src="/js/browser.min.js"></script>
+
+<script src="/js/breakpoints.min.js"></script>
+
+<script src="/js/util.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+<script src="/js/tab_control.js"></script>
+
+
+<script src="/js/carousel_control.js"></script>
+
+  </body>
+</html>

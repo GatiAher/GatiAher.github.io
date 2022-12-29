@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Olin College: FA2021 Principals of Integrated Engineering on Gati Aher</title>
+    <link>http://GatiAher.github.io/tags/olin-college-fa2021-principals-of-integrated-engineering/</link>
+    <description>Recent content in Olin College: FA2021 Principals of Integrated Engineering on Gati Aher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 14 Dec 2021 21:21:42 -0400</lastBuildDate><atom:link href="http://GatiAher.github.io/tags/olin-college-fa2021-principals-of-integrated-engineering/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Disco-Cats: Arduinos &#43; ML Music</title>
+      <link>http://GatiAher.github.io/projects/disco-cats-arduinos&#43;ml-music/</link>
+      <pubDate>Tue, 14 Dec 2021 21:21:42 -0400</pubDate>
+      
+      <guid>http://GatiAher.github.io/projects/disco-cats-arduinos&#43;ml-music/</guid>
+      <description>&lt;p&gt;My team spent 6 weeks building an interactive music visualization system that uses Arduinos, motors, an LED matrix, and sound to express musical pieces generated with machine learning!&lt;/p&gt;
+&lt;p&gt;I learned how to (1) design an intuitive UI (2) use &lt;a href=&#34;https://magenta.tensorflow.org/multitrack&#34;&gt;Google&amp;rsquo;s Magenta multi-track VAE model&lt;/a&gt; to generate music based on user input (3) transmit the MIDI bitstream over serial (3) extract pitch, instrument, and duration information from the midi bitstream in real time (4) efficiently control an LED matrix and motors.&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;center&#34;&gt;
+  &lt;ul class=&#34;actions&#34;&gt;
+       
+    &lt;li&gt;
+      &lt;a href=&#34;https://olincollege.github.io/pie-2021-03/Disco-Cats/&#34; class=&#34;button icon outline fa-gem&#34;&gt;View Website&lt;/a&gt;
+    &lt;/li&gt;
+    
+  &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;center&#34;&gt;
+  &lt;ul class=&#34;actions&#34;&gt;
+       
+    &lt;li&gt;
+      &lt;a href=&#34;https://github.com/GatiAher/disco_cats&#34; class=&#34;button icon outline brands fa-github&#34;&gt;Visit GitHub&lt;/a&gt;
+    &lt;/li&gt;
+    
+  &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;center&#34;&gt;
+  &lt;ul class=&#34;actions&#34;&gt;
+       
+    &lt;li&gt;
+      &lt;a href=&#34;https://youtu.be/nX_OTCaxyTM&#34; class=&#34;button icon outline fa-video&#34;&gt;Watch Demo&lt;/a&gt;
+    &lt;/li&gt;
+    
+  &lt;/ul&gt;
+&lt;/div&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Building a Pan-Tilt 3D Scanner</title>
+      <link>http://GatiAher.github.io/projects/building-a-pan-tilt-3d-scanner/</link>
+      <pubDate>Tue, 28 Sep 2021 21:10:34 -0400</pubDate>
+      
+      <guid>http://GatiAher.github.io/projects/building-a-pan-tilt-3d-scanner/</guid>
+      <description>&lt;p&gt;My team built a servo-driven pan-tilt mount for an infrared proximity sensor. To demonstrate the functionality of our design, we created a 3D scan of a cardboard letter cut in a Z shape. This project involved (1) designing and 3D-printing a pan-tilt servo and IR sensor, (2) programming an arduino to collect scan data, (3) projecting data from spherical coordinates into Cartesian coordinates in order to isolate a cross-section scan of the letter. I was responsible for the CAD mechanical design and making the 3D data projection and visualization.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

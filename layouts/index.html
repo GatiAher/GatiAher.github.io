@@ -1,0 +1,35 @@
+{{ define "main" }}
+<main aria-role="main">
+  <!-- Sidebar -->
+  {{ partial "index-sidebar.html" . }}
+
+  <!-- Wrapper -->
+  <div id="wrapper">
+    <div id="index">
+      <!-- Intro -->
+      {{ partial "index-section-intro.html" . }}
+
+      <!-- Interests -->
+      {{ partial "index-section-interests.html" . }}
+
+      <!-- Experience -->
+      {{ partial "index-section-experience.html" . }}
+
+      <!-- Publications -->
+      {{ partial "index-section-publications.html" . }}
+
+      <!-- Projects -->
+      {{ partial "index-section-projects.html" . }}
+
+      <!-- Teaching -->
+      {{ partial "index-section-teaching.html" . }}
+
+      <!-- Art -->
+      {{ partial "index-section-art.html" . }}
+    </div>
+  </div>
+
+  <!-- Footer -->
+  {{ partial "site-footer.html" . }}
+</main>
+{{ end }}

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  
+   
+  <title>A Fourier Transform Detective Story!</title>
+  
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, user-scalable=no"
+  />
+  
+  
+  <link rel="stylesheet" href="/css/main.css" />
+    
+  <noscript><link rel="stylesheet" href="/css/noscript.css" /></noscript>
+  
+  
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+    };
+
+    window.addEventListener('load', (event) => {
+        document.querySelectorAll("mjx-container").forEach(function (x) {
+            x.parentElement.classList += 'has-jax'
+        })
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/favicon_io/apple-touch-icon.png"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="/favicon_io/favicon-32x32.png"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="16x16"
+    href="/favicon_io/favicon-16x16.png"
+  />
+  <link rel="manifest" href="/favicon_io/site.webmanifest" />
+  
+  <meta name="generator" content="Hugo 0.108.0"> <meta property="og:title" content="A Fourier Transform Detective Story!" />
+<meta property="og:description" content="A group of research students had tried to use a 2D discrete Fourier Transform to characterize the pattern of repeating protein units on a bacteria surface layer image. Since their spectral graph looked unusually messy and their pattern estimates seemed very wrong, my research professor asked me to take a crack at interpreting and cleaning it. This was a neat application of understanding the mathematical assumptions of a technique to properly isolate and interpret results." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://GatiAher.github.io/projects/a-fourier-transform-detective-story/" /><meta property="og:image" content="http://GatiAher.github.io/projects/a-fourier-transform-detective-story/cover.png"/><meta property="article:section" content="projects" />
+<meta property="article:published_time" content="2021-03-14T22:24:10-04:00" />
+<meta property="article:modified_time" content="2021-03-14T22:24:10-04:00" />
+
+</head>
+
+
+  <body class="is-preload">
+    
+    
+<div>
+  <header id="header">
+  <a href="/" class="title">Gati Aher</a>
+  <nav>
+    <ul>
+      
+      
+      <li>
+        <a href="http://GatiAher.github.io/categories/software-development/">Software Development (8)</a>
+      </li>
+      
+      <li>
+        <a href="http://GatiAher.github.io/categories/concepts-theory/">Concepts &amp; Theory (6)</a>
+      </li>
+      
+      <li>
+        <a href="http://GatiAher.github.io/categories/data-analysis/">Data Analysis (5)</a>
+      </li>
+      
+      <li>
+        <a href="/artwork">Art</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+
+  <div id="wrapper">
+    
+    <section id="single" class="wrapper">
+      <header>
+        <div class="single-header">
+             
+<a class="category" href="/categories/data-analysis">Data Analysis</a>
+  
+
+          <h1>A Fourier Transform Detective Story!</h1>
+          <p>
+            <i>
+              written by Gati Aher on 
+
+<time class="date" datetime="2021-03-14">Mar 14, 2021</time> | 10 min read <br />
+                  tags:
+<a href="/tags/olin-microbiology-lab-undergraduate-research">Olin Microbiology Lab (Undergraduate Research)</a>
+  
+
+            </i>
+          </p>
+        </div>
+      </header>
+      <div class="inner">
+        <article><p>A group of research students had tried to use a 2D discrete Fourier Transform to characterize the pattern of repeating protein units on a bacteria surface layer image. Since their spectral graph looked unusually messy and their pattern estimates seemed very wrong, my research professor asked me to take a crack at interpreting and cleaning it. This was a neat application of understanding the mathematical assumptions of a technique to properly isolate and interpret results.</p>
+<div class="toc">
+    <p>
+        <strong>Table of Contents</strong>
+    </p>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-the-hot-peanuts-challenge">1 THE HOT-PEANUTS CHALLENGE</a></li>
+    <li><a href="#2-intro-to-bacteria-s-layers">2 INTRO TO BACTERIA S-LAYERS</a></li>
+    <li><a href="#3-fft-with-python-code">3 FFT WITH PYTHON CODE</a></li>
+    <li><a href="#4-cleaning-and-interpreting-the-2d-fft">4 CLEANING AND INTERPRETING THE 2D FFT</a>
+      <ul>
+        <li><a href="#step-1-remove-vertical-and-horizontal-pattern-noise">Step 1. Remove Vertical and Horizontal Pattern Noise</a></li>
+        <li><a href="#step-2-identify-key-periodic-frequencies">Step 2. Identify Key Periodic Frequencies</a></li>
+        <li><a href="#step-3-calculate-size-and-scale">Step 3. Calculate Size and Scale</a></li>
+        <li><a href="#step-4-identify-shape">Step 4. Identify Shape</a></li>
+        <li><a href="#bonus-visualize-the-s-layer-units">Bonus: Visualize the S-Layer Units</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-conclusion">5 CONCLUSION</a></li>
+  </ul>
+</nav>
+</div>
+<h2 id="1-the-hot-peanuts-challenge">1 THE HOT-PEANUTS CHALLENGE</h2>
+<p>In 2015-2016, Professor Jean Huang and her research group cultured a phototrophic bacteria from the Little Sippewissett Salt Marsh. They nicknamed it ‘Hot Peanuts’ based on its interesting shape and growth at high temperatures. They wanted to study and publish their findings about its physiology and metabolism in a paper. The group performed a wide variety of analysis, including growth studies, 16sRNA analysis, and S-layer protein dissociation and identification.</p>
+<figure><img src="img/hot_peanuts.png"
+         alt="Image of &amp;lsquo;Hot Peanuts&amp;rsquo; under 400X magnification before S-layer removal. It phases bright because of the reflection of light off of the S-layer."/><figcaption>
+            <p>Image of &lsquo;Hot Peanuts&rsquo; under 400X magnification before S-layer removal. It phases bright because of the reflection of light off of the S-layer.</p>
+        </figcaption>
+</figure>
+
+<figure><img src="img/hot_peanuts_close_up.jpg"
+         alt="A close-up TEM image of a &amp;lsquo;Hot Peanut&amp;rsquo;"/><figcaption>
+            <p>A close-up TEM image of a &lsquo;Hot Peanut&rsquo;</p>
+        </figcaption>
+</figure>
+
+<p>As part of their analysis, the researchers wanted to know the pattern and size of the S-layer subunits. To do this, they took a transmission electron microscopy (TEM) on a ‘Hot Peanut’ sample stained with tungsten at Boston University, and attempted to do FFT analysis on the image to discern its dominant periodic patterns.</p>
+<figure><img src="img/original_TEM.jpg"
+         alt="400x400 pixel TEM image of the S-layer pattern on the surface of a &amp;lsquo;Hot Peanut&amp;rsquo;."/><figcaption>
+            <p>400x400 pixel TEM image of the S-layer pattern on the surface of a &lsquo;Hot Peanut&rsquo;.</p>
+        </figcaption>
+</figure>
+
+<figure><img src="img/original_FFT.jpg"
+         alt="First attempt at a FFT. Only magnitude information is shown. Two hexagonal-shaped rings are barely visible. There is strong, unexplained noise along the vertical and horizontal."/><figcaption>
+            <p>First attempt at a FFT. Only magnitude information is shown. Two hexagonal-shaped rings are barely visible. There is strong, unexplained noise along the vertical and horizontal.</p>
+        </figcaption>
+</figure>
+
+<p>From their FFT magnitude plot, the 2015-2016 research group could tell that their S-layer was probably hexagonal, but they held back on publishing because their FFT plot looked unusually messy and they did not know how to read size information from the magnitude plot.</p>
+<p>Fortunately, I figured it out. See my post on <a href="/projects/1d-and-2d-fourier-transforms/">1D and 2D Fourier Transforms</a> to learn more about the basic concepts (magnitude, phase, shifting, log transforms). The rest of this blog post will use the bacteria S-layer as a case-study for performing image analysis with Fourier Transforms.</p>
+<h2 id="2-intro-to-bacteria-s-layers">2 INTRO TO BACTERIA S-LAYERS</h2>
+<p>Most prokaryotic cells are encapsulated by a surface layer (S-layer) consisting of repeating units of S-layer proteins. These S-layers protect cells from the outside, provide mechanical stability, and play roles in spreading disease.</p>
+<figure><img src="img/caulobacter_crescentus_s_layer.jpg"
+         alt="Image source: Structure of the hexagonal surface layer on Caulobacter crescentus cells"/><figcaption>
+            <p>Image source: <a href="https://www.nature.com/articles/nmicrobiol201759">Structure of the hexagonal surface layer on Caulobacter crescentus cells</a></p>
+        </figcaption>
+</figure>
+
+<p>The S-layer arrangement has a pattern of lattice symmetry with a center-to-center subunit spacing ranging from 3 to 35 nm. The patterns are named by the number of monomers involved to make a repeating unit. The most common is hexagonal symmetry (p3, p6), but oblique (p1, p2) and square symmetry (p4) have been observed as well.</p>
+<figure><img src="img/s_layer_examples.jpg"
+         alt="Image source: S-layer fusion proteins&amp;ndash;construction principles and applications"/><figcaption>
+            <p>Image source: <a href="https://europepmc.org/article/med/21696943">S-layer fusion proteins&ndash;construction principles and applications</a></p>
+        </figcaption>
+</figure>
+
+<figure><img src="img/s_layer_diagram.png"
+         alt="Image source: International Genetically Engineered Machine (iGEM) Team Bielefeld-Germany S-Layer"/><figcaption>
+            <p>Image source: <a href="http://2011.igem.org/Team:Bielefeld-Germany/Project/Background/S-Layer">International Genetically Engineered Machine (iGEM) Team Bielefeld-Germany S-Layer</a></p>
+        </figcaption>
+</figure>
+
+<h2 id="3-fft-with-python-code">3 FFT WITH PYTHON CODE</h2>
+<p>Packages used in analysis:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> scipy.fftpack <span style="color:#f92672">import</span> fft2, fftshift, ifft2, ifftshift
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> skimage <span style="color:#f92672">import</span> img_as_float
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> skimage.color <span style="color:#f92672">import</span> rgb2gray
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> skimage.filters <span style="color:#f92672">import</span> window
+</span></span></code></pre></div><p>How to get image, image&rsquo;s DFT magnitude plot, and log transformed magnitude plot:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">## image</span>
+</span></span><span style="display:flex;"><span>image <span style="color:#f92672">=</span> img_as_float(plt<span style="color:#f92672">.</span>imread(<span style="color:#e6db74">&#34;2A.tif&#34;</span>))
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## take 2D DFT, center it, and get magnitude</span>
+</span></span><span style="display:flex;"><span>image_f <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>abs(fftshift(fft2(image)))
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## log transform to compress big values into smaller range</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## lets us see more information in the magnitude plot</span>
+</span></span><span style="display:flex;"><span>image_f_log <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>log(<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> image_f)
+</span></span></code></pre></div><h2 id="4-cleaning-and-interpreting-the-2d-fft">4 CLEANING AND INTERPRETING THE 2D FFT</h2>
+<h3 id="step-1-remove-vertical-and-horizontal-pattern-noise">Step 1. Remove Vertical and Horizontal Pattern Noise</h3>
+<p>When the FFT algorithm looks at an image, it assumes the image is one period of an infinitely repeating spectrum:</p>
+<figure><img src="img/annotated_spectrum.png"
+         alt="Bacteria S-layer TEM image with sources of horizontal and vertical periodic pattern identified."/><figcaption>
+            <p>Bacteria S-layer TEM image with sources of horizontal and vertical periodic pattern identified.</p>
+        </figcaption>
+</figure>
+
+<p>The vertical and horizontal leakage is caused by discontinuities at the seams where the images join. The patterns are caused by the edge and shadows where the bacteria and the white background meet, and the sharp white box of the scale. We don&rsquo;t care about these artificial patterns. Covering these areas with a uniform neutral grey color reduces the magnitude of the noise frequencies.</p>
+<figure><img src="img/colored_over_spectrum.png"
+         alt="What the infinite spectra looks like when I color over the background and the white scale box."/><figcaption>
+            <p>What the infinite spectra looks like when I color over the background and the white scale box.</p>
+        </figcaption>
+</figure>
+
+<figure><img src="img/cleaner_FFT.jpg"
+         alt="FFT of colored-over image. The spectral patterns caused by patterns in the background and the sharp white box have been muted."/><figcaption>
+            <p>FFT of colored-over image. The spectral patterns caused by patterns in the background and the sharp white box have been muted.</p>
+        </figcaption>
+</figure>
+
+<p>The edge mismatches at the seams of the images still produce sharp horizontal and vertical periodic patterns that the FFT picks up on, but overall the noise has gone down and the hexagonal rings are more evident.</p>
+<p>To reduce the frequencies of the edge discontinuities, I can use a windowing function. Windowing smoothly reduces the amplitude of the signal as it reaches the edges, removing the effect of the artificial discontinuity from the FFT. I use the Hann windowing function in this analysis.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">## windowed image</span>
+</span></span><span style="display:flex;"><span>wimage <span style="color:#f92672">=</span> image <span style="color:#f92672">*</span> window(<span style="color:#e6db74">&#39;hann&#39;</span>, image<span style="color:#f92672">.</span>shape)
+</span></span><span style="display:flex;"><span>wimage_f <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>abs(fftshift(fft2(wimage)))
+</span></span></code></pre></div><figure><img src="img/windowed.png"
+         alt="Right: original colored image and its FFT (magma color scheme to accentuate pattern). Left: Hann windowed image and its log magnitude FFT which has no edge discontinuities."/><figcaption>
+            <p>Right: original colored image and its FFT (magma color scheme to accentuate pattern). Left: Hann windowed image and its log magnitude FFT which has no edge discontinuities.</p>
+        </figcaption>
+</figure>
+
+<h3 id="step-2-identify-key-periodic-frequencies">Step 2. Identify Key Periodic Frequencies</h3>
+<p>The FFT magnitude plot clearly shows two hexagonal rings of bright points:</p>
+<figure><img src="img/annotated_FFT.png"
+         alt="Annotated centered FFT log of magnitude plot. The yellow circle shows the DC-offset, or the average pixel brightness of the image. The red circles show the dominant lower frequency periodic pattern, the blue circles show the dominant higher frequency periodic pattern."/><figcaption>
+            <p>Annotated centered FFT log of magnitude plot. The yellow circle shows the DC-offset, or the average pixel brightness of the image. The red circles show the dominant lower frequency periodic pattern, the blue circles show the dominant higher frequency periodic pattern.</p>
+        </figcaption>
+</figure>
+
+<p>To identify the key frequencies I need to find the distance from the brightest points of the log magnitude plot to the center of the plot. I threshold by log of pixel intensity to create a mask of dominant frequency points (keep points with a log pixel intensity greater than 4).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>thresh_min <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>binary_min <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>log(<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> wimage_f) <span style="color:#f92672">&gt;</span> thresh_min
+</span></span></code></pre></div><figure><img src="img/threshold.png"
+         alt="Top: windowed image centered log magnitude FFT and histogram of pixel intensities. Bottom: Mask keeping only pixels with log pixel intensity &amp;gt; 4 and annotated histogram"/><figcaption>
+            <p>Top: windowed image centered log magnitude FFT and histogram of pixel intensities. Bottom: Mask keeping only pixels with log pixel intensity &gt; 4 and annotated histogram</p>
+        </figcaption>
+</figure>
+
+<p>The mask contains some points from the inner and outer rings, as well as lower frequency points that are not important. I can use the mask to find how far the dominant frequency points are from the center of the plot.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_distance_matrix</span>(N):
+</span></span><span style="display:flex;"><span>    x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linspace(<span style="color:#f92672">-</span>N<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>, N<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>, N)
+</span></span><span style="display:flex;"><span>    y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linspace(<span style="color:#f92672">-</span>N<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>, N<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>, N)
+</span></span><span style="display:flex;"><span>    X, Y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>meshgrid(x, y)
+</span></span><span style="display:flex;"><span>    distMat <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sqrt((X<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>) <span style="color:#f92672">+</span> (Y<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> distMat
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>distMat <span style="color:#f92672">=</span> get_distance_matrix(<span style="color:#ae81ff">400</span>)
+</span></span><span style="display:flex;"><span>distances <span style="color:#f92672">=</span> binary_min <span style="color:#f92672">*</span> distMat
+</span></span></code></pre></div><figure><img src="img/find_distances.png"
+         alt="Result of multiplying mask by distance 400x400 pixel distance matrix."/><figcaption>
+            <p>Result of multiplying mask by distance 400x400 pixel distance matrix.</p>
+        </figcaption>
+</figure>
+
+<p>Then I can simply sort the result, select ranges of similar values, and I have the distances for the points in the rings!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>Inner Ring (Low Frequency Ring) (Red)
+</span></span><span style="display:flex;"><span>* number of points in mask: 20
+</span></span><span style="display:flex;"><span>* mean distance: 46.11 pixels
+</span></span><span style="display:flex;"><span>* standard deviation: 1.39 pixels
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Outer Ring (High Frequency Ring) (Blue)
+</span></span><span style="display:flex;"><span>* number of points in mask: 8
+</span></span><span style="display:flex;"><span>* mean distance: 79.27 pixels
+</span></span><span style="display:flex;"><span>* standard deviation: 0.90 pixels
+</span></span></code></pre></div><p>The Nyquist frequency is 0.5 cycles / pixel (the highest frequency pattern I can pick up on, i.e. if the pattern alternated each pixel). So the normalized range of possible frequency basis in the FFT goes from -0.5 to +0.5 cycles / pixel. Since our image shape is 400x400 pixels, each pixel in the frequency domain represents 1/400 cycles per pixel. Thus, I divide the frequencies by a constant 400 to normalize them to the unit scale.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>Inner Ring (Low Frequency Ring) (Red)
+</span></span><span style="display:flex;"><span>* normalized average frequency: 0.115 cycles / pixel
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Outer Ring (High Frequency Ring) (Blue)
+</span></span><span style="display:flex;"><span>* normalized average frequency: 0.198 cycles / pixel
+</span></span></code></pre></div><h3 id="step-3-calculate-size-and-scale">Step 3. Calculate Size and Scale</h3>
+<p>From the normalized average frequency, I can find the period length of one cycle:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>Inner Ring (Low Frequency Ring) (Red)
+</span></span><span style="display:flex;"><span>* average cycle length: 8.67 pixels
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Outer Ring (High Frequency Ring) (Blue)
+</span></span><span style="display:flex;"><span>* average cycle length: 5.04 pixels
+</span></span></code></pre></div><p>The inner (red) ring has a longer period, compared to the outer (blue) ring. This is expected, as the inner ring is closer to the center and therefore has a lower frequency.</p>
+<p>Finally, I have to convert from pixels to nanometers using the scale on the original image.</p>
+<figure><img src="img/scale.png"
+         alt="Scale on the original image. The scale is 53 pixels equals 90 nm."/><figcaption>
+            <p>Scale on the original image. The scale is 53 pixels equals 90 nm.</p>
+        </figcaption>
+</figure>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>Inner Ring (Low Frequency Ring) (Red)
+</span></span><span style="display:flex;"><span>* average cycle length: 14.7 nm
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Outer Ring (High Frequency Ring) (Blue)
+</span></span><span style="display:flex;"><span>* average cycle length: 8.5 nm
+</span></span></code></pre></div><p>These cycle lengths map to the dominant periodic frequencies in a hexagonal pattern!</p>
+<figure><img src="img/annotated_patterns.png"
+         alt="The annotated dominant patterns with their periods."/><figcaption>
+            <p>The annotated dominant patterns with their periods.</p>
+        </figcaption>
+</figure>
+
+<p>As a quick check, we verify the 8.5 nm and 14.7 nm periods are consistent with the ratios expected in a hexagon pattern. We can see the periods make up the legs of a 30-60-90 right triangle, so if the shorter leg is $a = 8.5$, we expect the longer leg to be $a\sqrt(3) ~= 14.72$. This looks good!</p>
+<p>We can get our center-to-center spacing by multiplying the period length by 2:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>Inner Ring (Low Frequency Ring) (Red)
+</span></span><span style="display:flex;"><span>* center-to-center spacing: 29.4 nm
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Outer Ring (High Frequency Ring) (Blue)
+</span></span><span style="display:flex;"><span>* center-to-center spacing: 17.0 nm
+</span></span></code></pre></div><h3 id="step-4-identify-shape">Step 4. Identify Shape</h3>
+<p>The Fourier magnitude plot pretty clearly shows two hexagonal rings. Lets compare the layout to the example S-layer images from earlier in the post:</p>
+<figure><img src="img/example_FFTs.png"
+         alt="FFT log magnitude plots of example oblique, square, and hexagonal S-layers"/><figcaption>
+            <p>FFT log magnitude plots of example oblique, square, and hexagonal S-layers</p>
+        </figcaption>
+</figure>
+
+<p>Here, I cropped the images, multiplied them with the Hann windowing function, and plotted their log of centered FFT magnitude plots. The magnitude plots are quite distinct: oblique S-layer has a dominant slant, square S-layer has a repeating grid of squares, and the hexagonal S-layer has hexagonal rings.</p>
+<p>The Hot Peanut magnitude plot has the same layout as the example hexagonal S-layer!</p>
+<h3 id="bonus-visualize-the-s-layer-units">Bonus: Visualize the S-Layer Units</h3>
+<p>I thought it might be cool to visualize the S-layer units.</p>
+<p>I use the threshold logic from earlier to get a pixel intensity cutoff to isolate the key frequencies. This time, I am using a non-windowed image because when I inverse FFT, I want the result to have edges.</p>
+<figure><img src="img/threshold_for_iFFT.png"
+         alt="Top: colored-over image centered log magnitude FFT and histogram of pixel intensities. Bottom: Mask keeping only pixels with log pixel intensity &amp;gt; 4 and annotated histogram"/><figcaption>
+            <p>Top: colored-over image centered log magnitude FFT and histogram of pixel intensities. Bottom: Mask keeping only pixels with log pixel intensity &gt; 4 and annotated histogram</p>
+        </figcaption>
+</figure>
+
+<p>The resulting mask can be used as a filter. I multiply the original FFT by it, then perform de-centering and inverse FFT.</p>
+<figure><img src="img/filtered.png"
+         alt="Filtered FFT and resulting inverse FFT"/><figcaption>
+            <p>Filtered FFT and resulting inverse FFT</p>
+        </figcaption>
+</figure>
+
+<p>The resulting filtered image has hexagonal features! If I manually measure the center-to-center subunit distance along both of the key hexagonal frequencies, I get 16.24 nm and 29.6 nm. That is pretty close to the calculated center-to-center spacings! The error margin can be attributed to human error when trying to estimate the center of hexagons.</p>
+<figure><img src="img/manual_high.jpg"
+         alt="Close up of filtered reconstruction. Manually measured subunit center-to-center distance of 16.24 nm along periodic frequency of the blue ring (higher frequency)."/><figcaption>
+            <p>Close up of filtered reconstruction. Manually measured subunit center-to-center distance of 16.24 nm along periodic frequency of the blue ring (higher frequency).</p>
+        </figcaption>
+</figure>
+
+<figure><img src="img/manual_low.jpg"
+         alt="Close up of filtered reconstruction. Manually measured subunit center-to-center distance of 29.60 nm along periodic frequency of the red ring (lower frequency)."/><figcaption>
+            <p>Close up of filtered reconstruction. Manually measured subunit center-to-center distance of 29.60 nm along periodic frequency of the red ring (lower frequency).</p>
+        </figcaption>
+</figure>
+
+<p>I can see what I filtered out by inverting the mask and doing the same inverse FFT reconstruction process. I have used an orange color map to display the faint noise more clearly.</p>
+<figure><img src="img/filtered_out.png"
+         alt="Inverted filtered FFT and resulting inverse FFT."/><figcaption>
+            <p>Inverted filtered FFT and resulting inverse FFT.</p>
+        </figcaption>
+</figure>
+
+<h2 id="5-conclusion">5 CONCLUSION</h2>
+<p>The 2D discrete Fast Fourier plot is a nice tool for picking out key periodic frequencies in an image. By using FFT analysis, I determined that the ‘Hot Peanuts’ bacteria S-layer had a hexagonal lattice pattern, and center-to-center subunit spacings of 29.4 nm and 17.0 nm.</p>
+<p>This analysis was verified by comparing the ‘Hot Peanut’ FFT lattice pattern to known S-layer FFT patterns and by manually measuring the center-to-center spacing of the hexagonal subunits in a ‘Hot Peanut’ low-pass filtered spatial reconstruction.</p></article>
+      </div>
+    </section>
+  </div>
+
+  
+  <footer id="footer" class="wrapper style1-alt">
+  <div class="inner">
+    <ul class="menu">
+      <li>&copy; 2022 <a href="/">Gati Aher</a></li>
+      <li>Powered by <a href="https://gohugo.io/">Hugo</a></li>
+      <li>
+        Adapted 
+        <a href="https://html5up.net/hyperspace"
+          > from HTML5 UP</a
+        >
+      </li>
+      <li>
+        Code on <a href="https://github.com/GatiAher/gatiaher-hugo">GitHub</a>
+      </li>
+    </ul>
+  </div>
+</footer>
+
+</div>
+
+
+
+    
+    
+
+<script src="/js/jquery.min.js"></script>
+
+<script src="/js/jquery.scrollex.min.js"></script>
+
+<script src="/js/jquery.scrolly.min.js"></script>
+
+<script src="/js/browser.min.js"></script>
+
+<script src="/js/breakpoints.min.js"></script>
+
+<script src="/js/util.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+<script src="/js/tab_control.js"></script>
+
+
+<script src="/js/carousel_control.js"></script>
+
+  </body>
+</html>

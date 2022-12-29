@@ -1,0 +1,12 @@
+<div class="center">
+  <ul class="actions">
+    {{ $href := default "/" (.Get "href") }} {{ $text := default "Click Here"
+    (.Get "text") }} {{ if (.Get "icon") }} {{ $icon := (.Get "icon") }}
+    <li>
+      <a href="{{$href}}" class="button icon outline {{$icon}}">{{ $text }}</a>
+    </li>
+    {{ else }}
+    <li><a href="{{$href}}" class="button outline">{{ $text }}</a></li>
+    {{ end }}
+  </ul>
+</div>

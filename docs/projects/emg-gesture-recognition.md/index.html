@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  
+   
+  <title>EMG Gesture Recognition</title>
+  
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, user-scalable=no"
+  />
+  
+  
+  <link rel="stylesheet" href="/css/main.css" />
+    
+  <noscript><link rel="stylesheet" href="/css/noscript.css" /></noscript>
+  
+  
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+    };
+
+    window.addEventListener('load', (event) => {
+        document.querySelectorAll("mjx-container").forEach(function (x) {
+            x.parentElement.classList += 'has-jax'
+        })
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/favicon_io/apple-touch-icon.png"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="/favicon_io/favicon-32x32.png"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="16x16"
+    href="/favicon_io/favicon-16x16.png"
+  />
+  <link rel="manifest" href="/favicon_io/site.webmanifest" />
+  
+  <meta name="generator" content="Hugo 0.108.0"> <meta property="og:title" content="EMG Gesture Recognition" />
+<meta property="og:description" content="This project followed the topological data analysis steps laid out in Phinyomark et al (2017) &ldquo;Navigating features: a topologically informed chart of electromyographic features space&rdquo; to analyze 43 features extracted from surface EMG signals of three gestures (rock, paper, scissors) performed by a single subject.
+I used sklearn&rsquo;s topological data analysis tools with the Kepler Mapper and Ward&rsquo;s minimum variance method as the criterion for hierarchial clustering in order to analyze feature redundancy. Comparison of feature class separability was analyzed by calculating Davies-Bouldin index (DBI) and Fisher&rsquo;s linear discriminant index (FLDI), and measuring misclassification rates. 5-fold cross validation Linear Discriminant Analysis and Support Vector Machine were employed as classifiers.
+
+  
+       
+    
+      Visit GitHub
+    
+    
+  
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://GatiAher.github.io/projects/emg-gesture-recognition.md/" /><meta property="og:image" content="http://GatiAher.github.io/projects/emg-gesture-recognition.md/cover.png"/><meta property="article:section" content="projects" />
+<meta property="article:published_time" content="2021-05-10T21:39:39-05:00" />
+<meta property="article:modified_time" content="2021-05-10T21:39:39-05:00" />
+
+</head>
+
+
+  <body class="is-preload">
+    
+    
+<div>
+  <header id="header">
+  <a href="/" class="title">Gati Aher</a>
+  <nav>
+    <ul>
+      
+      
+      <li>
+        <a href="http://GatiAher.github.io/categories/software-development/">Software Development (8)</a>
+      </li>
+      
+      <li>
+        <a href="http://GatiAher.github.io/categories/concepts-theory/">Concepts &amp; Theory (6)</a>
+      </li>
+      
+      <li>
+        <a href="http://GatiAher.github.io/categories/data-analysis/">Data Analysis (5)</a>
+      </li>
+      
+      <li>
+        <a href="/artwork">Art</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+
+  <div id="wrapper">
+    
+    <section id="single" class="wrapper">
+      <header>
+        <div class="single-header">
+             
+<a class="category" href="/categories/data-analysis">Data Analysis</a>
+  
+
+          <h1>EMG Gesture Recognition</h1>
+          <p>
+            <i>
+              written by Gati Aher on 
+
+<time class="date" datetime="2021-05-10">May 10, 2021</time> | 1 min read <br />
+                  tags:
+<a href="/tags/olin-college-sp2021-neurotechnology-brains-and-machines">Olin College: SP2021 Neurotechnology: Brains and Machines</a>
+  
+
+            </i>
+          </p>
+        </div>
+      </header>
+      <div class="inner">
+        <article><p>This project followed the topological data analysis steps laid out in <a href="http://doi.org/10.1098/rsif.2017.0734">Phinyomark et al (2017) &ldquo;Navigating features: a topologically informed chart of electromyographic features space&rdquo;</a> to analyze 43 features extracted from surface EMG signals of three gestures (rock, paper, scissors) performed by a single subject.</p>
+<p>I used sklearn&rsquo;s topological data analysis tools with the Kepler Mapper and Ward&rsquo;s minimum variance method as the criterion for hierarchial clustering in order to analyze feature redundancy. Comparison of feature class separability was analyzed by calculating Davies-Bouldin index (DBI) and Fisher&rsquo;s linear discriminant index (FLDI), and measuring misclassification rates. 5-fold cross validation Linear Discriminant Analysis and Support Vector Machine were employed as classifiers.</p>
+<div class="center">
+  <ul class="actions">
+       
+    <li>
+      <a href="https://github.com/GatiAher/EMG_Gesture_Recognition" class="button icon outline brands fa-github">Visit GitHub</a>
+    </li>
+    
+  </ul>
+</div></article>
+      </div>
+    </section>
+  </div>
+
+  
+  <footer id="footer" class="wrapper style1-alt">
+  <div class="inner">
+    <ul class="menu">
+      <li>&copy; 2022 <a href="/">Gati Aher</a></li>
+      <li>Powered by <a href="https://gohugo.io/">Hugo</a></li>
+      <li>
+        Adapted 
+        <a href="https://html5up.net/hyperspace"
+          > from HTML5 UP</a
+        >
+      </li>
+      <li>
+        Code on <a href="https://github.com/GatiAher/gatiaher-hugo">GitHub</a>
+      </li>
+    </ul>
+  </div>
+</footer>
+
+</div>
+
+
+
+    
+    
+
+<script src="/js/jquery.min.js"></script>
+
+<script src="/js/jquery.scrollex.min.js"></script>
+
+<script src="/js/jquery.scrolly.min.js"></script>
+
+<script src="/js/browser.min.js"></script>
+
+<script src="/js/breakpoints.min.js"></script>
+
+<script src="/js/util.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+<script src="/js/tab_control.js"></script>
+
+
+<script src="/js/carousel_control.js"></script>
+
+  </body>
+</html>

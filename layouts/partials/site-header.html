@@ -1,0 +1,16 @@
+<header id="header">
+  <a href="/" class="title">Gati Aher</a>
+  <nav>
+    <ul>
+      <!-- Categories -->
+      {{ range.Site.Taxonomies.categories.ByCount }}
+      <li>
+        <a href="{{ .Page.Permalink }}">{{ .Page.Title }} ({{ .Count }})</a>
+      </li>
+      {{ end }}
+      <li>
+        <a href="/artwork">Art</a>
+      </li>
+    </ul>
+  </nav>
+</header>
