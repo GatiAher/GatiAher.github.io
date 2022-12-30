@@ -2,7 +2,7 @@
 title: "FCC Data Scrapers"
 date: 2022-05-16T00:51:42-04:00
 tags: ["Olin Satellite + Spectrum Technology & Policy Group (Undergraduate Research)"]
-categories: ["Software Development"]
+categories: ["Projects"]
 featured: false
 draft: false
 readmore: true

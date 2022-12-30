@@ -2,7 +2,7 @@
 title: "Implementing Fast and Space-Efficient Look-up and Search"
 date: 2021-05-08T09:35:51-04:00
 tags: ["Olin College: SP2021 Software Systems in C"]
-categories: ["Software Development"] 
+categories: ["Projects"] 
 featured: false
 draft: false
 readmore: true

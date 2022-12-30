@@ -2,7 +2,7 @@
 title: "Handwriting Detection With Faster R-CNN + Experiments"
 date: 2021-08-20T10:43:34-04:00
 tags: ["Indico Data Solutions (Intern: R&D + ML Engineering)"]
-categories: ["Data Analysis"]
+categories: ["Projects"]
 featured: true
 draft: false
 readmore: true

@@ -2,7 +2,7 @@
 title: "GarbageEater: Simple Virtual Machine"
 date: 2021-04-07T22:05:00-05:00
 tags: ["Olin College: SP2021 Software Systems in C"]
-categories: ["Software Development"]
+categories: ["Projects"]
 featured: false
 draft: false
 readmore: false

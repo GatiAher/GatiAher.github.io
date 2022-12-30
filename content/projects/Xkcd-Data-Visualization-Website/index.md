@@ -2,7 +2,7 @@
 title: "Xkcd Data Visualization"
 date: 2020-05-19T21:05:00-05:00
 tags: ["Olin College: SP2020 Software Design"]
-categories: ["Software Development"]
+categories: ["Projects"]
 featured: false
 draft: false
 readmore: false

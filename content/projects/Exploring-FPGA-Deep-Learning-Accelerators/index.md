@@ -2,7 +2,7 @@
 title: "Exploring FPGA Deep Learning Accelerators"
 date: 2021-12-23T20:08:21-05:00
 tags: ["Olin College: FA2021 Computer Architecture"]
-categories: ["Concepts & Theory"]
+categories: ["Notes"]
 featured: false
 draft: false
 readmore: false

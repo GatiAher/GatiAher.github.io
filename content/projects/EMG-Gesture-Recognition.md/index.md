@@ -2,7 +2,7 @@
 title: "EMG Gesture Recognition"
 date: 2021-05-10T21:39:39-05:00
 tags: ["Olin College: SP2021 Neurotechnology: Brains and Machines"]
-categories: ["Data Analysis"]
+categories: ["Projects"]
 featured: false
 draft: false
 readmore: false

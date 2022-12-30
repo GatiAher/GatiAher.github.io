@@ -2,7 +2,7 @@
 title: "Facial Recognition Using Principal Component Analysis"
 date: 2021-04-14T13:12:04-04:00
 tags: ["Olin Microbiology Lab (Undergraduate Research)", "Olin College: Quantitative Engineering Analysis", "Łódź University 2021 MathUp Conference"]
-categories: ["Data Analysis"]
+categories: ["Projects"]
 featured: false
 draft: false
 readmore: true

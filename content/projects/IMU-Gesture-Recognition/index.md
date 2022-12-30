@@ -2,7 +2,7 @@
 title: "IMU Gesture Recognition"
 date: 2022-05-15T14:53:05-04:00
 tags: ["Olin College: SP2022 Social Technology Enterprise with Purpose (STEP)"]
-categories: ["Data Analysis"]
+categories: ["Projects"]
 featured: false
 draft: false
 readmore: true

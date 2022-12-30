@@ -2,7 +2,7 @@
 title: "Lagaan Football Pick-Em' Application"
 date: 2022-01-18T00:01:01-05:00
 tags: ["Building Software For Family & Friends"]
-categories: ["Software Development"]
+categories: ["Projects"]
 featured: true
 draft: false
 readmore: false

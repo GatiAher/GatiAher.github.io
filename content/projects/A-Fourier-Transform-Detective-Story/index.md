@@ -2,7 +2,7 @@
 title: "A Fourier Transform Detective Story!"
 date: 2021-03-14T22:24:10-04:00
 tags: ["Olin Microbiology Lab (Undergraduate Research)"]
-categories: ["Data Analysis"]
+categories: ["Projects"]
 featured: true
 draft: false
 readmore: true

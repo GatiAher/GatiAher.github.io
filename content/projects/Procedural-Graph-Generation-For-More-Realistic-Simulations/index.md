@@ -2,7 +2,7 @@
 title: "Procedural Graph Generation For More Realistic Simulations"
 date: 2021-12-18T23:23:16-05:00
 tags: ["Olin College: FA2021 Discrete Mathematics"]
-categories: ["Concepts & Theory"]
+categories: ["Notes"]
 featured: true
 draft: false
 readmore: true
