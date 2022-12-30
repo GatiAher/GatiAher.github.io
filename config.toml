@@ -12,7 +12,7 @@ copyright = ""
 [params]
     dateFormat = "Jan 2, 2006"
     description = "Gati Aher's personal page. Read reflections, notes, and guides for computer science and machine learning."
-    images = ["/img/cover_page.png"]
+    images = ["/img/cover.png"]
 
 # See https://feathericons.com/
 # The value of pre is the icon name
