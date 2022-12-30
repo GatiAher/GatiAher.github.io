@@ -2,7 +2,7 @@
 title: "Deep Dive Into Huffman Coding"
 date: 2021-10-25T00:46:56-05:00
 tags: ["Olin College: FA2021 Discrete Mathematics"]
-categories: ["Notes"]
+categories: ["Concepts"]
 featured: false
 draft: false
 readmore: true

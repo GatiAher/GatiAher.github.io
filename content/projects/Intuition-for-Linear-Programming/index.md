@@ -2,7 +2,7 @@
 title: "Intuition for Linear Programming"
 date: 2022-05-20T12:21:08-04:00
 tags: ["Olin SP2022: Advanced Algorithms"]
-categories: ["Notes"]
+categories: ["Concepts"]
 featured: false
 draft: false
 readmore: true

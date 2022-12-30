@@ -2,7 +2,7 @@
 title: "1D and 2D Fourier Transforms"
 date: 2021-03-03T14:22:03-04:00
 tags: ["Olin College: Quantitative Engineering Analysis"]
-categories: ["Notes"]
+categories: ["Concepts"]
 featured: false
 draft: false
 readmore: true
