@@ -3944,8 +3944,8 @@ ul.triangle > li::before {
 }
 
 #index-section-intro .welcome {
-  background-color: #ffffff97;
-  padding: 1rem 1rem 1rem 1rem;
+  background-color: #ffffff;
+  padding: 1rem 1rem 2rem 1rem;
 }
 
 #index-section-intro .welcome a {
@@ -3961,6 +3961,11 @@ ul.triangle > li::before {
 #index-section-intro .contact {
   padding-left: 0.5rem;
   color: #000000;
+}
+
+#index-section-intro .welcome .contact a {
+  color: #000000;
+  border-bottom: none;
 }
 
 #index-section-intro .button {
