@@ -4,26 +4,23 @@
     <title>Categories on Gati Aher</title>
     <link>http://GatiAher.github.io/categories/</link>
     <description>Recent content in Categories on Gati Aher</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 May 2022 12:21:08 -0400</lastBuildDate><atom:link href="http://GatiAher.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 May 2022 12:21:08 -0400</lastBuildDate>
+    <atom:link href="http://GatiAher.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Concepts</title>
       <link>http://GatiAher.github.io/categories/concepts/</link>
       <pubDate>Fri, 20 May 2022 12:21:08 -0400</pubDate>
-      
       <guid>http://GatiAher.github.io/categories/concepts/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Projects</title>
       <link>http://GatiAher.github.io/categories/projects/</link>
       <pubDate>Mon, 16 May 2022 00:51:42 -0400</pubDate>
-      
       <guid>http://GatiAher.github.io/categories/projects/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

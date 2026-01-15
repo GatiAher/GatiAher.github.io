@@ -62,12 +62,17 @@
   />
   <link rel="manifest" href="/favicon_io/site.webmanifest" />
   
-  <meta name="generator" content="Hugo 0.108.0"> <meta property="og:title" content="Intuition for Linear Programming" />
-<meta property="og:description" content="Understanding the geometric intuition and algorithms for solving linear programming problems. Covers (1) defining the solution space as the area within a convex polytope space, (2) understanding that the optimal solution occurs at a vertex point and translating that geometric intuition and more efficient search path into the Simplex matrix-based algorithm, (3) the idea of Duality and how it exposes additional information, and (4) how the Interior Point method works not just for linear programs, but also for more general convex optimization problems." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://GatiAher.github.io/projects/intuition-for-linear-programming/" /><meta property="og:image" content="http://GatiAher.github.io/img/cover.png"/><meta property="article:section" content="projects" />
-<meta property="article:published_time" content="2022-05-20T12:21:08-04:00" />
-<meta property="article:modified_time" content="2022-05-20T12:21:08-04:00" />
+  <meta name="generator" content="Hugo 0.154.5"> <meta property="og:url" content="http://GatiAher.github.io/projects/intuition-for-linear-programming/">
+  <meta property="og:site_name" content="Gati Aher">
+  <meta property="og:title" content="Intuition for Linear Programming">
+  <meta property="og:description" content="Understanding the geometric intuition and algorithms for solving linear programming problems. Covers (1) defining the solution space as the area within a convex polytope space, (2) understanding that the optimal solution occurs at a vertex point and translating that geometric intuition and more efficient search path into the Simplex matrix-based algorithm, (3) the idea of Duality and how it exposes additional information, and (4) how the Interior Point method works not just for linear programs, but also for more general convex optimization problems.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="projects">
+    <meta property="article:published_time" content="2022-05-20T12:21:08-04:00">
+    <meta property="article:modified_time" content="2022-05-20T12:21:08-04:00">
+    <meta property="article:tag" content="Olin SP2022: Advanced Algorithms">
+    <meta property="og:image" content="http://GatiAher.github.io/img/cover.png">
 
 </head>
 
@@ -100,7 +105,7 @@
 
   <div id="wrapper">
     
-    <section id="single" class="wrapper style1">
+    <section id="single" class="wrapper">
       <header>
         <div class="single-header">
              
@@ -124,10 +129,10 @@
       <div class="inner">
         <article><p>Understanding the geometric intuition and algorithms for solving linear programming problems. Covers (1) defining the solution space as the area within a convex polytope space, (2) understanding that the optimal solution occurs at a vertex point and translating that geometric intuition and more efficient search path into the Simplex matrix-based algorithm, (3) the idea of Duality and how it exposes additional information, and (4) how the Interior Point method works not just for linear programs, but also for more general convex optimization problems.</p>
 <div class="toc">
-    <p>
-        <strong>Table of Contents</strong>
-    </p>
-    <nav id="TableOfContents">
+  <p>
+    <b>Table of Contents</b>
+  </p>
+  <nav id="TableOfContents">
   <ul>
     <li><a href="#purpose">Purpose</a></li>
     <li><a href="#real-life-examples">Real-life Examples</a></li>
@@ -177,6 +182,7 @@
   </ul>
 </nav>
 </div>
+
 <h2 id="purpose">Purpose</h2>
 <p><strong>Linear Programming:</strong> method for solving system of linear inequalities efficiently.</p>
 <h2 id="real-life-examples">Real-life Examples</h2>
@@ -234,10 +240,10 @@ $$\displaylines{
 <li>The optimal solution set is convex</li>
 <li>If the objective function is strictly convex, then problem has at most one optimal point</li>
 </ul>
-<figure><img src="img/graphical.png"
-         alt="Graphical approach to finding the maximum value of the objective function."/><figcaption>
-            <p>Graphical approach to finding the maximum value of the objective function.</p>
-        </figcaption>
+<figure><img src="/projects/intuition-for-linear-programming/img/graphical.png"
+    alt="Graphical approach to finding the maximum value of the objective function."><figcaption>
+      <p>Graphical approach to finding the maximum value of the objective function.</p>
+    </figcaption>
 </figure>
 
 <p>The objective function has a fixed slope and a variable intercept, so the optimal solution can be found by path-finding toward the local maximum within the solution space.</p>
@@ -245,10 +251,10 @@ $$\displaylines{
 <p>Note that if the optimal solution exists within the convex polytope solution space, then it must be on a extreme (vertex) point (i.e. pathfinding through the valid space will always go towards a vertex as a min or max value; <a href="https://www.youtube.com/watch?v=15AyPV7E64Q">visual proof</a>). A convex polytope has a finite number of extreme points. To coerce a system of linear constraints into a system of vertices, turn the constraints into equalities using slack variables.</p>
 <h3 id="v2--v3-simplex-search-for-optimal-point-without-traversing-the-entire-set-of-vertices">V2 → V3 (Simplex). Search for optimal point without traversing the entire set of vertices</h3>
 <p>If the starting vertex is not the maximum point, then it has at least one edge leading to another vertex such that the objective function is strictly increasing along that edge (<a href="https://dando18.github.io/posts/2021/12/visualizing-the-simplex-algorithm">visual proof</a>). To find the maximum, first pick a vertex, then continually jump to neighboring vertex points with higher objective values. This will eventually lead to a vertex with no neighbors having higher objective values. The Simplex Algorithm can use steps from Gaussian Elimination to turn the geometric intuition into a matrix system of equations.</p>
-<figure><img src="img/simplex.png"
-         alt="Simplex Algorithm approach to finding the maximum value of the objective function."/><figcaption>
-            <p>Simplex Algorithm approach to finding the maximum value of the objective function.</p>
-        </figcaption>
+<figure><img src="/projects/intuition-for-linear-programming/img/simplex.png"
+    alt="Simplex Algorithm approach to finding the maximum value of the objective function."><figcaption>
+      <p>Simplex Algorithm approach to finding the maximum value of the objective function.</p>
+    </figcaption>
 </figure>
 
 <p><em>The process of stringing together a sequence of simplex pivots in order to locate an optimal solution is called the <strong>Simplex Algorithm</strong>. It was discovered by George Dantzig (1914-2005). The Simplex Algorithm is considered one of the ten most important algorithmic discoveries of the 20th century. Even with after the discovery of the Interior Point Methods, for many specially structured linear programming problems, the Simplex remains the most efficient algorithm.</em></p>
@@ -264,10 +270,10 @@ $$\displaylines{
 <p>The Simplex method starts out with maintaining complementary slackness and a basic feasible solution for the primal problem, and then tries to solve the dual problem in order to find the optimal basic feasible solution. Perfectly solving the dual solution takes a low computation cost per iteration and can take many iterations. At best case, the Simplex Algorithm takes a polynomial number of iterations (to number of constraints), and at worst case takes an exponential number of iterations (to number of variables).</p>
 <p>Interior Point methods achieve a better time complexity by starting out being both primal and dual feasible and working towards complementary slackness. The Interior Point methods require $O(\sqrt{n}\log(1/\epsilon))$ iterations (worst case polynomial time complexity) to get a primal-dual solution that is feasible and optimal up to some tolerance measured by $\epsilon$. Thus, the Interior Point methods takes fewer iterations to solve, but require larger computational cost per iteration.</p>
 <p>In essence, the Interior Point methods work by path-finding along a central path that starts from the analytical center of the convex solution space and heads towards the optimal solution, always staying within the interior of the convex solution space (<a href="https://www.youtube.com/watch?v=MsgpSl5JRbI">visual proof</a>). The larger computational cost per iteration results from playing a min-max game on the Lagrangian of the Dual. It can use an unconstrained convex approximation solver (i.e. Newton&rsquo;s Method) to power its approximation logic steps in a matrix-oriented way.</p>
-<figure><img src="img/interior_point.png"
-         alt="Interior Point Methods approach to finding the maximum value of the objective function."/><figcaption>
-            <p>Interior Point Methods approach to finding the maximum value of the objective function.</p>
-        </figcaption>
+<figure><img src="/projects/intuition-for-linear-programming/img/interior_point.png"
+    alt="Interior Point Methods approach to finding the maximum value of the objective function."><figcaption>
+      <p>Interior Point Methods approach to finding the maximum value of the objective function.</p>
+    </figcaption>
 </figure>
 
 <p><em>The Interior Point Method was published by Narendra Karmarkar in 1984. This approach works for convex optimization problems, so it also works for problems beyond the realm of linear programming.</em></p>
@@ -377,16 +383,16 @@ $$\displaylines{
 <h3 id="part-c-pivot-operation-similar-to-gaussian-elimination-move-along-edges-to-neighbor-vertices-with-greater-z-values">Part C: Pivot operation, similar to Gaussian elimination (move along edges to neighbor vertices with greater $z$ values)</h3>
 <p>The initial basic feasible solution is not optimal. To find a better value of $z$ (analogous to moving to the neighboring vertex, moving on an edge where the value of $z$ is strictly increasing), increase the value of one of the non-basic variables from its current value of 0.</p>
 <p>This series of operations can be legibly expressed using a pivot table, which is simply a labeled version of the system matrix multiplication.</p>
-<figure><img src="img/colored_mult.png"
-         alt="Colored matrix multiplication diagram."/><figcaption>
-            <p>Colored matrix multiplication diagram.</p>
-        </figcaption>
+<figure><img src="/projects/intuition-for-linear-programming/img/colored_mult.png"
+    alt="Colored matrix multiplication diagram."><figcaption>
+      <p>Colored matrix multiplication diagram.</p>
+    </figcaption>
 </figure>
 
-<figure><img src="img/colored_pivot_table.png"
-         alt="Colored pivot table set-up diagram. Note how the values for the initial basic feasible solution ($w1 = b$, $w2 = b$, $w3 = b$, and $z = 0$) appear in the ans. column."/><figcaption>
-            <p>Colored pivot table set-up diagram. Note how the values for the initial basic feasible solution ($w1 = b$, $w2 = b$, $w3 = b$, and $z = 0$) appear in the ans. column.</p>
-        </figcaption>
+<figure><img src="/projects/intuition-for-linear-programming/img/colored_pivot_table.png"
+    alt="Colored pivot table set-up diagram. Note how the values for the initial basic feasible solution ($w1 = b$, $w2 = b$, $w3 = b$, and $z = 0$) appear in the ans. column."><figcaption>
+      <p>Colored pivot table set-up diagram. Note how the values for the initial basic feasible solution ($w1 = b$, $w2 = b$, $w3 = b$, and $z = 0$) appear in the ans. column.</p>
+    </figcaption>
 </figure>
 
 <p><strong>Visual guide to using the pivot table to increase the value of $z$:</strong>
@@ -606,7 +612,7 @@ $$\lim_{t \rightarrow 0} x^* \rightarrow x$$</p>
   <footer id="footer" class="wrapper style1-alt">
   <div class="inner">
     <ul class="menu">
-      <li>&copy; 2023 <a href="/">Gati Aher</a></li>
+      <li>&copy; 2026 <a href="/">Gati Aher</a></li>
       <li>Powered by <a href="https://gohugo.io/">Hugo</a></li>
       <li>
         Adapted

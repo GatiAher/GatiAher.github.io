@@ -62,16 +62,18 @@
   />
   <link rel="manifest" href="/favicon_io/site.webmanifest" />
   
-  <meta name="generator" content="Hugo 0.108.0"> <meta property="og:title" content="FCC Data Scrapers" />
-<meta property="og:description" content="The Federal Communications Commission (FCC) keeps public records of all satellite actions and license permissions in the central filing system for the International Bureau (IB), MyIBFS. Data analysis of these records may provide insights into patterns of satellite usage trends over time and reveal areas of missing or contradictory information. However, these records are not available in a friendly format.
-Thus, we built an application to extract information from HTML data tables, individual web pages, and public notice PDFs. It also performs preliminary cleaning, consolidation, and data validation. The final tabular and .json data files will be fed to an interactive R data application for exploration and analysis.
-
-  
-" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://GatiAher.github.io/projects/fcc-data-scrapers/" /><meta property="og:image" content="http://GatiAher.github.io/img/cover.png"/><meta property="article:section" content="projects" />
-<meta property="article:published_time" content="2022-05-16T00:51:42-04:00" />
-<meta property="article:modified_time" content="2022-05-16T00:51:42-04:00" />
+  <meta name="generator" content="Hugo 0.154.5"> <meta property="og:url" content="http://GatiAher.github.io/projects/fcc-data-scrapers/">
+  <meta property="og:site_name" content="Gati Aher">
+  <meta property="og:title" content="FCC Data Scrapers">
+  <meta property="og:description" content="The Federal Communications Commission (FCC) keeps public records of all satellite actions and license permissions in the central filing system for the International Bureau (IB), MyIBFS. Data analysis of these records may provide insights into patterns of satellite usage trends over time and reveal areas of missing or contradictory information. However, these records are not available in a friendly format.
+Thus, we built an application to extract information from HTML data tables, individual web pages, and public notice PDFs. It also performs preliminary cleaning, consolidation, and data validation. The final tabular and .json data files will be fed to an interactive R data application for exploration and analysis.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="projects">
+    <meta property="article:published_time" content="2022-05-16T00:51:42-04:00">
+    <meta property="article:modified_time" content="2022-05-16T00:51:42-04:00">
+    <meta property="article:tag" content="Olin Satellite &#43; Spectrum Technology & Policy Group (Undergraduate Research)">
+    <meta property="og:image" content="http://GatiAher.github.io/img/cover.png">
 
 </head>
 
@@ -104,7 +106,7 @@ Thus, we built an application to extract information from HTML data tables, indi
 
   <div id="wrapper">
     
-    <section id="single" class="wrapper style1">
+    <section id="single" class="wrapper">
       <header>
         <div class="single-header">
              
@@ -137,10 +139,10 @@ Thus, we built an application to extract information from HTML data tables, indi
   style="position:absolute; top:0; left: 0"></iframe>
 </div>
 <div class="toc">
-    <p>
-        <strong>Table of Contents</strong>
-    </p>
-    <nav id="TableOfContents">
+  <p>
+    <b>Table of Contents</b>
+  </p>
+  <nav id="TableOfContents">
   <ul>
     <li><a href="#set-up-environment">Set-Up Environment</a>
       <ul>
@@ -172,6 +174,7 @@ Thus, we built an application to extract information from HTML data tables, indi
   </ul>
 </nav>
 </div>
+
 <h2 id="set-up-environment">Set-Up Environment</h2>
 <p>These instructions are guaranteed to work on Ubuntu 20.04. It should work for newer versions but you may have to figure out package dependencies by yourself. No packages here are un-maintained or too far off the beaten path, so it should be fine.</p>
 <h3 id="step-1-download-google-chrome-drivers-to-interface-with-selenium">Step 1. Download Google Chrome drivers to interface with selenium</h3>
@@ -268,16 +271,16 @@ pdftotext</li>
 <p>Go to Date Selection form, generate table for filings acted upon between given start and end date, scrape info from table, aggregate records by file number, and save table to .csv file (Link to <a href="http://licensing.fcc.gov/cgi-bin/ws.exe/prod/ib/forms/reports/swr040b.hts?set=">FCC Date Selection Form</a>)</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># scrape table</span>
 </span></span><span style="display:flex;"><span>scrape_table(start_date, end_date, save_table)
-</span></span></code></pre></div><figure><img src="img/Date-Selection-Form.png"
-         alt="Date Selection Form"/><figcaption>
-            <p>Date Selection Form</p>
-        </figcaption>
+</span></span></code></pre></div><figure><img src="/projects/fcc-data-scrapers/img/Date-Selection-Form.png"
+    alt="Date Selection Form"><figcaption>
+      <p>Date Selection Form</p>
+    </figcaption>
 </figure>
 
-<figure><img src="img/Example-Table.png"
-         alt="Example Table"/><figcaption>
-            <p>Example Table</p>
-        </figcaption>
+<figure><img src="/projects/fcc-data-scrapers/img/Example-Table.png"
+    alt="Example Table"><figcaption>
+      <p>Example Table</p>
+    </figcaption>
 </figure>
 
 <h3 id="scrape-listing">Scrape Listing</h3>
@@ -286,10 +289,10 @@ pdftotext</li>
 </span></span><span style="display:flex;"><span>list_of_filenumbers, list_of_listing_links <span style="color:#f92672">=</span> get_list_of_listing_links(save_table)
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># scape listing</span>
 </span></span><span style="display:flex;"><span>scrape_listing(list_of_filenumbers, list_of_listing_links, save_listing)
-</span></span></code></pre></div><figure><img src="img/Example-Listing.png"
-         alt="Example Listing"/><figcaption>
-            <p>Example Listing</p>
-        </figcaption>
+</span></span></code></pre></div><figure><img src="/projects/fcc-data-scrapers/img/Example-Listing.png"
+    alt="Example Listing"><figcaption>
+      <p>Example Listing</p>
+    </figcaption>
 </figure>
 
 <h3 id="scrape-public-notices">Scrape Public Notices</h3>
@@ -302,17 +305,17 @@ pdftotext</li>
 </span></span><span style="display:flex;"><span>scrape_public_notice_list_b(list_of_filenumbers, list_of_public_notice_list_links, save_pdfs, save_notice_json)
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># extract info from saved json</span>
 </span></span><span style="display:flex;"><span>extract_content_from_public_notice(list_of_filenumbers, save_notice_json, save_notice)
-</span></span></code></pre></div><figure><img src="img/Example-Notice-List.png"
-         alt="Example Notice List"/><figcaption>
-            <p>Example Notice List</p>
-        </figcaption>
+</span></span></code></pre></div><figure><img src="/projects/fcc-data-scrapers/img/Example-Notice-List.png"
+    alt="Example Notice List"><figcaption>
+      <p>Example Notice List</p>
+    </figcaption>
 </figure>
 
 <p>For each file number + public notice list link in given list, download and open public notice pdfs from report link, extract description text, and save as .json</p>
-<figure><img src="img/Example-Notice.png"
-         alt="Example Notice"/><figcaption>
-            <p>Example Notice</p>
-        </figcaption>
+<figure><img src="/projects/fcc-data-scrapers/img/Example-Notice.png"
+    alt="Example Notice"><figcaption>
+      <p>Example Notice</p>
+    </figcaption>
 </figure>
 
 <p>Extract out certain segments of the PDF text. This is natural text. Regular expressions (RegEx) are used for selecting text that matches a given pattern. Open .json with public notice description text, create data frame with extracted properties, save to .csv</p>
@@ -333,10 +336,10 @@ pdftotext</li>
 </span></span><span style="display:flex;"><span>list_of_filenumbers, list_of_callsigns <span style="color:#f92672">=</span> get_list_of_callsigns(save_table)
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># scrape gso ngso</span>
 </span></span><span style="display:flex;"><span>scrape_gso_ngso(list_of_filenumbers, list_of_callsigns, save_gsongso)
-</span></span></code></pre></div><figure><img src="img/Advanced-Search-Form.png"
-         alt="Advanced Search Form"/><figcaption>
-            <p>Advanced Search Form</p>
-        </figcaption>
+</span></span></code></pre></div><figure><img src="/projects/fcc-data-scrapers/img/Advanced-Search-Form.png"
+    alt="Advanced Search Form"><figcaption>
+      <p>Advanced Search Form</p>
+    </figcaption>
 </figure>
 
 <h3 id="merge-tables">Merge Tables</h3>
@@ -426,253 +429,253 @@ pdftotext</li>
 </ul>
 <p>Go to the <a href="https://licensing.fcc.gov/cgi-bin/ws.exe/prod/ib/forms/reports/swr030b.hts?set=">Advanced Search Form</a>, search the file number, go the listing page, go to the public notice list, and check if the link is still broken. If it is not broken, you can download the pdf.</p>
 <table>
-<thead>
-<tr>
-<th>year</th>
-<th>file number</th>
-<th>public notice</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1998</td>
-<td>SAT-MOD-19970130-00012</td>
-<td>SAT00001</td>
-</tr>
-<tr>
-<td>2004</td>
-<td>SAT-STA-19980812-00064</td>
-<td>SAT00001</td>
-</tr>
-<tr>
-<td>2004</td>
-<td>SAT-WAV-19980803-00061</td>
-<td>SAT00001</td>
-</tr>
-<tr>
-<td>1999</td>
-<td>SAT-ASG-19990527-00059</td>
-<td>SAT00019</td>
-</tr>
-<tr>
-<td>1999</td>
-<td>SAT-STA-19990525-00056</td>
-<td>SAT00019</td>
-</tr>
-<tr>
-<td>2000</td>
-<td>SAT-AMD-19990601-00060</td>
-<td>SAT00019</td>
-</tr>
-<tr>
-<td>2000</td>
-<td>SAT-LOA-19990601-00061</td>
-<td>SAT00019</td>
-</tr>
-<tr>
-<td>2001</td>
-<td>SAT-AMD-19990526-00057</td>
-<td>SAT00019</td>
-</tr>
-<tr>
-<td>2001</td>
-<td>SAT-AMD-19990526-00058</td>
-<td>SAT00019</td>
-</tr>
-<tr>
-<td>2009</td>
-<td>SAT-MOD-19990603-00062</td>
-<td>SAT00019</td>
-</tr>
-<tr>
-<td>2012</td>
-<td>SAT-T/C-20100112-00008</td>
-<td>SAT00832</td>
-</tr>
-<tr>
-<td>2012</td>
-<td>SAT-T/C-20100112-00008</td>
-<td>SAT00832</td>
-</tr>
-<tr>
-<td>2021</td>
-<td>SAT-MOD-20201222-00150</td>
-<td>SAT01523</td>
-</tr>
-<tr>
-<td>2021</td>
-<td>SAT-STA-20201218-00147</td>
-<td>SAT01523</td>
-</tr>
-<tr>
-<td>2021</td>
-<td>SAT-MOD-20200805-00091</td>
-<td>SAT01524</td>
-</tr>
-<tr>
-<td>2021</td>
-<td>SAT-MOD-20200805-00091</td>
-<td>SAT01524</td>
-</tr>
-<tr>
-<td>2021</td>
-<td>SAT-MPL-20201231-00155</td>
-<td>SAT01524</td>
-</tr>
-<tr>
-<td>2021</td>
-<td>SAT-MPL-20201231-00156</td>
-<td>SAT01524</td>
-</tr>
-<tr>
-<td>2021</td>
-<td>SAT-MPL-20201231-00158</td>
-<td>SAT01524</td>
-</tr>
-<tr>
-<td>2021</td>
-<td>SAT-MPL-20201231-00159</td>
-<td>SAT01524</td>
-</tr>
-<tr>
-<td>2021</td>
-<td>SAT-STA-20201112-00135</td>
-<td>SAT01524</td>
-</tr>
-<tr>
-<td>2021</td>
-<td>SAT-STA-20201211-00143</td>
-<td>SAT01524</td>
-</tr>
-<tr>
-<td>2021</td>
-<td>SAT-T/C-20201224-00151</td>
-<td>SAT01524</td>
-</tr>
-<tr>
-<td>2021</td>
-<td>SAT-LOA-20200907-00105</td>
-<td>SAT01525</td>
-</tr>
-<tr>
-<td>2021</td>
-<td>SAT-STA-20210106-00003</td>
-<td>SAT01525</td>
-</tr>
-<tr>
-<td>2021</td>
-<td>SAT-STA-20210111-00006</td>
-<td>SAT01526</td>
-</tr>
-<tr>
-<td>2021</td>
-<td>SAT-MOD-20200526-00057</td>
-<td>SAT01530</td>
-</tr>
-<tr>
-<td>2021</td>
-<td>SAT-STA-20201210-00140</td>
-<td>SAT01530</td>
-</tr>
-<tr>
-<td>2021</td>
-<td>SAT-STA-20201210-00141</td>
-<td>SAT01530</td>
-</tr>
-<tr>
-<td>2021</td>
-<td>SAT-STA-20210127-00015</td>
-<td>SAT01530</td>
-</tr>
-<tr>
-<td>2021</td>
-<td>SAT-MOD-20201201-00138</td>
-<td>SAT01531</td>
-</tr>
-<tr>
-<td>2021</td>
-<td>SAT-STA-20210115-00011</td>
-<td>SAT01531</td>
-</tr>
-<tr>
-<td>2021</td>
-<td>SAT-MOD-20210618-00082</td>
-<td>SAT01589</td>
-</tr>
-<tr>
-<td>2021</td>
-<td>SAT-STA-20210802-00093</td>
-<td>SAT01589</td>
-</tr>
-<tr>
-<td>2021</td>
-<td>SAT-STA-20211018-00131</td>
-<td>SAT01589</td>
-</tr>
-<tr>
-<td>2021</td>
-<td>SAT-STA-20211022-00132</td>
-<td>SAT01589</td>
-</tr>
-<tr>
-<td>2021</td>
-<td>SAT-T/C-20210817-00104</td>
-<td>SAT01589</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>year</th>
+          <th>file number</th>
+          <th>public notice</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1998</td>
+          <td>SAT-MOD-19970130-00012</td>
+          <td>SAT00001</td>
+      </tr>
+      <tr>
+          <td>2004</td>
+          <td>SAT-STA-19980812-00064</td>
+          <td>SAT00001</td>
+      </tr>
+      <tr>
+          <td>2004</td>
+          <td>SAT-WAV-19980803-00061</td>
+          <td>SAT00001</td>
+      </tr>
+      <tr>
+          <td>1999</td>
+          <td>SAT-ASG-19990527-00059</td>
+          <td>SAT00019</td>
+      </tr>
+      <tr>
+          <td>1999</td>
+          <td>SAT-STA-19990525-00056</td>
+          <td>SAT00019</td>
+      </tr>
+      <tr>
+          <td>2000</td>
+          <td>SAT-AMD-19990601-00060</td>
+          <td>SAT00019</td>
+      </tr>
+      <tr>
+          <td>2000</td>
+          <td>SAT-LOA-19990601-00061</td>
+          <td>SAT00019</td>
+      </tr>
+      <tr>
+          <td>2001</td>
+          <td>SAT-AMD-19990526-00057</td>
+          <td>SAT00019</td>
+      </tr>
+      <tr>
+          <td>2001</td>
+          <td>SAT-AMD-19990526-00058</td>
+          <td>SAT00019</td>
+      </tr>
+      <tr>
+          <td>2009</td>
+          <td>SAT-MOD-19990603-00062</td>
+          <td>SAT00019</td>
+      </tr>
+      <tr>
+          <td>2012</td>
+          <td>SAT-T/C-20100112-00008</td>
+          <td>SAT00832</td>
+      </tr>
+      <tr>
+          <td>2012</td>
+          <td>SAT-T/C-20100112-00008</td>
+          <td>SAT00832</td>
+      </tr>
+      <tr>
+          <td>2021</td>
+          <td>SAT-MOD-20201222-00150</td>
+          <td>SAT01523</td>
+      </tr>
+      <tr>
+          <td>2021</td>
+          <td>SAT-STA-20201218-00147</td>
+          <td>SAT01523</td>
+      </tr>
+      <tr>
+          <td>2021</td>
+          <td>SAT-MOD-20200805-00091</td>
+          <td>SAT01524</td>
+      </tr>
+      <tr>
+          <td>2021</td>
+          <td>SAT-MOD-20200805-00091</td>
+          <td>SAT01524</td>
+      </tr>
+      <tr>
+          <td>2021</td>
+          <td>SAT-MPL-20201231-00155</td>
+          <td>SAT01524</td>
+      </tr>
+      <tr>
+          <td>2021</td>
+          <td>SAT-MPL-20201231-00156</td>
+          <td>SAT01524</td>
+      </tr>
+      <tr>
+          <td>2021</td>
+          <td>SAT-MPL-20201231-00158</td>
+          <td>SAT01524</td>
+      </tr>
+      <tr>
+          <td>2021</td>
+          <td>SAT-MPL-20201231-00159</td>
+          <td>SAT01524</td>
+      </tr>
+      <tr>
+          <td>2021</td>
+          <td>SAT-STA-20201112-00135</td>
+          <td>SAT01524</td>
+      </tr>
+      <tr>
+          <td>2021</td>
+          <td>SAT-STA-20201211-00143</td>
+          <td>SAT01524</td>
+      </tr>
+      <tr>
+          <td>2021</td>
+          <td>SAT-T/C-20201224-00151</td>
+          <td>SAT01524</td>
+      </tr>
+      <tr>
+          <td>2021</td>
+          <td>SAT-LOA-20200907-00105</td>
+          <td>SAT01525</td>
+      </tr>
+      <tr>
+          <td>2021</td>
+          <td>SAT-STA-20210106-00003</td>
+          <td>SAT01525</td>
+      </tr>
+      <tr>
+          <td>2021</td>
+          <td>SAT-STA-20210111-00006</td>
+          <td>SAT01526</td>
+      </tr>
+      <tr>
+          <td>2021</td>
+          <td>SAT-MOD-20200526-00057</td>
+          <td>SAT01530</td>
+      </tr>
+      <tr>
+          <td>2021</td>
+          <td>SAT-STA-20201210-00140</td>
+          <td>SAT01530</td>
+      </tr>
+      <tr>
+          <td>2021</td>
+          <td>SAT-STA-20201210-00141</td>
+          <td>SAT01530</td>
+      </tr>
+      <tr>
+          <td>2021</td>
+          <td>SAT-STA-20210127-00015</td>
+          <td>SAT01530</td>
+      </tr>
+      <tr>
+          <td>2021</td>
+          <td>SAT-MOD-20201201-00138</td>
+          <td>SAT01531</td>
+      </tr>
+      <tr>
+          <td>2021</td>
+          <td>SAT-STA-20210115-00011</td>
+          <td>SAT01531</td>
+      </tr>
+      <tr>
+          <td>2021</td>
+          <td>SAT-MOD-20210618-00082</td>
+          <td>SAT01589</td>
+      </tr>
+      <tr>
+          <td>2021</td>
+          <td>SAT-STA-20210802-00093</td>
+          <td>SAT01589</td>
+      </tr>
+      <tr>
+          <td>2021</td>
+          <td>SAT-STA-20211018-00131</td>
+          <td>SAT01589</td>
+      </tr>
+      <tr>
+          <td>2021</td>
+          <td>SAT-STA-20211022-00132</td>
+          <td>SAT01589</td>
+      </tr>
+      <tr>
+          <td>2021</td>
+          <td>SAT-T/C-20210817-00104</td>
+          <td>SAT01589</td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="error-type-2-1">Error Type 2</h4>
 <p>The public notice pdf was successfully downloaded, but strange formatting issues make the automatic extraction code fail. <em>Recommendation</em>: perform manual extraction of public notice pdf description text. This hit 6 public notices (8 file numbers).</p>
 <table>
-<thead>
-<tr>
-<th>year</th>
-<th>file number</th>
-<th>public notice</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2004</td>
-<td>SAT-MOD-20031118-00333</td>
-<td><a href="https://licensing.fcc.gov/ibfsweb/ib.page.FetchPN?report_key=373591">SPB200</a></td>
-</tr>
-<tr>
-<td>2006</td>
-<td>SAT-LOA-20051221-00267</td>
-<td><a href="https://licensing.fcc.gov/ibfsweb/ib.page.FetchPN?report_key=473132">SAT00335</a></td>
-</tr>
-<tr>
-<td>2006</td>
-<td>SAT-RPL-20051118-00233</td>
-<td><a href="https://licensing.fcc.gov/ibfsweb/ib.page.FetchPN?report_key=473132">SAT00335</a></td>
-</tr>
-<tr>
-<td>2010</td>
-<td>SAT-MOD-20100212-00027</td>
-<td><a href="https://licensing.fcc.gov/ibfsweb/ib.page.FetchPN?report_key=803402">SAT00667</a></td>
-</tr>
-<tr>
-<td>2013</td>
-<td>SAT-PDR-20070129-00024</td>
-<td><a href="https://licensing.fcc.gov/ibfsweb/ib.page.FetchPN?report_key=551442">SAT00422</a></td>
-</tr>
-<tr>
-<td>2018</td>
-<td>SAT-PDR-20161115-00112</td>
-<td><a href="https://licensing.fcc.gov/ibfsweb/ib.page.FetchPN?report_key=1205404">SAT01231</a></td>
-</tr>
-<tr>
-<td>2020</td>
-<td>SAT-PDR-20191017-00115</td>
-<td><a href="https://licensing.fcc.gov/ibfsweb/ib.page.FetchPN?report_key=2105260">SAT01433</a></td>
-</tr>
-<tr>
-<td>2020</td>
-<td>SAT-PDR-20191017-00116</td>
-<td><a href="https://licensing.fcc.gov/ibfsweb/ib.page.FetchPN?report_key=21052600">SAT01433</a></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>year</th>
+          <th>file number</th>
+          <th>public notice</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>2004</td>
+          <td>SAT-MOD-20031118-00333</td>
+          <td><a href="https://licensing.fcc.gov/ibfsweb/ib.page.FetchPN?report_key=373591">SPB200</a></td>
+      </tr>
+      <tr>
+          <td>2006</td>
+          <td>SAT-LOA-20051221-00267</td>
+          <td><a href="https://licensing.fcc.gov/ibfsweb/ib.page.FetchPN?report_key=473132">SAT00335</a></td>
+      </tr>
+      <tr>
+          <td>2006</td>
+          <td>SAT-RPL-20051118-00233</td>
+          <td><a href="https://licensing.fcc.gov/ibfsweb/ib.page.FetchPN?report_key=473132">SAT00335</a></td>
+      </tr>
+      <tr>
+          <td>2010</td>
+          <td>SAT-MOD-20100212-00027</td>
+          <td><a href="https://licensing.fcc.gov/ibfsweb/ib.page.FetchPN?report_key=803402">SAT00667</a></td>
+      </tr>
+      <tr>
+          <td>2013</td>
+          <td>SAT-PDR-20070129-00024</td>
+          <td><a href="https://licensing.fcc.gov/ibfsweb/ib.page.FetchPN?report_key=551442">SAT00422</a></td>
+      </tr>
+      <tr>
+          <td>2018</td>
+          <td>SAT-PDR-20161115-00112</td>
+          <td><a href="https://licensing.fcc.gov/ibfsweb/ib.page.FetchPN?report_key=1205404">SAT01231</a></td>
+      </tr>
+      <tr>
+          <td>2020</td>
+          <td>SAT-PDR-20191017-00115</td>
+          <td><a href="https://licensing.fcc.gov/ibfsweb/ib.page.FetchPN?report_key=2105260">SAT01433</a></td>
+      </tr>
+      <tr>
+          <td>2020</td>
+          <td>SAT-PDR-20191017-00116</td>
+          <td><a href="https://licensing.fcc.gov/ibfsweb/ib.page.FetchPN?report_key=21052600">SAT01433</a></td>
+      </tr>
+  </tbody>
 </table>
 <h4 id="error-type-3">Error Type 3</h4>
 <p>3 attempts on a GSO/NGSO advanced search timing out. This turns into an un-handled error because this notes a period of unusual FCC website in-stability. <em>Solution</em>: re-run the script at a later time, when the FCC website is more stable.</p>
@@ -702,7 +705,7 @@ end_date=&#34;12/30/2016&#34;
   <footer id="footer" class="wrapper style1-alt">
   <div class="inner">
     <ul class="menu">
-      <li>&copy; 2023 <a href="/">Gati Aher</a></li>
+      <li>&copy; 2026 <a href="/">Gati Aher</a></li>
       <li>Powered by <a href="https://gohugo.io/">Hugo</a></li>
       <li>
         Adapted

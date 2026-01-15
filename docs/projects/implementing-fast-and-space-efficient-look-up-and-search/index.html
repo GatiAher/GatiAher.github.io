@@ -62,37 +62,19 @@
   />
   <link rel="manifest" href="/favicon_io/site.webmanifest" />
   
-  <meta name="generator" content="Hugo 0.108.0"> <meta property="og:title" content="Implementing Fast and Space-Efficient Look-up and Search" />
-<meta property="og:description" content="The Bloom filter data structure tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when I saw them used in speeding up database search. Then, I heard about Microsoft using a stack of Bloom filters to speed up the Bing search engine&rsquo;s keyword search.
+  <meta name="generator" content="Hugo 0.154.5"> <meta property="og:url" content="http://GatiAher.github.io/projects/implementing-fast-and-space-efficient-look-up-and-search/">
+  <meta property="og:site_name" content="Gati Aher">
+  <meta property="og:title" content="Implementing Fast and Space-Efficient Look-up and Search">
+  <meta property="og:description" content="The Bloom filter data structure tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when I saw them used in speeding up database search. Then, I heard about Microsoft using a stack of Bloom filters to speed up the Bing search engine’s keyword search.
 In this project, I implemented a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and notable code design decisions.
-
-  
-       
-    
-      
-        Visit GitHub
-      
-    
-    
-  
-
-
-
-  
-       
-    
-      
-        Visit Trello
-      
-    
-    
-  
-
-" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://GatiAher.github.io/projects/implementing-fast-and-space-efficient-look-up-and-search/" /><meta property="og:image" content="http://GatiAher.github.io/projects/implementing-fast-and-space-efficient-look-up-and-search/cover.png"/><meta property="article:section" content="projects" />
-<meta property="article:published_time" content="2021-05-08T09:35:51-04:00" />
-<meta property="article:modified_time" content="2021-05-08T09:35:51-04:00" />
+Visit GitHub Visit Trello">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="projects">
+    <meta property="article:published_time" content="2021-05-08T09:35:51-04:00">
+    <meta property="article:modified_time" content="2021-05-08T09:35:51-04:00">
+    <meta property="article:tag" content="Olin College: SP2021 Software Systems in C">
+    <meta property="og:image" content="http://GatiAher.github.io/projects/implementing-fast-and-space-efficient-look-up-and-search/cover.png">
 
 </head>
 
@@ -125,7 +107,7 @@ In this project, I implemented a Bloom filter and a bit-sliced document signatur
 
   <div id="wrapper">
     
-    <section id="single" class="wrapper style1">
+    <section id="single" class="wrapper">
       <header>
         <div class="single-header">
              
@@ -182,10 +164,10 @@ In this project, I implemented a Bloom filter and a bit-sliced document signatur
 </div>
 </p>
 <div class="toc">
-    <p>
-        <strong>Table of Contents</strong>
-    </p>
-    <nav id="TableOfContents">
+  <p>
+    <b>Table of Contents</b>
+  </p>
+  <nav id="TableOfContents">
   <ul>
     <li><a href="#1-project-goals-and-results">1 PROJECT GOALS AND RESULTS</a></li>
     <li><a href="#2-bloom-filters">2 BLOOM FILTERS</a>
@@ -210,6 +192,7 @@ In this project, I implemented a Bloom filter and a bit-sliced document signatur
   </ul>
 </nav>
 </div>
+
 <h2 id="1-project-goals-and-results">1 PROJECT GOALS AND RESULTS</h2>
 <p>I wanted to learn about Bloom filters because I have heard about their interesting real-world applications. I particularly wanted to implement a extension of Bloom filters called bit-sliced signatures that I heard of in the talk <a href="https://www.youtube.com/watch?v=1-Xoy5w5ydM">&ldquo;BitFunnel: Revisiting Signatures for Search&rdquo; talk by Micheal Hopcroft, creator of BitFunnel</a>. This was an interesting Software Systems project because many Bloom filter implementations are done in C/C++ in order to have full control and optimization of low-level bit-wise operations</p>
 <p>Thus, in terms of experience goals, I wanted to gain experience designing and using bit-wise operations, structs, function pointers, file pointers, enums, linked lists, Makefiles, writing modular code, and other programming concepts I learned about in class. (See section: <a href="#41-note-on-code-design">4.1 Note on Code Design</a> for more information about my specific coding design decisions).</p>
@@ -226,10 +209,10 @@ In this project, I implemented a Bloom filter and a bit-sliced document signatur
 <p><em>See test and demo output results in the <a href="https://github.com/GatiAher/BloomForSearchFromScratch/tree/main/results">results folder</a>.</em></p>
 <h2 id="2-bloom-filters">2 BLOOM FILTERS</h2>
 <p>The Bloom filter is a probabilistic, space-efficient data structure that can tell you whether an object is in a collection with the possibility of a false positive. It does not store the terms directly, it just stores indicators (a.k.a. hashes, probes) of each term’s presence.</p>
-<figure><img src="img/Bloom_filter_example.png"
-         alt="Bloom Filter"/><figcaption>
-            <p>Bloom Filter</p>
-        </figcaption>
+<figure><img src="/projects/implementing-fast-and-space-efficient-look-up-and-search/img/Bloom_filter_example.png"
+    alt="Bloom Filter"><figcaption>
+      <p>Bloom Filter</p>
+    </figcaption>
 </figure>
 
 <p>False positive matches are possible, but false negatives are not: so given a query it can either return &ldquo;possibly in set&rdquo; or &ldquo;definitely not in set&rdquo;. This false positive rate can be controlled by increasing number of bits and increasing number of hash functions (See section: <a href="#42-note-on-controlling-false-positives">4.2 Note on Controlling False Positives</a>).</p>
@@ -255,10 +238,10 @@ In this project, I implemented a Bloom filter and a bit-sliced document signatur
 <p>My first demo creates a Bloom filter to check for properly spelled words. It uses a list of words from <code>/usr/share/dict/words</code>. For preprocessing, it splits terms by <code> !\&quot;#$%%&amp;()*+,-./:;&lt;=&gt;?@[\\]^_{}|~</code>.</p>
 <p>It creates and saves the Bloom filter, and then loads and uses that Bloom filter to evaluate a query from <code>stdin</code>. In the first query it highlights my name (&ldquo;Gati&rdquo;) as spelled wrong, as it was not included in the original list.</p>
 <p>Since I want my spellchecker to recognize my name, I use my Bloom filter editor program to load, edit and save the Bloom filter so that it recognize my name (&ldquo;Gati&rdquo;) as a properly spelled word. Then I load and use the new Bloom filter to evaluate the query again. This time, it recognizes my name as a correctly spelled word.</p>
-<figure><img src="img/output_demo_spellcheck_use_and_modify_bf.png"
-         alt="Demo 1: Bloom filter spellcheck"/><figcaption>
-            <p>Demo 1: Bloom filter spellcheck</p>
-        </figcaption>
+<figure><img src="/projects/implementing-fast-and-space-efficient-look-up-and-search/img/output_demo_spellcheck_use_and_modify_bf.png"
+    alt="Demo 1: Bloom filter spellcheck"><figcaption>
+      <p>Demo 1: Bloom filter spellcheck</p>
+    </figcaption>
 </figure>
 
 <p>An important property of Bloom filters is that items can be added to it, but items cannot be removed, as deleting the set bits of a query may impact the set bits of other items.</p>
@@ -266,10 +249,10 @@ In this project, I implemented a Bloom filter and a bit-sliced document signatur
 <p>Furthermore, the resulting Bloom filter is ~262KB, which is 1/4th of the size of the original <code>/usr/share/dict/words</code> word list (972.4KB).</p>
 <h3 id="22-demo-2-bloom-filter-to-spellcheck-a-file">2.2 Demo 2: Bloom filter to spellcheck a file</h3>
 <p>My Bloom filter spellchecker can also be used to spellcheck files. I have a demo that uses my Bloom filter to spellcheck my README:</p>
-<figure><img src="img/output_demo_spellcheck_README.png"
-         alt="Demo 2: Bloom filter spellcheck README"/><figcaption>
-            <p>Demo 2: Bloom filter spellcheck README</p>
-        </figcaption>
+<figure><img src="/projects/implementing-fast-and-space-efficient-look-up-and-search/img/output_demo_spellcheck_README.png"
+    alt="Demo 2: Bloom filter spellcheck README"><figcaption>
+      <p>Demo 2: Bloom filter spellcheck README</p>
+    </figcaption>
 </figure>
 
 <p>In the screenshot you can see words flagged as incorrect highlighted in red. You can see that, in addition to flagging non-English words like &ldquo;https&rdquo; and &ldquo;murmurhash&rdquo;, it also flags words with atypical casing. For example, it believes that &ldquo;It&rdquo; is incorrect, as only &ldquo;it&rdquo; exists in its vocabulary.</p>
@@ -277,10 +260,10 @@ In this project, I implemented a Bloom filter and a bit-sliced document signatur
 <h2 id="3-bit-sliced-document-signatures">3 BIT-SLICED DOCUMENT SIGNATURES</h2>
 <p>In addition to the Bloom filter, I also implemented a Bloom filter-based data structure called a bit-sliced signature. It that can be used to retrieve documents that contain all the words in a query.</p>
 <p>A document can be represented by its document signature, which is just a Bloom filter containing all the terms in a document. If all the signatures have the same length and share a common hashing scheme, each document can be represented by a bit-sliced signature. In this approach, document signatures are stored in a big table, like a nested array of machine words (32-bit integers). Each row corresponds to one hash value. In the row, each of the 32 bits in an element correspond to 32 documents, and the bit is on or off depending on whether the document has the hash value.</p>
-<figure><img src="img/bitslicedsig_example.png"
-         alt="bit-sliced signature"/><figcaption>
-            <p>bit-sliced signature</p>
-        </figcaption>
+<figure><img src="/projects/implementing-fast-and-space-efficient-look-up-and-search/img/bitslicedsig_example.png"
+    alt="bit-sliced signature"><figcaption>
+      <p>bit-sliced signature</p>
+    </figcaption>
 </figure>
 
 <p>Given a query, the program builds a query signature by hashing each term in the query with the same bag of hash functions, and then checks if any of the document signatures have all of the query hashes. If all of the query hashes are not present in the document signature, there is no possibility of the document containing all of the terms in the query. However, since sets of terms can have the same hashes, there is a possibility of falsely saying all the query terms are in the document.</p>
@@ -357,16 +340,16 @@ In this project, I implemented a Bloom filter and a bit-sliced document signatur
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#66d9ef">bitslicedsig_t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">bitslicedsig_create</span>(<span style="color:#66d9ef">u_int32_t</span> m, <span style="color:#66d9ef">u_int32_t</span> k, <span style="color:#66d9ef">u_int32_t</span> min_doc_capacity)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// due to integer division, this gets the minimum number of blocks to completely cover the given number of documents
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    bitslicedsig<span style="color:#f92672">-&gt;</span>num_blocks <span style="color:#f92672">=</span> (min_doc_capacity <span style="color:#f92672">+</span> WORD_SIZE <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">/</span> WORD_SIZE;
+</span></span></span><span style="display:flex;"><span>    bitslicedsig<span style="color:#f92672">-&gt;</span>num_blocks <span style="color:#f92672">=</span> (min_doc_capacity <span style="color:#f92672">+</span> WORD_SIZE <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">/</span> WORD_SIZE;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// I make the bit signature a power of 2 so I can use nice bit-wise operations instead of division in later steps
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    bitslicedsig<span style="color:#f92672">-&gt;</span>m <span style="color:#f92672">=</span> <span style="color:#a6e22e">get_next_pow_2</span>(m);
+</span></span></span><span style="display:flex;"><span>    bitslicedsig<span style="color:#f92672">-&gt;</span>m <span style="color:#f92672">=</span> <span style="color:#a6e22e">get_next_pow_2</span>(m);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// initialize row pointers, where the number of rows corresponds to the length of the bit signature.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    bitslicedsig<span style="color:#f92672">-&gt;</span>bit_matrix <span style="color:#f92672">=</span> (<span style="color:#66d9ef">u_int32_t</span> <span style="color:#f92672">**</span>)<span style="color:#a6e22e">malloc</span>(bitslicedsig<span style="color:#f92672">-&gt;</span>m <span style="color:#f92672">*</span> <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">u_int32_t</span> <span style="color:#f92672">*</span>));
+</span></span></span><span style="display:flex;"><span>    bitslicedsig<span style="color:#f92672">-&gt;</span>bit_matrix <span style="color:#f92672">=</span> (<span style="color:#66d9ef">u_int32_t</span> <span style="color:#f92672">**</span>)<span style="color:#a6e22e">malloc</span>(bitslicedsig<span style="color:#f92672">-&gt;</span>m <span style="color:#f92672">*</span> <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">u_int32_t</span> <span style="color:#f92672">*</span>));
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// for each row, initialize an array of 32-bit blocks, where each block corresponds to 32 documents
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> bitslicedsig<span style="color:#f92672">-&gt;</span>m; i<span style="color:#f92672">++</span>)
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> bitslicedsig<span style="color:#f92672">-&gt;</span>m; i<span style="color:#f92672">++</span>)
 </span></span><span style="display:flex;"><span>        bitslicedsig<span style="color:#f92672">-&gt;</span>bit_matrix[i] <span style="color:#f92672">=</span> <span style="color:#a6e22e">calloc</span>(bitslicedsig<span style="color:#f92672">-&gt;</span>num_blocks, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">u_int32_t</span>));
 </span></span><span style="display:flex;"><span>    ...
 </span></span><span style="display:flex;"><span>}
@@ -375,7 +358,7 @@ In this project, I implemented a Bloom filter and a bit-sliced document signatur
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>...
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// turn index into a column location inside of a block location, where WORD_POW = 5 (2^5 = 32) and WORD_SIZE = 32
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">u_int32_t</span> blockIndex <span style="color:#f92672">=</span> index <span style="color:#f92672">&gt;&gt;</span> WORD_POW;
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">u_int32_t</span> blockIndex <span style="color:#f92672">=</span> index <span style="color:#f92672">&gt;&gt;</span> WORD_POW;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">u_int32_t</span> docWord <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ULL</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#a6e22e">mod_pow_2</span>(index, WORD_SIZE);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> (<span style="color:#a6e22e">fgets</span>(buffer, bufferLength, f))
@@ -389,18 +372,18 @@ In this project, I implemented a Bloom filter and a bit-sliced document signatur
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (h <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; h <span style="color:#f92672">&lt;</span> bitslicedsig<span style="color:#f92672">-&gt;</span>k; h<span style="color:#f92672">++</span>)
 </span></span><span style="display:flex;"><span>        {
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">// hash the token to generate a hash
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            hash <span style="color:#f92672">=</span> <span style="color:#a6e22e">murmurhash</span>(token, (<span style="color:#66d9ef">u_int32_t</span>)<span style="color:#a6e22e">strlen</span>(token), bitslicedsig<span style="color:#f92672">-&gt;</span>hash_seeds[h]);
+</span></span></span><span style="display:flex;"><span>            hash <span style="color:#f92672">=</span> <span style="color:#a6e22e">murmurhash</span>(token, (<span style="color:#66d9ef">u_int32_t</span>)<span style="color:#a6e22e">strlen</span>(token), bitslicedsig<span style="color:#f92672">-&gt;</span>hash_seeds[h]);
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">// decide what row to set by taking hash % number of bits
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            hash <span style="color:#f92672">=</span> <span style="color:#a6e22e">mod_pow_2</span>(hash, bitslicedsig<span style="color:#f92672">-&gt;</span>m);
+</span></span></span><span style="display:flex;"><span>            hash <span style="color:#f92672">=</span> <span style="color:#a6e22e">mod_pow_2</span>(hash, bitslicedsig<span style="color:#f92672">-&gt;</span>m);
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">// set the bit in array by changing specific bit of specific word
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            bitslicedsig<span style="color:#f92672">-&gt;</span>bit_matrix[hash][blockIndex] <span style="color:#f92672">|=</span> docWord;
+</span></span></span><span style="display:flex;"><span>            bitslicedsig<span style="color:#f92672">-&gt;</span>bit_matrix[hash][blockIndex] <span style="color:#f92672">|=</span> docWord;
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>...
 </span></span></code></pre></div><p>While performing the query logic, I attempt to find an intersection of all the query hashed rows. When intersecting a set of rows, the outer loop goes over the register-sized chunks in each row and the inner loop is over the set of rows. A word mask stores the cumulative results of AND operations over the rows of a block of documents. In many cases, this word mask will become zero in the inner loop before all of the rows have been examined. Since additional intersections cannot change the result, it is possible to break out of the inner loop at this point.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#75715e">// excerpt of query logic
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (b <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; b <span style="color:#f92672">&lt;</span> bitslicedsig<span style="color:#f92672">-&gt;</span>num_blocks; b<span style="color:#f92672">++</span>)
 </span></span><span style="display:flex;"><span>    {
 </span></span><span style="display:flex;"><span>        word_mask <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
@@ -415,7 +398,7 @@ In this project, I implemented a Bloom filter and a bit-sliced document signatur
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (word_mask <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
 </span></span><span style="display:flex;"><span>            {
 </span></span><span style="display:flex;"><span>                <span style="color:#75715e">// early termination of loop if no documents match
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#66d9ef">continue</span>;
+</span></span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">continue</span>;
 </span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>        ...
@@ -434,8 +417,8 @@ In this project, I implemented a Bloom filter and a bit-sliced document signatur
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">u_int32_t</span> <span style="color:#a6e22e">mod_pow_2</span>(<span style="color:#66d9ef">u_int32_t</span> a, <span style="color:#66d9ef">u_int32_t</span> b)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// if b is 2^n
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// a mod b = last n digits of a
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">&amp;</span> (b <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>);
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// a mod b = last n digits of a
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">&amp;</span> (b <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#75715e">/** Returns power of 2 larger than n
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 
@@ -445,15 +428,15 @@ In this project, I implemented a Bloom filter and a bit-sliced document signatur
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    n<span style="color:#f92672">--</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Divide by 2^k for consecutive doublings of k up to 32, and then OR the results.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    n <span style="color:#f92672">|=</span> n <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">1</span>;
+</span></span></span><span style="display:flex;"><span>    n <span style="color:#f92672">|=</span> n <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">1</span>;
 </span></span><span style="display:flex;"><span>    n <span style="color:#f92672">|=</span> n <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">2</span>;
 </span></span><span style="display:flex;"><span>    n <span style="color:#f92672">|=</span> n <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">4</span>;
 </span></span><span style="display:flex;"><span>    n <span style="color:#f92672">|=</span> n <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">8</span>;
 </span></span><span style="display:flex;"><span>    n <span style="color:#f92672">|=</span> n <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">16</span>;
 </span></span><span style="display:flex;"><span>    n<span style="color:#f92672">++</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// The result is a number of 1 bits equal to the number of bits in the original number, plus 1.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// That&#39;s the next highest power of 2.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> n;
+</span></span></span><span style="display:flex;"><span>    <span style="color:#75715e">// That&#39;s the next highest power of 2.
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> n;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="412-function-pointers-for-cleaner-reusable-code">4.1.2 Function pointers for cleaner, reusable code</h4>
 <p>I can use function wrappers with function pointers in order to reuse code and make cleaner files. In <a href="https://github.com/GatiAher/BloomForSearchFromScratch/blob/main/bloom/test/test_bloom.c">bloom/test/test_bloom.c</a> I define a wrapper function to parse string inputs into tokens in a consistent manner for insertion and querying.</p>
@@ -478,7 +461,7 @@ In this project, I implemented a Bloom filter and a bit-sliced document signatur
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// example of defined function I can use as an input
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">operate_test_add_with_warning</span>(<span style="color:#66d9ef">test_results_t</span> <span style="color:#f92672">*</span>test_res, <span style="color:#66d9ef">bloom_t</span> <span style="color:#f92672">*</span>filter, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>token);
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">operate_test_add_with_warning</span>(<span style="color:#66d9ef">test_results_t</span> <span style="color:#f92672">*</span>test_res, <span style="color:#66d9ef">bloom_t</span> <span style="color:#f92672">*</span>filter, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>token);
 </span></span></code></pre></div><p>This allows me to write add and lookup tests like this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#75715e">/* test add */</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">process_stream</span>(<span style="color:#f92672">&amp;</span>test_res, filter, operate_test_add_with_warning, options<span style="color:#f92672">-&gt;</span>fadd_to_bloom);
@@ -507,7 +490,7 @@ In this project, I implemented a Bloom filter and a bit-sliced document signatur
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (ptr <span style="color:#f92672">!=</span> NULL)
 </span></span><span style="display:flex;"><span>    {
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// here, the play program can decide the display format.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">printf</span>(options<span style="color:#f92672">-&gt;</span>output_format_string, ptr<span style="color:#f92672">-&gt;</span>data);
+</span></span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(options<span style="color:#f92672">-&gt;</span>output_format_string, ptr<span style="color:#f92672">-&gt;</span>data);
 </span></span><span style="display:flex;"><span>        ptr <span style="color:#f92672">=</span> ptr<span style="color:#f92672">-&gt;</span>next;
 </span></span><span style="display:flex;"><span>    }
 </span></span></code></pre></div><p>By calling the program with:</p>
@@ -537,24 +520,24 @@ In this project, I implemented a Bloom filter and a bit-sliced document signatur
 </span></span><span style="display:flex;"><span>11 <span style="color:#f92672">=</span> SELECTED, IN
 </span></span></code></pre></div><p>Examples of different combinations of output formats:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./bf_play -f bf_spellcheck.dat -i README.md -x
-</span></span></code></pre></div><figure><img src="img/output_demo_spellcheck_readme_x.png"
-         alt="Output of demo spellcheck README option -x"/><figcaption>
-            <p>Output of demo spellcheck README option -x</p>
-        </figcaption>
+</span></span></code></pre></div><figure><img src="/projects/implementing-fast-and-space-efficient-look-up-and-search/img/output_demo_spellcheck_readme_x.png"
+    alt="Output of demo spellcheck README option -x"><figcaption>
+      <p>Output of demo spellcheck README option -x</p>
+    </figcaption>
 </figure>
 
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./bf_play -f bf_spellcheck.dat -i README.md -s
-</span></span></code></pre></div><figure><img src="img/output_demo_spellcheck_readme_sx.png"
-         alt="Output of demo spellcheck README option -s"/><figcaption>
-            <p>Output of demo spellcheck README option -s</p>
-        </figcaption>
+</span></span></code></pre></div><figure><img src="/projects/implementing-fast-and-space-efficient-look-up-and-search/img/output_demo_spellcheck_readme_sx.png"
+    alt="Output of demo spellcheck README option -s"><figcaption>
+      <p>Output of demo spellcheck README option -s</p>
+    </figcaption>
 </figure>
 
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./bf_play -f bf_spellcheck.dat -i README.md -sx
-</span></span></code></pre></div><figure><img src="img/output_demo_spellcheck_readme_sx.png"
-         alt="Output of demo spellcheck README option -sx"/><figcaption>
-            <p>Output of demo spellcheck README option -sx</p>
-        </figcaption>
+</span></span></code></pre></div><figure><img src="/projects/implementing-fast-and-space-efficient-look-up-and-search/img/output_demo_spellcheck_readme_sx.png"
+    alt="Output of demo spellcheck README option -sx"><figcaption>
+      <p>Output of demo spellcheck README option -sx</p>
+    </figcaption>
 </figure>
 
 <h4 id="416-modular-design">4.1.6 Modular Design</h4>
@@ -590,7 +573,7 @@ In this project, I implemented a Bloom filter and a bit-sliced document signatur
   <footer id="footer" class="wrapper style1-alt">
   <div class="inner">
     <ul class="menu">
-      <li>&copy; 2023 <a href="/">Gati Aher</a></li>
+      <li>&copy; 2026 <a href="/">Gati Aher</a></li>
       <li>Powered by <a href="https://gohugo.io/">Hugo</a></li>
       <li>
         Adapted

@@ -187,7 +187,7 @@ html {
 }
 
 body {
-  background: #000000;
+  background: #f5f5f5;
 }
 
 body.is-preload *,
@@ -3881,12 +3881,21 @@ ul.triangle > li::before {
   position: relative;
 }
 
-/* Index */
+ul.square {
+  margin: 0.75em 0;
+  padding: 0 1em;
+  list-style: none;
+}
 
-@media screen and (max-width: 1680px) {
-  #index p {
-    font-size: 12px;
-  }
+ul.square > li::before {
+  content: "";
+  display: block;
+  position: relative;
+  left: -1em;
+  top: 0.9em;
+  width: 0.45em;
+  height: 0.45em;
+  background-color: #457eac;
 }
 
 /* Intro */
@@ -3920,7 +3929,7 @@ ul.triangle > li::before {
   text-transform: uppercase;
 }
 
-#index-section-intro img {
+#index-section-intro .profile {
   height: 170px;
   object-fit: contain;
   max-width: 100%;
@@ -3970,6 +3979,14 @@ ul.triangle > li::before {
 
 #index-section-intro .button {
   color: #000000;
+}
+
+#index-section-intro .social-icon {
+  width: 1em;          /* same as Font Awesome */
+  height: 1em;
+  vertical-align: middle;
+  fill: currentColor;  /* match text color */
+  margin-right: 0.3em; /* space if text follows icon */
 }
 
 /* Interests */
@@ -4443,11 +4460,11 @@ ul.triangle > li::before {
   border: 0px none;
 }
 
-/* Single */
+/* Single Page - Light Mode */
 
 #single header {
   text-align: center;
-  background-color: #457eac;
+  background-color: #f5f5f5; /* Light background */
 }
 
 #single header .single-header {
@@ -4475,8 +4492,17 @@ ul.triangle > li::before {
   }
 }
 
+#single header h1,
+#single header h2,
+#single header h3,
+#single header h4,
+#single header h5,
+#single header h6,
+#single header p {
+  color: #000000; /* Dark text */
+}
+
 #single header .category {
-  /* display: inline-block; */
   height: 20px;
   padding: 0px 5px;
   margin-bottom: 5px;
@@ -4488,7 +4514,7 @@ ul.triangle > li::before {
   cursor: pointer;
   box-sizing: border-box;
   background-color: transparent;
-  color: #ffffff;
+  color: #457eac; /* Accent color */
   border: 0px none;
   font-weight: bold;
   font-size: 0.7em;
@@ -4497,15 +4523,17 @@ ul.triangle > li::before {
 }
 
 #single header .category:hover {
-  border-bottom: 1px solid #ffffff;
+  border-bottom: 1px solid #457eac; /* Accent color on hover */
 }
 
 #single header a {
   border-bottom: none 0px;
+  color: #457eac;
 }
 
 #single > .inner {
   width: 60em;
+  background-color: #ffffff; /* White background */
 }
 
 @media screen and (max-width: 1680px) {
@@ -4526,8 +4554,32 @@ ul.triangle > li::before {
   }
 }
 
+#single h1,
+#single h2,
+#single h3,
+#single h4,
+#single h5,
+#single h6 {
+  color: #000000; /* Dark headings */
+}
+
+#single p,
+#single li,
+#single b,
+#single strong,
+#single i,
+#single em {
+  color: #333333; /* Dark gray text */
+}
+
 #single a {
-  border-bottom: solid 1px #ffffff;
+  border-bottom: solid 1px #457eac; /* Accent color links */
+  color: #457eac;
+}
+
+#single a:hover {
+  color: #168eb3;
+  border-bottom-color: #168eb3;
 }
 
 #single .inner ul {
@@ -4537,9 +4589,10 @@ ul.triangle > li::before {
 #single .inner .toc {
   padding: 1em 1em 1em 3em;
   margin: 3em 6em;
-  background-color: #457eac;
+  background-color: #f5f5f5; /* Light background for TOC */
   border-radius: 10px;
-  color: #ffffff;
+  border: 1px solid #e0e0e0;
+  color: #000000;
 }
 
 @media screen and (max-width: 736px) {
@@ -4552,6 +4605,7 @@ ul.triangle > li::before {
 #single .inner .toc p {
   padding: 0 0 0.5rem 0;
   margin: 0;
+  color: #000000;
 }
 
 #single .inner .toc ul {
@@ -4564,21 +4618,83 @@ ul.triangle > li::before {
   margin: 0;
 }
 
+#single .inner .toc li {
+  color: #333333;
+}
+
 #single .inner .toc a {
   border-bottom: none 0px;
+  color: #457eac;
 }
 
 #single .inner .toc a:hover {
-  color: #ffffff84;
+  color: #168eb3;
 }
 
-/* List */
+#single code {
+  background: rgba(0, 0, 0, 0.05);
+  border: solid 1px rgba(0, 0, 0, 0.15);
+  color: #d63384; /* Brighter color for inline code */
+}
+
+#single pre {
+  background: #f5f5f5 !important;
+  border: solid 1px rgba(0, 0, 0, 0.15);
+}
+
+#single pre code {
+  background: transparent !important;
+  border: none;
+  color: #333333 !important; /* Readable dark color for code blocks */
+}
+
+#single blockquote {
+  border-left: solid 4px rgba(0, 0, 0, 0.15);
+  color: #333333;
+}
+
+#single hr {
+  border-bottom: solid 1px rgba(0, 0, 0, 0.15);
+}
+
+/* Tables in single pages */
+#single table {
+  background-color: #ffffff;
+}
+
+#single table tbody tr {
+  border: solid 1px rgba(0, 0, 0, 0.15);
+}
+
+#single table tbody tr:nth-child(2n + 1) {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+#single table td {
+  color: #333333;
+}
+
+#single table th {
+  color: #000000;
+  border-bottom: solid 2px rgba(0, 0, 0, 0.15);
+}
+
+#single table thead {
+  border-bottom: solid 2px rgba(0, 0, 0, 0.15);
+}
+
+#single table tfoot {
+  border-top: solid 2px rgba(0, 0, 0, 0.15);
+}
+
+/* List Page - Light Mode */
 
 #list > .inner {
   width: 60em;
   max-width: 100%;
   margin: 0 auto;
   padding: 0 5em 3em 5em;
+  background-color: #ffffff; /* White background */
 }
 
 @media screen and (max-width: 1680px) {
@@ -4600,21 +4716,112 @@ ul.triangle > li::before {
 }
 
 #list header {
-  padding: 0 0 2em;
+  padding: 3em 0 0;
   margin: 0 0 2em;
-  background-color: #457eac;
+  background-color: #f5f5f5; /* Light background */
+}
+
+#list header .center {
+  max-width: 60em;
+  margin: 0 auto;
+  padding: 0 2em;
+}
+
+#list header h1,
+#list header h2,
+#list header h3,
+#list header h4,
+#list header h5,
+#list header h6 {
+  color: #000000; /* Dark headings */
+  margin: 0 0 0.5em 0;
 }
 
 #list header p {
   padding: 0;
   margin: 0;
+  color: #333333; /* Dark gray text */
 }
 
-#list h2 {
-  margin: 2em;
+#list h1,
+#list h2,
+#list h3,
+#list h4,
+#list h5,
+#list h6 {
+  margin: 2em 0 1em 0;
+  color: #000000; /* Dark headings */
+}
+
+#list p,
+#list li,
+#list b,
+#list strong,
+#list i,
+#list em {
+  color: #333333; /* Dark gray text */
+}
+
+#list a {
+  color: #457eac;
+  border-bottom: solid 1px #457eac;
+}
+
+#list a:hover {
+  color: #168eb3;
+  border-bottom-color: #168eb3;
 }
 
 #list hr {
   margin: 2em 0 4em 0;
   padding: 2em 0;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.15);
+}
+
+/* Tables in list pages */
+#list table {
+  background-color: #ffffff;
+}
+
+#list table tbody tr {
+  border: solid 1px rgba(0, 0, 0, 0.15);
+}
+
+#list table tbody tr:nth-child(2n + 1) {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+#list table td {
+  color: #333333;
+}
+
+#list table th {
+  color: #000000;
+  border-bottom: solid 2px rgba(0, 0, 0, 0.15);
+}
+
+#list table thead {
+  border-bottom: solid 2px rgba(0, 0, 0, 0.15);
+}
+
+#list table tfoot {
+  border-top: solid 2px rgba(0, 0, 0, 0.15);
+}
+
+/* Code blocks in list pages */
+#list code {
+  background: rgba(0, 0, 0, 0.05);
+  border: solid 1px rgba(0, 0, 0, 0.15);
+  color: #d63384;
+}
+
+#list pre {
+  background: #f5f5f5 !important;
+  border: solid 1px rgba(0, 0, 0, 0.15);
+}
+
+#list pre code {
+  background: transparent !important;
+  border: none;
+  color: #333333 !important;
 }

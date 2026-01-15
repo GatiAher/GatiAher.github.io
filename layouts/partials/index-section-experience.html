@@ -5,11 +5,33 @@
     <div class="tab-box">
       <div class="experience-styled-tab-list">
         <div
-          id="experience-tab-OBM"
+          id="experience-tab-ADCS"
           class="experience-styled-tab-button active"
-          onclick="openTab(event, 'experience-panel-OBM')"
+          onclick="openTab(event, 'experience-panel-ADCS')"
           tabindex="1"
           aria-selected="true"
+          aria-controls="experience-panel-ADCS"
+        >
+          <span>CMU Augmented Design</span>
+        </div>
+
+        <div
+          id="experience-tab-LEL"
+          class="experience-styled-tab-button"
+          onclick="openTab(event, 'experience-panel-LEL')"
+          tabindex="2"
+          aria-selected="false"
+          aria-controls="experience-panel-LEL"
+        >
+          <span>CMU Learning Environments</span>
+        </div>
+
+        <div
+          id="experience-tab-OBM"
+          class="experience-styled-tab-button"
+          onclick="openTab(event, 'experience-panel-OBM')"
+          tabindex="3"
+          aria-selected="false"
           aria-controls="experience-panel-OBM"
         >
           <span>Olin Microbiology Lab</span>
@@ -19,7 +41,7 @@
           id="experience-tab-OSSTP"
           class="experience-styled-tab-button"
           onclick="openTab(event, 'experience-panel-OSSTP')"
-          tabindex="2"
+          tabindex="4"
           aria-selected="false"
           aria-controls="experience-panel-OSSTP"
         >
@@ -30,7 +52,7 @@
           id="experience-tab-FCAT"
           class="experience-styled-tab-button"
           onclick="openTab(event, 'experience-panel-FCAT')"
-          tabindex="3"
+          tabindex="5"
           aria-selected="false"
           aria-controls="experience-panel-FCAT"
         >
@@ -41,7 +63,7 @@
           id="experience-tab-MSR"
           class="experience-styled-tab-button"
           onclick="openTab(event, 'experience-panel-MSR')"
-          tabindex="4"
+          tabindex="6"
           aria-selected="false"
           aria-controls="experience-panel-MSR"
         >
@@ -52,7 +74,7 @@
           id="experience-tab-IDS"
           class="experience-styled-tab-button"
           onclick="openTab(event, 'experience-panel-IDS')"
-          tabindex="5"
+          tabindex="7"
           aria-selected="false"
           aria-controls="experience-panel-IDS"
         >
@@ -63,7 +85,7 @@
           id="experience-tab-MITRE2"
           class="experience-styled-tab-button"
           onclick="openTab(event, 'experience-panel-MITRE2')"
-          tabindex="6"
+          tabindex="8"
           aria-selected="false"
           aria-controls="experience-panel-MITRE2"
         >
@@ -74,7 +96,7 @@
           id="experience-tab-CDS"
           class="experience-styled-tab-button"
           onclick="openTab(event, 'experience-panel-CDS')"
-          tabindex="7"
+          tabindex="9"
           aria-selected="false"
           aria-controls="experience-panel-CDS"
         >
@@ -85,7 +107,7 @@
           id="experience-tab-MITRE1"
           class="experience-styled-tab-button"
           onclick="openTab(event, 'experience-panel-MITRE1')"
-          tabindex="8"
+          tabindex="10"
           aria-selected="false"
           aria-controls="experience-panel-MITRE1"
         >
@@ -96,19 +118,161 @@
           id="experience-tab-BU"
           class="experience-styled-tab-button"
           onclick="openTab(event, 'experience-panel-BU')"
-          tabindex="9"
+          tabindex="11"
           aria-selected="false"
           aria-controls="experience-panel-BU"
         >
           <span>Boston University</span>
         </div>
       </div>
+
+      <div
+        id="experience-panel-ADCS"
+        class="experience-styled-tab-panel"
+        style="display: block"
+        tabindex="1"
+        aria-labelledby="experience-tab-ADCS"
+        aria-hidden="false"
+      >
+        <h3>
+          <span>Ph.D. Researcher</span
+          ><span class="company">
+            @
+            <a
+              class="inline-link"
+              href="https://augmented-design-capability-studio.github.io/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >CMU Augmented Design Capability Studio</a
+            ></span
+          >
+        </h3>
+        <p>March 2025 - Present</p>
+        <p><i>Advised by Professor Nik Martelaro</i></p>
+        <div>
+          <ul class="square">
+            <li>
+              Identified user behaviors and needs while creating and selecting
+              project pitches by analyzing students' LLM chat logs in a CMU
+              introduction to entrepreneurship class brainstorming session.
+            </li>
+            <li>Ongoing.</li>
+            <li>
+              <ul class="actions">
+                <li>
+                  <button class="button custom-small-button">
+                    Contextual Inquiry
+                  </button>
+                </li>
+                <li>
+                  <button class="button custom-small-button">
+                    Motivation Theories
+                  </button>
+                </li>
+                <li>
+                  <button class="button custom-small-button">
+                    Idea Generation
+                  </button>
+                </li>
+                <li>
+                  <button class="button custom-small-button">UI/UX</button>
+                </li>
+                <li>
+                  <button class="button custom-small-button">
+                    Full-Stack Dev
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div
+        id="experience-panel-LEL"
+        class="experience-styled-tab-panel"
+        style="display: none"
+        tabindex="1"
+        aria-labelledby="experience-tab-LEL"
+        aria-hidden="false"
+      >
+        <h3>
+          <span>Ph.D. Researcher</span
+          ><span class="company">
+            @
+            <a
+              class="inline-link"
+              href="https://learningenvironmentslab.org/dexign-futures/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >CMU Learning Environments Group</a
+            ></span
+          >
+        </h3>
+        <p>March 2025 - Dec 2025</p>
+        <p><i>Advised by Professor Peter Scupelli</i></p>
+        <div>
+          <ul class="square">
+            <li>
+              Discovered pain points in task motivation, domain knowledge, and
+              divergent thinking by analyzing students' reflections from several
+              years of sustainable design and future thinking courses.
+            </li>
+            <li>
+              Used insights from reflections to create and teach "51-150
+              Personal Futures Course" with the goal of creating an accessible
+              and motivating introduction to sustainability, societal design,
+              and future thinking. Recruited facilitators from CMU's Wellness
+              and Meaning-Making Center.
+            </li>
+            <li>
+              Lead instructor for second version of the course: added a
+              project-based learning emphasis so students could practice
+              applying education and motivation theories in progressively
+              greater levels of societal change, and interpret the real-world
+              "wicked" feedback. The second version of the course
+              <b>increased intrinsic motivation to work on societal problems</b>
+              and increased quality of reflection.
+            </li>
+            <li>
+              Submitted paper to Anticipation Conference 2026 (interdisciplinary
+              conference for rethinking how ideas about futures operate within
+              conditions of uncertainty, indeterminacy, and unknowing).
+            </li>
+            <li>
+              <ul class="actions">
+                <li>
+                  <button class="button custom-small-button">
+                    Course Design
+                  </button>
+                </li>
+                <li>
+                  <button class="button custom-small-button">
+                    Educational Theories
+                  </button>
+                </li>
+                <li>
+                  <button class="button custom-small-button">
+                    Motivation Theories
+                  </button>
+                </li>
+                <li>
+                  <button class="button custom-small-button">
+                    Project-Based Learning
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+
       <div class="experience-styled-tab-panels">
         <div
           id="experience-panel-OBM"
           class="experience-styled-tab-panel"
-          style="display: block"
-          tabindex="10"
+          style="display: none"
+          tabindex="1"
           aria-labelledby="experience-tab-OBM"
           aria-hidden="false"
         >
@@ -128,7 +292,7 @@
           <p>January 2021 - January 2023, part-time</p>
           <p><i>Advised by Professor Jean Huang</i></p>
           <div>
-            <ul class="triangle">
+            <ul class="square">
               <li>
                 Led research on analyzing composition shifts in time-series of
                 cultured, perturbed microbiomes.
@@ -191,10 +355,10 @@
               ></span
             >
           </h3>
-          <p>September 2021 - Present, part-time</p>
+          <p>September 2021 - June 2023, part-time</p>
           <p><i>Advised by Professor Whitney Lohmeyer</i></p>
           <div>
-            <ul class="triangle">
+            <ul class="square">
               <li>
                 Worked on undergraduate and industry research team to identify
                 factors driving value in 5G spectrum auctions.
@@ -258,9 +422,9 @@
               ></span
             >
           </h3>
-          <p>September 2022 - Present, part-time</p>
+          <p>September 2022 - June 2023, part-time</p>
           <div>
-            <ul class="triangle">
+            <ul class="square">
               <li>
                 Worked on undergraduate and industry research team to build a
                 robust cryptocurrency algorithmic trading analysis and
@@ -327,7 +491,7 @@
             >
           </p>
           <div>
-            <ul class="triangle">
+            <ul class="square">
               <li>
                 Led research on using large language models (GPT-3, Turing-NLG)
                 to simulate demographically-aligned distributions of human
@@ -404,7 +568,7 @@
             >
           </p>
           <div>
-            <ul class="triangle">
+            <ul class="square">
               <li>Improved deep-learning document extraction capabilities.</li>
               <li>
                 As fullstack software engineer supporting team with four UXD and
@@ -479,7 +643,7 @@
           </p>
 
           <div>
-            <ul class="triangle">
+            <ul class="square">
               <li>
                 Researched new methods to exploit vulnerabilities in natural
                 language machine learning systems.
@@ -551,7 +715,7 @@
           <p>May - August 2020</p>
           <p><i>Software engineering intern on the backend team</i></p>
           <div>
-            <ul class="triangle">
+            <ul class="square">
               <li>
                 Developed externally facing REST API to let Cumulus's clients
                 interface with Cumulus's system directly.
@@ -614,7 +778,7 @@
             >
           </p>
           <div>
-            <ul class="triangle">
+            <ul class="square">
               <li>
                 Worked on initial proof-of-concept platform to systematically
                 benchmark machine learning models security vulnerabilities
@@ -692,7 +856,7 @@
             >
           </p>
           <div>
-            <ul class="triangle">
+            <ul class="square">
               <li>
                 Evaluated secure multi-party computation JavaScript library
                 (JIFF) on sorting and set-intersection algorithms.

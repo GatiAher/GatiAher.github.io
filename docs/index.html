@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">  
-<head>
+<html lang="en">
+  <head>
+  
+   
   <title>Gati Aher</title>
   
   <meta charset="utf-8" />
@@ -17,53 +19,56 @@
   
   
 
-  <script>
-      MathJax = {
-          tex: {
-              inlineMath: [['$', '$'], ['\\(', '\\)']],
-              displayMath: [['$$', '$$'], ['\\[', '\\]']],
-              processEscapes: true,
-              processEnvironments: true
-          },
-          options: {
-              skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-          }
-      };
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+    };
 
-      window.addEventListener('load', (event) => {
-          document.querySelectorAll("mjx-container").forEach(function (x) {
-              x.parentElement.classList += 'has-jax'
-          })
-      });
+    window.addEventListener('load', (event) => {
+        document.querySelectorAll("mjx-container").forEach(function (x) {
+            x.parentElement.classList += 'has-jax'
+        })
+    });
 
-  </script>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script type="text/javascript" id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/favicon_io/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/favicon_io/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/favicon_io/favicon-16x16.png"
-    />
-    <link rel="manifest" href="/favicon_io/site.webmanifest" />
-    
-    <meta name="generator" content="Hugo 0.108.0"> <meta property="og:title" content="Gati Aher" />
-    <meta property="og:description" content="Gati Aher&#39;s personal website. Reflections, notes, and guides for computer science and machine learning." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://GatiAher.github.io/" /><meta property="og:image" content="http://GatiAher.github.io/img/cover.png"/>
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/favicon_io/apple-touch-icon.png"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="/favicon_io/favicon-32x32.png"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="16x16"
+    href="/favicon_io/favicon-16x16.png"
+  />
+  <link rel="manifest" href="/favicon_io/site.webmanifest" />
+  
+  <meta name="generator" content="Hugo 0.154.5"> <meta property="og:url" content="http://GatiAher.github.io/">
+  <meta property="og:site_name" content="Gati Aher">
+  <meta property="og:title" content="Gati Aher">
+  <meta property="og:description" content="Gati Aher&#39;s personal website. Reflections, notes, and guides for computer science and machine learning.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+    <meta property="og:image" content="http://GatiAher.github.io/img/cover.png">
 
 </head>
 
@@ -119,12 +124,16 @@
           <div class="row gtr-uniform welcome">
             <div class="col-3">
               <span class="image">
-                <img src="/img/profile_circle.png" alt="profile photo" />
+                <img
+                  class="profile"
+                  src="/img/profile_circle.png"
+                  alt="profile photo"
+                />
               </span>
             </div>
             <div class="col-9">
               <h1>Gati Aher</h1>
-              <p>Ph.D. MLD @ CMU</p>
+              <p>ML + HCI Ph.D. @ CMU</p>
               <p>gativaher [AT] gmail.com</p>
               <ul class="contact">
                 <ul class="icons">
@@ -150,10 +159,19 @@
                   </li>
                   <li>
                     <a
-                      href="https://scholar.google.com/citations?hl=en&user=kgsF7uEAAAAJ"
-                      class="icon solid fa-link"
-                      ><span class="label">Google Scholar</span></a
+                      href="https://scholar.google.com/citations?user=kgsF7uEAAAAJ"
+                      target="_blank"
+                      rel="noopener"
+                      aria-label="Google Scholar"
                     >
+                      <img
+                        src="icon/google-scholar.svg"
+                        alt="GS"
+                        width="20"
+                        height="20"
+                        class="social-icon"
+                      />
+                    </a>
                   </li>
                 </ul>
               </ul>
@@ -166,19 +184,33 @@
               <p>
                 <br />
                 Hello! I am a Ph.D. student in the Machine Learning Department
-                at Carnegie Mellon University in the. I research how machine
-                learning and generative AI can support idea generation and intrinsic 
-                motivation for engaging with wicked, future-facing problems 
-                in project-based learning, design education, and entrepreneurship. 
-                I am advised by <a href="https://nikmartelaro.com/">Dr. Nikolas Martelaro</a> (HCII) and <a href="https://www.cs.cmu.edu/~tom/">Dr. Tom Mitchell</a>.
+                at Carnegie Mellon University. I research how machine learning
+                and generative AI can support idea generation and intrinsic
+                motivation for engaging with wicked, future-facing problems in
+                project-based learning, design, and entrepreneurship. I am
+                advised by
+                <a href="https://nikmartelaro.com/">Dr. Nikolas Martelaro</a>
+                (Human Computer Interaction) and
+                <a href="https://www.cs.cmu.edu/~tom/">Dr. Tom Mitchell</a>
+                (Machine Learning Department).
                 <br />
                 <br />
 
-                While at Carnegie Mellon University, I won the <a href="https://tools-competition.org/">Tools Competition 2024</a>
-                Award Catalyst Funding ($50k) for my proposal <a href="https://youtu.be/U5CE4aPbH7Y?si=A2fqbPelJAAO_A2Z">"Artificial Mentors for Student-Driven Projects"</a>,
-                and spent FA2024-SP2025 researching how people selected, elaborated on, and iterated on introductory computer science project proposals, resulting in a AAAI workshop paper.
-                In SP2025-FA2025 I worked with <a href="https://learningenvironmentslab.org/peter-scupelli/">Dr. Peter Scupelli</a> to understand barriers to high quality reflection and task engagement for future-facing sustainable and societal design tasks.
-                I taught two mini courses in the School of Design with a "Personal Design Futures" emphasis, comparing the motivational effects of far-future vs. near-future tasks, and discussion-based peer feedback vs. project-based real-world feedback.
+                While at Carnegie Mellon University, I won the
+                <a href="https://tools-competition.org/"
+                  >Tools Competition 2024</a
+                >
+                Award Catalyst Award ($50k) for my proposal
+                <a href="https://youtu.be/U5CE4aPbH7Y?si=A2fqbPelJAAO_A2Z"
+                  >"Artificial Mentors for Student-Driven Projects"</a
+                >, and have since been researching how people select, elaborate,
+                and iterate on their project proposals. In SP2025-FA2025 I
+                worked with
+                <a href="https://learningenvironmentslab.org/peter-scupelli/"
+                  >Dr. Peter Scupelli</a
+                >'s design courses to understand barriers for high quality
+                reflection and task engagement in future-facing sustainable and
+                societal design.
                 <br />
                 <br />
 
@@ -227,100 +259,7 @@
 
 
       
-      <section id="index-section-interests" class="wrapper style2">
-  <div class="inner">
-    <h2>Research Interests</h2>
-    <div class="features">
-      <section>
-        <span class="image fit"
-          ><img src="images/MSR_Ultimatum_Game.png" alt=""
-        /></span>
-        <h3>Probabilistic NLP Models</h3>
-        <p>
-          Large language models trained at scale show emerging intelligent
-          behavior, such as coherent and grammatical structures, cultural
-          knowledge, and abstract reasoning capabilities.
-        </p>
-        <ul class="disc">
-          <li>
-            <span class="company">@ Microsoft Research</span>, I used GPT-3 and
-            Turning-NLP to simulate distributions of responses to psychology
-            experiments.
-          </li>
-        </ul>
-      </section>
-
-      <section>
-        <span class="image fit"
-          ><img src="images/MITRE_ATLAS.png" alt=""
-        /></span>
-        <h3>Model Robustness</h3>
-        <p>
-          Adversarial attacks may manipulate the behavior of AI systems to serve
-          a malicious end goal.
-        </p>
-        <ul class="triangle">
-          <li>
-            <span class="company">@ The MITRE Corporation</span>, I prototyped a
-            docker containerized adversarial attack testing platform and
-            populated a public information resource.
-          </li>
-          <li>
-            <span class="company">@ MITRE NLP Lab</span>, I supported research
-            into practical attacks on machine translation using paraphrase.
-          </li>
-        </ul>
-      </section>
-
-      <section>
-        <span class="image fit"
-          ><img src="/images/Indico_linked_labels.png" alt=""
-        /></span>
-        <h3>Cross-Source Information Extraction</h3>
-        <p>
-          Extracting information from documents requires the ability to link
-          events, entities and associated relations across multiple sources.
-        </p>
-        <ul class="triangle">
-          <li>
-            <span class="company">@ Indico Data R&D</span>, I worked on deep
-            learning NLP and CV approaches to PDF information extraction.
-          </li>
-          <li>
-            <span class="company">@ Olin Satellite Lab</span>, I consolidated
-            multiple possibly contradictory data sources when scraping the FCC's
-            international filings database.
-          </li>
-        </ul>
-      </section>
-
-      <section>
-        <span class="image fit"
-          ><img src="images/FCAT_weekly_returns.png" alt=""
-        /></span>
-        <h3>Event Sequence Modeling</h3>
-        <p>
-          With language, voice, and time-series data, data items are dependent
-          on data before or after it.
-        </p>
-        <ul class="triangle">
-          <li>
-            <span class="company">@ Olin Microbiology Lab</span>, I
-            characterized time-series data from perturbed and recovering
-            microbial communities using methods from compositional data
-            analysis.
-          </li>
-          <li>
-            <span class="company">@ Fidelity R&D</span>, I analyzed
-            distributions of cryptocurrency technical trading indicators over
-            time.
-          </li>
-        </ul>
-      </section>
-    </div>
-  </div>
-</section>
-
+      
 
       
       <section id="index-section-experience" class="wrapper style1">
@@ -330,11 +269,33 @@
     <div class="tab-box">
       <div class="experience-styled-tab-list">
         <div
-          id="experience-tab-OBM"
+          id="experience-tab-ADCS"
           class="experience-styled-tab-button active"
-          onclick="openTab(event, 'experience-panel-OBM')"
+          onclick="openTab(event, 'experience-panel-ADCS')"
           tabindex="1"
           aria-selected="true"
+          aria-controls="experience-panel-ADCS"
+        >
+          <span>CMU Augmented Design</span>
+        </div>
+
+        <div
+          id="experience-tab-LEL"
+          class="experience-styled-tab-button"
+          onclick="openTab(event, 'experience-panel-LEL')"
+          tabindex="2"
+          aria-selected="false"
+          aria-controls="experience-panel-LEL"
+        >
+          <span>CMU Learning Environments</span>
+        </div>
+
+        <div
+          id="experience-tab-OBM"
+          class="experience-styled-tab-button"
+          onclick="openTab(event, 'experience-panel-OBM')"
+          tabindex="3"
+          aria-selected="false"
           aria-controls="experience-panel-OBM"
         >
           <span>Olin Microbiology Lab</span>
@@ -344,7 +305,7 @@
           id="experience-tab-OSSTP"
           class="experience-styled-tab-button"
           onclick="openTab(event, 'experience-panel-OSSTP')"
-          tabindex="2"
+          tabindex="4"
           aria-selected="false"
           aria-controls="experience-panel-OSSTP"
         >
@@ -355,7 +316,7 @@
           id="experience-tab-FCAT"
           class="experience-styled-tab-button"
           onclick="openTab(event, 'experience-panel-FCAT')"
-          tabindex="3"
+          tabindex="5"
           aria-selected="false"
           aria-controls="experience-panel-FCAT"
         >
@@ -366,7 +327,7 @@
           id="experience-tab-MSR"
           class="experience-styled-tab-button"
           onclick="openTab(event, 'experience-panel-MSR')"
-          tabindex="4"
+          tabindex="6"
           aria-selected="false"
           aria-controls="experience-panel-MSR"
         >
@@ -377,7 +338,7 @@
           id="experience-tab-IDS"
           class="experience-styled-tab-button"
           onclick="openTab(event, 'experience-panel-IDS')"
-          tabindex="5"
+          tabindex="7"
           aria-selected="false"
           aria-controls="experience-panel-IDS"
         >
@@ -388,7 +349,7 @@
           id="experience-tab-MITRE2"
           class="experience-styled-tab-button"
           onclick="openTab(event, 'experience-panel-MITRE2')"
-          tabindex="6"
+          tabindex="8"
           aria-selected="false"
           aria-controls="experience-panel-MITRE2"
         >
@@ -399,7 +360,7 @@
           id="experience-tab-CDS"
           class="experience-styled-tab-button"
           onclick="openTab(event, 'experience-panel-CDS')"
-          tabindex="7"
+          tabindex="9"
           aria-selected="false"
           aria-controls="experience-panel-CDS"
         >
@@ -410,7 +371,7 @@
           id="experience-tab-MITRE1"
           class="experience-styled-tab-button"
           onclick="openTab(event, 'experience-panel-MITRE1')"
-          tabindex="8"
+          tabindex="10"
           aria-selected="false"
           aria-controls="experience-panel-MITRE1"
         >
@@ -421,19 +382,161 @@
           id="experience-tab-BU"
           class="experience-styled-tab-button"
           onclick="openTab(event, 'experience-panel-BU')"
-          tabindex="9"
+          tabindex="11"
           aria-selected="false"
           aria-controls="experience-panel-BU"
         >
           <span>Boston University</span>
         </div>
       </div>
+
+      <div
+        id="experience-panel-ADCS"
+        class="experience-styled-tab-panel"
+        style="display: block"
+        tabindex="1"
+        aria-labelledby="experience-tab-ADCS"
+        aria-hidden="false"
+      >
+        <h3>
+          <span>Ph.D. Researcher</span
+          ><span class="company">
+            @
+            <a
+              class="inline-link"
+              href="https://augmented-design-capability-studio.github.io/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >CMU Augmented Design Capability Studio</a
+            ></span
+          >
+        </h3>
+        <p>March 2025 - Present</p>
+        <p><i>Advised by Professor Nik Martelaro</i></p>
+        <div>
+          <ul class="square">
+            <li>
+              Identified user behaviors and needs while creating and selecting
+              project pitches by analyzing students' LLM chat logs in a CMU
+              introduction to entrepreneurship class brainstorming session.
+            </li>
+            <li>Ongoing.</li>
+            <li>
+              <ul class="actions">
+                <li>
+                  <button class="button custom-small-button">
+                    Contextual Inquiry
+                  </button>
+                </li>
+                <li>
+                  <button class="button custom-small-button">
+                    Motivation Theories
+                  </button>
+                </li>
+                <li>
+                  <button class="button custom-small-button">
+                    Idea Generation
+                  </button>
+                </li>
+                <li>
+                  <button class="button custom-small-button">UI/UX</button>
+                </li>
+                <li>
+                  <button class="button custom-small-button">
+                    Full-Stack Dev
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div
+        id="experience-panel-LEL"
+        class="experience-styled-tab-panel"
+        style="display: none"
+        tabindex="1"
+        aria-labelledby="experience-tab-LEL"
+        aria-hidden="false"
+      >
+        <h3>
+          <span>Ph.D. Researcher</span
+          ><span class="company">
+            @
+            <a
+              class="inline-link"
+              href="https://learningenvironmentslab.org/dexign-futures/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >CMU Learning Environments Group</a
+            ></span
+          >
+        </h3>
+        <p>March 2025 - Dec 2025</p>
+        <p><i>Advised by Professor Peter Scupelli</i></p>
+        <div>
+          <ul class="square">
+            <li>
+              Discovered pain points in task motivation, domain knowledge, and
+              divergent thinking by analyzing students' reflections from several
+              years of sustainable design and future thinking courses.
+            </li>
+            <li>
+              Used insights from reflections to create and teach "51-150
+              Personal Futures Course" with the goal of creating an accessible
+              and motivating introduction to sustainability, societal design,
+              and future thinking. Recruited facilitators from CMU's Wellness
+              and Meaning-Making Center.
+            </li>
+            <li>
+              Lead instructor for second version of the course: added a
+              project-based learning emphasis so students could practice
+              applying education and motivation theories in progressively
+              greater levels of societal change, and interpret the real-world
+              "wicked" feedback. The second version of the course
+              <b>increased intrinsic motivation to work on societal problems</b>
+              and increased quality of reflection.
+            </li>
+            <li>
+              Submitted paper to Anticipation Conference 2026 (interdisciplinary
+              conference for rethinking how ideas about futures operate within
+              conditions of uncertainty, indeterminacy, and unknowing).
+            </li>
+            <li>
+              <ul class="actions">
+                <li>
+                  <button class="button custom-small-button">
+                    Course Design
+                  </button>
+                </li>
+                <li>
+                  <button class="button custom-small-button">
+                    Educational Theories
+                  </button>
+                </li>
+                <li>
+                  <button class="button custom-small-button">
+                    Motivation Theories
+                  </button>
+                </li>
+                <li>
+                  <button class="button custom-small-button">
+                    Project-Based Learning
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+
       <div class="experience-styled-tab-panels">
         <div
           id="experience-panel-OBM"
           class="experience-styled-tab-panel"
-          style="display: block"
-          tabindex="10"
+          style="display: none"
+          tabindex="1"
           aria-labelledby="experience-tab-OBM"
           aria-hidden="false"
         >
@@ -453,7 +556,7 @@
           <p>January 2021 - January 2023, part-time</p>
           <p><i>Advised by Professor Jean Huang</i></p>
           <div>
-            <ul class="triangle">
+            <ul class="square">
               <li>
                 Led research on analyzing composition shifts in time-series of
                 cultured, perturbed microbiomes.
@@ -516,10 +619,10 @@
               ></span
             >
           </h3>
-          <p>September 2021 - Present, part-time</p>
+          <p>September 2021 - June 2023, part-time</p>
           <p><i>Advised by Professor Whitney Lohmeyer</i></p>
           <div>
-            <ul class="triangle">
+            <ul class="square">
               <li>
                 Worked on undergraduate and industry research team to identify
                 factors driving value in 5G spectrum auctions.
@@ -583,9 +686,9 @@
               ></span
             >
           </h3>
-          <p>September 2022 - Present, part-time</p>
+          <p>September 2022 - June 2023, part-time</p>
           <div>
-            <ul class="triangle">
+            <ul class="square">
               <li>
                 Worked on undergraduate and industry research team to build a
                 robust cryptocurrency algorithmic trading analysis and
@@ -652,7 +755,7 @@
             >
           </p>
           <div>
-            <ul class="triangle">
+            <ul class="square">
               <li>
                 Led research on using large language models (GPT-3, Turing-NLG)
                 to simulate demographically-aligned distributions of human
@@ -729,7 +832,7 @@
             >
           </p>
           <div>
-            <ul class="triangle">
+            <ul class="square">
               <li>Improved deep-learning document extraction capabilities.</li>
               <li>
                 As fullstack software engineer supporting team with four UXD and
@@ -804,7 +907,7 @@
           </p>
 
           <div>
-            <ul class="triangle">
+            <ul class="square">
               <li>
                 Researched new methods to exploit vulnerabilities in natural
                 language machine learning systems.
@@ -876,7 +979,7 @@
           <p>May - August 2020</p>
           <p><i>Software engineering intern on the backend team</i></p>
           <div>
-            <ul class="triangle">
+            <ul class="square">
               <li>
                 Developed externally facing REST API to let Cumulus's clients
                 interface with Cumulus's system directly.
@@ -939,7 +1042,7 @@
             >
           </p>
           <div>
-            <ul class="triangle">
+            <ul class="square">
               <li>
                 Worked on initial proof-of-concept platform to systematically
                 benchmark machine learning models security vulnerabilities
@@ -1017,7 +1120,7 @@
             >
           </p>
           <div>
-            <ul class="triangle">
+            <ul class="square">
               <li>
                 Evaluated secure multi-party computation JavaScript library
                 (JIFF) on sorting and set-intersection algorithms.
@@ -1081,7 +1184,23 @@
         onclick="location.href='https://icml.cc/virtual/2023/oral/25433'"
         type="button"
       >
-        PDF
+        Paper
+      </button>
+      <button
+        class="button custom-small-button"
+        href=""
+        onclick="location.href='poster/HumanSim_ICML_2023_Poster.pdf'"
+        type="button"
+      >
+        Poster
+      </button>
+      <button
+        class="button custom-small-button"
+        href=""
+        onclick="location.href='https://icml.cc/virtual/2023/oral/25433'"
+        type="button"
+      >
+        Slides
       </button>
       <br />
       <b>G. Aher</b>, R. I. Arriaga, and A. T. Kalai.<br />
@@ -1097,12 +1216,12 @@
         onclick="location.href='https://scholarlypublishingcollective.org/psup/information-policy/article/doi/10.5325/jinfopoli.13.2023.0003/381377'"
         type="button"
       >
-        PDF
+        Paper
       </button>
       <br />
       <b>G. Aher</b>, P. Post, P. Boyalakuntla, G. Miner, L. Heinrich, Y. Mao,
       J. A. Musey, W. Lohmeyer. <br />
-      <i>Journal of Information Policy (JIP 2023).</i>
+      <i>Journal of Information Policy (2023).</i>
     </p>
     <p>
       <b
@@ -1114,7 +1233,7 @@
         onclick="location.href='https://arc.aiaa.org/doi/pdf/10.2514/1.A35660'"
         type="button"
       >
-        PDF
+        Paper
       </button>
       <br />
       P. Post, K. Fleming, K. Canavan, S. Cho, <b>G. Aher</b>, W. Lohmeyer.
@@ -1122,7 +1241,43 @@
       <i>Journal of Spacecraft and Rockets (2023).</i>
     </p>
 
-    <h2>Posters</h2>
+    <h2>Posters & Workshops</h2>
+    <p>
+      <b
+        >AI Mentors for Student Projects: Spotting Early Issues in Computer
+        Science Proposals</b
+      >
+      <button
+        class="button custom-small-button"
+        href=""
+        onclick="location.href='https://raw.githubusercontent.com/mlresearch/v273/main/assets/aher25a/aher25a.pdf'"
+        type="button"
+      >
+        Paper
+      </button>
+      <button
+        class="button custom-small-button"
+        href=""
+        onclick="location.href='poster/iRaise_AAAI_2025_Poster.pdf'"
+        type="button"
+      >
+        Poster
+      </button>
+      <button
+        class="button custom-small-button"
+        href=""
+        onclick="location.href='poster/iRaise_AAAI_2025_Spotlight_Slides.pdf'"
+        type="button"
+      >
+        Slides
+      </button>
+      <br/ >
+      <b>G. Aher</b>, R. Schmucker, T. Mitchell, Z. C. Lipton<br/ >
+      <i>
+        AAAI 2025, <b>*Oral Spotlight</b>, Workshop on Innovation and
+        Responsibility in AI-Supported Education (iRAISE)
+      </i>
+    </p>
     <p>
       <b>What Factors Affect Microbial Community Composition?</b><br /><i>
         Northeastern Microbiologists: Physiology, Ecology, and Taxonomy (NEMPET
@@ -1540,6 +1695,15 @@
   <div class="inner">
     <h2>Teaching, Leadership, and Academic Service</h2>
     <p>
+      <b>51-150 Mini 2 CMU School of Design</b> (Instructor & Researcher, Fall 2025): Personal Design Future (project-based learning course)
+    </p>
+    <p>
+      <b>51-150 Mini 1 CMU School of Design</b> (Teaching Assistant & Researcher, Fall 2025): Personal Design Future (discussion-based course)
+    </p>
+    <p>
+      <b>10-643/10-743/11-805 CMU Machine Learning Department & Language Technologies Institute</b> (Teaching Assistant, Fall 2025): Socio-technical Evaluations of Generative AI
+    </p>
+    <p>
       <b>ENGR3599A-SL Olin College</b> (Instructor Student-Led Course, Spring
       2023): Advanced Algorithms
     </p>
@@ -1569,7 +1733,7 @@
       
       <section id="index-section-art" class="wrapper style1">
   <div class="inner">
-    <h2>Some recent art...</h2>
+    <h2>Some art...</h2>
 
     <p></p>
     <div class="box alt">
@@ -1597,8 +1761,7 @@
       </div>
     </div>
     <p>
-      My hobbies include drawing, dance, long-distance running, and playing four
-      instruments :)
+      My hobbies include drawing, rock-climbing, and playing board games :)
     </p>
     <button
       class="button custom-small-button"

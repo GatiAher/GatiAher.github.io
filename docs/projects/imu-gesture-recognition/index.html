@@ -62,31 +62,20 @@
   />
   <link rel="manifest" href="/favicon_io/site.webmanifest" />
   
-  <meta name="generator" content="Hugo 0.108.0"> <meta property="og:title" content="IMU Gesture Recognition" />
-<meta property="og:description" content="This project analyzed and prepared a baseline machine learning model to perform gesture recognition on data collected with MbientLab MMRL IMU rubber-banded to a two_finger ring. The final baseline model was trained with data from sessions 4, 5, and 7 consisting of 1,212 total instances of 4 gestures collected across 27 people.
+  <meta name="generator" content="Hugo 0.154.5"> <meta property="og:url" content="http://GatiAher.github.io/projects/imu-gesture-recognition/">
+  <meta property="og:site_name" content="Gati Aher">
+  <meta property="og:title" content="IMU Gesture Recognition">
+  <meta property="og:description" content="This project analyzed and prepared a baseline machine learning model to perform gesture recognition on data collected with MbientLab MMRL IMU rubber-banded to a two_finger ring. The final baseline model was trained with data from sessions 4, 5, and 7 consisting of 1,212 total instances of 4 gestures collected across 27 people.
 When trained with a train-test split of 80:20, the model had an accuracy of 75%. The final model trained with full data (no train-test split) had reasonably robust performance in the real-time system (successfully generalized its gestures predictions to other people when integrated with the software demo app).
 This report provides details on deciding on a gesture set, building and refining the gesture data collection process, and steps to integrate the model with the software iOS demo app.
-
-  
-       
-    
-      
-        Visit GitHub
-      
-    
-    
-  
-
-
-
-
-
- 
-" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://GatiAher.github.io/projects/imu-gesture-recognition/" /><meta property="og:image" content="http://GatiAher.github.io/img/cover.png"/><meta property="article:section" content="projects" />
-<meta property="article:published_time" content="2022-05-15T14:53:05-04:00" />
-<meta property="article:modified_time" content="2022-05-15T14:53:05-04:00" />
+Visit GitHub">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="projects">
+    <meta property="article:published_time" content="2022-05-15T14:53:05-04:00">
+    <meta property="article:modified_time" content="2022-05-15T14:53:05-04:00">
+    <meta property="article:tag" content="Olin College: SP2022 Social Technology Enterprise With Purpose (STEP)">
+    <meta property="og:image" content="http://GatiAher.github.io/img/cover.png">
 
 </head>
 
@@ -119,7 +108,7 @@ This report provides details on deciding on a gesture set, building and refining
 
   <div id="wrapper">
     
-    <section id="single" class="wrapper style1">
+    <section id="single" class="wrapper">
       <header>
         <div class="single-header">
              
@@ -171,10 +160,10 @@ This report provides details on deciding on a gesture set, building and refining
   style="position:absolute; top:0; left: 0"></iframe>
 </div>
 <div class="toc">
-    <p>
-        <strong>Table of Contents</strong>
-    </p>
-    <nav id="TableOfContents">
+  <p>
+    <b>Table of Contents</b>
+  </p>
+  <nav id="TableOfContents">
   <ul>
     <li><a href="#baseline-model">Baseline Model</a>
       <ul>
@@ -187,12 +176,12 @@ This report provides details on deciding on a gesture set, building and refining
         <li><a href="#meta-data-spreadsheets">Meta-Data Spreadsheets:</a></li>
         <li><a href="#session-1-and-session-2-march-30-trouble-shooting-process">Session 1 and Session 2 (March 30): Trouble-Shooting Process**</a></li>
         <li><a href="#session-3-march-30-successful-data-collection">Session 3 (March 30): Successful Data Collection</a></li>
-        <li><a href="#session-4-april-2-successful-data-collection----1st-big-data-set----1-subject-gati">Session 4 (April 2) Successful Data Collection &ndash; 1st Big Data Set &ndash; 1 Subject (Gati)</a></li>
-        <li><a href="#session-5-april-5-successful-data-collection----2nd-big-data-set----16-subjects-step-students">Session 5 (April 5) Successful Data Collection &ndash; 2nd Big Data Set &ndash; 16 subjects (STEP students)</a></li>
+        <li><a href="#session-4-april-2-successful-data-collection--1st-big-data-set--1-subject-gati">Session 4 (April 2) Successful Data Collection &ndash; 1st Big Data Set &ndash; 1 Subject (Gati)</a></li>
+        <li><a href="#session-5-april-5-successful-data-collection--2nd-big-data-set--16-subjects-step-students">Session 5 (April 5) Successful Data Collection &ndash; 2nd Big Data Set &ndash; 16 subjects (STEP students)</a></li>
         <li><a href="#demo-day-1-april-7">Demo Day 1 (April 7)</a></li>
         <li><a href="#unfortunate-timing-april-10---april-23">Unfortunate Timing (April 10 - April 23)</a></li>
         <li><a href="#session-6-april-25-trouble-shooting-process">Session 6 (April 25) Trouble-Shooting Process</a></li>
-        <li><a href="#session-7-april-27-28-successful-data-collection----3rd-big-data-set----16-subjects-olin--prospective-students">Session 7 (April 27-28) Successful Data Collection &ndash; 3rd Big Data Set &ndash; 16 subjects (Olin / Prospective students)</a></li>
+        <li><a href="#session-7-april-27-28-successful-data-collection--3rd-big-data-set--16-subjects-olin--prospective-students">Session 7 (April 27-28) Successful Data Collection &ndash; 3rd Big Data Set &ndash; 16 subjects (Olin / Prospective students)</a></li>
         <li><a href="#demo-day-2-may-2-successful-ml-model-integration">Demo Day 2 (May 2) Successful ML-Model Integration</a></li>
       </ul>
     </li>
@@ -206,6 +195,7 @@ This report provides details on deciding on a gesture set, building and refining
   </ul>
 </nav>
 </div>
+
 <h2 id="baseline-model">Baseline Model</h2>
 <p>A simple baseline model was used to verify the general robustness of the gesture set and performance of the model. This baseline was comprised of sklearn&rsquo;s standard scalar, Principal Component Analysis (PCA) with the maximum number of components, and a Support Vector Classifier (SVC).</p>
 <p>This model was intentionally kept very simple in order to serve as a comparison baseline and use initial prototyping time to build out the data collection and software integration infrastructure.</p>
@@ -217,10 +207,10 @@ This report provides details on deciding on a gesture set, building and refining
 </span></span><span style="display:flex;"><span>pred_test <span style="color:#f92672">=</span> clf<span style="color:#f92672">.</span>predict(x_test)
 </span></span><span style="display:flex;"><span>acc <span style="color:#f92672">=</span> accuracy_score(y_test, pred_test)
 </span></span></code></pre></div><h3 id="principal-component-analysis-pca">Principal Component Analysis (PCA)</h3>
-<figure><img src="img/pca_session_4_and_5_and_7.png"
-         alt="PCA plot: each point is a train-set gesture colored by gesture number as projected onto the first two PCA axes (directions of most and second-most variance in the data set)."/><figcaption>
-            <p>PCA plot: each point is a train-set gesture colored by gesture number as projected onto the first two PCA axes (directions of most and second-most variance in the data set).</p>
-        </figcaption>
+<figure><img src="/projects/imu-gesture-recognition/img/pca_session_4_and_5_and_7.png"
+    alt="PCA plot: each point is a train-set gesture colored by gesture number as projected onto the first two PCA axes (directions of most and second-most variance in the data set)."><figcaption>
+      <p>PCA plot: each point is a train-set gesture colored by gesture number as projected onto the first two PCA axes (directions of most and second-most variance in the data set).</p>
+    </figcaption>
 </figure>
 
 <p>Gesture Numbers:</p>
@@ -233,10 +223,10 @@ This report provides details on deciding on a gesture set, building and refining
 <p>PCA, the first part of the baseline model, finds a multi-dimensional feature space defined by directions of most variance within the data. It is commonly used as dimensionality-reduction and signal-cleaning measure before applying machine learning. In this case, each gesture is x, y, and z accelerations taken over 100 time-points, for 300 points in total. Some of these points contain redundant (i.e. correlated) information, so PCA summarizes the redundant information and essentially creates an easier signal to learn. <a href="https://gatiaher.github.io/projects/facial-recognition-using-principal-component-analysis/">(Read more about PCA)</a>.</p>
 <h3 id="support-vector-classifier-svc">Support Vector Classifier (SVC)</h3>
 <p>SVC, the second part of the baseline model, takes the data as projected onto the PCA feature space and learns a line to best separate the classes. If the PCA separates the points well, the SVC has an easier time.</p>
-<figure><img src="img/confusion_matrix_session_4_and_5_and_7.png"
-         alt="Confusion Matrix shows model performance on the test-set. The diagonal counts data points that were correctly predicted (i.e. true label == predicted label). This model was 75% accurate."/><figcaption>
-            <p>Confusion Matrix shows model performance on the test-set. The diagonal counts data points that were correctly predicted (i.e. true label == predicted label). This model was 75% accurate.</p>
-        </figcaption>
+<figure><img src="/projects/imu-gesture-recognition/img/confusion_matrix_session_4_and_5_and_7.png"
+    alt="Confusion Matrix shows model performance on the test-set. The diagonal counts data points that were correctly predicted (i.e. true label == predicted label). This model was 75% accurate."><figcaption>
+      <p>Confusion Matrix shows model performance on the test-set. The diagonal counts data points that were correctly predicted (i.e. true label == predicted label). This model was 75% accurate.</p>
+    </figcaption>
 </figure>
 
 <p>Confusion (incorrect predictions) occurred most frequently between gesture 1 (flick) and the other gestures, with most confusion happening when the model predicted gesture 1 (flick) when the true label was gesture 2 (downwards tap) (21 instances).</p>
@@ -290,16 +280,16 @@ This report provides details on deciding on a gesture set, building and refining
 <li>Note: some taps were awkwardly long because (a) subject forgot to tap, or (b) subject forgot to return hand back to position. Not a perfect intuitive data collection system yet.</li>
 <li>It was more common to remember the start tap and forget the end tap</li>
 </ul>
-<figure><img src="img/tap_diff_determine_window_histogram.png"
-         alt="Histogram of seconds (x-axis) between start and end tap vs. occurance count (y-axis)"/><figcaption>
-            <p>Histogram of seconds (x-axis) between start and end tap vs. occurance count (y-axis)</p>
-        </figcaption>
+<figure><img src="/projects/imu-gesture-recognition/img/tap_diff_determine_window_histogram.png"
+    alt="Histogram of seconds (x-axis) between start and end tap vs. occurance count (y-axis)"><figcaption>
+      <p>Histogram of seconds (x-axis) between start and end tap vs. occurance count (y-axis)</p>
+    </figcaption>
 </figure>
 
-<figure><img src="img/session_3_traces.png"
-         alt="Plot of all gesture 1 (swipe left) instances in train-set (x-acceleration only, trace of window 200 ms after starting tap)"/><figcaption>
-            <p>Plot of all gesture 1 (swipe left) instances in train-set (x-acceleration only, trace of window 200 ms after starting tap)</p>
-        </figcaption>
+<figure><img src="/projects/imu-gesture-recognition/img/session_3_traces.png"
+    alt="Plot of all gesture 1 (swipe left) instances in train-set (x-acceleration only, trace of window 200 ms after starting tap)"><figcaption>
+      <p>Plot of all gesture 1 (swipe left) instances in train-set (x-acceleration only, trace of window 200 ms after starting tap)</p>
+    </figcaption>
 </figure>
 
 <h4 id="process-to-evaluate-best-gesture-set">Process to Evaluate Best Gesture Set</h4>
@@ -315,16 +305,16 @@ This report provides details on deciding on a gesture set, building and refining
 </ul>
 </li>
 </ul>
-<figure><img src="img/session_3_good_gestures.png"
-         alt="Table of combinations of gestures with accuracy higher than 80%* a gesture set comprising of 2 (swipe right), 4 (tap), 6 (counter clock-wise circle), and 9 (poke) was determined to be the most robustly differentiable."/><figcaption>
-            <p>Table of combinations of gestures with accuracy higher than 80%* a gesture set comprising of 2 (swipe right), 4 (tap), 6 (counter clock-wise circle), and 9 (poke) was determined to be the most robustly differentiable.</p>
-        </figcaption>
+<figure><img src="/projects/imu-gesture-recognition/img/session_3_good_gestures.png"
+    alt="Table of combinations of gestures with accuracy higher than 80%* a gesture set comprising of 2 (swipe right), 4 (tap), 6 (counter clock-wise circle), and 9 (poke) was determined to be the most robustly differentiable."><figcaption>
+      <p>Table of combinations of gestures with accuracy higher than 80%* a gesture set comprising of 2 (swipe right), 4 (tap), 6 (counter clock-wise circle), and 9 (poke) was determined to be the most robustly differentiable.</p>
+    </figcaption>
 </figure>
 
-<figure><img src="img/session_3_good_gestures_histogram.png"
-         alt="Histogram of gesture number (x-axis) vs. occurrence count in the 11 good models (y-axis)"/><figcaption>
-            <p>Histogram of gesture number (x-axis) vs. occurrence count in the 11 good models (y-axis)</p>
-        </figcaption>
+<figure><img src="/projects/imu-gesture-recognition/img/session_3_good_gestures_histogram.png"
+    alt="Histogram of gesture number (x-axis) vs. occurrence count in the 11 good models (y-axis)"><figcaption>
+      <p>Histogram of gesture number (x-axis) vs. occurrence count in the 11 good models (y-axis)</p>
+    </figcaption>
 </figure>
 
 <p>The most robustly differentiable gesture set is:</p>
@@ -335,7 +325,7 @@ This report provides details on deciding on a gesture set, building and refining
 <li>9 (forward tap) &ndash; aka &ldquo;poke&rdquo;, as if pressing a elevator button</li>
 </ul>
 <p>Swipe right, downward swipe, and forward tap all have acceleration and return movement most strongly around a distinct axis (x, y, and z-axis). Counter-clockwise circle starting from the bottom has a distinct pattern of multiple acceleration directions and those directions are opposite to the movements in the other gestures (i.e. it starts with an upward movement whereas downward swipe is going down at that time point). Thus, even with common-sense reasoning this gesture set seems to make sense.</p>
-<h3 id="session-4-april-2-successful-data-collection----1st-big-data-set----1-subject-gati">Session 4 (April 2) Successful Data Collection &ndash; 1st Big Data Set &ndash; 1 Subject (Gati)</h3>
+<h3 id="session-4-april-2-successful-data-collection--1st-big-data-set--1-subject-gati">Session 4 (April 2) Successful Data Collection &ndash; 1st Big Data Set &ndash; 1 Subject (Gati)</h3>
 <ul>
 <li><em>Gesture Collection App - v1</em></li>
 <li><em>Gesture Set - v1:</em> 4 gestures, give subject 3 seconds to perform a gesture</li>
@@ -358,28 +348,28 @@ This report provides details on deciding on a gesture set, building and refining
 </ul>
 </li>
 </ul>
-<figure><img src="img/session_4_traces_g2.png"
-         alt="Plot of all gesture 2 (swipe right) instances in train-set (x-acceleration only, trace of window 200 ms after starting tap)"/><figcaption>
-            <p>Plot of all gesture 2 (swipe right) instances in train-set (x-acceleration only, trace of window 200 ms after starting tap)</p>
-        </figcaption>
+<figure><img src="/projects/imu-gesture-recognition/img/session_4_traces_g2.png"
+    alt="Plot of all gesture 2 (swipe right) instances in train-set (x-acceleration only, trace of window 200 ms after starting tap)"><figcaption>
+      <p>Plot of all gesture 2 (swipe right) instances in train-set (x-acceleration only, trace of window 200 ms after starting tap)</p>
+    </figcaption>
 </figure>
 
-<figure><img src="img/session_4_traces_g4.png"
-         alt="Plot of all gesture 4 (swipe left) instances in train-set (x-acceleration only, trace of window 200 ms after starting tap)"/><figcaption>
-            <p>Plot of all gesture 4 (swipe left) instances in train-set (x-acceleration only, trace of window 200 ms after starting tap)</p>
-        </figcaption>
+<figure><img src="/projects/imu-gesture-recognition/img/session_4_traces_g4.png"
+    alt="Plot of all gesture 4 (swipe left) instances in train-set (x-acceleration only, trace of window 200 ms after starting tap)"><figcaption>
+      <p>Plot of all gesture 4 (swipe left) instances in train-set (x-acceleration only, trace of window 200 ms after starting tap)</p>
+    </figcaption>
 </figure>
 
-<figure><img src="img/session_4_traces_g6.png"
-         alt="Plot of all gesture 6 (counter-clockwise circle starting from the bottom) instances in train-set (x-acceleration only, trace of window 200 ms after starting tap)"/><figcaption>
-            <p>Plot of all gesture 6 (counter-clockwise circle starting from the bottom) instances in train-set (x-acceleration only, trace of window 200 ms after starting tap)</p>
-        </figcaption>
+<figure><img src="/projects/imu-gesture-recognition/img/session_4_traces_g6.png"
+    alt="Plot of all gesture 6 (counter-clockwise circle starting from the bottom) instances in train-set (x-acceleration only, trace of window 200 ms after starting tap)"><figcaption>
+      <p>Plot of all gesture 6 (counter-clockwise circle starting from the bottom) instances in train-set (x-acceleration only, trace of window 200 ms after starting tap)</p>
+    </figcaption>
 </figure>
 
-<figure><img src="img/session_4_traces_g9.png"
-         alt="Plot of all gesture 9 (tap forward) instances in train-set (x-acceleration only, trace of window 200 ms after starting tap)"/><figcaption>
-            <p>Plot of all gesture 9 (tap forward) instances in train-set (x-acceleration only, trace of window 200 ms after starting tap)</p>
-        </figcaption>
+<figure><img src="/projects/imu-gesture-recognition/img/session_4_traces_g9.png"
+    alt="Plot of all gesture 9 (tap forward) instances in train-set (x-acceleration only, trace of window 200 ms after starting tap)"><figcaption>
+      <p>Plot of all gesture 9 (tap forward) instances in train-set (x-acceleration only, trace of window 200 ms after starting tap)</p>
+    </figcaption>
 </figure>
 
 <h4 id="model-performance">Model Performance</h4>
@@ -389,14 +379,14 @@ This report provides details on deciding on a gesture set, building and refining
 <li>Data: 300 time points, 100 from each of x, y, and z acceleration</li>
 <li>Accuracy was good enough for a baseline model</li>
 </ul>
-<figure><img src="img/session_4_cross_validation_accuracy.png"
-         alt="session 4 cross validation accuracy"/><figcaption>
-            <p>session 4 cross validation accuracy</p>
-        </figcaption>
+<figure><img src="/projects/imu-gesture-recognition/img/session_4_cross_validation_accuracy.png"
+    alt="session 4 cross validation accuracy"><figcaption>
+      <p>session 4 cross validation accuracy</p>
+    </figcaption>
 </figure>
 
 <p>Model tends to have accuracy greater than 50% (4 gestures random chance guessing is 25%). Note that this test of accuracy is harder than normal trials would be because each trial is at a different hand orientation (some of which are very extreme and unrealistic). So the model learning this pattern is a good sign of gesture robustness.</p>
-<h3 id="session-5-april-5-successful-data-collection----2nd-big-data-set----16-subjects-step-students">Session 5 (April 5) Successful Data Collection &ndash; 2nd Big Data Set &ndash; 16 subjects (STEP students)</h3>
+<h3 id="session-5-april-5-successful-data-collection--2nd-big-data-set--16-subjects-step-students">Session 5 (April 5) Successful Data Collection &ndash; 2nd Big Data Set &ndash; 16 subjects (STEP students)</h3>
 <ul>
 <li><em>Gesture Collection App - v2:</em> random order gesture prompts incorporated into the app. Start and end of window recorded by app (no need for start and end mark taps). Ability to name trials in the app (aid mapping to metadata file)
 <ul>
@@ -429,23 +419,23 @@ This report provides details on deciding on a gesture set, building and refining
 </ul>
 </li>
 </ul>
-<figure><img src="img/session_5_good_trial.png"
-         alt="Example of good trial: no false starts. Orange dots mark the start timestamp of the MAKE prompt, purple dots mark the detected start (-25 from the first threshold crossing) timestamp. Starts plotted separately for clarity and ease of manual review."/><figcaption>
-            <p>Example of good trial: no false starts. Orange dots mark the start timestamp of the MAKE prompt, purple dots mark the detected start (-25 from the first threshold crossing) timestamp. Starts plotted separately for clarity and ease of manual review.</p>
-        </figcaption>
+<figure><img src="/projects/imu-gesture-recognition/img/session_5_good_trial.png"
+    alt="Example of good trial: no false starts. Orange dots mark the start timestamp of the MAKE prompt, purple dots mark the detected start (-25 from the first threshold crossing) timestamp. Starts plotted separately for clarity and ease of manual review."><figcaption>
+      <p>Example of good trial: no false starts. Orange dots mark the start timestamp of the MAKE prompt, purple dots mark the detected start (-25 from the first threshold crossing) timestamp. Starts plotted separately for clarity and ease of manual review.</p>
+    </figcaption>
 </figure>
 
-<figure><img src="img/session_5_bad_trial.png"
-         alt="Example of trial with false starts: many false starts. False starts ruin the gesture windowing process."/><figcaption>
-            <p>Example of trial with false starts: many false starts. False starts ruin the gesture windowing process.</p>
-        </figcaption>
+<figure><img src="/projects/imu-gesture-recognition/img/session_5_bad_trial.png"
+    alt="Example of trial with false starts: many false starts. False starts ruin the gesture windowing process."><figcaption>
+      <p>Example of trial with false starts: many false starts. False starts ruin the gesture windowing process.</p>
+    </figcaption>
 </figure>
 
 <p>Model tended to have decent accuracy (around 70%+) on the cross validation accuracy tests (same manner as session 4)</p>
-<figure><img src="img/session_4_cross_validation_accuracy.png"
-         alt="session 4 cross validation accuracy"/><figcaption>
-            <p>session 4 cross validation accuracy</p>
-        </figcaption>
+<figure><img src="/projects/imu-gesture-recognition/img/session_4_cross_validation_accuracy.png"
+    alt="session 4 cross validation accuracy"><figcaption>
+      <p>session 4 cross validation accuracy</p>
+    </figcaption>
 </figure>
 
 <p>The reasonably high model accuracy is a very good sign because in some of the cross validation instances, the test set gestures came from different people/trial conditions than the train set gestures and the model still generalized well.</p>
@@ -491,7 +481,7 @@ This report provides details on deciding on a gesture set, building and refining
 </ul>
 </li>
 </ul>
-<h3 id="session-7-april-27-28-successful-data-collection----3rd-big-data-set----16-subjects-olin--prospective-students">Session 7 (April 27-28) Successful Data Collection &ndash; 3rd Big Data Set &ndash; 16 subjects (Olin / Prospective students)</h3>
+<h3 id="session-7-april-27-28-successful-data-collection--3rd-big-data-set--16-subjects-olin--prospective-students">Session 7 (April 27-28) Successful Data Collection &ndash; 3rd Big Data Set &ndash; 16 subjects (Olin / Prospective students)</h3>
 <ul>
 <li><em>Gesture Collection App - v4:</em> fixed major issues in app, now decently workable</li>
 <li><em>Gesture Set - v3:</em> 4 gestures (&ldquo;flick&rdquo; replaced &ldquo;forward tap&rdquo;), give subject 3 seconds to perform a gesture</li>
@@ -560,7 +550,7 @@ This report provides details on deciding on a gesture set, building and refining
   <footer id="footer" class="wrapper style1-alt">
   <div class="inner">
     <ul class="menu">
-      <li>&copy; 2023 <a href="/">Gati Aher</a></li>
+      <li>&copy; 2026 <a href="/">Gati Aher</a></li>
       <li>Powered by <a href="https://gohugo.io/">Hugo</a></li>
       <li>
         Adapted

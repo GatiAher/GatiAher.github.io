@@ -4,476 +4,142 @@
     <title>Blog on Gati Aher</title>
     <link>http://GatiAher.github.io/projects/</link>
     <description>Recent content in Blog on Gati Aher</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 May 2022 12:21:08 -0400</lastBuildDate><atom:link href="http://GatiAher.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 May 2022 12:21:08 -0400</lastBuildDate>
+    <atom:link href="http://GatiAher.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Intuition for Linear Programming</title>
       <link>http://GatiAher.github.io/projects/intuition-for-linear-programming/</link>
       <pubDate>Fri, 20 May 2022 12:21:08 -0400</pubDate>
-      
       <guid>http://GatiAher.github.io/projects/intuition-for-linear-programming/</guid>
       <description>&lt;p&gt;Understanding the geometric intuition and algorithms for solving linear programming problems. Covers (1) defining the solution space as the area within a convex polytope space, (2) understanding that the optimal solution occurs at a vertex point and translating that geometric intuition and more efficient search path into the Simplex matrix-based algorithm, (3) the idea of Duality and how it exposes additional information, and (4) how the Interior Point method works not just for linear programs, but also for more general convex optimization problems.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>FCC Data Scrapers</title>
       <link>http://GatiAher.github.io/projects/fcc-data-scrapers/</link>
       <pubDate>Mon, 16 May 2022 00:51:42 -0400</pubDate>
-      
       <guid>http://GatiAher.github.io/projects/fcc-data-scrapers/</guid>
-      <description>&lt;p&gt;The Federal Communications Commission (FCC) keeps public records of all satellite actions and license permissions in the central filing system for the International Bureau (IB), &lt;a href=&#34;https://licensing.fcc.gov/myibfs/&#34;&gt;MyIBFS&lt;/a&gt;. Data analysis of these records may provide insights into patterns of satellite usage trends over time and reveal areas of missing or contradictory information. However, these records are not available in a friendly format.&lt;/p&gt;
-&lt;p&gt;Thus, we built an application to extract information from HTML data tables, individual web pages, and public notice PDFs. It also performs preliminary cleaning, consolidation, and data validation. The final tabular and .json data files will be fed to an interactive R data application for exploration and analysis.&lt;/p&gt;
-&lt;div id=&#34;Container&#34;
-  style=&#34;padding-bottom:56.25%; position:relative; display:block; width: 100%&#34;&gt;
-  &lt;iframe id=&#34;googlePdfIframe&#34;
-  width=&#34;100%&#34; height=&#34;100%&#34;
-  src=&#34;https://drive.google.com/file/d/161wjnBRJukg-C4dhgv_qDVqmuEDWJppA/preview&#34;
-  frameborder=&#34;0&#34; allowfullscreen=&#34;&#34;
-  style=&#34;position:absolute; top:0; left: 0&#34;&gt;&lt;/iframe&gt;
-&lt;/div&gt;</description>
+      <description>&lt;p&gt;The Federal Communications Commission (FCC) keeps public records of all satellite actions and license permissions in the central filing system for the International Bureau (IB), &lt;a href=&#34;https://licensing.fcc.gov/myibfs/&#34;&gt;MyIBFS&lt;/a&gt;. Data analysis of these records may provide insights into patterns of satellite usage trends over time and reveal areas of missing or contradictory information. However, these records are not available in a friendly format.&lt;/p&gt;&#xA;&lt;p&gt;Thus, we built an application to extract information from HTML data tables, individual web pages, and public notice PDFs. It also performs preliminary cleaning, consolidation, and data validation. The final tabular and .json data files will be fed to an interactive R data application for exploration and analysis.&lt;/p&gt;&#xA;&lt;div id=&#34;Container&#34;&#xA;  style=&#34;padding-bottom:56.25%; position:relative; display:block; width: 100%&#34;&gt;&#xA;  &lt;iframe id=&#34;googlePdfIframe&#34;&#xA;  width=&#34;100%&#34; height=&#34;100%&#34;&#xA;  src=&#34;https://drive.google.com/file/d/161wjnBRJukg-C4dhgv_qDVqmuEDWJppA/preview&#34;&#xA;  frameborder=&#34;0&#34; allowfullscreen=&#34;&#34;&#xA;  style=&#34;position:absolute; top:0; left: 0&#34;&gt;&lt;/iframe&gt;&#xA;&lt;/div&gt;</description>
     </item>
-    
     <item>
       <title>IMU Gesture Recognition</title>
       <link>http://GatiAher.github.io/projects/imu-gesture-recognition/</link>
       <pubDate>Sun, 15 May 2022 14:53:05 -0400</pubDate>
-      
       <guid>http://GatiAher.github.io/projects/imu-gesture-recognition/</guid>
-      <description>&lt;p&gt;This project analyzed and prepared a baseline machine learning model to perform gesture recognition on data collected with &lt;a href=&#34;https://mbientlab.com/store/metamotionrl/&#34;&gt;MbientLab MMRL IMU&lt;/a&gt; rubber-banded to a two_finger ring. The final baseline model was trained with data from sessions 4, 5, and 7 consisting of 1,212 total instances of 4 gestures collected across 27 people.&lt;/p&gt;
-&lt;p&gt;When trained with a train-test split of 80:20, the model had an accuracy of 75%. The final model trained with full data (no train-test split) had reasonably robust performance in the real-time system (successfully generalized its gestures predictions to other people when integrated with the software demo app).&lt;/p&gt;
-&lt;p&gt;This report provides details on deciding on a gesture set, building and refining the gesture data collection process, and steps to integrate the model with the software iOS demo app.&lt;/p&gt;
-&lt;div class=&#34;center&#34;&gt;
-  &lt;ul class=&#34;actions&#34;&gt;
-       
-    &lt;li&gt;
-      &lt;button
-        class=&#34;button icon outline brands fa-github&#34;
-        onclick=&#34;location.href=&#39;https:\/\/github.com\/OlinSTEP\/signal-processing-gesture-data-collection&#39;&#34;
-        type=&#34;button&#34;
-      &gt;
-        Visit GitHub
-      &lt;/button&gt;
-    &lt;/li&gt;
-    
-  &lt;/ul&gt;
-&lt;/div&gt;
-
-
-
-&lt;div id=&#34;Container&#34;
- style=&#34;padding-bottom:56.25%; position:relative; display:block; width: 100%&#34;&gt;
- &lt;iframe id=&#34;googleSlideIframe&#34;
-  width=&#34;100%&#34; height=&#34;100%&#34;
-  src=&#34;https://docs.google.com/presentation/d/e/2PACX-1vT1MJqD9l2cEu7DgdtxDkJb_aH5ysP1NklfoNUuvb3sVjp9z3MezS0HFBOv-fLhV7ESwZks_xU1Z-wQ/embed?start=false&amp;amp;loop=true&amp;amp;delayms=3000&#34;
-  frameborder=&#34;0&#34; allowfullscreen=&#34;&#34;
-  style=&#34;position:absolute; top:0; left: 0&#34;&gt;&lt;/iframe&gt;
-&lt;/div&gt;</description>
+      <description>&lt;p&gt;This project analyzed and prepared a baseline machine learning model to perform gesture recognition on data collected with &lt;a href=&#34;https://mbientlab.com/store/metamotionrl/&#34;&gt;MbientLab MMRL IMU&lt;/a&gt; rubber-banded to a two_finger ring. The final baseline model was trained with data from sessions 4, 5, and 7 consisting of 1,212 total instances of 4 gestures collected across 27 people.&lt;/p&gt;&#xA;&lt;p&gt;When trained with a train-test split of 80:20, the model had an accuracy of 75%. The final model trained with full data (no train-test split) had reasonably robust performance in the real-time system (successfully generalized its gestures predictions to other people when integrated with the software demo app).&lt;/p&gt;&#xA;&lt;p&gt;This report provides details on deciding on a gesture set, building and refining the gesture data collection process, and steps to integrate the model with the software iOS demo app.&lt;/p&gt;&#xA;&lt;div class=&#34;center&#34;&gt;&#xA;  &lt;ul class=&#34;actions&#34;&gt;&#xA;       &#xA;    &lt;li&gt;&#xA;      &lt;button&#xA;        class=&#34;button icon outline brands fa-github&#34;&#xA;        onclick=&#34;location.href=&#39;https:\/\/github.com\/OlinSTEP\/signal-processing-gesture-data-collection&#39;&#34;&#xA;        type=&#34;button&#34;&#xA;      &gt;&#xA;        Visit GitHub&#xA;      &lt;/button&gt;&#xA;    &lt;/li&gt;&#xA;    &#xA;  &lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&#xA;&#xA;&lt;div id=&#34;Container&#34;&#xA; style=&#34;padding-bottom:56.25%; position:relative; display:block; width: 100%&#34;&gt;&#xA; &lt;iframe id=&#34;googleSlideIframe&#34;&#xA;  width=&#34;100%&#34; height=&#34;100%&#34;&#xA;  src=&#34;https://docs.google.com/presentation/d/e/2PACX-1vT1MJqD9l2cEu7DgdtxDkJb_aH5ysP1NklfoNUuvb3sVjp9z3MezS0HFBOv-fLhV7ESwZks_xU1Z-wQ/embed?start=false&amp;amp;loop=true&amp;amp;delayms=3000&#34;&#xA;  frameborder=&#34;0&#34; allowfullscreen=&#34;&#34;&#xA;  style=&#34;position:absolute; top:0; left: 0&#34;&gt;&lt;/iframe&gt;&#xA;&lt;/div&gt;</description>
     </item>
-    
     <item>
       <title>Reflecting on 400 Hours of Data Collection R&amp;D</title>
       <link>http://GatiAher.github.io/projects/reflecting-on-400-hours-of-data-collection-r-and-d/</link>
       <pubDate>Wed, 11 May 2022 21:37:12 -0400</pubDate>
-      
       <guid>http://GatiAher.github.io/projects/reflecting-on-400-hours-of-data-collection-r-and-d/</guid>
-      <description>&lt;p&gt;STEP (Social Technology Enterprise with Purpose) was an 400+ hour experimental course that aimed to give students real-world engineering experience within the freedoms afforded by an education-first structure. I worked on the gesture ring, designing a gesture set and building the data collection process for training a machine-learning gesture classification model.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;30-second demo video&lt;/strong&gt;:
-
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;https://www.youtube.com/embed/gtr_1zKshnQ&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;STEP Gesture Ring Demo&#34;&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;This 20-page reflection includes criticisms and creative proposals that may be interesting to faculty developing iterations of STEP-like courses,  engineering students grappling with the process of designing a process, and my future self before I set on my next AR/VR, accessibility, machine-learning, or large integrated software development project.&lt;/p&gt;</description>
+      <description>&lt;p&gt;STEP (Social Technology Enterprise with Purpose) was an 400+ hour experimental course that aimed to give students real-world engineering experience within the freedoms afforded by an education-first structure. I worked on the gesture ring, designing a gesture set and building the data collection process for training a machine-learning gesture classification model.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;30-second demo video&lt;/strong&gt;:&#xA;&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;&#xA;      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/gtr_1zKshnQ?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;STEP Gesture Ring Demo&#34;&gt;&lt;/iframe&gt;&#xA;    &lt;/div&gt;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;This 20-page reflection includes criticisms and creative proposals that may be interesting to faculty developing iterations of STEP-like courses,  engineering students grappling with the process of designing a process, and my future self before I set on my next AR/VR, accessibility, machine-learning, or large integrated software development project.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Lagaan Football Pick-Em&#39; Application</title>
       <link>http://GatiAher.github.io/projects/lagaan-football-pick-em-application/</link>
       <pubDate>Tue, 18 Jan 2022 00:01:01 -0500</pubDate>
-      
       <guid>http://GatiAher.github.io/projects/lagaan-football-pick-em-application/</guid>
-      <description>&lt;p&gt;This fullstack application includes a scoring engine to validate user pool picks and compute score and a React.js UI to handle team selections and leader-board displays. This is used by 40+ active users to submit pool selections weekly. I developed and maintained this application from Fall 2020 through Spring 2022.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Technology:&lt;/strong&gt; React.js, Material-UI, Node.js, Express.js, SQLite, React-Admin package for structuring admin, REST API, Auth0, DigitalOcean Droplet, Nginx, and PM2.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;3-minute demo&lt;/strong&gt;:
-
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;https://www.youtube.com/embed/IYpS-rnKjFc&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;Lagaan Football Pick-Em&amp;#39; Application Demo&#34;&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;center&#34;&gt;
-  &lt;ul class=&#34;actions&#34;&gt;
-       
-    &lt;li&gt;
-      &lt;button
-        class=&#34;button icon outline brands fa-github&#34;
-        onclick=&#34;location.href=&#39;https:\/\/github.com\/GatiAher\/lagaan-football-pool-app&#39;&#34;
-        type=&#34;button&#34;
-      &gt;
-        Visit GitHub
-      &lt;/button&gt;
-    &lt;/li&gt;
-    
-  &lt;/ul&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;center&#34;&gt;
-  &lt;ul class=&#34;actions&#34;&gt;
-       
-    &lt;li&gt;
-      &lt;button
-        class=&#34;button icon outline fa-gem&#34;
-        onclick=&#34;location.href=&#39;https:\/\/www.lagaannfl.com&#39;&#34;
-        type=&#34;button&#34;
-      &gt;
-        View Website
-      &lt;/button&gt;
-    &lt;/li&gt;
-    
-  &lt;/ul&gt;
-&lt;/div&gt;
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;This fullstack application includes a scoring engine to validate user pool picks and compute score and a React.js UI to handle team selections and leader-board displays. This is used by 40+ active users to submit pool selections weekly. I developed and maintained this application from Fall 2020 through Spring 2022.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Technology:&lt;/strong&gt; React.js, Material-UI, Node.js, Express.js, SQLite, React-Admin package for structuring admin, REST API, Auth0, DigitalOcean Droplet, Nginx, and PM2.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;3-minute demo&lt;/strong&gt;:&#xA;&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;&#xA;      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/IYpS-rnKjFc?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;Lagaan Football Pick-Em&amp;#39; Application Demo&#34;&gt;&lt;/iframe&gt;&#xA;    &lt;/div&gt;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;&lt;div class=&#34;center&#34;&gt;&#xA;  &lt;ul class=&#34;actions&#34;&gt;&#xA;       &#xA;    &lt;li&gt;&#xA;      &lt;button&#xA;        class=&#34;button icon outline brands fa-github&#34;&#xA;        onclick=&#34;location.href=&#39;https:\/\/github.com\/GatiAher\/lagaan-football-pool-app&#39;&#34;&#xA;        type=&#34;button&#34;&#xA;      &gt;&#xA;        Visit GitHub&#xA;      &lt;/button&gt;&#xA;    &lt;/li&gt;&#xA;    &#xA;  &lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;div class=&#34;center&#34;&gt;&#xA;  &lt;ul class=&#34;actions&#34;&gt;&#xA;       &#xA;    &lt;li&gt;&#xA;      &lt;button&#xA;        class=&#34;button icon outline fa-gem&#34;&#xA;        onclick=&#34;location.href=&#39;https:\/\/www.lagaannfl.com&#39;&#34;&#xA;        type=&#34;button&#34;&#xA;      &gt;&#xA;        View Website&#xA;      &lt;/button&gt;&#xA;    &lt;/li&gt;&#xA;    &#xA;  &lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Exploring FPGA Deep Learning Accelerators</title>
       <link>http://GatiAher.github.io/projects/exploring-fpga-deep-learning-accelerators/</link>
       <pubDate>Thu, 23 Dec 2021 20:08:21 -0500</pubDate>
-      
       <guid>http://GatiAher.github.io/projects/exploring-fpga-deep-learning-accelerators/</guid>
-      <description>&lt;p&gt;I wanted to learn about the process of using FPGA hardware accelerators for more power-efficient deep learning inference. Through this project, I learned about the process of creating and building an image for the Zybo ZYNQ FPGA, PYNQ application development, and Vitis AI development tools. I also surveyed the functionality of FINN, an experimental framework from Xilinx Research Labs to explore quantized deep neural network inference on FPGAs.&lt;/p&gt;
-&lt;div id=&#34;Container&#34;
-  style=&#34;padding-bottom:56.25%; position:relative; display:block; width: 100%&#34;&gt;
-  &lt;iframe id=&#34;googlePdfIframe&#34;
-  width=&#34;100%&#34; height=&#34;100%&#34;
-  src=&#34;https://drive.google.com/file/d/1SVpb3sdzzIIEaEiwaT3kFwRgV2HywIRb/preview&#34;
-  frameborder=&#34;0&#34; allowfullscreen=&#34;&#34;
-  style=&#34;position:absolute; top:0; left: 0&#34;&gt;&lt;/iframe&gt;
-&lt;/div&gt;</description>
+      <description>&lt;p&gt;I wanted to learn about the process of using FPGA hardware accelerators for more power-efficient deep learning inference. Through this project, I learned about the process of creating and building an image for the Zybo ZYNQ FPGA, PYNQ application development, and Vitis AI development tools. I also surveyed the functionality of FINN, an experimental framework from Xilinx Research Labs to explore quantized deep neural network inference on FPGAs.&lt;/p&gt;&#xA;&lt;div id=&#34;Container&#34;&#xA;  style=&#34;padding-bottom:56.25%; position:relative; display:block; width: 100%&#34;&gt;&#xA;  &lt;iframe id=&#34;googlePdfIframe&#34;&#xA;  width=&#34;100%&#34; height=&#34;100%&#34;&#xA;  src=&#34;https://drive.google.com/file/d/1SVpb3sdzzIIEaEiwaT3kFwRgV2HywIRb/preview&#34;&#xA;  frameborder=&#34;0&#34; allowfullscreen=&#34;&#34;&#xA;  style=&#34;position:absolute; top:0; left: 0&#34;&gt;&lt;/iframe&gt;&#xA;&lt;/div&gt;</description>
     </item>
-    
     <item>
       <title>Procedural Graph Generation For More Realistic Simulations</title>
       <link>http://GatiAher.github.io/projects/procedural-graph-generation-for-more-realistic-simulations/</link>
       <pubDate>Sat, 18 Dec 2021 23:23:16 -0500</pubDate>
-      
       <guid>http://GatiAher.github.io/projects/procedural-graph-generation-for-more-realistic-simulations/</guid>
-      <description>&lt;p&gt;Many real world systems can be modeled with graphs. Most stable and complex graphs have &lt;strong&gt;small-world&lt;/strong&gt; (local clustering) and &lt;strong&gt;scale-free&lt;/strong&gt; (hubs) properties. In this project, we (1) identified algorithms that generated small-world and scale-free graphs, (2) studied and implemented generation functions for each type of algorithm, (3) created custom animations of graph generation process, and (4) verified that our graphs exhibited the expected structural properties.&lt;/p&gt;
-&lt;div class=&#34;center&#34;&gt;
-  &lt;ul class=&#34;actions&#34;&gt;
-       
-    &lt;li&gt;
-      &lt;button
-        class=&#34;button icon outline brands fa-github&#34;
-        onclick=&#34;location.href=&#39;https:\/\/github.com\/GatiAher\/network-generation&#39;&#34;
-        type=&#34;button&#34;
-      &gt;
-        Visit GitHub
-      &lt;/button&gt;
-    &lt;/li&gt;
-    
-  &lt;/ul&gt;
-&lt;/div&gt;
-
-
-
-&lt;div id=&#34;Container&#34;
- style=&#34;padding-bottom:56.25%; position:relative; display:block; width: 100%&#34;&gt;
- &lt;iframe id=&#34;googleSlideIframe&#34;
-  width=&#34;100%&#34; height=&#34;100%&#34;
-  src=&#34;https://docs.google.com/presentation/d/e/2PACX-1vRoVNJKtW84R-zlSBe9CBJO1PGcZwgc7_wVDoCUYklCmjqXsDLeqK1ipSAd0XweKgvaql3kSxRcF7YA/embed?start=false&amp;amp;loop=false&amp;amp;delayms=3000&#34;
-  frameborder=&#34;0&#34; allowfullscreen=&#34;&#34;
-  style=&#34;position:absolute; top:0; left: 0&#34;&gt;&lt;/iframe&gt;
-&lt;/div&gt;</description>
+      <description>&lt;p&gt;Many real world systems can be modeled with graphs. Most stable and complex graphs have &lt;strong&gt;small-world&lt;/strong&gt; (local clustering) and &lt;strong&gt;scale-free&lt;/strong&gt; (hubs) properties. In this project, we (1) identified algorithms that generated small-world and scale-free graphs, (2) studied and implemented generation functions for each type of algorithm, (3) created custom animations of graph generation process, and (4) verified that our graphs exhibited the expected structural properties.&lt;/p&gt;&#xA;&lt;div class=&#34;center&#34;&gt;&#xA;  &lt;ul class=&#34;actions&#34;&gt;&#xA;       &#xA;    &lt;li&gt;&#xA;      &lt;button&#xA;        class=&#34;button icon outline brands fa-github&#34;&#xA;        onclick=&#34;location.href=&#39;https:\/\/github.com\/GatiAher\/network-generation&#39;&#34;&#xA;        type=&#34;button&#34;&#xA;      &gt;&#xA;        Visit GitHub&#xA;      &lt;/button&gt;&#xA;    &lt;/li&gt;&#xA;    &#xA;  &lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&#xA;&#xA;&lt;div id=&#34;Container&#34;&#xA; style=&#34;padding-bottom:56.25%; position:relative; display:block; width: 100%&#34;&gt;&#xA; &lt;iframe id=&#34;googleSlideIframe&#34;&#xA;  width=&#34;100%&#34; height=&#34;100%&#34;&#xA;  src=&#34;https://docs.google.com/presentation/d/e/2PACX-1vRoVNJKtW84R-zlSBe9CBJO1PGcZwgc7_wVDoCUYklCmjqXsDLeqK1ipSAd0XweKgvaql3kSxRcF7YA/embed?start=false&amp;amp;loop=false&amp;amp;delayms=3000&#34;&#xA;  frameborder=&#34;0&#34; allowfullscreen=&#34;&#34;&#xA;  style=&#34;position:absolute; top:0; left: 0&#34;&gt;&lt;/iframe&gt;&#xA;&lt;/div&gt;</description>
     </item>
-    
     <item>
       <title>Disco-Cats: Arduinos &#43; ML Music</title>
       <link>http://GatiAher.github.io/projects/disco-cats-arduinos&#43;ml-music/</link>
       <pubDate>Tue, 14 Dec 2021 21:21:42 -0400</pubDate>
-      
       <guid>http://GatiAher.github.io/projects/disco-cats-arduinos&#43;ml-music/</guid>
-      <description>&lt;p&gt;My team spent 6 weeks building an interactive music visualization system that uses Arduinos, motors, an LED matrix, and sound to express musical pieces generated with machine learning!&lt;/p&gt;
-&lt;p&gt;I learned how to (1) design an intuitive UI (2) use &lt;a href=&#34;https://magenta.tensorflow.org/multitrack&#34;&gt;Google&amp;rsquo;s Magenta multi-track VAE model&lt;/a&gt; to generate music based on user input (3) transmit the MIDI bitstream over serial (3) extract pitch, instrument, and duration information from the midi bitstream in real time (4) efficiently control an LED matrix and motors.&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;center&#34;&gt;
-  &lt;ul class=&#34;actions&#34;&gt;
-       
-    &lt;li&gt;
-      &lt;button
-        class=&#34;button icon outline fa-gem&#34;
-        onclick=&#34;location.href=&#39;https:\/\/olincollege.github.io\/pie-2021-03\/Disco-Cats\/&#39;&#34;
-        type=&#34;button&#34;
-      &gt;
-        View Website
-      &lt;/button&gt;
-    &lt;/li&gt;
-    
-  &lt;/ul&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;center&#34;&gt;
-  &lt;ul class=&#34;actions&#34;&gt;
-       
-    &lt;li&gt;
-      &lt;button
-        class=&#34;button icon outline brands fa-github&#34;
-        onclick=&#34;location.href=&#39;https:\/\/github.com\/GatiAher\/disco_cats&#39;&#34;
-        type=&#34;button&#34;
-      &gt;
-        Visit GitHub
-      &lt;/button&gt;
-    &lt;/li&gt;
-    
-  &lt;/ul&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;center&#34;&gt;
-  &lt;ul class=&#34;actions&#34;&gt;
-       
-    &lt;li&gt;
-      &lt;button
-        class=&#34;button icon outline fa-video&#34;
-        onclick=&#34;location.href=&#39;https:\/\/youtu.be\/nX_OTCaxyTM&#39;&#34;
-        type=&#34;button&#34;
-      &gt;
-        Watch Demo
-      &lt;/button&gt;
-    &lt;/li&gt;
-    
-  &lt;/ul&gt;
-&lt;/div&gt;
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;My team spent 6 weeks building an interactive music visualization system that uses Arduinos, motors, an LED matrix, and sound to express musical pieces generated with machine learning!&lt;/p&gt;&#xA;&lt;p&gt;I learned how to (1) design an intuitive UI (2) use &lt;a href=&#34;https://magenta.tensorflow.org/multitrack&#34;&gt;Google&amp;rsquo;s Magenta multi-track VAE model&lt;/a&gt; to generate music based on user input (3) transmit the MIDI bitstream over serial (3) extract pitch, instrument, and duration information from the midi bitstream in real time (4) efficiently control an LED matrix and motors.&lt;/p&gt;&#xA;&lt;p&gt;&lt;div class=&#34;center&#34;&gt;&#xA;  &lt;ul class=&#34;actions&#34;&gt;&#xA;       &#xA;    &lt;li&gt;&#xA;      &lt;button&#xA;        class=&#34;button icon outline fa-gem&#34;&#xA;        onclick=&#34;location.href=&#39;https:\/\/olincollege.github.io\/pie-2021-03\/Disco-Cats\/&#39;&#34;&#xA;        type=&#34;button&#34;&#xA;      &gt;&#xA;        View Website&#xA;      &lt;/button&gt;&#xA;    &lt;/li&gt;&#xA;    &#xA;  &lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;div class=&#34;center&#34;&gt;&#xA;  &lt;ul class=&#34;actions&#34;&gt;&#xA;       &#xA;    &lt;li&gt;&#xA;      &lt;button&#xA;        class=&#34;button icon outline brands fa-github&#34;&#xA;        onclick=&#34;location.href=&#39;https:\/\/github.com\/GatiAher\/disco_cats&#39;&#34;&#xA;        type=&#34;button&#34;&#xA;      &gt;&#xA;        Visit GitHub&#xA;      &lt;/button&gt;&#xA;    &lt;/li&gt;&#xA;    &#xA;  &lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;div class=&#34;center&#34;&gt;&#xA;  &lt;ul class=&#34;actions&#34;&gt;&#xA;       &#xA;    &lt;li&gt;&#xA;      &lt;button&#xA;        class=&#34;button icon outline fa-video&#34;&#xA;        onclick=&#34;location.href=&#39;https:\/\/youtu.be\/nX_OTCaxyTM&#39;&#34;&#xA;        type=&#34;button&#34;&#xA;      &gt;&#xA;        Watch Demo&#xA;      &lt;/button&gt;&#xA;    &lt;/li&gt;&#xA;    &#xA;  &lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Deep Dive Into Huffman Coding</title>
       <link>http://GatiAher.github.io/projects/deep-dive-into-huffman-coding/</link>
       <pubDate>Mon, 25 Oct 2021 00:46:56 -0500</pubDate>
-      
       <guid>http://GatiAher.github.io/projects/deep-dive-into-huffman-coding/</guid>
-      <description>&lt;p&gt;Huffman coding is a variation on prefix codes that optimize lossless data compression. In this deep dive, we (1) introduced how Huffman Codes work, (2) explored the theoretical limits of Huffman compression, (3) analyzed resilience to error, and (4) followed the evolution of research on using choice of Huffman tables to encode secret messages in MP3 files.&lt;/p&gt;
-&lt;div id=&#34;Container&#34;
-  style=&#34;padding-bottom:56.25%; position:relative; display:block; width: 100%&#34;&gt;
-  &lt;iframe id=&#34;googlePdfIframe&#34;
-  width=&#34;100%&#34; height=&#34;100%&#34;
-  src=&#34;https://drive.google.com/file/d/1qZT_iiq8OeSeb5d5wkv4Jp9Ie-83-cm0/preview&#34;
-  frameborder=&#34;0&#34; allowfullscreen=&#34;&#34;
-  style=&#34;position:absolute; top:0; left: 0&#34;&gt;&lt;/iframe&gt;
-&lt;/div&gt;</description>
+      <description>&lt;p&gt;Huffman coding is a variation on prefix codes that optimize lossless data compression. In this deep dive, we (1) introduced how Huffman Codes work, (2) explored the theoretical limits of Huffman compression, (3) analyzed resilience to error, and (4) followed the evolution of research on using choice of Huffman tables to encode secret messages in MP3 files.&lt;/p&gt;&#xA;&lt;div id=&#34;Container&#34;&#xA;  style=&#34;padding-bottom:56.25%; position:relative; display:block; width: 100%&#34;&gt;&#xA;  &lt;iframe id=&#34;googlePdfIframe&#34;&#xA;  width=&#34;100%&#34; height=&#34;100%&#34;&#xA;  src=&#34;https://drive.google.com/file/d/1qZT_iiq8OeSeb5d5wkv4Jp9Ie-83-cm0/preview&#34;&#xA;  frameborder=&#34;0&#34; allowfullscreen=&#34;&#34;&#xA;  style=&#34;position:absolute; top:0; left: 0&#34;&gt;&lt;/iframe&gt;&#xA;&lt;/div&gt;</description>
     </item>
-    
     <item>
       <title>Building a Pan-Tilt 3D Scanner</title>
       <link>http://GatiAher.github.io/projects/building-a-pan-tilt-3d-scanner/</link>
       <pubDate>Tue, 28 Sep 2021 21:10:34 -0400</pubDate>
-      
       <guid>http://GatiAher.github.io/projects/building-a-pan-tilt-3d-scanner/</guid>
       <description>&lt;p&gt;My team built a servo-driven pan-tilt mount for an infrared proximity sensor. To demonstrate the functionality of our design, we created a 3D scan of a cardboard letter cut in a Z shape. This project involved (1) designing and 3D-printing a pan-tilt servo and IR sensor, (2) programming an arduino to collect scan data, (3) projecting data from spherical coordinates into Cartesian coordinates in order to isolate a cross-section scan of the letter. I was responsible for the CAD mechanical design and making the 3D data projection and visualization.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Handwriting Detection With Faster R-CNN &#43; Experiments</title>
       <link>http://GatiAher.github.io/projects/handwriting-detection-with-faster-r-cnn-plus-experiments/</link>
       <pubDate>Fri, 20 Aug 2021 10:43:34 -0400</pubDate>
-      
       <guid>http://GatiAher.github.io/projects/handwriting-detection-with-faster-r-cnn-plus-experiments/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://indico.io/&#34;&gt;Indico Data Solutions&lt;/a&gt; provides services to extract information from scanned pdfs. Since their existing OCR + NLP pipeline did not extract handwriting, one of my internship projects involved creating a robust solution to detect and classify handwriting using a deep learning computer vision model.&lt;/p&gt;
-&lt;p&gt;I started by fine-tuning upon the &lt;a href=&#34;https://arxiv.org/abs/1506.01497&#34;&gt;Faster R-CNN model&lt;/a&gt; from the &lt;a href=&#34;https://github.com/facebookresearch/detectron2&#34;&gt;Detectron-v2 framework&lt;/a&gt;. Then I tried to improve upon the baseline performance with (i) different pre-training tasks, (ii) multi-label formulation, (iii) strategies to improve small object detection, and (iv) different label sets and datasets. This report documents my methods and finishes with a class confusion analysis and retrospective.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://indico.io/&#34;&gt;Indico Data Solutions&lt;/a&gt; provides services to extract information from scanned pdfs. Since their existing OCR + NLP pipeline did not extract handwriting, one of my internship projects involved creating a robust solution to detect and classify handwriting using a deep learning computer vision model.&lt;/p&gt;&#xA;&lt;p&gt;I started by fine-tuning upon the &lt;a href=&#34;https://arxiv.org/abs/1506.01497&#34;&gt;Faster R-CNN model&lt;/a&gt; from the &lt;a href=&#34;https://github.com/facebookresearch/detectron2&#34;&gt;Detectron-v2 framework&lt;/a&gt;. Then I tried to improve upon the baseline performance with (i) different pre-training tasks, (ii) multi-label formulation, (iii) strategies to improve small object detection, and (iv) different label sets and datasets. This report documents my methods and finishes with a class confusion analysis and retrospective.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>EMG Gesture Recognition</title>
       <link>http://GatiAher.github.io/projects/emg-gesture-recognition.md/</link>
       <pubDate>Mon, 10 May 2021 21:39:39 -0500</pubDate>
-      
       <guid>http://GatiAher.github.io/projects/emg-gesture-recognition.md/</guid>
-      <description>&lt;p&gt;This project followed the topological data analysis steps laid out in &lt;a href=&#34;http://doi.org/10.1098/rsif.2017.0734&#34;&gt;Phinyomark et al (2017) &amp;ldquo;Navigating features: a topologically informed chart of electromyographic features space&amp;rdquo;&lt;/a&gt; to analyze 43 features extracted from surface EMG signals of three gestures (rock, paper, scissors) performed by a single subject.&lt;/p&gt;
-&lt;p&gt;I used sklearn&amp;rsquo;s topological data analysis tools with the Kepler Mapper and Ward&amp;rsquo;s minimum variance method as the criterion for hierarchial clustering in order to analyze feature redundancy. Comparison of feature class separability was analyzed by calculating Davies-Bouldin index (DBI) and Fisher&amp;rsquo;s linear discriminant index (FLDI), and measuring misclassification rates. 5-fold cross validation Linear Discriminant Analysis and Support Vector Machine were employed as classifiers.&lt;/p&gt;
-&lt;div class=&#34;center&#34;&gt;
-  &lt;ul class=&#34;actions&#34;&gt;
-       
-    &lt;li&gt;
-      &lt;button
-        class=&#34;button icon outline brands fa-github&#34;
-        onclick=&#34;location.href=&#39;https:\/\/github.com\/GatiAher\/EMG_Gesture_Recognition&#39;&#34;
-        type=&#34;button&#34;
-      &gt;
-        Visit GitHub
-      &lt;/button&gt;
-    &lt;/li&gt;
-    
-  &lt;/ul&gt;
-&lt;/div&gt;</description>
+      <description>&lt;p&gt;This project followed the topological data analysis steps laid out in &lt;a href=&#34;http://doi.org/10.1098/rsif.2017.0734&#34;&gt;Phinyomark et al (2017) &amp;ldquo;Navigating features: a topologically informed chart of electromyographic features space&amp;rdquo;&lt;/a&gt; to analyze 43 features extracted from surface EMG signals of three gestures (rock, paper, scissors) performed by a single subject.&lt;/p&gt;&#xA;&lt;p&gt;I used sklearn&amp;rsquo;s topological data analysis tools with the Kepler Mapper and Ward&amp;rsquo;s minimum variance method as the criterion for hierarchial clustering in order to analyze feature redundancy. Comparison of feature class separability was analyzed by calculating Davies-Bouldin index (DBI) and Fisher&amp;rsquo;s linear discriminant index (FLDI), and measuring misclassification rates. 5-fold cross validation Linear Discriminant Analysis and Support Vector Machine were employed as classifiers.&lt;/p&gt;&#xA;&lt;div class=&#34;center&#34;&gt;&#xA;  &lt;ul class=&#34;actions&#34;&gt;&#xA;       &#xA;    &lt;li&gt;&#xA;      &lt;button&#xA;        class=&#34;button icon outline brands fa-github&#34;&#xA;        onclick=&#34;location.href=&#39;https:\/\/github.com\/GatiAher\/EMG_Gesture_Recognition&#39;&#34;&#xA;        type=&#34;button&#34;&#xA;      &gt;&#xA;        Visit GitHub&#xA;      &lt;/button&gt;&#xA;    &lt;/li&gt;&#xA;    &#xA;  &lt;/ul&gt;&#xA;&lt;/div&gt;</description>
     </item>
-    
     <item>
       <title>Survey of Data Structures for Large Scale Information Retrieval</title>
       <link>http://GatiAher.github.io/projects/survey-of-data-structures-for-large-scale-information-retrieval/</link>
       <pubDate>Sun, 09 May 2021 21:21:42 -0400</pubDate>
-      
       <guid>http://GatiAher.github.io/projects/survey-of-data-structures-for-large-scale-information-retrieval/</guid>
-      <description>&lt;p&gt;A survey of data structures used in large-scale information systems. Covers (i) how the inverted index data structure allows for constant time querying (ii) the need, problems, and clever design details of methods to compress big numbers (focusing on Elias-Fano and Partitioned Elias-Fano), and (iii) BitFunnel, an unusual probabilistic data structure used by the Bing search engine to bypass the curse of inverted index global updates.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;5-minute video summary&lt;/strong&gt;:
-
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;https://www.youtube.com/embed/UN6_yzZyczE&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;Understanding Large Data Retrieval Systems: Data Structures and Optimizations&#34;&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;A survey of data structures used in large-scale information systems. Covers (i) how the inverted index data structure allows for constant time querying (ii) the need, problems, and clever design details of methods to compress big numbers (focusing on Elias-Fano and Partitioned Elias-Fano), and (iii) BitFunnel, an unusual probabilistic data structure used by the Bing search engine to bypass the curse of inverted index global updates.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;5-minute video summary&lt;/strong&gt;:&#xA;&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;&#xA;      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/UN6_yzZyczE?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;Understanding Large Data Retrieval Systems: Data Structures and Optimizations&#34;&gt;&lt;/iframe&gt;&#xA;    &lt;/div&gt;&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Implementing Fast and Space-Efficient Look-up and Search</title>
       <link>http://GatiAher.github.io/projects/implementing-fast-and-space-efficient-look-up-and-search/</link>
       <pubDate>Sat, 08 May 2021 09:35:51 -0400</pubDate>
-      
       <guid>http://GatiAher.github.io/projects/implementing-fast-and-space-efficient-look-up-and-search/</guid>
-      <description>&lt;p&gt;The Bloom filter data structure tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when I saw them used in speeding up database search. Then, I heard about Microsoft using a stack of Bloom filters to &lt;a href=&#34;https://dl.acm.org/doi/10.1145/3077136.3080789&#34;&gt;speed up the Bing search engine&amp;rsquo;s keyword search&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;In this project, I implemented a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and notable code design decisions.&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;center&#34;&gt;
-  &lt;ul class=&#34;actions&#34;&gt;
-       
-    &lt;li&gt;
-      &lt;button
-        class=&#34;button icon outline brands fa-github&#34;
-        onclick=&#34;location.href=&#39;https:\/\/github.com\/GatiAher\/BloomForSearchFromScratch&#39;&#34;
-        type=&#34;button&#34;
-      &gt;
-        Visit GitHub
-      &lt;/button&gt;
-    &lt;/li&gt;
-    
-  &lt;/ul&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;center&#34;&gt;
-  &lt;ul class=&#34;actions&#34;&gt;
-       
-    &lt;li&gt;
-      &lt;button
-        class=&#34;button icon outline brands fa-trello&#34;
-        onclick=&#34;location.href=&#39;https:\/\/trello.com\/b\/xzVRxTDJ\/bloomforsearchfromscratch&#39;&#34;
-        type=&#34;button&#34;
-      &gt;
-        Visit Trello
-      &lt;/button&gt;
-    &lt;/li&gt;
-    
-  &lt;/ul&gt;
-&lt;/div&gt;
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;The Bloom filter data structure tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when I saw them used in speeding up database search. Then, I heard about Microsoft using a stack of Bloom filters to &lt;a href=&#34;https://dl.acm.org/doi/10.1145/3077136.3080789&#34;&gt;speed up the Bing search engine&amp;rsquo;s keyword search&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;In this project, I implemented a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and notable code design decisions.&lt;/p&gt;&#xA;&lt;p&gt;&lt;div class=&#34;center&#34;&gt;&#xA;  &lt;ul class=&#34;actions&#34;&gt;&#xA;       &#xA;    &lt;li&gt;&#xA;      &lt;button&#xA;        class=&#34;button icon outline brands fa-github&#34;&#xA;        onclick=&#34;location.href=&#39;https:\/\/github.com\/GatiAher\/BloomForSearchFromScratch&#39;&#34;&#xA;        type=&#34;button&#34;&#xA;      &gt;&#xA;        Visit GitHub&#xA;      &lt;/button&gt;&#xA;    &lt;/li&gt;&#xA;    &#xA;  &lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;div class=&#34;center&#34;&gt;&#xA;  &lt;ul class=&#34;actions&#34;&gt;&#xA;       &#xA;    &lt;li&gt;&#xA;      &lt;button&#xA;        class=&#34;button icon outline brands fa-trello&#34;&#xA;        onclick=&#34;location.href=&#39;https:\/\/trello.com\/b\/xzVRxTDJ\/bloomforsearchfromscratch&#39;&#34;&#xA;        type=&#34;button&#34;&#xA;      &gt;&#xA;        Visit Trello&#xA;      &lt;/button&gt;&#xA;    &lt;/li&gt;&#xA;    &#xA;  &lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Facial Recognition Using Principal Component Analysis</title>
       <link>http://GatiAher.github.io/projects/facial-recognition-using-principal-component-analysis/</link>
       <pubDate>Wed, 14 Apr 2021 13:12:04 -0400</pubDate>
-      
       <guid>http://GatiAher.github.io/projects/facial-recognition-using-principal-component-analysis/</guid>
-      <description>&lt;p&gt;I have used multiple variations of Principal Component Analysis (PCA) in my research on microbial community analysis. To explain the core theory and assumptions of PCA to my lab group, I fleshed out an analysis of a toy example (eigenfaces) that I had originally seen in class. This analysis reasons about the assumptions of PCA and the effects of applying it to out-of-distribution data by using PCA to perform facial recognition on a dataset of my classmates&amp;rsquo; faces.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;I was invited to present this project at &lt;a href=&#34;https://ms-my.facebook.com/MathUpConference/photos/because-the-mathup-conference-is-conducted-in-both-polish-and-english-another-du/2805409529774282&#34;&gt;Łódź University&amp;rsquo;s SP2021 [virtual] MathUp conference&lt;/a&gt; at Łódź University, Poland. The conference was an incredibly fun opportunity to meet fellow researchers and data scientists!&lt;/em&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;I have used multiple variations of Principal Component Analysis (PCA) in my research on microbial community analysis. To explain the core theory and assumptions of PCA to my lab group, I fleshed out an analysis of a toy example (eigenfaces) that I had originally seen in class. This analysis reasons about the assumptions of PCA and the effects of applying it to out-of-distribution data by using PCA to perform facial recognition on a dataset of my classmates&amp;rsquo; faces.&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;I was invited to present this project at &lt;a href=&#34;https://ms-my.facebook.com/MathUpConference/photos/because-the-mathup-conference-is-conducted-in-both-polish-and-english-another-du/2805409529774282&#34;&gt;Łódź University&amp;rsquo;s SP2021 [virtual] MathUp conference&lt;/a&gt; at Łódź University, Poland. The conference was an incredibly fun opportunity to meet fellow researchers and data scientists!&lt;/em&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>GarbageEater: Simple Virtual Machine</title>
       <link>http://GatiAher.github.io/projects/build-a-virtual-machine/</link>
       <pubDate>Wed, 07 Apr 2021 22:05:00 -0500</pubDate>
-      
       <guid>http://GatiAher.github.io/projects/build-a-virtual-machine/</guid>
-      <description>&lt;p&gt;Little Computer 3 (LC-3) is a reduced instruction set computer (RISC). This means that its architecture uses a limited set of optimized instructions to complete tasks. We implemented a virtual machine (VM) in C that can run compiled LC-3 assembly. Given program code in a compiled OBJ file, the VM can execute the instructions in the file.&lt;/p&gt;
-&lt;p&gt;In order to do this, it uses the memory structure defined in the LC-3 specification, including program memory, program registers, and condition flags. It reads and writes to these memory structures and manages I/O through the terminal. Our VM successfully plays game files!&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;center&#34;&gt;
-  &lt;ul class=&#34;actions&#34;&gt;
-       
-    &lt;li&gt;
-      &lt;button
-        class=&#34;button icon outline brands fa-github&#34;
-        onclick=&#34;location.href=&#39;https:\/\/github.com\/GatiAher\/SoftSysGarbageEaters\/blob\/main\/reports\/report.md&#39;&#34;
-        type=&#34;button&#34;
-      &gt;
-        Visit GitHub
-      &lt;/button&gt;
-    &lt;/li&gt;
-    
-  &lt;/ul&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;center&#34;&gt;
-  &lt;ul class=&#34;actions&#34;&gt;
-       
-    &lt;li&gt;
-      &lt;button
-        class=&#34;button icon outline brands fa-trello&#34;
-        onclick=&#34;location.href=&#39;https:\/\/trello.com\/b\/s83l2eWJ\/softsys-garbagecollectors&#39;&#34;
-        type=&#34;button&#34;
-      &gt;
-        Visit Trello
-      &lt;/button&gt;
-    &lt;/li&gt;
-    
-  &lt;/ul&gt;
-&lt;/div&gt;
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;Little Computer 3 (LC-3) is a reduced instruction set computer (RISC). This means that its architecture uses a limited set of optimized instructions to complete tasks. We implemented a virtual machine (VM) in C that can run compiled LC-3 assembly. Given program code in a compiled OBJ file, the VM can execute the instructions in the file.&lt;/p&gt;&#xA;&lt;p&gt;In order to do this, it uses the memory structure defined in the LC-3 specification, including program memory, program registers, and condition flags. It reads and writes to these memory structures and manages I/O through the terminal. Our VM successfully plays game files!&lt;/p&gt;&#xA;&lt;p&gt;&lt;div class=&#34;center&#34;&gt;&#xA;  &lt;ul class=&#34;actions&#34;&gt;&#xA;       &#xA;    &lt;li&gt;&#xA;      &lt;button&#xA;        class=&#34;button icon outline brands fa-github&#34;&#xA;        onclick=&#34;location.href=&#39;https:\/\/github.com\/GatiAher\/SoftSysGarbageEaters\/blob\/main\/reports\/report.md&#39;&#34;&#xA;        type=&#34;button&#34;&#xA;      &gt;&#xA;        Visit GitHub&#xA;      &lt;/button&gt;&#xA;    &lt;/li&gt;&#xA;    &#xA;  &lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;div class=&#34;center&#34;&gt;&#xA;  &lt;ul class=&#34;actions&#34;&gt;&#xA;       &#xA;    &lt;li&gt;&#xA;      &lt;button&#xA;        class=&#34;button icon outline brands fa-trello&#34;&#xA;        onclick=&#34;location.href=&#39;https:\/\/trello.com\/b\/s83l2eWJ\/softsys-garbagecollectors&#39;&#34;&#xA;        type=&#34;button&#34;&#xA;      &gt;&#xA;        Visit Trello&#xA;      &lt;/button&gt;&#xA;    &lt;/li&gt;&#xA;    &#xA;  &lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>A Fourier Transform Detective Story!</title>
       <link>http://GatiAher.github.io/projects/a-fourier-transform-detective-story/</link>
       <pubDate>Sun, 14 Mar 2021 22:24:10 -0400</pubDate>
-      
       <guid>http://GatiAher.github.io/projects/a-fourier-transform-detective-story/</guid>
       <description>&lt;p&gt;A group of research students had tried to use a 2D discrete Fourier Transform to characterize the pattern of repeating protein units on a bacteria surface layer image. Since their spectral graph looked unusually messy and their pattern estimates seemed very wrong, my research professor asked me to take a crack at interpreting and cleaning it. This was a neat application of understanding the mathematical assumptions of a technique to properly isolate and interpret results.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>1D and 2D Fourier Transforms</title>
       <link>http://GatiAher.github.io/projects/1d-and-2d-fourier-transforms/</link>
       <pubDate>Wed, 03 Mar 2021 14:22:03 -0400</pubDate>
-      
       <guid>http://GatiAher.github.io/projects/1d-and-2d-fourier-transforms/</guid>
       <description>&lt;p&gt;Concepts and math behind 1D and 2D discrete Fourier Transforms for signal and image analysis. Overview of mathematical steps, post-processing, assumptions, and reading of phase and magnitude plots.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Xkcd Data Visualization</title>
       <link>http://GatiAher.github.io/projects/xkcd-data-visualization-website/</link>
       <pubDate>Tue, 19 May 2020 21:05:00 -0500</pubDate>
-      
       <guid>http://GatiAher.github.io/projects/xkcd-data-visualization-website/</guid>
-      <description>&lt;p&gt;This single-page web application lets users interact with xkcd comics clustered by similarity.&lt;/p&gt;
-&lt;p&gt;Over the course of building this project, I learned how to clean data, use different natural language analysis techniques (&lt;strong&gt;stemming, lemminizing, TF-IDF, SVD, t-SNE&lt;/strong&gt;), build an interactive and reactive data visualization (&lt;strong&gt;D3.js&lt;/strong&gt;), and host a web application (&lt;strong&gt;Flask, Bootstrap, Heroku&lt;/strong&gt;).&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;center&#34;&gt;
-  &lt;ul class=&#34;actions&#34;&gt;
-       
-    &lt;li&gt;
-      &lt;button
-        class=&#34;button icon outline fa-gem&#34;
-        onclick=&#34;location.href=&#39;https:\/\/xkcd-data.herokuapp.com\/&#39;&#34;
-        type=&#34;button&#34;
-      &gt;
-        View Website
-      &lt;/button&gt;
-    &lt;/li&gt;
-    
-  &lt;/ul&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;center&#34;&gt;
-  &lt;ul class=&#34;actions&#34;&gt;
-       
-    &lt;li&gt;
-      &lt;button
-        class=&#34;button icon outline brands fa-github&#34;
-        onclick=&#34;location.href=&#39;https:\/\/github.com\/GatiAher\/Xkcd_Data_Visualization&#39;&#34;
-        type=&#34;button&#34;
-      &gt;
-        Visit GitHub
-      &lt;/button&gt;
-    &lt;/li&gt;
-    
-  &lt;/ul&gt;
-&lt;/div&gt;
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;This single-page web application lets users interact with xkcd comics clustered by similarity.&lt;/p&gt;&#xA;&lt;p&gt;Over the course of building this project, I learned how to clean data, use different natural language analysis techniques (&lt;strong&gt;stemming, lemminizing, TF-IDF, SVD, t-SNE&lt;/strong&gt;), build an interactive and reactive data visualization (&lt;strong&gt;D3.js&lt;/strong&gt;), and host a web application (&lt;strong&gt;Flask, Bootstrap, Heroku&lt;/strong&gt;).&lt;/p&gt;&#xA;&lt;p&gt;&lt;div class=&#34;center&#34;&gt;&#xA;  &lt;ul class=&#34;actions&#34;&gt;&#xA;       &#xA;    &lt;li&gt;&#xA;      &lt;button&#xA;        class=&#34;button icon outline fa-gem&#34;&#xA;        onclick=&#34;location.href=&#39;https:\/\/xkcd-data.herokuapp.com\/&#39;&#34;&#xA;        type=&#34;button&#34;&#xA;      &gt;&#xA;        View Website&#xA;      &lt;/button&gt;&#xA;    &lt;/li&gt;&#xA;    &#xA;  &lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;div class=&#34;center&#34;&gt;&#xA;  &lt;ul class=&#34;actions&#34;&gt;&#xA;       &#xA;    &lt;li&gt;&#xA;      &lt;button&#xA;        class=&#34;button icon outline brands fa-github&#34;&#xA;        onclick=&#34;location.href=&#39;https:\/\/github.com\/GatiAher\/Xkcd_Data_Visualization&#39;&#34;&#xA;        type=&#34;button&#34;&#xA;      &gt;&#xA;        Visit GitHub&#xA;      &lt;/button&gt;&#xA;    &lt;/li&gt;&#xA;    &#xA;  &lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
